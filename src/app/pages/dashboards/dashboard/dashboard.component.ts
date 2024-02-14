@@ -22,11 +22,13 @@ export class DashboardComponent implements OnInit {
   breadCrumbItems!: Array<{}>;
   analyticsChart!: ChartType;
   BestSelling: any;
-  TopSelling: any;
+  TopSelling: any;  
   RecentSelling: any;
   SalesCategoryChart!: ChartType;
   statData!: any;
-
+  totalInwardStocks = "992900510"
+  totalSales = "19823479823"
+  insuranceClaims="23400"
   // Current Date
   currentDate: any;
 
@@ -59,6 +61,7 @@ export class DashboardComponent implements OnInit {
     // Chart Color Data Get Function
     this._analyticsChart('["--vz-success", "--vz-primary", "--vz-danger"]');
     this._SalesCategoryChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
+    
   }
 
   // Chart Colors Set

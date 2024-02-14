@@ -1,0 +1,14 @@
+.equal-height {
+    display: flex;
+    // grid-template-columns: repeat(auto-fill, minmax(0, 1fr));
+    // gap: 16px; /* Adjust the gap value as needed */
+}
+
+.equal-height > [class*="col-"] {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    flex: 1;
+}
