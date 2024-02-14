@@ -585,7 +585,7 @@ export class DashboardComponent implements OnInit {
         },
         yaxis: {
           title: {
-            text: "$ (thousands)"
+            // text: "$ (thousands)"
           }
         },
         fill: {
@@ -625,7 +625,7 @@ export class DashboardComponent implements OnInit {
         },
         yaxis: {
           title: {
-            text: "$ (thousands)"
+            // text: "$ (thousands)"
           }
         },
         fill: {
@@ -744,7 +744,7 @@ export class DashboardComponent implements OnInit {
         }
       },
       title: {
-        text: "Top Performing Depot",
+        // text: "Top Performing Depot",
         align: "left",
         // floating: true
       },
@@ -765,6 +765,41 @@ export class DashboardComponent implements OnInit {
           }
         }
       }
+    };
+    // colors = this.getChartColorsArray(colors);
+    this.SalesCategoryChart = {
+      "series": res.data.charts.imfsAndBeerComparison.series,
+      labels: res.data.charts.imfsAndBeerComparison.labels,
+      chart: {
+        height: 333,
+        type: "donut",
+      },
+      legend: {
+        position: "bottom",
+      },
+      stroke: {
+        show: false
+      },
+      dataLabels: {
+        dropShadow: {
+          enabled: false,
+        },
+      },
+      title: {
+        text: "",
+        align: "left",
+        // floating: true
+      },
+      colors:  [
+        "#E14D57",
+        "#965994",
+        "#EC932F",
+        "#71B37C",
+        "#5290EA",
+        "#8F13FD",
+        "#EC932F",
+        "#00E396"
+      ],
     };
     })
   }
@@ -969,32 +1004,32 @@ export class DashboardComponent implements OnInit {
  *  Sales Category
  */
   private _SalesCategoryChart(colors: any) {
-    colors = this.getChartColorsArray(colors);
-    this.SalesCategoryChart = {
-      series: [44, 55, 41, 17, 15],
-      labels: ["Direct", "Social", "Email", "Other", "Referrals"],
-      chart: {
-        height: 333,
-        type: "donut",
-      },
-      legend: {
-        position: "bottom",
-      },
-      stroke: {
-        show: false
-      },
-      dataLabels: {
-        dropShadow: {
-          enabled: false,
-        },
-      },
-      title: {
-        text: "",
-        align: "left",
-        // floating: true
-      },
-      colors: colors
-    };
+    // colors = this.getChartColorsArray(colors);
+    // this.SalesCategoryChart = {
+    //   series: [44, 55, 41, 17, 15],
+    //   labels: ["Direct", "Social", "Email", "Other", "Referrals"],
+    //   chart: {
+    //     height: 333,
+    //     type: "donut",
+    //   },
+    //   legend: {
+    //     position: "bottom",
+    //   },
+    //   stroke: {
+    //     show: false
+    //   },
+    //   dataLabels: {
+    //     dropShadow: {
+    //       enabled: false,
+    //     },
+    //   },
+    //   title: {
+    //     text: "",
+    //     align: "left",
+    //     // floating: true
+    //   },
+    //   colors: colors
+    // };
   }
 
   /**
