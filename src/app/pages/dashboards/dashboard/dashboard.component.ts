@@ -62,7 +62,7 @@ interface BarChartOption {
   stroke: ApexStroke;
 }
 
-interface BarChartOption1{
+interface BarChartOption1 {
   series: ApexAxisChartSeries;
   chart: ApexChart;
   dataLabels: ApexDataLabels;
@@ -81,7 +81,7 @@ interface lineChartOption {
   stroke: ApexStroke;
   title: ApexTitleSubtitle;
 };
-interface areaChartOption  {
+interface areaChartOption {
   series: ApexAxisChartSeries;
   chart: ApexChart;
   xaxis: ApexXAxis;
@@ -103,7 +103,7 @@ export class DashboardComponent implements OnInit {
   public chartOptions: ChartOptions;
   public sideBarChart: sideBarOption;
   public barChart: BarChartOption;
-  public Barchart1 : BarChartOption1
+  public Barchart1: BarChartOption1
   public lineChart: lineChartOption;
   public areaChart: areaChartOption
 
@@ -121,6 +121,8 @@ export class DashboardComponent implements OnInit {
   // Current Date
   currentDate: any;
 
+  date: any[] | undefined;
+  selectedDate: string | undefined;
 
   constructor(public toastService: ToastService) {
     var date = new Date();
@@ -131,16 +133,17 @@ export class DashboardComponent implements OnInit {
     this.Barchart1 = {
       "series": [
         {
-            "name": "sales",
-            "data": [
-                956.0887,
-                736.6534,
-                855.978,
-                904.3942,
-                868.7903
-            ]
+          "name": "sales",
+          "data": [
+            956.0887,
+            736.6534,
+            855.978,
+            904.3942,
+            868.7903,
+            868.7903
+          ]
         }
-    ],
+      ],
       chart: {
         height: 350,
         type: "bar"
@@ -154,7 +157,7 @@ export class DashboardComponent implements OnInit {
       },
       dataLabels: {
         enabled: true,
-        formatter: function(val) {
+        formatter: function (val) {
           return val + "%";
         },
         offsetY: -20,
@@ -171,7 +174,7 @@ export class DashboardComponent implements OnInit {
           "Madhurai",
           "Trichy",
           "Salem"
-      ],
+        ],
         position: "bottom",
         labels: {
           // offsetY: -18
@@ -221,7 +224,7 @@ export class DashboardComponent implements OnInit {
         },
         labels: {
           show: false,
-          formatter: function(val) {
+          formatter: function (val) {
             return val + "%";
           }
         }
@@ -242,14 +245,7 @@ export class DashboardComponent implements OnInit {
           name: "Net Profit",
           data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
         },
-        {
-          name: "Revenue",
-          data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-        },
-        {
-          name: "Free Cash Flow",
-          data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
-        }
+
       ],
       chart: {
         type: "bar",
@@ -259,7 +255,7 @@ export class DashboardComponent implements OnInit {
         bar: {
           horizontal: false,
           columnWidth: "55%",
-          
+
         }
       },
       dataLabels: {
@@ -304,15 +300,7 @@ export class DashboardComponent implements OnInit {
       series: [
         {
           name: "SNJ 20,000",
-          data: [44, 55, 41, 67, 22, 43, 21, 49]
-        },
-        {
-          name: "VSOP BRANDY",
-          data: [13, 23, 20, 8, 13, 27, 33, 12]
-        },
-        {
-          name: "VSOP PREMIUM",
-          data: [11, 17, 15, 15, 21, 14, 15, 13]
+          data: [44, 55, 41, 67, 22]
         }
       ],
       chart: {
@@ -335,14 +323,11 @@ export class DashboardComponent implements OnInit {
       ],
       xaxis: {
         categories: [
-          "01 Jan",
-          "02 Jan",
-          "03 Jan",
-          "04 Jan",
-          "05 Jan",
-          "06 Jan",
-          "07 Jan",
-          "08 Jan"
+          "Chennai",
+          "Coimbatore",
+          "Madurai",
+          "Salem",
+          "Trichy"
         ]
       },
       title: {
@@ -361,7 +346,7 @@ export class DashboardComponent implements OnInit {
       legend: {
         position: "right",
         offsetX: 0,
-        offsetY: 50
+        offsetY: 10
       }
     } as ChartOptions;
     this.sideBarChart = {
@@ -468,7 +453,7 @@ export class DashboardComponent implements OnInit {
         curve: "straight"
       },
       title: {
-        text: "Product Trends by Month",
+        text: "",
         align: "left"
       },
       grid: {
@@ -540,6 +525,15 @@ export class DashboardComponent implements OnInit {
     this.breadCrumbItems = [
       { label: 'Dashboards' },
       { label: 'Dashboard', active: true }
+    ];
+
+    this.date = [
+      { name: '2019', },
+      { name: '2020', },
+      { name: '2021', },
+      { name: '2022', },
+      { name: '2023', },
+      { name: '2024', },
     ];
 
     if (localStorage.getItem('toast')) {
