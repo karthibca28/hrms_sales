@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { TableModule } from 'primeng/table';
 // Feather Icon
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
@@ -29,6 +29,7 @@ import { CryptoComponent } from './crypto/crypto.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { NftComponent } from './nft/nft.component';
 import { JobComponent } from './job/job.component';
+import { DynamicViewTableComponent } from './dashboard/dynamic-view-table/dynamic-view-table.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { JobComponent } from './job/job.component';
     CryptoComponent,
     ProjectsComponent,
     NftComponent,
-    JobComponent
+    JobComponent,
+    DynamicViewTableComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +60,8 @@ import { JobComponent } from './job/job.component';
     NgbPaginationModule,
     NgbTooltipModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TableModule
   ],
 })
 export class DashboardsModule { }

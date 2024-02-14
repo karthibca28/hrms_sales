@@ -8,11 +8,16 @@ import { CryptoComponent } from "./crypto/crypto.component";
 import { ProjectsComponent } from "./projects/projects.component";
 import { NftComponent } from "./nft/nft.component";
 import { JobComponent } from './job/job.component';
+import { DynamicViewTableComponent } from './dashboard/dynamic-view-table/dynamic-view-table.component';
 
 const routes: Routes = [
   {
     path: "analytics",
     component: AnalyticsComponent
+  },
+  {
+    path: "dynamic-view-table",
+    component: DynamicViewTableComponent
   },
   {
     path: "crm",
