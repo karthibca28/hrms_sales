@@ -30,6 +30,10 @@ import { ProjectsComponent } from './projects/projects.component';
 import { NftComponent } from './nft/nft.component';
 import { JobComponent } from './job/job.component';
 import { DynamicViewTableComponent } from './dashboard/dynamic-view-table/dynamic-view-table.component';
+import { DropdownModule } from 'primeng/dropdown';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field'
 
 @NgModule({
   declarations: [
@@ -51,7 +55,7 @@ import { DynamicViewTableComponent } from './dashboard/dynamic-view-table/dynami
     NgbNavModule,
     SimplebarAngularModule,
     NgApexchartsModule,
-    SlickCarouselModule ,
+    SlickCarouselModule,
     FlatpickrModule.forRoot(),
     DashboardsRoutingModule,
     SharedModule,
@@ -61,7 +65,11 @@ import { DynamicViewTableComponent } from './dashboard/dynamic-view-table/dynami
     NgbTooltipModule,
     FormsModule,
     ReactiveFormsModule,
-    TableModule
+    TableModule,
+    DropdownModule,
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule
   ],
 })
 export class DashboardsModule { }

@@ -17,4 +17,7 @@ export class FormService {
   getDashBoard() {
     return this.http.get(`${this.baseUrl}dashboard/insights`);
   }
+  getFilterDashBoard(){
+    return this.http.get(`${this.baseUrl}dashboard/updateChart`);
+  }
 }

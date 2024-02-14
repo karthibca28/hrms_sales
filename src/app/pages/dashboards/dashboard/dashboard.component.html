@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col">
-<!-- <a routerLink="/main/page/dynamic-view-table">Testing</a> -->
+        <!-- <a routerLink="/main/page/dynamic-view-table">Testing</a> -->
         <div class="h-100">
             <!-- <div class="row mb-3 pb-1">
                 <div class="col-12">
@@ -135,14 +135,31 @@
             <!-- </div>
                     </div>
                 </div> -->
-
+            
             <div class="row">
                 <div class="col-xl-6">
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
                             <h4 class="card-title mb-0 flex-grow-1">Region Wise Sales</h4>
+                            <!-- <div class="card flex justify-content-center">
+                                <p-dropdown [options]="year" optionLabel="name" [showClear]="true"
+                                    placeholder="Select a City"></p-dropdown>
+                            </div> -->
+                            <!-- <select class="custom-dropdown" (change)="filterRegionWise(regionwiseDropdown)">
+                                <option *ngFor="let item of regionwiseDropdown"  [value]="item.value" >{{ item.label }}</option>
+                            </select> -->
+                            <mat-form-field>
+                                <mat-label>Favorite food</mat-label>
+                                <mat-select>
+                                  <mat-option *ngFor="let food of regionwiseDropdown" [value]="food.value">
+                                    {{food.viewValue}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                            <!-- <p-dropdown [options]="year" optionLabel="name" [showClear]="true"
+                            placeholder="Select a City"></p-dropdown> -->
                             <div class="flex-shrink-0">
-                                <p-dropdown [options]="date" [(ngModel)]="selectedDate" optionLabel="name"
+                                <!-- <p-dropdown [options]="date" [(ngModel)]="selectedDate" optionLabel="name"
                                     [showClear]="true" placeholder="Select a Country">
                                     <ng-template pTemplate="selectedItem">
                                         <div class="flex align-items-center gap-2" *ngIf="selectedDate">
@@ -154,7 +171,7 @@
                                             <div>{{ country.name }}</div>
                                         </div>
                                     </ng-template>
-                                </p-dropdown>
+                                </p-dropdown> -->
                             </div>
                         </div>
 
@@ -193,9 +210,9 @@
                         <div class="card-body">
                             <div id="chart">
                                 <apx-chart [series]="Barchart1.series" [chart]="Barchart1.chart"
-                                [dataLabels]="Barchart1.dataLabels" [plotOptions]="Barchart1.plotOptions"
-                                [yaxis]="Barchart1.yaxis" [fill]="Barchart1.fill" [stroke]="Barchart1.stroke"
-                                [tooltip]="Barchart1.tooltip" [xaxis]="Barchart1.xaxis"></apx-chart>
+                                    [dataLabels]="Barchart1.dataLabels" [plotOptions]="Barchart1.plotOptions"
+                                    [yaxis]="Barchart1.yaxis" [fill]="Barchart1.fill" [stroke]="Barchart1.stroke"
+                                    [tooltip]="Barchart1.tooltip" [xaxis]="Barchart1.xaxis"></apx-chart>
                             </div>
                         </div>
                     </div>
@@ -237,7 +254,8 @@
                                     <div class="header-container">
                                         <h4 class="card-title mb-0 flex-grow-1 mt-3">Comparison Data
                                         </h4>
-                                        <img style="width: 20px;height: 20px; margin: 5px;"  src="../../../../assets/icons/Comparison-Data.png" />
+                                        <img style="width: 20px;height: 20px; margin: 5px;"
+                                            src="../../../../assets/icons/Comparison-Data.png" />
                                     </div>
                                 </div>
                                 <div class="card-body p-0 pb-2 d-flex">
@@ -381,7 +399,8 @@
                             <div class="Live-Sales-img">
                                 <div class="header-container">
                                     <h4 class="card-title mb-0 flex-grow-1 mt-3">Live Sales Data</h4>
-                                    <img style="width: 20px;height: 20px; margin: 5px;"  src="../../../../assets/icons/Live-Sales-Data.png" />
+                                    <img style="width: 20px;height: 20px; margin: 5px;"
+                                        src="../../../../assets/icons/Live-Sales-Data.png" />
                                 </div>
                             </div>
                             <div class="card-body p-0 pb-2 d-flex">

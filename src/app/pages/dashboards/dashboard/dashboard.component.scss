@@ -78,4 +78,42 @@ img{
     margin: 2px;
   }
 
-  
+  .custom-dropdown {
+    width: 200px; /* Set the width of the dropdown */
+    padding: 10px; /* Add padding to make it visually appealing */
+    font-size: 16px; /* Set the font size */
+    border: 1px solid #ccc; /* Add a border for a neat look */
+    border-radius: 5px; /* Add border-radius for rounded corners */
+    background-color: #fff; /* Set the background color */
+    color: #333; /* Set the text color */
+    outline: none; /* Remove the default focus outline */
+    cursor: pointer; /* Change cursor on hover */
+
+    /* Customize the dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+
+    /* Add hover effect */
+    transition: border-color 0.3s ease;
+}
+
+.custom-dropdown:hover {
+    border-color: #666;
+}
+
+
+.custom-dropdown option {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Style the selected option */
+.custom-dropdown option:checked {
+    background-color: #ddd;
+}
+
+/* Style the hover effect on options */
+.custom-dropdown option:hover {
+    background-color: #f0f0f0;
+    color: #555;
+}

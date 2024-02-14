@@ -122,9 +122,9 @@ export class DashboardComponent implements OnInit {
   insuranceClaims = "23400"
   // Current Date
   currentDate: any;
-
   date: any[] | undefined;
   selectedDate: string | undefined;
+  regionwiseDropdown:any
 
   constructor(public toastService: ToastService,public service:FormService) {
     var date = new Date();
@@ -556,9 +556,56 @@ export class DashboardComponent implements OnInit {
     this._SalesCategoryChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
 
   }
+  filterRegionWise(data:any){
+    console.log(data)
+    this.service.getFilterDashBoard().subscribe((res:any)=>{
+      console.log(res)
+      // this.barChart = {
+      //   "series": res.data.charts.regionWiseBarChart.series,
+      //   chart: {
+      //     height: 350,
+      //     type: "bar"
+      //   },
+      //   plotOptions: {
+      //     bar: {
+      //       horizontal: false,
+      //       columnWidth: "55%",
+  
+      //     }
+      //   },
+      //   dataLabels: {
+      //     enabled: false
+      //   },
+      //   stroke: {
+      //     show: true,
+      //     width: 2,
+      //     colors: ["transparent"]
+      //   },
+      //   xaxis: {
+      //     "categories": res.data.charts.regionWiseBarChart.xaxis.categories,
+      //   },
+      //   yaxis: {
+      //     title: {
+      //       // text: "$ (thousands)"
+      //     }
+      //   },
+      //   fill: {
+      //     opacity: 1
+      //   },
+      //   tooltip: {
+      //     y: {
+      //       formatter: function (val) {
+      //         return "" + val;
+      //       }
+      //     }
+      //   }
+      // };
+    })
+  }
   getDashboardData(){
     this.service.getDashBoard().subscribe((res:any)=>{
-      console.log('>>>', res.data.charts)
+      console.log('>>>', res.data)
+      this.regionwiseDropdown = res.data.parameters.regionWiseBarChart.years
       this.barChart = {
         "series": res.data.charts.regionWiseBarChart.series,
         chart: {
