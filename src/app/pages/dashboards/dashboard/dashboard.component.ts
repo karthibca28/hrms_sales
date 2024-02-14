@@ -71,7 +71,8 @@ interface BarChartOption1 {
   yaxis: ApexYAxis;
   xaxis: ApexXAxis;
   fill: ApexFill;
-  title: ApexTitleSubtitle;
+  tooltip: ApexTooltip;
+  stroke: ApexStroke;
 }
 interface lineChartOption {
   series: ApexAxisChartSeries;
@@ -131,113 +132,104 @@ export class DashboardComponent implements OnInit {
     var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     this.currentDate = { from: firstDay, to: lastDay }
 
-    this.Barchart1 = {
-      "series": [
-        {
-          "name": "sales",
-          "data": [
-            956.0887,
-            736.6534,
-            855.978,
-            904.3942,
-            868.7903,
-          ]
-        }
-    ],
-      chart: {
-        height: 350,
-        type: "bar"
-      },
-      plotOptions: {
-        bar: {
-          dataLabels: {
-            position: "top"
-          }
-        }
-      },
-      dataLabels: {
-        enabled: true,
-        formatter: function(val) {
-          return val + "%";
-        },
-        offsetY: -20,
-        style: {
-          fontSize: "12px",
-          colors: ["#304758"]
-        }
-      },
-
-      xaxis: {
-        "categories": [
-          "Chennai",
-          "Coimbatore",
-          "Madhurai",
-          "Trichy",
-          "Salem"
-      ],
-        position: "bottom",
-        labels: {
-          // offsetY: -18
-        },
-        axisBorder: {
-          show: false
-        },
-        axisTicks: {
-          show: false
-        },
-        crosshairs: {
-          fill: {
-            type: "gradient",
-            gradient: {
-              colorFrom: "#D8E3F0",
-              colorTo: "#BED1E6",
-              stops: [0, 100],
-              opacityFrom: 0.4,
-              opacityTo: 0.5
-            }
-          }
-        },
-        tooltip: {
-          enabled: true,
-          offsetY: -35
-        }
-      },
-      fill: {
-        type: "gradient",
-        gradient: {
-          shade: "light",
-          type: "horizontal",
-          shadeIntensity: 0.25,
-          gradientToColors: undefined,
-          inverseColors: true,
-          opacityFrom: 1,
-          opacityTo: 1,
-          stops: [50, 0, 100, 100]
-        }
-      },
-      yaxis: {
-        axisBorder: {
-          show: false
-        },
-        axisTicks: {
-          show: false
-        },
-        labels: {
-          show: false,
-          formatter: function(val) {
-            return val + "%";
-          }
-        }
-      },
-      title: {
-        // text: "Monthly Inflation in Argentina, 2002",
-        offsetY: 320,
-        align: "center",
-        style: {
-          color: "#444"
-        }
-      }
-    };
+    // this.Barchart1 = {
+    //   series: [
+    //     {
+    //       name: "sales",
+    //       data: [956.0887, 736.6534, 855.978, 904.3942, 868.7903],
+    //     },
+    //   ],
+    //   chart: {
+    //     height: 350,
+    //     type: "bar",
+    //   },
+    //   plotOptions: {
+    //     bar: {
+    //       dataLabels: {
+    //         position: "top",
+    //       },
+    //     },
+    //   },
+    //   dataLabels: {
+    //     enabled: true,
+    //     formatter: function (val) {
+    //       return val + "%";
+    //     },
+    //     offsetY: -20,
+    //     style: {
+    //       fontSize: "12px",
+    //       colors: ["#304758"],
+    //     },
+    //   },
+    //   xaxis: {
+    //     categories: ["Chennai", "Coimbatore", "Madhurai", "Trichy", "Salem"],
+    //     position: "bottom",
+    //     labels: {},
+    //     axisBorder: {
+    //       show: false,
+    //     },
+    //     axisTicks: {
+    //       show: false,
+    //     },
+    //     crosshairs: {
+    //       fill: {
+    //         type: "gradient",
+    //         gradient: {
+    //           colorFrom: "#D8E3F0",
+    //           colorTo: "#BED1E6",
+    //           stops: [0, 100],
+    //           opacityFrom: 0.4,
+    //           opacityTo: 0.5,
+    //         },
+    //       },
+    //     },
+    //     tooltip: {
+    //       enabled: true,
+    //       offsetY: -35,
+    //     },
+    //   },
+    //   fill: {
+    //     type: "gradient",
+    //     gradient: {
+    //       shade: "light",
+    //       type: "horizontal",
+    //       shadeIntensity: 0.25,
+    //       gradientToColors: undefined,
+    //       inverseColors: true,
+    //       opacityFrom: 1,
+    //       opacityTo: 1,
+    //       stops: [50, 0, 100, 100],
+    //     },
+    //   },
+    //   yaxis: {
+    //     axisBorder: {
+    //       show: false,
+    //     },
+    //     axisTicks: {
+    //       show: false,
+    //     },
+    //     labels: {
+    //       show: false,
+    //       formatter: function (val) {
+    //         return val + "%";
+    //       },
+    //     },
+    //   },
+    //   title: {
+    //     offsetY: 320,
+    //     align: "center",
+    //     style: {
+    //       color: "#444",
+    //     },
+    //   },
+    //   tooltip: {
+    //     enabled: true, // Add tooltip configuration as needed
+    //   },
+    //   stroke: {
+    //     // Add stroke configuration as needed
+    //   },
+    // };
+    
 
     this.barChart = {
       series: [
@@ -296,8 +288,11 @@ export class DashboardComponent implements OnInit {
       }
     };
 
+    this.barChart={} as BarChartOption;
     this.Barchart1={} as BarChartOption1;
-    this.lineChart={} as lineChartOption;
+    this.lineChart={} as lineChartOption
+    this.areaChart ={} as areaChartOption
+    this.sideBarChart ={} as sideBarOption
 
     this.chartOptions = {
       series: [
@@ -460,7 +455,7 @@ export class DashboardComponent implements OnInit {
         curve: "straight"
       },
       title: {
-        text: "Product Trends by Month",
+        text: "",
         align: "left"
       },
       grid: {
@@ -522,6 +517,8 @@ export class DashboardComponent implements OnInit {
         }
       }
     };
+    
+    
   }
 
 
@@ -562,6 +559,46 @@ export class DashboardComponent implements OnInit {
   getDashboardData(){
     this.service.getDashBoard().subscribe((res:any)=>{
       console.log('>>>', res.data.charts)
+      this.barChart = {
+        "series": res.data.charts.regionWiseBarChart.series,
+        chart: {
+          height: 350,
+          type: "bar"
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+  
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"]
+        },
+        xaxis: {
+          "categories": res.data.charts.regionWiseBarChart.xaxis.categories,
+        },
+        yaxis: {
+          title: {
+            text: "$ (thousands)"
+          }
+        },
+        fill: {
+          opacity: 1
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val;
+            }
+          }
+        }
+      };
       this.Barchart1 = {
         "series": res.data.charts.top5DistrictBarChart.series,
         chart: {
@@ -570,93 +607,41 @@ export class DashboardComponent implements OnInit {
         },
         plotOptions: {
           bar: {
-            dataLabels: {
-              position: "top"
-            }
+            horizontal: false,
+            columnWidth: "55%",
+  
           }
         },
         dataLabels: {
-          enabled: true,
-          formatter: function(val) {
-            return val + "%";
-          },
-          offsetY: -20,
-          style: {
-            fontSize: "12px",
-            colors: ["#304758"]
-          }
+          enabled: false
         },
-  
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["#00FF00"]
+        },
         xaxis: {
           "categories": res.data.charts.top5DistrictBarChart.xaxis.categories,
-          position: "bottom",
-          labels: {
-            // offsetY: -18
-          },
-          axisBorder: {
-            show: false
-          },
-          axisTicks: {
-            show: false
-          },
-          crosshairs: {
-            fill: {
-              type: "gradient",
-              gradient: {
-                colorFrom: "#D8E3F0",
-                colorTo: "#BED1E6",
-                stops: [0, 100],
-                opacityFrom: 0.4,
-                opacityTo: 0.5
-              }
-            }
-          },
-          tooltip: {
-            enabled: true,
-            offsetY: -35
+        },
+        yaxis: {
+          title: {
+            text: "$ (thousands)"
           }
         },
         fill: {
-          type: "gradient",
-          gradient: {
-            shade: "light",
-            type: "horizontal",
-            shadeIntensity: 0.25,
-            gradientToColors: undefined,
-            inverseColors: true,
-            opacityFrom: 1,
-            opacityTo: 1,
-            stops: [50, 0, 100, 100]
-          }
+          colors: ["#00E396"],
+          opacity: 1
         },
-        yaxis: {
-          axisBorder: {
-            show: false
-          },
-          axisTicks: {
-            show: false
-          },
-          labels: {
-            show: false,
-            formatter: function(val) {
-              return val + "%";
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "" + val;
             }
-          }
-        },
-        title: {
-          offsetY: 320,
-          align: "center",
-          style: {
-            color: "#444"
           }
         }
       };
-  this.lineChart ={series: [
-        {
-          name: "Desktops",
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        }
-      ],
+  this.lineChart ={
+    "series": res.data.charts.last12MonthChart.series,
       chart: {
         height: 350,
         type: "line",
@@ -671,29 +656,116 @@ export class DashboardComponent implements OnInit {
         curve: "straight"
       },
       title: {
-        text: "Product Trends by Month",
+        text: "",
         align: "left"
       },
       grid: {
         row: {
-          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+          colors: ["#f3f3f3", "transparent"],
           opacity: 0.5
         }
       },
       xaxis: {
-        categories: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep"
-        ]
+        "categories": res.data.charts.last12MonthChart.xaxis.categories,
       }
     }
+    this.areaChart = {
+      "series": res.data.charts.yearlySalesComparison.series,
+      chart: {
+        height: 350,
+        type: "area"
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: "smooth"
+      },
+      xaxis: {
+        "categories": res.data.charts.yearlySalesComparison.xaxis.categories,
+      },
+      tooltip: {
+        x: {
+          format: "dd/MM/yy HH:mm"
+        }
+      }
+    };
+    this.sideBarChart = {
+      "series": res.data.charts.leastPerformance.series,
+      chart: {
+        type: "bar",
+        height: 380
+      },
+      plotOptions: {
+        bar: {
+          barHeight: "100%",
+          distributed: true,
+          horizontal: true,
+          dataLabels: {
+            position: "bottom"
+          },
+
+        }
+      },
+      colors: [
+        "#E14D57",
+        "#965994",
+        "#EC932F",
+        "#71B37C",
+        "#5290EA",
+        "#8F13FD",
+        "#EC932F",
+        "#00E396"
+      ],
+      dataLabels: {
+        enabled: true,
+        textAnchor: "start",
+        style: {
+          colors: ["#fff"]
+        },
+        formatter: function (val, opt) {
+          return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val;
+        },
+        offsetX: 0,
+        dropShadow: {
+          enabled: true
+        }
+      },
+      stroke: {
+        width: 2,
+        colors: ["#fff"]
+      },
+      xaxis: {
+        "categories": res.data.charts.leastPerformance.xaxis.categories,
+      },
+      yaxis: {
+        labels: {
+          show: false
+        }
+      },
+      title: {
+        text: "Top Performing Depot",
+        align: "left",
+        // floating: true
+      },
+      // subtitle: {
+      //   text: "Category Names as DataLabels inside bars",
+      //   align: "center"
+      // },
+      tooltip: {
+        theme: "dark",
+        x: {
+          show: false
+        },
+        y: {
+          title: {
+            formatter: function () {
+              return "";
+            }
+          }
+        }
+      }
+    };
     })
   }
 
