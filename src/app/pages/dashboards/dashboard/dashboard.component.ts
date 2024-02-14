@@ -129,12 +129,18 @@ export class DashboardComponent implements OnInit {
     this.currentDate = { from: firstDay, to: lastDay }
 
     this.Barchart1 = {
-      series: [
+      "series": [
         {
-          name: "Inflation",
-          data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
+            "name": "sales",
+            "data": [
+                956.0887,
+                736.6534,
+                855.978,
+                904.3942,
+                868.7903
+            ]
         }
-      ],
+    ],
       chart: {
         height: 350,
         type: "bar"
@@ -142,7 +148,7 @@ export class DashboardComponent implements OnInit {
       plotOptions: {
         bar: {
           dataLabels: {
-            position: "top" // top, center, bottom
+            position: "top"
           }
         }
       },
@@ -159,22 +165,16 @@ export class DashboardComponent implements OnInit {
       },
 
       xaxis: {
-        categories: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov"
-        ],
-        position: "top",
+        "categories": [
+          "Chennai",
+          "Coimbatore",
+          "Madhurai",
+          "Trichy",
+          "Salem"
+      ],
+        position: "bottom",
         labels: {
-          offsetY: -18
+          // offsetY: -18
         },
         axisBorder: {
           show: false
@@ -227,7 +227,7 @@ export class DashboardComponent implements OnInit {
         }
       },
       title: {
-        text: "Monthly Inflation in Argentina, 2002",
+        // text: "Monthly Inflation in Argentina, 2002",
         offsetY: 320,
         align: "center",
         style: {
