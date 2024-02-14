@@ -43,7 +43,7 @@
                                 <div style="display: flex;align-items: center;">
                                     <img style="width: 18%;background-color: #F2F1F1;padding: 10px;margin: 5px;"
                                         src="assets/icons/total-inward-stock.png">
-                                    <span  style="font-weight: 900;">Total Inward Stocks</span>
+                                    <span style="font-weight: 900;">Total Inward Stocks</span>
                                 </div>
                                 <div class="d-flex gap-3 mt-2" style="justify-content: center;color:black">
                                     <a href="javascript:void(0);">
@@ -68,7 +68,7 @@
                                 <div style="display: flex;align-items: center;">
                                     <img style="width: 18%;background-color: #E9F6FF;padding: 10px;margin: 5px;"
                                         src="assets/icons/total-sales.png">
-                                    <span  style="font-weight: 900;">Total Sales</span>
+                                    <span style="font-weight: 900;">Total Sales</span>
                                 </div>
                                 <div class="d-flex gap-3 mt-2" style="justify-content: center;color:black">
                                     <a href="javascript:void(0);">
@@ -93,7 +93,7 @@
                                 <div style="display: flex;align-items: center;">
                                     <img style="width: 18%;background-color: #FDEBEB;padding: 10px;margin: 5px;"
                                         src="assets/icons/total-damages.png">
-                                    <span  style="font-weight: 900;">Total Damages</span>
+                                    <span style="font-weight: 900;">Total Damages</span>
                                 </div>
                                 <div class="d-flex gap-3 mt-2" style="justify-content: center;color:black">
                                     <a href="javascript:void(0);">
@@ -118,7 +118,7 @@
                                 <div style="display: flex;align-items: center;">
                                     <img style="width: 18%;background-color: #EAFAF7;padding: 10px;margin: 5px;"
                                         src="../../../../assets/icons/insuraceClaims.png">
-                                    <span  style="font-weight: 900;">Insurace Claims</span>
+                                    <span style="font-weight: 900;">Insurace Claims</span>
                                 </div>
                                 <div class="d-flex gap-3 mt-2" style="justify-content: center;color:black">
                                     <a href="javascript:void(0);">
@@ -138,29 +138,59 @@
             </div>
 
             <div class="row">
-                <div class="col-xl-8">
+                <div class="col-xl-12">
                     <div class="card">
-
-                        <div class="card-body p-0 pb-2">
+                        <div class="card-body p-0 pb-2 d-flex">
+                            <!-- Left side with chart -->
                             <div class="w-100">
-                                <div id="chart">
-                                    <apx-chart
-                                      [series]="chartOptions.series"
-                                      [chart]="chartOptions.chart"
-                                      [dataLabels]="chartOptions.dataLabels"
-                                      [plotOptions]="chartOptions.plotOptions"
-                                      [responsive]="chartOptions.responsive"
-                                      [xaxis]="chartOptions.xaxis"
-                                      [legend]="chartOptions.legend"
-                                      [fill]="chartOptions.fill"
-                                    ></apx-chart>
-                                  </div>
+                                <div class="col-12">
+                                    <div id="chart">
+                                        <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                                            [dataLabels]="chartOptions.dataLabels"
+                                            [plotOptions]="chartOptions.plotOptions"
+                                            [responsive]="chartOptions.responsive" [xaxis]="chartOptions.xaxis"
+                                            [legend]="chartOptions.legend" [fill]="chartOptions.fill"></apx-chart>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right side with image, title, and subtitle -->
+                            <div class="right-card col-xl-4 ml-4 mt-6">
+                                <div class="right-elements">
+                                    <div>
+                                        <img src="../../../../assets/icons/Ord-Category.png" alt="Category Image" />
+                                        <h4 class="title">800k Case</h4>
+                                        <span>Ord. Category</span>
+                                        <p>6% Higher than Last Month</p>
+                                    </div>
+                                    <div>
+                                        <img src="../../../../assets/icons/Ord-Category.png" alt="Category Image" />
+                                        <h4 class="title">550k Case</h4>
+                                        <span>Medium Category</span>
+                                        <p>8% High than Last Month</p>
+                                    </div>
+                                </div>
+                                <div class="right-elements-2">
+                                    <div>
+                                        <img src="../../../../assets/icons/Ord-Category.png" alt="Category Image" />
+                                        <h4 class="title">800k Case</h4>
+                                        <span>Ord. Category</span>
+                                        <p>6% Higher than Last Month</p>
+                                    </div>
+                                    <div>
+                                        <img src="../../../../assets/icons/Ord-Category.png" alt="Category Image" />
+                                        <h4 class="title">800k Case</h4>
+                                        <span>Ord. Category</span>
+                                        <p>6% Higher than Last Month</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-xl-4">
+            <!-- <div class="col-xl-4">
                     <div class="card card-height-100">
                         <div class="card-header align-items-center d-flex">
                             <h4 class="card-title mb-0 flex-grow-1">Sales by Locations</h4>
@@ -200,7 +230,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="row">
                 <div class="col-xl-6">
@@ -408,7 +438,8 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1 ms-3">
-                                    <h6 class="mb-1 lh-base">Added new <span class="fw-semibold">style collection</span>
+                                    <h6 class="mb-1 lh-base">Added new <span class="fw-semibold">style
+                                            collection</span>
                                     </h6>
                                     <p class="text-muted mb-1">By Nesta Technologies</p>
                                     <div class="d-inline-flex gap-2 border border-dashed p-2 mb-2">
@@ -435,7 +466,8 @@
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <h6 class="mb-1 lh-base">Natasha Carey have liked the products</h6>
-                                    <p class="text-muted mb-1">Allow users to like products in your WooCommerce store.
+                                    <p class="text-muted mb-1">Allow users to like products in your WooCommerce
+                                        store.
                                     </p>
                                     <small class="mb-0 text-muted">25 Dec, 2021</small>
                                 </div>
@@ -450,8 +482,10 @@
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <h6 class="mb-1 lh-base">Today offers by <a routerLink="/ecommerce/seller-details"
-                                            class="link-secondary">Digitech Galaxy</a></h6>
-                                    <p class="text-muted mb-2">Offer is valid on orders of Rs.500 Or above for selected
+                                            class="link-secondary">Digitech
+                                            Galaxy</a></h6>
+                                    <p class="text-muted mb-2">Offer is valid on orders of Rs.500 Or above for
+                                        selected
                                         products only.</p>
                                     <small class="mb-0 text-muted">12 Dec, 2021</small>
                                 </div>
@@ -496,7 +530,8 @@
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <h6 class="mb-1 lh-base">Monthly sales report</h6>
-                                    <p class="text-muted mb-2"><span class="text-danger">2 days left</span> notification
+                                    <p class="text-muted mb-2"><span class="text-danger">2 days left</span>
+                                        notification
                                         to submit the monthly sales report. <a href="javascript:void(0);"
                                             class="link-warning text-decoration-underline">Reports Builder</a></p>
                                     <small class="mb-0 text-muted">15 Oct</small>
@@ -509,7 +544,8 @@
                                 </div>
                                 <div class="flex-grow-1 ms-3">
                                     <h6 class="mb-1 lh-base">Frank Hook Commented</h6>
-                                    <p class="text-muted mb-2 fst-italic">" A product that has reviews is more likable
+                                    <p class="text-muted mb-2 fst-italic">" A product that has reviews is more
+                                        likable
                                         to be sold than a product. "</p>
                                     <small class="mb-0 text-muted">26 Aug, 2021</small>
                                 </div>
@@ -843,7 +879,8 @@
                                 <h5>Invite New Seller</h5>
                                 <p class="text-muted lh-base">Refer a new seller to us and earn $100 per refer.</p>
                                 <button type="button" class="btn btn-primary btn-label rounded-pill"><i
-                                        class="ri-mail-fill label-icon align-middle rounded-pill fs-16 me-2"></i> Invite
+                                        class="ri-mail-fill label-icon align-middle rounded-pill fs-16 me-2"></i>
+                                    Invite
                                     Now</button>
                             </div>
                         </div>
