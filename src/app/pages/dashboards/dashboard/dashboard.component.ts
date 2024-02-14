@@ -19,7 +19,8 @@ import {
   ApexStroke,
   ApexYAxis,
   ApexTooltip,
-  ApexTitleSubtitle
+  ApexTitleSubtitle,
+  ApexGrid
 } from "ng-apexcharts";
 
 interface ChartOptions {
@@ -71,6 +72,23 @@ interface BarChartOption1{
   fill: ApexFill;
   title: ApexTitleSubtitle;
 }
+interface lineChartOption {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  dataLabels: ApexDataLabels;
+  grid: ApexGrid;
+  stroke: ApexStroke;
+  title: ApexTitleSubtitle;
+};
+interface areaChartOption  {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  stroke: ApexStroke;
+  tooltip: ApexTooltip;
+  dataLabels: ApexDataLabels;
+};
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -86,6 +104,8 @@ export class DashboardComponent implements OnInit {
   public sideBarChart: sideBarOption;
   public barChart: BarChartOption;
   public Barchart1 : BarChartOption1
+  public lineChart: lineChartOption;
+  public areaChart: areaChartOption
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
@@ -150,8 +170,7 @@ export class DashboardComponent implements OnInit {
           "Aug",
           "Sep",
           "Oct",
-          "Nov",
-          "Dec"
+          "Nov"
         ],
         position: "top",
         labels: {
@@ -425,6 +444,89 @@ export class DashboardComponent implements OnInit {
               return "";
             }
           }
+        }
+      }
+    };
+    this.lineChart = {
+      series: [
+        {
+          name: "Desktops",
+          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+        }
+      ],
+      chart: {
+        height: 350,
+        type: "line",
+        zoom: {
+          enabled: false
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: "straight"
+      },
+      title: {
+        text: "Product Trends by Month",
+        align: "left"
+      },
+      grid: {
+        row: {
+          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+          opacity: 0.5
+        }
+      },
+      xaxis: {
+        categories: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep"
+        ]
+      }
+    };
+    this.areaChart = {
+      series: [
+        {
+          name: "series1",
+          data: [31, 40, 28, 51, 42, 109, 100]
+        },
+        {
+          name: "series2",
+          data: [11, 32, 45, 32, 34, 52, 41]
+        }
+      ],
+      chart: {
+        height: 350,
+        type: "area"
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: "smooth"
+      },
+      xaxis: {
+        type: "datetime",
+        categories: [
+          "2018-09-19T00:00:00.000Z",
+          "2018-09-19T01:30:00.000Z",
+          "2018-09-19T02:30:00.000Z",
+          "2018-09-19T03:30:00.000Z",
+          "2018-09-19T04:30:00.000Z",
+          "2018-09-19T05:30:00.000Z",
+          "2018-09-19T06:30:00.000Z"
+        ]
+      },
+      tooltip: {
+        x: {
+          format: "dd/MM/yy HH:mm"
         }
       }
     };
