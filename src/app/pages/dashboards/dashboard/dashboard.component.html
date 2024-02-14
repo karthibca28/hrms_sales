@@ -143,15 +143,18 @@
 
                         <div class="card-body p-0 pb-2">
                             <div class="w-100">
-                                <apx-chart dir="ltr" class="apex-charts" [chart]="analyticsChart.chart"
-                                    [series]="analyticsChart.series" [legend]="analyticsChart.legend"
-                                    [stroke]="analyticsChart.stroke" [colors]="analyticsChart.colors"
-                                    [fill]="analyticsChart.fill" [dataLabels]="analyticsChart.dataLabels"
-                                    [xaxis]="analyticsChart.xaxis" [markers]="analyticsChart.markers"
-                                    [plotOptions]="analyticsChart.plotOptions" [yaxis]="analyticsChart.yaxis"
-                                    [tooltip]="analyticsChart.tooltip" [grid]="analyticsChart.grid"
-                                    [labels]="analyticsChart.labels" dir="ltr">
-                                </apx-chart>
+                                <div id="chart">
+                                    <apx-chart
+                                      [series]="chartOptions.series"
+                                      [chart]="chartOptions.chart"
+                                      [dataLabels]="chartOptions.dataLabels"
+                                      [plotOptions]="chartOptions.plotOptions"
+                                      [responsive]="chartOptions.responsive"
+                                      [xaxis]="chartOptions.xaxis"
+                                      [legend]="chartOptions.legend"
+                                      [fill]="chartOptions.fill"
+                                    ></apx-chart>
+                                  </div>
                             </div>
                         </div>
                     </div>
