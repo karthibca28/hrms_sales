@@ -15,7 +15,11 @@ import {
   ApexResponsive,
   ApexXAxis,
   ApexLegend,
-  ApexFill
+  ApexFill,
+  ApexStroke,
+  ApexYAxis,
+  ApexTooltip,
+  ApexTitleSubtitle
 } from "ng-apexcharts";
 
 interface ChartOptions {
@@ -27,8 +31,23 @@ interface ChartOptions {
   xaxis: ApexXAxis;
   legend: ApexLegend;
   fill: ApexFill;
+  colors:string[]
+  title: ApexTitleSubtitle;
 };
 
+interface sideBarOption {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  stroke: ApexStroke;
+  dataLabels: ApexDataLabels;
+  plotOptions: ApexPlotOptions;
+  yaxis: ApexYAxis;
+  tooltip: ApexTooltip;
+  colors: string[];
+  title: ApexTitleSubtitle;
+  // subtitle: ApexTitleSubtitle;
+};
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -41,6 +60,7 @@ interface ChartOptions {
 export class DashboardComponent implements OnInit {
   @ViewChild("chart") chart!: ChartComponent;
   public chartOptions: ChartOptions;
+  public sideBarChart: sideBarOption;
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
@@ -106,16 +126,110 @@ export class DashboardComponent implements OnInit {
           "2012 Q4"
         ]
       },
+      title: {
+        text: "Cumulative Top Selling",
+        align: "left",
+        // floating: true
+      },
       fill: {
         opacity: 1
       },
+      colors: [
+        "#2E65FE",
+        "#17C6FF",
+        "#F13536",
+      ],
       legend: {
         position: "right",
         offsetX: 0,
         offsetY: 50
       }
     } as ChartOptions;
+    this.sideBarChart = {
+      series: [
+        {
+          data: [400, 430, 448, 470, 540]
+        }
+      ],
+      chart: {
+        type: "bar",
+        height: 380
+      },
+      plotOptions: {
+        bar: {
+          barHeight: "100%",
+          distributed: true,
+          horizontal: true,
+          dataLabels: {
+            position: "bottom"
+          },
+          
+        }
+      },
+      colors: [
+        "#E14D57",
+        "#965994",
+        "#EC932F",
+        "#71B37C",
+        "#5290EA",
+      ],
+      dataLabels: {
+        enabled: true,
+        textAnchor: "start",
+        style: {
+          colors: ["#fff"]
+        },
+        formatter: function(val, opt) {
+          return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val;
+        },
+        offsetX: 0,
+        dropShadow: {
+          enabled: true
+        }
+      },
+      stroke: {
+        width: 2,
+        colors: ["#fff"]
+      },
+      xaxis: {
+        categories: [
+          "South Korea",
+          "Canada",
+          "United Kingdom",
+          "Netherlands",
+          "Italy",
+        ]
+      },
+      yaxis: {
+        labels: {
+          show: false
+        }
+      },
+      title: {
+        text: "Top Performing Depot",
+        align: "left",
+        // floating: true
+      },
+      // subtitle: {
+      //   text: "Category Names as DataLabels inside bars",
+      //   align: "center"
+      // },
+      tooltip: {
+        theme: "dark",
+        x: {
+          show: false
+        },
+        y: {
+          title: {
+            formatter: function() {
+              return "";
+            }
+          }
+        }
+      }
+    };
   }
+  
 
   ngOnInit(): void {
     /**
@@ -360,6 +474,11 @@ export class DashboardComponent implements OnInit {
         dropShadow: {
           enabled: false,
         },
+      },
+      title: {
+        text: "Cumulative Top Selling",
+        align: "left",
+        // floating: true
       },
       colors: colors
     };

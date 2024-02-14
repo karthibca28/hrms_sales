@@ -225,6 +225,12 @@
                                     <div class="progress-bar progress-bar-striped bg-primary" role="progressbar"
                                         style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="82">
                                     </div>
+                                <div id="chart">
+                                    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
+                                        [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions"
+                                        [responsive]="chartOptions.responsive" [xaxis]="chartOptions.xaxis"
+                                        [legend]="chartOptions.legend" [fill]="chartOptions.fill"
+                                        [colors]="chartOptions.colors"  [title]="chartOptions.title"></apx-chart>
                                 </div>
                             </div>
                         </div>
@@ -232,6 +238,8 @@
                 </div>
             </div> -->
 
+            <!-- </div> -->
+<!-- 
             <div class="row">
                 <div class="col-xl-6">
                     <div class="card">
@@ -255,7 +263,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div><!-- end card header -->
+                        </div>
 
                         <div class="card-body">
                             <div class="table-responsive table-card">
@@ -313,7 +321,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div><!-- end card header -->
+                        </div>
 
                         <div class="card-body">
                             <div class="table-responsive table-card">
@@ -349,43 +357,38 @@
                                 </div>
                             </div>
 
-                        </div> <!-- .card-body-->
-                    </div> <!-- .card-->
-                </div> <!-- .col-->
-            </div> <!-- end row-->
+                        </div>
+                    </div> 
+                </div> 
+            </div> -->
 
             <div class="row">
-                <div class="col-xl-4">
+                <div class="col-xl-6">
                     <div class="card card-height-100">
-                        <div class="card-header align-items-center d-flex">
-                            <h4 class="card-title mb-0 flex-grow-1">Store Visits by Source</h4>
-                            <div class="flex-shrink-0">
-                                <div class="dropdown card-header-dropdown" ngbDropdown>
-                                    <a class="text-reset dropdown-btn arrow-none" href="javascript:void(0);"
-                                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                        ngbDropdownToggle>
-                                        <span class="text-muted">Report<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
-                                        <a class="dropdown-item" href="javascript:void(0);">Download Report</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">Export</a>
-                                        <a class="dropdown-item" href="javascript:void(0);">Import</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- end card header -->
+        
 
                         <div class="card-body">
                             <apx-chart class="apex-charts" dir="ltr" [series]="SalesCategoryChart.series"
                                 [labels]="SalesCategoryChart.labels" [chart]="SalesCategoryChart.chart"
                                 [legend]="SalesCategoryChart.legend" [stroke]="SalesCategoryChart.stroke"
                                 [dataLabels]="SalesCategoryChart.dataLabels" [colors]="SalesCategoryChart.colors"
+                                [title]="SalesCategoryChart.title"
                                 dir="ltr"></apx-chart>
                         </div>
-                    </div> <!-- .card-->
-                </div> <!-- .col-->
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="card">
+                            <apx-chart [series]="sideBarChart.series" [chart]="sideBarChart.chart"
+                                [dataLabels]="sideBarChart.dataLabels" [stroke]="sideBarChart.stroke"
+                                [colors]="sideBarChart.colors" [title]="sideBarChart.title"
+                                 [plotOptions]="sideBarChart.plotOptions" 
+                                [yaxis]="sideBarChart.yaxis" [xaxis]="sideBarChart.xaxis"
+                                [tooltip]="sideBarChart.tooltip"></apx-chart>
+                    </div>
+                </div>
 
-                <div class="col-xl-8">
+                <!-- <div class="col-xl-8">
                     <div class="card">
                         <div class="card-header align-items-center d-flex">
                             <h4 class="card-title mb-0 flex-grow-1">Recent Orders</h4>
@@ -394,17 +397,16 @@
                                     <i class="ri-file-list-3-line align-middle"></i> Generate Report
                                 </button>
                             </div>
-                        </div><!-- end card header -->
+                        </div>
 
                         <div class="card-body">
                             <div class="table-responsive table-card">
                                 <app-recent-orders [RecentSelling]="RecentSelling"></app-recent-orders>
                             </div>
                         </div>
-                    </div> <!-- .card-->
-                </div> <!-- .col-->
-            </div> <!-- end row-->
-
+                    </div>
+                </div> -->
+            </div>
         </div> <!-- end .h-100-->
 
     </div> <!-- end col -->
@@ -892,5 +894,6 @@
 
     </div> <!-- end col -->
 </div>
+
 
 <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
