@@ -140,7 +140,6 @@ export class DashboardComponent implements OnInit {
             855.978,
             904.3942,
             868.7903,
-            868.7903
           ]
         }
       ],
@@ -299,7 +298,11 @@ export class DashboardComponent implements OnInit {
     this.chartOptions = {
       series: [
         {
-          name: "SNJ 20,000",
+          name: "IMFS",
+          data: [44, 55, 41, 67, 22]
+        },
+        {
+          name: "Beer",
           data: [44, 55, 41, 67, 22]
         }
       ],
@@ -331,7 +334,7 @@ export class DashboardComponent implements OnInit {
         ]
       },
       title: {
-        text: "Cumulative Top Selling",
+        text: "",
         align: "left",
         // floating: true
       },
@@ -410,7 +413,7 @@ export class DashboardComponent implements OnInit {
         }
       },
       title: {
-        text: "Top Performing Depot",
+        text: "",
         align: "left",
         // floating: true
       },
@@ -772,7 +775,7 @@ export class DashboardComponent implements OnInit {
         },
       },
       title: {
-        text: "Cumulative Top Selling",
+        text: "",
         align: "left",
         // floating: true
       },
