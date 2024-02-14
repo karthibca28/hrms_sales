@@ -31,7 +31,7 @@ interface ChartOptions {
   xaxis: ApexXAxis;
   legend: ApexLegend;
   fill: ApexFill;
-  colors:string[]
+  colors: string[]
   title: ApexTitleSubtitle;
 };
 
@@ -48,6 +48,29 @@ interface sideBarOption {
   title: ApexTitleSubtitle;
   // subtitle: ApexTitleSubtitle;
 };
+
+interface BarChartOption {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  dataLabels: ApexDataLabels;
+  plotOptions: ApexPlotOptions;
+  yaxis: ApexYAxis;
+  xaxis: ApexXAxis;
+  fill: ApexFill;
+  tooltip: ApexTooltip;
+  stroke: ApexStroke;
+}
+
+interface BarChartOption1{
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  dataLabels: ApexDataLabels;
+  plotOptions: ApexPlotOptions;
+  yaxis: ApexYAxis;
+  xaxis: ApexXAxis;
+  fill: ApexFill;
+  title: ApexTitleSubtitle;
+}
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -61,38 +84,215 @@ export class DashboardComponent implements OnInit {
   @ViewChild("chart") chart!: ChartComponent;
   public chartOptions: ChartOptions;
   public sideBarChart: sideBarOption;
+  public barChart: BarChartOption;
+  public Barchart1 : BarChartOption1
 
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   analyticsChart!: ChartType;
   BestSelling: any;
-  TopSelling: any;  
+  TopSelling: any;
   RecentSelling: any;
   SalesCategoryChart!: ChartType;
   statData!: any;
   totalInwardStocks = "992900510"
   totalSales = "19823479823"
-  insuranceClaims="23400"
+  insuranceClaims = "23400"
   // Current Date
   currentDate: any;
+
 
   constructor(public toastService: ToastService) {
     var date = new Date();
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
     var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     this.currentDate = { from: firstDay, to: lastDay }
+
+    this.Barchart1 = {
+      series: [
+        {
+          name: "Inflation",
+          data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
+        }
+      ],
+      chart: {
+        height: 350,
+        type: "bar"
+      },
+      plotOptions: {
+        bar: {
+          dataLabels: {
+            position: "top" // top, center, bottom
+          }
+        }
+      },
+      dataLabels: {
+        enabled: true,
+        formatter: function(val) {
+          return val + "%";
+        },
+        offsetY: -20,
+        style: {
+          fontSize: "12px",
+          colors: ["#304758"]
+        }
+      },
+
+      xaxis: {
+        categories: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ],
+        position: "top",
+        labels: {
+          offsetY: -18
+        },
+        axisBorder: {
+          show: false
+        },
+        axisTicks: {
+          show: false
+        },
+        crosshairs: {
+          fill: {
+            type: "gradient",
+            gradient: {
+              colorFrom: "#D8E3F0",
+              colorTo: "#BED1E6",
+              stops: [0, 100],
+              opacityFrom: 0.4,
+              opacityTo: 0.5
+            }
+          }
+        },
+        tooltip: {
+          enabled: true,
+          offsetY: -35
+        }
+      },
+      fill: {
+        type: "gradient",
+        gradient: {
+          shade: "light",
+          type: "horizontal",
+          shadeIntensity: 0.25,
+          gradientToColors: undefined,
+          inverseColors: true,
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [50, 0, 100, 100]
+        }
+      },
+      yaxis: {
+        axisBorder: {
+          show: false
+        },
+        axisTicks: {
+          show: false
+        },
+        labels: {
+          show: false,
+          formatter: function(val) {
+            return val + "%";
+          }
+        }
+      },
+      title: {
+        text: "Monthly Inflation in Argentina, 2002",
+        offsetY: 320,
+        align: "center",
+        style: {
+          color: "#444"
+        }
+      }
+    };
+
+    this.barChart = {
+      series: [
+        {
+          name: "Net Profit",
+          data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+        },
+        {
+          name: "Revenue",
+          data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+        },
+        {
+          name: "Free Cash Flow",
+          data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+        }
+      ],
+      chart: {
+        type: "bar",
+        height: 350
+      },
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: "55%",
+          
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        show: true,
+        width: 2,
+        colors: ["transparent"]
+      },
+      xaxis: {
+        categories: [
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct"
+        ]
+      },
+      yaxis: {
+        title: {
+          text: "$ (thousands)"
+        }
+      },
+      fill: {
+        opacity: 1
+      },
+      tooltip: {
+        y: {
+          formatter: function (val) {
+            return "$ " + val + " thousands";
+          }
+        }
+      }
+    };
+
     this.chartOptions = {
       series: [
         {
-          name: "PRODUCT A",
+          name: "SNJ 20,000",
           data: [44, 55, 41, 67, 22, 43, 21, 49]
         },
         {
-          name: "PRODUCT B",
+          name: "VSOP BRANDY",
           data: [13, 23, 20, 8, 13, 27, 33, 12]
         },
         {
-          name: "PRODUCT C",
+          name: "VSOP PREMIUM",
           data: [11, 17, 15, 15, 21, 14, 15, 13]
         }
       ],
@@ -116,14 +316,14 @@ export class DashboardComponent implements OnInit {
       ],
       xaxis: {
         categories: [
-          "2011 Q1",
-          "2011 Q2",
-          "2011 Q3",
-          "2011 Q4",
-          "2012 Q1",
-          "2012 Q2",
-          "2012 Q3",
-          "2012 Q4"
+          "01 Jan",
+          "02 Jan",
+          "03 Jan",
+          "04 Jan",
+          "05 Jan",
+          "06 Jan",
+          "07 Jan",
+          "08 Jan"
         ]
       },
       title: {
@@ -163,7 +363,7 @@ export class DashboardComponent implements OnInit {
           dataLabels: {
             position: "bottom"
           },
-          
+
         }
       },
       colors: [
@@ -179,7 +379,7 @@ export class DashboardComponent implements OnInit {
         style: {
           colors: ["#fff"]
         },
-        formatter: function(val, opt) {
+        formatter: function (val, opt) {
           return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val;
         },
         offsetX: 0,
@@ -193,7 +393,7 @@ export class DashboardComponent implements OnInit {
       },
       xaxis: {
         categories: [
-          "South Korea",
+          "Ambattur 1 : 45 Crores",
           "Canada",
           "United Kingdom",
           "Netherlands",
@@ -221,7 +421,7 @@ export class DashboardComponent implements OnInit {
         },
         y: {
           title: {
-            formatter: function() {
+            formatter: function () {
               return "";
             }
           }
@@ -229,7 +429,7 @@ export class DashboardComponent implements OnInit {
       }
     };
   }
-  
+
 
   ngOnInit(): void {
     /**
@@ -253,7 +453,7 @@ export class DashboardComponent implements OnInit {
     // Chart Color Data Get Function
     this._analyticsChart('["--vz-success", "--vz-primary", "--vz-danger"]');
     this._SalesCategoryChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
-    
+
   }
 
   // Chart Colors Set
