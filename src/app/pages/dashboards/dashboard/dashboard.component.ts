@@ -63,7 +63,7 @@ interface BarChartOption {
   stroke: ApexStroke;
 }
 
-interface BarChartOption1{
+interface BarChartOption1 {
   series: ApexAxisChartSeries;
   chart: ApexChart;
   dataLabels: ApexDataLabels;
@@ -82,7 +82,7 @@ interface lineChartOption {
   stroke: ApexStroke;
   title: ApexTitleSubtitle;
 };
-interface areaChartOption  {
+interface areaChartOption {
   series: ApexAxisChartSeries;
   chart: ApexChart;
   xaxis: ApexXAxis;
@@ -104,7 +104,7 @@ export class DashboardComponent implements OnInit {
   public chartOptions: ChartOptions;
   public sideBarChart: sideBarOption;
   public barChart: BarChartOption;
-  public Barchart1 : BarChartOption1
+  public Barchart1: BarChartOption1
   public lineChart: lineChartOption;
   public areaChart: areaChartOption
 
@@ -122,6 +122,8 @@ export class DashboardComponent implements OnInit {
   // Current Date
   currentDate: any;
 
+  date: any[] | undefined;
+  selectedDate: string | undefined;
 
   constructor(public toastService: ToastService,public service:FormService) {
     var date = new Date();
@@ -129,113 +131,113 @@ export class DashboardComponent implements OnInit {
     var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     this.currentDate = { from: firstDay, to: lastDay }
 
-    // this.Barchart1 = {
-    //   "series": [
-    //     {
-    //         "name": "sales",
-    //         "data": [
-    //             956.0887,
-    //             736.6534,
-    //             855.978,
-    //             904.3942,
-    //             868.7903
-    //         ]
-    //     }
-    // ],
-    //   chart: {
-    //     height: 350,
-    //     type: "bar"
-    //   },
-    //   plotOptions: {
-    //     bar: {
-    //       dataLabels: {
-    //         position: "top"
-    //       }
-    //     }
-    //   },
-    //   dataLabels: {
-    //     enabled: true,
-    //     formatter: function(val) {
-    //       return val + "%";
-    //     },
-    //     offsetY: -20,
-    //     style: {
-    //       fontSize: "12px",
-    //       colors: ["#304758"]
-    //     }
-    //   },
+    this.Barchart1 = {
+      "series": [
+        {
+            "name": "sales",
+            "data": [
+                956.0887,
+                736.6534,
+                855.978,
+                904.3942,
+                868.7903
+            ]
+        }
+    ],
+      chart: {
+        height: 350,
+        type: "bar"
+      },
+      plotOptions: {
+        bar: {
+          dataLabels: {
+            position: "top"
+          }
+        }
+      },
+      dataLabels: {
+        enabled: true,
+        formatter: function(val) {
+          return val + "%";
+        },
+        offsetY: -20,
+        style: {
+          fontSize: "12px",
+          colors: ["#304758"]
+        }
+      },
 
-    //   xaxis: {
-    //     "categories": [
-    //       "Chennai",
-    //       "Coimbatore",
-    //       "Madhurai",
-    //       "Trichy",
-    //       "Salem"
-    //   ],
-    //     position: "bottom",
-    //     labels: {
-    //       // offsetY: -18
-    //     },
-    //     axisBorder: {
-    //       show: false
-    //     },
-    //     axisTicks: {
-    //       show: false
-    //     },
-    //     crosshairs: {
-    //       fill: {
-    //         type: "gradient",
-    //         gradient: {
-    //           colorFrom: "#D8E3F0",
-    //           colorTo: "#BED1E6",
-    //           stops: [0, 100],
-    //           opacityFrom: 0.4,
-    //           opacityTo: 0.5
-    //         }
-    //       }
-    //     },
-    //     tooltip: {
-    //       enabled: true,
-    //       offsetY: -35
-    //     }
-    //   },
-    //   fill: {
-    //     type: "gradient",
-    //     gradient: {
-    //       shade: "light",
-    //       type: "horizontal",
-    //       shadeIntensity: 0.25,
-    //       gradientToColors: undefined,
-    //       inverseColors: true,
-    //       opacityFrom: 1,
-    //       opacityTo: 1,
-    //       stops: [50, 0, 100, 100]
-    //     }
-    //   },
-    //   yaxis: {
-    //     axisBorder: {
-    //       show: false
-    //     },
-    //     axisTicks: {
-    //       show: false
-    //     },
-    //     labels: {
-    //       show: false,
-    //       formatter: function(val) {
-    //         return val + "%";
-    //       }
-    //     }
-    //   },
-    //   title: {
-    //     // text: "Monthly Inflation in Argentina, 2002",
-    //     offsetY: 320,
-    //     align: "center",
-    //     style: {
-    //       color: "#444"
-    //     }
-    //   }
-    // };
+      xaxis: {
+        "categories": [
+          "Chennai",
+          "Coimbatore",
+          "Madhurai",
+          "Trichy",
+          "Salem"
+      ],
+        position: "bottom",
+        labels: {
+          // offsetY: -18
+        },
+        axisBorder: {
+          show: false
+        },
+        axisTicks: {
+          show: false
+        },
+        crosshairs: {
+          fill: {
+            type: "gradient",
+            gradient: {
+              colorFrom: "#D8E3F0",
+              colorTo: "#BED1E6",
+              stops: [0, 100],
+              opacityFrom: 0.4,
+              opacityTo: 0.5
+            }
+          }
+        },
+        tooltip: {
+          enabled: true,
+          offsetY: -35
+        }
+      },
+      fill: {
+        type: "gradient",
+        gradient: {
+          shade: "light",
+          type: "horizontal",
+          shadeIntensity: 0.25,
+          gradientToColors: undefined,
+          inverseColors: true,
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [50, 0, 100, 100]
+        }
+      },
+      yaxis: {
+        axisBorder: {
+          show: false
+        },
+        axisTicks: {
+          show: false
+        },
+        labels: {
+          show: false,
+          formatter: function(val) {
+            return val + "%";
+          }
+        }
+      },
+      title: {
+        // text: "Monthly Inflation in Argentina, 2002",
+        offsetY: 320,
+        align: "center",
+        style: {
+          color: "#444"
+        }
+      }
+    };
 
     this.barChart = {
       series: [
@@ -243,14 +245,7 @@ export class DashboardComponent implements OnInit {
           name: "Net Profit",
           data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
         },
-        {
-          name: "Revenue",
-          data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-        },
-        {
-          name: "Free Cash Flow",
-          data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
-        }
+
       ],
       chart: {
         type: "bar",
@@ -260,7 +255,7 @@ export class DashboardComponent implements OnInit {
         bar: {
           horizontal: false,
           columnWidth: "55%",
-          
+
         }
       },
       dataLabels: {
@@ -308,15 +303,7 @@ export class DashboardComponent implements OnInit {
       series: [
         {
           name: "SNJ 20,000",
-          data: [44, 55, 41, 67, 22, 43, 21, 49]
-        },
-        {
-          name: "VSOP BRANDY",
-          data: [13, 23, 20, 8, 13, 27, 33, 12]
-        },
-        {
-          name: "VSOP PREMIUM",
-          data: [11, 17, 15, 15, 21, 14, 15, 13]
+          data: [44, 55, 41, 67, 22]
         }
       ],
       chart: {
@@ -339,14 +326,11 @@ export class DashboardComponent implements OnInit {
       ],
       xaxis: {
         categories: [
-          "01 Jan",
-          "02 Jan",
-          "03 Jan",
-          "04 Jan",
-          "05 Jan",
-          "06 Jan",
-          "07 Jan",
-          "08 Jan"
+          "Chennai",
+          "Coimbatore",
+          "Madurai",
+          "Salem",
+          "Trichy"
         ]
       },
       title: {
@@ -365,7 +349,7 @@ export class DashboardComponent implements OnInit {
       legend: {
         position: "right",
         offsetX: 0,
-        offsetY: 50
+        offsetY: 10
       }
     } as ChartOptions;
     this.sideBarChart = {
@@ -451,50 +435,50 @@ export class DashboardComponent implements OnInit {
         }
       }
     };
-    // this.lineChart = {
-    //   series: [
-    //     {
-    //       name: "Desktops",
-    //       data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-    //     }
-    //   ],
-    //   chart: {
-    //     height: 350,
-    //     type: "line",
-    //     zoom: {
-    //       enabled: false
-    //     }
-    //   },
-    //   dataLabels: {
-    //     enabled: false
-    //   },
-    //   stroke: {
-    //     curve: "straight"
-    //   },
-    //   title: {
-    //     text: "Product Trends by Month",
-    //     align: "left"
-    //   },
-    //   grid: {
-    //     row: {
-    //       colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-    //       opacity: 0.5
-    //     }
-    //   },
-    //   xaxis: {
-    //     categories: [
-    //       "Jan",
-    //       "Feb",
-    //       "Mar",
-    //       "Apr",
-    //       "May",
-    //       "Jun",
-    //       "Jul",
-    //       "Aug",
-    //       "Sep"
-    //     ]
-    //   }
-    // };
+    this.lineChart = {
+      series: [
+        {
+          name: "Desktops",
+          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+        }
+      ],
+      chart: {
+        height: 350,
+        type: "line",
+        zoom: {
+          enabled: false
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: "straight"
+      },
+      title: {
+        text: "Product Trends by Month",
+        align: "left"
+      },
+      grid: {
+        row: {
+          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+          opacity: 0.5
+        }
+      },
+      xaxis: {
+        categories: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep"
+        ]
+      }
+    };
     this.areaChart = {
       series: [
         {
@@ -545,6 +529,15 @@ export class DashboardComponent implements OnInit {
     this.breadCrumbItems = [
       { label: 'Dashboards' },
       { label: 'Dashboard', active: true }
+    ];
+
+    this.date = [
+      { name: '2019', },
+      { name: '2020', },
+      { name: '2021', },
+      { name: '2022', },
+      { name: '2023', },
+      { name: '2024', },
     ];
 
     if (localStorage.getItem('toast')) {
