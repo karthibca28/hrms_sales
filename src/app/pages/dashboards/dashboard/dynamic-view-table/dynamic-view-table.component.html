@@ -1,6 +1,13 @@
-<p-table [value]="products" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
-    [tableStyle]="{ 'min-width': '50rem' }"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10, 25, 50]">
+<p-table
+#dt1
+[value]="products"
+dataKey="id"
+[rows]="10"
+[showCurrentPageReport]="true"
+[loading]="loading"
+[paginator]="true"
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+[globalFilterFields]="['name', 'country.name', 'representative.name', 'status']">
     <ng-template pTemplate="header" let-columns>
         <tr>
             <th>Name </th>

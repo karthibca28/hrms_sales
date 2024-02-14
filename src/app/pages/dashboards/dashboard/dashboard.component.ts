@@ -22,6 +22,7 @@ import {
   ApexTitleSubtitle,
   ApexGrid
 } from "ng-apexcharts";
+import { FormService } from 'src/app/shared/service/form.service';
 
 interface ChartOptions {
   series: ApexAxisChartSeries;
@@ -122,119 +123,119 @@ export class DashboardComponent implements OnInit {
   currentDate: any;
 
 
-  constructor(public toastService: ToastService) {
+  constructor(public toastService: ToastService,public service:FormService) {
     var date = new Date();
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
     var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     this.currentDate = { from: firstDay, to: lastDay }
 
-    this.Barchart1 = {
-      "series": [
-        {
-            "name": "sales",
-            "data": [
-                956.0887,
-                736.6534,
-                855.978,
-                904.3942,
-                868.7903
-            ]
-        }
-    ],
-      chart: {
-        height: 350,
-        type: "bar"
-      },
-      plotOptions: {
-        bar: {
-          dataLabels: {
-            position: "top"
-          }
-        }
-      },
-      dataLabels: {
-        enabled: true,
-        formatter: function(val) {
-          return val + "%";
-        },
-        offsetY: -20,
-        style: {
-          fontSize: "12px",
-          colors: ["#304758"]
-        }
-      },
+    // this.Barchart1 = {
+    //   "series": [
+    //     {
+    //         "name": "sales",
+    //         "data": [
+    //             956.0887,
+    //             736.6534,
+    //             855.978,
+    //             904.3942,
+    //             868.7903
+    //         ]
+    //     }
+    // ],
+    //   chart: {
+    //     height: 350,
+    //     type: "bar"
+    //   },
+    //   plotOptions: {
+    //     bar: {
+    //       dataLabels: {
+    //         position: "top"
+    //       }
+    //     }
+    //   },
+    //   dataLabels: {
+    //     enabled: true,
+    //     formatter: function(val) {
+    //       return val + "%";
+    //     },
+    //     offsetY: -20,
+    //     style: {
+    //       fontSize: "12px",
+    //       colors: ["#304758"]
+    //     }
+    //   },
 
-      xaxis: {
-        "categories": [
-          "Chennai",
-          "Coimbatore",
-          "Madhurai",
-          "Trichy",
-          "Salem"
-      ],
-        position: "bottom",
-        labels: {
-          // offsetY: -18
-        },
-        axisBorder: {
-          show: false
-        },
-        axisTicks: {
-          show: false
-        },
-        crosshairs: {
-          fill: {
-            type: "gradient",
-            gradient: {
-              colorFrom: "#D8E3F0",
-              colorTo: "#BED1E6",
-              stops: [0, 100],
-              opacityFrom: 0.4,
-              opacityTo: 0.5
-            }
-          }
-        },
-        tooltip: {
-          enabled: true,
-          offsetY: -35
-        }
-      },
-      fill: {
-        type: "gradient",
-        gradient: {
-          shade: "light",
-          type: "horizontal",
-          shadeIntensity: 0.25,
-          gradientToColors: undefined,
-          inverseColors: true,
-          opacityFrom: 1,
-          opacityTo: 1,
-          stops: [50, 0, 100, 100]
-        }
-      },
-      yaxis: {
-        axisBorder: {
-          show: false
-        },
-        axisTicks: {
-          show: false
-        },
-        labels: {
-          show: false,
-          formatter: function(val) {
-            return val + "%";
-          }
-        }
-      },
-      title: {
-        // text: "Monthly Inflation in Argentina, 2002",
-        offsetY: 320,
-        align: "center",
-        style: {
-          color: "#444"
-        }
-      }
-    };
+    //   xaxis: {
+    //     "categories": [
+    //       "Chennai",
+    //       "Coimbatore",
+    //       "Madhurai",
+    //       "Trichy",
+    //       "Salem"
+    //   ],
+    //     position: "bottom",
+    //     labels: {
+    //       // offsetY: -18
+    //     },
+    //     axisBorder: {
+    //       show: false
+    //     },
+    //     axisTicks: {
+    //       show: false
+    //     },
+    //     crosshairs: {
+    //       fill: {
+    //         type: "gradient",
+    //         gradient: {
+    //           colorFrom: "#D8E3F0",
+    //           colorTo: "#BED1E6",
+    //           stops: [0, 100],
+    //           opacityFrom: 0.4,
+    //           opacityTo: 0.5
+    //         }
+    //       }
+    //     },
+    //     tooltip: {
+    //       enabled: true,
+    //       offsetY: -35
+    //     }
+    //   },
+    //   fill: {
+    //     type: "gradient",
+    //     gradient: {
+    //       shade: "light",
+    //       type: "horizontal",
+    //       shadeIntensity: 0.25,
+    //       gradientToColors: undefined,
+    //       inverseColors: true,
+    //       opacityFrom: 1,
+    //       opacityTo: 1,
+    //       stops: [50, 0, 100, 100]
+    //     }
+    //   },
+    //   yaxis: {
+    //     axisBorder: {
+    //       show: false
+    //     },
+    //     axisTicks: {
+    //       show: false
+    //     },
+    //     labels: {
+    //       show: false,
+    //       formatter: function(val) {
+    //         return val + "%";
+    //       }
+    //     }
+    //   },
+    //   title: {
+    //     // text: "Monthly Inflation in Argentina, 2002",
+    //     offsetY: 320,
+    //     align: "center",
+    //     style: {
+    //       color: "#444"
+    //     }
+    //   }
+    // };
 
     this.barChart = {
       series: [
@@ -299,6 +300,9 @@ export class DashboardComponent implements OnInit {
         }
       }
     };
+
+    this.Barchart1={} as BarChartOption1;
+    this.lineChart={} as lineChartOption;
 
     this.chartOptions = {
       series: [
@@ -447,50 +451,50 @@ export class DashboardComponent implements OnInit {
         }
       }
     };
-    this.lineChart = {
-      series: [
-        {
-          name: "Desktops",
-          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        }
-      ],
-      chart: {
-        height: 350,
-        type: "line",
-        zoom: {
-          enabled: false
-        }
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: "straight"
-      },
-      title: {
-        text: "Product Trends by Month",
-        align: "left"
-      },
-      grid: {
-        row: {
-          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-          opacity: 0.5
-        }
-      },
-      xaxis: {
-        categories: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep"
-        ]
-      }
-    };
+    // this.lineChart = {
+    //   series: [
+    //     {
+    //       name: "Desktops",
+    //       data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+    //     }
+    //   ],
+    //   chart: {
+    //     height: 350,
+    //     type: "line",
+    //     zoom: {
+    //       enabled: false
+    //     }
+    //   },
+    //   dataLabels: {
+    //     enabled: false
+    //   },
+    //   stroke: {
+    //     curve: "straight"
+    //   },
+    //   title: {
+    //     text: "Product Trends by Month",
+    //     align: "left"
+    //   },
+    //   grid: {
+    //     row: {
+    //       colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+    //       opacity: 0.5
+    //     }
+    //   },
+    //   xaxis: {
+    //     categories: [
+    //       "Jan",
+    //       "Feb",
+    //       "Mar",
+    //       "Apr",
+    //       "May",
+    //       "Jun",
+    //       "Jul",
+    //       "Aug",
+    //       "Sep"
+    //     ]
+    //   }
+    // };
     this.areaChart = {
       series: [
         {
@@ -537,6 +541,7 @@ export class DashboardComponent implements OnInit {
     /**
      * BreadCrumb
      */
+    this.getDashboardData()
     this.breadCrumbItems = [
       { label: 'Dashboards' },
       { label: 'Dashboard', active: true }
@@ -556,6 +561,143 @@ export class DashboardComponent implements OnInit {
     this._analyticsChart('["--vz-success", "--vz-primary", "--vz-danger"]');
     this._SalesCategoryChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
 
+  }
+  getDashboardData(){
+    this.service.getDashBoard().subscribe((res:any)=>{
+      console.log('>>>', res.data.charts)
+      this.Barchart1 = {
+        "series": res.data.charts.top5DistrictBarChart.series,
+        chart: {
+          height: 350,
+          type: "bar"
+        },
+        plotOptions: {
+          bar: {
+            dataLabels: {
+              position: "top"
+            }
+          }
+        },
+        dataLabels: {
+          enabled: true,
+          formatter: function(val) {
+            return val + "%";
+          },
+          offsetY: -20,
+          style: {
+            fontSize: "12px",
+            colors: ["#304758"]
+          }
+        },
+  
+        xaxis: {
+          "categories": res.data.charts.top5DistrictBarChart.xaxis.categories,
+          position: "bottom",
+          labels: {
+            // offsetY: -18
+          },
+          axisBorder: {
+            show: false
+          },
+          axisTicks: {
+            show: false
+          },
+          crosshairs: {
+            fill: {
+              type: "gradient",
+              gradient: {
+                colorFrom: "#D8E3F0",
+                colorTo: "#BED1E6",
+                stops: [0, 100],
+                opacityFrom: 0.4,
+                opacityTo: 0.5
+              }
+            }
+          },
+          tooltip: {
+            enabled: true,
+            offsetY: -35
+          }
+        },
+        fill: {
+          type: "gradient",
+          gradient: {
+            shade: "light",
+            type: "horizontal",
+            shadeIntensity: 0.25,
+            gradientToColors: undefined,
+            inverseColors: true,
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [50, 0, 100, 100]
+          }
+        },
+        yaxis: {
+          axisBorder: {
+            show: false
+          },
+          axisTicks: {
+            show: false
+          },
+          labels: {
+            show: false,
+            formatter: function(val) {
+              return val + "%";
+            }
+          }
+        },
+        title: {
+          offsetY: 320,
+          align: "center",
+          style: {
+            color: "#444"
+          }
+        }
+      };
+  this.lineChart ={series: [
+        {
+          name: "Desktops",
+          data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
+        }
+      ],
+      chart: {
+        height: 350,
+        type: "line",
+        zoom: {
+          enabled: false
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: "straight"
+      },
+      title: {
+        text: "Product Trends by Month",
+        align: "left"
+      },
+      grid: {
+        row: {
+          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
+          opacity: 0.5
+        }
+      },
+      xaxis: {
+        categories: [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep"
+        ]
+      }
+    }
+    })
   }
 
   // Chart Colors Set
