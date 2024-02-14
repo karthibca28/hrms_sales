@@ -6,9 +6,75 @@ import { Component } from '@angular/core';
   styleUrls: ['./dynamic-view-table.component.scss']
 })
 export class DynamicViewTableComponent {
+  loading:boolean = false
   products =[{
     name:"name",price:"testing",
     category:"testing",
     quantity:"testing"
-  }]
+  },
+  {
+    name:"name",price:"testing",
+    category:"testing",
+    quantity:"testing"
+  },
+  {
+    name:"name",price:"testing",
+    category:"testing",
+    quantity:"testing"
+  },
+  {
+    name:"name",price:"testing",
+    category:"testing",
+    quantity:"testing"
+  },
+  {
+    name:"name",price:"testing",
+    category:"testing",
+    quantity:"testing"
+  },
+  {
+    name:"name",price:"testing",
+    category:"testing",
+    quantity:"testing"
+  },
+  {
+    name:"name",price:"testing",
+    category:"testing",
+    quantity:"testing"
+  },
+  {
+    name:"name",price:"testing",
+    category:"testing",
+    quantity:"testing"
+  },
+  {
+    name:"name",price:"testing",
+    category:"testing",
+    quantity:"testing"
+  },
+  {
+    name:"name",price:"testing",
+    category:"testing",
+    quantity:"testing"
+  },
+  {
+    name:"name",price:"testing",
+    category:"testing",
+    quantity:"testing"
+  },
+  {
+    name:"name",price:"testing",
+    category:"testing",
+    quantity:"testing"
+  },
+  {
+    name:"name",price:"testing",
+    category:"testing",
+    quantity:"testing"
+  },
+  {
+    name:"name",price:"testing",
+    category:"testing",
+    quantity:"testing"
+  },]
 }
