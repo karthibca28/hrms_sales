@@ -1,28 +1,26 @@
-<div *ngIf="!loading">
-    <p-table
-      #dt1
-      [value]="products"
-      dataKey="id"
-      [rows]="10"
-      [showCurrentPageReport]="true"
-      [loading]="loading"
-      [paginator]="true"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      [globalFilterFields]="['srmName', 'imfsSalesValue', 'imfsSoldVolumeCases', 'beerSalesValue', 'beerSoldVolumeCases', 'totalSalesValue']"
-    >
-      <ng-template pTemplate="header" let-columns>
+<p-table #dt1 dataKey="id" [value]="products?.records" [rows]="10" [showCurrentPageReport]="true" [paginator]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [globalFilterFields]="globalSearch" responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+  <ng-template pTemplate="caption">
+    <div class="flex">
+        <span class="p-input-icon-left ml-auto">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (input)="applyGlobalFilter($event)" placeholder="Search keyword" />
+        </span>
+    </div>
+  </ng-template>
+    <ng-template pTemplate="header">
         <tr>
-          <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-            {{ col.header }}
+          <th *ngFor="let col of cols" [pSortableColumn]="col.field">
+            {{col.header}}
             <p-sortIcon [field]="col.field"></p-sortIcon>
           </th>
         </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-product>
+    </ng-template>
+    <ng-template pTemplate="body" let-record>
         <tr>
-          <td *ngFor="let col of columns">{{ product[col.field] }}</td>
+            <td *ngFor="let col of cols">{{record[col.field]}}</td>
         </tr>
-      </ng-template>
-    </p-table>
-  </div>
+    </ng-template>
+</p-table>
   

@@ -1,0 +1,47 @@
+
+<p-table #dt1 dataKey="id" [rows]="10" [columns]="cols" [showCurrentPageReport]="true" [value]="tableData" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [paginator]="true" [rowsPerPageOptions]="[10,25,50]" responsiveLayout="scroll" styleClass="p-datatable-gridlines">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                <div class="flex justify-content-between align-items-center">
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                </div>
+            </th>
+            <th style="width: 8rem;cursor: pointer;">
+                <div class="text-center">
+                    Action
+                </div>
+            </th>
+        </tr>
+    </ng-template>
+    
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+            </td>
+            <td classStyle="width:30%;" class="text-center">
+                <span class="p-2" >
+                    <i class="pi pi-user-edit" style="color: var(--primary-color);" pTooltip="Edit Record"
+                    (click)="editRecord(rowData)"></i>
+                </span>
+                <span class="p-2">
+                    <i class="pi pi-trash" style="color: var(--pink-500);" pTooltip="Delete Record"
+                    (click)="deleteRecord(rowData)"></i>
+                </span>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="8">No Data found.</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="loadingbody">
+        <tr>
+            <td colspan="8">Loading data. Please wait.</td>
+        </tr>
+    </ng-template>
+</p-table>
