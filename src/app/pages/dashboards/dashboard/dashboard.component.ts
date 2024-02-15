@@ -616,9 +616,10 @@ export class DashboardComponent implements OnInit {
       };
     })
   }
+  selectedTopDistrictSales:any
   filterTopFiveDistrictSales(event: any) {
-    const selectedValue = event.target.value;
-    this.service.getFilterDashBoard('top5DistrictBarChart', selectedValue).subscribe((res: any) => {
+    this.selectedTopDistrictSales = event.target.value;
+    this.service.getFilterDashBoard('top5DistrictBarChart', this.selectedTopDistrictSales).subscribe((res: any) => {
       console.log(res)
       this.Barchart1 = {
         "series": res.data.charts.top5DistrictBarChart.series,
@@ -710,8 +711,23 @@ export class DashboardComponent implements OnInit {
   }
   viewRegion() {
     const data = {
-      selectedValueRegionWise: this.selectedValueRegionWise,
+      ...(this.selectedValueRegionWise?{selectedValueRegionWise: this.selectedValueRegionWise}:{}),
       type: "regions"
+    };
+    console.log(data);
+    this.router.navigate(['/main/page/dynamic-view-table', data]);
+  }
+  viewTopFiveDistrict(){
+    const data = {
+      selectedValueRegionWise: this.selectedTopDistrictSales,
+      type: "topFiveDistrictSales"
+    };
+    console.log(data);
+    this.router.navigate(['/main/page/dynamic-view-table', data]);
+  }
+  viewMonthlySalesPerformance(){
+    const data = {
+      type: "monthlySalesPerformance"
     };
     console.log(data);
     this.router.navigate(['/main/page/dynamic-view-table', data]);

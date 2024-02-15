@@ -24,6 +24,12 @@ export class FormService {
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&year=${year}&month=${month}`);
   }
   getregionWiseSales(data:any) {
-    return this.http.get(`${this.baseUrl}sales/regions?year=${data}`);
+    return this.http.get(`${this.baseUrl}sales/regions?${data?'year='+data:''}`);
+  }
+  getTopFiveDistrictSales(data:any) {
+    return this.http.get(`${this.baseUrl}sales/districts?${data?'year='+data:''}`);
+  }
+  getMonthlySalesPerformance() {
+    return this.http.get(`${this.baseUrl}sales/monthlyPerformance`);
   }
 }
