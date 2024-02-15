@@ -36,27 +36,28 @@
                 </div>
             </div> -->
             <div class="row equal-height">
-             <div class="row">
-                <h3>Live Volume & Sales comparision</h3>
-                <img src="../../../../assets/icons/Live-Sales-Data.png"/>
-             </div>
-                <div class="col-12 col-md-3" style="cursor: pointer;padding: 10px;border-radius: 16px;">
+                <div style="flex-direction: row;" class="row">
+                    <h3>Live Volume & Sales Comparison</h3>
+                    <img src="../../../../assets/icons/Live-Sales-Data.png" />
+                </div>
+                <div class="col-12 col-md-3 page-contant" style="cursor: pointer; padding: 10px;margin-top: 20%; border-radius: 16px;">
                     <div class="card overflow-hidden">
+                        <h3>Previous Year 15 FEB 2023</h3>
                         <div class="card-body d-flex">
                             <div class="flex-grow-1">
-                                <div style="display: flex;align-items: center;">
-                                    <img style="width: 18%;background-color: #F2F1F1;padding: 10px;margin: 5px;"
+                                <div style="display: flex; align-items: center;">
+                                    <img style="width: 18%; background-color: #F2F1F1; padding: 10px; margin: 5px;"
                                         src="assets/icons/total-inward-stock.png">
                                     <span style="font-weight: 900;">Total Inward Stocks</span>
                                 </div>
-                                <div class="d-flex gap-3 mt-2" style="justify-content: center;color:black">
+                                <div class="d-flex gap-3 mt-2 justify-content-center text-black">
                                     <a href="javascript:void(0);">
                                         <h2 style="font-weight: 900;">
-                                            {{totalInwardStocks|currency:'INR':'symbol':'3.0'}}
+                                            {{totalInwardStocks | currency:'INR':'symbol':'3.0'}}
                                         </h2>
                                     </a>
                                 </div>
-                                <div class="d-flex gap-3 mt-2" style="justify-content: space-between;">
+                                <div class="d-flex gap-3 mt-2 justify-content-between">
                                     <div style="color: #919191;">Bear: 5k Case</div>
                                     <div style="color: #919191;">Whiskey: 4k Case</div>
                                 </div>
@@ -65,6 +66,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- <div class="col-12 col-md-3" style="cursor: pointer;padding: 10px;border-radius: 16px;">
                     <div class="card overflow-hidden">
                         <div class="card-body d-flex">
@@ -846,7 +848,7 @@
                 </div> -->
 
                     <!-- <div class="p-3"> -->
-                        <!-- <h6 class="text-muted mb-3 text-uppercase fw-semibold">Customer
+                    <!-- <h6 class="text-muted mb-3 text-uppercase fw-semibold">Customer
                             Reviews</h6>
                         <div class="bg-light px-3 py-2 rounded-2 mb-2">
                             <div class="d-flex align-items-center">
@@ -864,12 +866,12 @@
                                 </div>
                             </div>
                         </div> -->
-                        <!-- <div class="text-center">
+                    <!-- <div class="text-center">
                             <div class="text-muted">Total <span class="fw-medium">5.50k</span>
                                 reviews</div>
                         </div> -->
 
-                        <!-- <div class="mt-3">
+                    <!-- <div class="mt-3">
                             <div class="row align-items-center g-2">
                                 <div class="col-auto">
                                     <div class="p-1">
@@ -891,9 +893,9 @@
                                     </div>
                                 </div>
                             </div> -->
-                            <!-- end row -->
+                    <!-- end row -->
 
-                            <!-- <div class="row align-items-center g-2">
+                    <!-- <div class="row align-items-center g-2">
                                 <div class="col-auto">
                                     <div class="p-1">
                                         <h6 class="mb-0">4 star</h6>
@@ -914,9 +916,9 @@
                                     </div>
                                 </div>
                             </div> -->
-                            <!-- end row -->
+                    <!-- end row -->
 
-                            <!-- <div class="row align-items-center g-2">
+                    <!-- <div class="row align-items-center g-2">
                                 <div class="col-auto">
                                     <div class="p-1">
                                         <h6 class="mb-0">3 star</h6>
@@ -937,9 +939,9 @@
                                     </div>
                                 </div>
                             </div> -->
-                            <!-- end row -->
+                    <!-- end row -->
 
-                            <!-- <div class="row align-items-center g-2">
+                    <!-- <div class="row align-items-center g-2">
                                 <div class="col-auto">
                                     <div class="p-1">
                                         <h6 class="mb-0">2 star</h6>
@@ -960,9 +962,9 @@
                                     </div>
                                 </div>
                             </div> -->
-                            <!-- end row -->
+                    <!-- end row -->
 
-                            <!-- <div class="row align-items-center g-2">
+                    <!-- <div class="row align-items-center g-2">
                                 <div class="col-auto">
                                     <div class="p-1">
                                         <h6 class="mb-0">1 star</h6>
@@ -982,7 +984,7 @@
                                     </div>
                                 </div>
                             </div> -->
-                        <!-- </div>
+                    <!-- </div>
                     </div> -->
 
                     <!-- <div class="card sidebar-alert bg-light border-0 text-center mx-4 mb-0 mt-3">
@@ -1011,8 +1013,7 @@
 
 
 <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
-        <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
 
 
-        <app-loader></app-loader>
-
+<app-loader></app-loader>
