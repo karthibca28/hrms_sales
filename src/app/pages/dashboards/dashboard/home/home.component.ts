@@ -16,6 +16,7 @@ import {
   ApexGrid,
   ApexNonAxisChartSeries
 } from "ng-apexcharts";
+import { FormService } from 'src/app/shared/service/form.service';
 
 interface sideBarOption {
   series: ApexNonAxisChartSeries;
@@ -35,19 +36,7 @@ interface barChartOption {
   stroke: ApexStroke;
   legend: ApexLegend;
 };
-interface ChartOptions {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  dataLabels: ApexDataLabels;
-  plotOptions: ApexPlotOptions;
-  responsive: ApexResponsive[];
-  xaxis: ApexXAxis;
-  legend: ApexLegend;
-  fill: ApexFill;
-  colors: string[]
-  title: ApexTitleSubtitle;
-};
-interface  areaChart {
+interface areaChart {
   series: ApexAxisChartSeries;
   chart: ApexChart;
   xaxis: ApexXAxis;
@@ -62,243 +51,210 @@ interface  areaChart {
 })
 export class HomeComponent {
   @ViewChild("chart") chart!: ChartComponent;
-  public chartOptions: ChartOptions;
-  public areaChart:areaChart
-  public salesChart:sideBarOption
-  public barChart:barChartOption
-  public barChartLeast:barChartOption
+  public areaChart: areaChart
+  public salesChart: sideBarOption
+  public barChart: barChartOption
+  public barChartTop: barChartOption
+  public barChartLeast: barChartOption
+  public areaChartYearlySalesComparison :areaChart
 
-  constructor(){
-    this.chartOptions = {
-      series: [
-        {
-          name: "IMFS",
-          data: [44, 55, 41, 67, 22]
-        },
-        {
-          name: "Beer",
-          data: [44, 55, 41, 67, 22]
-        }
-      ],
-      chart: {
-        type: "bar",
-        height: 350,
-        stacked: true,
-        stackType: "100%"
-      },
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            legend: {
-              position: "bottom",
-              offsetX: -10,
-              offsetY: 0
-            }
-          }
-        }
-      ],
-      xaxis: {
-        categories: [
-          "Chennai",
-          "Coimbatore",
-          "Madurai",
-          "Salem",
-          "Trichy"
-        ]
-      },
-      title: {
-        text: "",
-        align: "left",
-        // floating: true
-      },
-      fill: {
-        opacity: 1
-      },
-      colors: [
-        "#2E65FE",
-        "#17C6FF",
-        "#F13536",
-      ],
-      legend: {
-        position: "right",
-        offsetX: 0,
-        offsetY: 10
-      }
-    } as ChartOptions;
-    this.areaChart = {
-      series: [
-        {
-          name: "series1",
-          data: [31, 40, 28, 51, 42, 109, 100]
-        },
-        {
-          name: "series2",
-          data: [11, 32, 45, 32, 34, 52, 41]
-        }
-      ],
-      chart: {
-        height: 350,
-        type: "area"
-      },
-      dataLabels: {
-        enabled: false
-      },
-      stroke: {
-        curve: "smooth"
-      },
-      xaxis: {
-        type: "datetime",
-        categories: [
-          "2018-09-19T00:00:00.000Z",
-          "2018-09-19T01:30:00.000Z",
-          "2018-09-19T02:30:00.000Z",
-          "2018-09-19T03:30:00.000Z",
-          "2018-09-19T04:30:00.000Z",
-          "2018-09-19T05:30:00.000Z",
-          "2018-09-19T06:30:00.000Z"
-        ]
-      },
-      tooltip: {
-        x: {
-          format: "dd/MM/yy HH:mm"
-        }
-      }
-    };
-    this.salesChart = {
-      series: [44, 55, 13, 43, 22],
-      chart: {
-        type: "donut"
-      },
-      labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: "bottom"
-            }
-          }
-        }
-      ]
-    };
-  this.barChart = {
-    series: [
-      {
-        name: "Net Profit",
-        data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-      },
-    ],
-    chart: {
-      type: "bar",
-      height: 350
-    },
-    plotOptions: {
-      bar: {
-        horizontal: false,
-        columnWidth: "55%",
-        // endingShape: "rounded"
-      }
-    },
-    dataLabels: {
-      enabled: false
-    },
-    stroke: {
-      show: true,
-      width: 2,
-      colors: ["transparent"]
-    },
-    xaxis: {
-      categories: [
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct"
-      ]
-    },
-    yaxis: {
-      title: {
-        text: "$ (thousands)"
-      }
-    },
-    fill: {
-      opacity: 1
-    },
-    tooltip: {
-      y: {
-        formatter: function(val) {
-          return "$ " + val + " thousands";
-        }
-      }
-    }
-  } as barChartOption
-  this.barChartLeast = {
-    series: [
-      {
-        name: "Old Sales Data",
-        data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-      },
-      {
-        name: "New Sales Data",
-        data: [34, 65, 67, 36, 71, 88, 93, 30, 36]
-      },
-    ],
-    chart: {
-      type: "bar",
-      height: 350,
-    },
-    plotOptions: {
-      bar: {
-        horizontal: false,
-        columnWidth: "55%",
-        // endingShape: "rounded"
-      }
-    },
-    dataLabels: {
-      enabled: false
-    },
-    stroke: {
-      show: true,
-      width: 2,
-      colors: ["transparent"]
-    },
-    xaxis: {
-      categories: [
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct"
-      ]
-    },
-    yaxis: {
-      title: {
-        text: "$ (thousands)"
-      }
-    },
-    fill: {
-      opacity: 1
-    },
-    tooltip: {
-      y: {
-        formatter: function(val) {
-          return "$ " + val + " thousands";
-        }
-      }
-    }
-  } as barChartOption
+  ngOnInit(): void {
+    this.getDashboardData()
   }
+  constructor(public service: FormService) {
+    this.areaChart = {} as areaChart
+    this.barChart ={} as barChartOption
+    this.salesChart ={} as sideBarOption
+    this.areaChartYearlySalesComparison ={} as areaChart
+    this.barChartTop = {} as barChartOption
+    this.barChartLeast ={} as barChartOption
+  }
+  getDashboardData() {
+    this.service.getDashBoard().subscribe((res: any) => {
+      console.log('>>>', res.data)
+      this.areaChart = {
+        series: res.data.charts.yearlyCummulativeComparison.series,
+        chart: {
+          height: 350,
+          type: "area"
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: "smooth"
+        },
+        xaxis: res.data.
+        charts.yearlyCummulativeComparison.xaxis,
+        tooltip: {
+          x: {
+            format: "dd/MM/yy HH:mm"
+          }
+        }
+      };
+      this.areaChartYearlySalesComparison = {
+        series: res.data.charts.
+        yearlySalesComparison
+        .series,
+        chart: {
+          height: 350,
+          type: "area"
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: "smooth"
+        },
+        xaxis: res.data.
+        charts.
+        yearlySalesComparison
+        .xaxis,
+        tooltip: {
+          x: {
+            format: "dd/MM/yy HH:mm"
+          }
+        }
+      };
+      this.barChart = {
+        series:res.data.charts.comparisonBetweenDate
+        .series,
+        chart: {
+          type: "bar",
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+            // endingShape: "rounded"
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"]
+        },
+        xaxis: res.data.
+        charts.comparisonBetweenDate
+        .xaxis,
+        yaxis: {
+          title: {
+            text: "$ (thousands)"
+          }
+        },
+        fill: {
+          opacity: 1
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "$ " + val + " thousands";
+            }
+          }
+        }
+      } as barChartOption
+      this.salesChart = {
+        series: res.data.charts.imfsAndBeerComparison.series,
+        chart: {
+          type: "donut"
+        },
+        labels: res.data.charts.imfsAndBeerComparison.labels,
+        responsive: [
+          {
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: "bottom"
+              }
+            }
+          }
+        ]
+      };
+      this.barChartTop = {
+        series:res.data.charts.top5DistrictBarChart.series,
+        chart: {
+          type: "bar",
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+            // endingShape: "rounded"
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"]
+        },
+        xaxis: res.data.charts.top5DistrictBarChart.xaxis,
+        yaxis: {
+          title: {
+            text: "$ (thousands)"
+          }
+        },
+        fill: {
+          opacity: 1
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "$ " + val + " thousands";
+            }
+          }
+        }
+      } as barChartOption
+      this.barChartLeast = {
+        series:res.data.charts.leastPerformance.series,
+        chart: {
+          type: "bar",
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+            // endingShape: "rounded"
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"]
+        },
+        xaxis: res.data.charts.leastPerformance.xaxis,
+        yaxis: {
+          title: {
+            text: "$ (thousands)"
+          }
+        },
+        fill: {
+          opacity: 1
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "$ " + val + " thousands";
+            }
+          }
+        }
+      } as barChartOption
+    })
+  }
+
 }
 

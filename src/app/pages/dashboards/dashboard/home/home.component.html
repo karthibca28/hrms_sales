@@ -155,10 +155,11 @@
             <div class="w-100">
                 <div class="col-10">
                     <div id="chart">
-                        <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
-                            [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions"
-                            [responsive]="chartOptions.responsive" [xaxis]="chartOptions.xaxis"
-                            [legend]="chartOptions.legend" [fill]="chartOptions.fill"></apx-chart>
+                        <apx-chart [series]="barChart.series" [chart]="barChart.chart"
+                        [dataLabels]="barChart.dataLabels" [plotOptions]="barChart.plotOptions"
+                        [yaxis]="barChart.yaxis" [legend]="barChart.legend" [fill]="barChart.fill"
+                        [stroke]="barChart.stroke" [tooltip]="barChart.tooltip"
+                        [xaxis]="barChart.xaxis"></apx-chart>
                     </div>
                 </div>
             </div>
@@ -201,20 +202,20 @@
     </div>
     <div class="col-6 card">
         <div id="chart">
-            <apx-chart [series]="areaChart.series" [chart]="areaChart.chart" [xaxis]="areaChart.xaxis"
-                [stroke]="areaChart.stroke" [tooltip]="areaChart.tooltip"
-                [dataLabels]="areaChart.dataLabels"></apx-chart>
+            <apx-chart [series]="areaChartYearlySalesComparison.series" [chart]="areaChartYearlySalesComparison.chart" [xaxis]="areaChartYearlySalesComparison.xaxis"
+                [stroke]="areaChartYearlySalesComparison.stroke" [tooltip]="areaChartYearlySalesComparison.tooltip"
+                [dataLabels]="areaChartYearlySalesComparison.dataLabels"></apx-chart>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-6 card">
         <div id="chart">
-            <apx-chart [series]="barChart.series" [chart]="barChart.chart"
-                [dataLabels]="barChart.dataLabels" [plotOptions]="barChart.plotOptions"
-                [yaxis]="barChart.yaxis" [legend]="barChart.legend" [fill]="barChart.fill"
-                [stroke]="barChart.stroke" [tooltip]="barChart.tooltip"
-                [xaxis]="barChart.xaxis"></apx-chart>
+            <apx-chart [series]="barChartTop.series" [chart]="barChartTop.chart"
+                [dataLabels]="barChartTop.dataLabels" [plotOptions]="barChartTop.plotOptions"
+                [yaxis]="barChartTop.yaxis" [legend]="barChartTop.legend" [fill]="barChartTop.fill"
+                [stroke]="barChartTop.stroke" [tooltip]="barChartTop.tooltip"
+                [xaxis]="barChartTop.xaxis"></apx-chart>
         </div>
     </div>
     <div class="col-6 card">
