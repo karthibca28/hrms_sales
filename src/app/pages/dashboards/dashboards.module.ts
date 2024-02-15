@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule,NgFor } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 // Feather Icon
@@ -69,7 +69,8 @@ import { MatFormFieldModule } from '@angular/material/form-field'
     DropdownModule,
     MatInputModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    NgFor
   ],
 })
 export class DashboardsModule { }

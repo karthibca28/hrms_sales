@@ -17,7 +17,13 @@ export class FormService {
   getDashBoard() {
     return this.http.get(`${this.baseUrl}dashboard/insights`);
   }
-  getFilterDashBoard(){
-    return this.http.get(`${this.baseUrl}dashboard/updateChart`);
+  getFilterDashBoard(chartName:any,year:any){
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&year=${year}`);
+  }
+  getFilterDashBoardforimfsAndBeerComparison(chartName:any,year:any,month:any){
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&year=${year}&month=${month}`);
+  }
+  getregionWiseSales(data:any) {
+    return this.http.get(`${this.baseUrl}sales/regions?year=${data}`);
   }
 }

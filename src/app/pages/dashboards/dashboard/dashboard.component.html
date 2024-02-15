@@ -145,19 +145,24 @@
                                 <p-dropdown [options]="year" optionLabel="name" [showClear]="true"
                                     placeholder="Select a City"></p-dropdown>
                             </div> -->
-                            <!-- <select class="custom-dropdown" (change)="filterRegionWise(regionwiseDropdown)">
-                                <option *ngFor="let item of regionwiseDropdown"  [value]="item.value" >{{ item.label }}</option>
+                            <!-- <select>
+                                <option *ngFor="let item of year" [value]="item">{{ item.name }}</option>
                             </select> -->
-                            <mat-form-field>
+                            <!-- <mat-form-field>
                                 <mat-label>Favorite food</mat-label>
                                 <mat-select>
                                   <mat-option *ngFor="let food of regionwiseDropdown" [value]="food.value">
-                                    {{food.viewValue}}
+                                    {{food.name}}
                                   </mat-option>
                                 </mat-select>
-                              </mat-form-field>
-                            <!-- <p-dropdown [options]="year" optionLabel="name" [showClear]="true"
-                            placeholder="Select a City"></p-dropdown> -->
+                              </mat-form-field> -->
+                              <div class="col-md-4">
+                                <div>
+                                    <select class="form-control" data-choices (change)="filterRegionWise($event)">
+                                        <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}" >{{value.label}}</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="flex-shrink-0">
                                 <!-- <p-dropdown [options]="date" [(ngModel)]="selectedDate" optionLabel="name"
                                     [showClear]="true" placeholder="Select a Country">
@@ -175,7 +180,7 @@
                             </div>
                         </div>
 
-                        <div class="card-body">
+                        <div class="card-body"  (click)="viewRegion()">
                             <div id="chart">
                                 <apx-chart [series]="barChart.series" [chart]="barChart.chart"
                                     [dataLabels]="barChart.dataLabels" [plotOptions]="barChart.plotOptions"
@@ -190,20 +195,15 @@
                     <div class="card card-height-100">
                         <div class="card-header align-items-center d-flex">
                             <h4 class="card-title mb-0 flex-grow-1">Top Five District Sales</h4>
+                            <div class="col-md-4">
+                                <div>
+                                    <select class="form-control" data-choices (change)="filterTopFiveDistrictSales($event)">
+                                        <option *ngFor="let value of top5DistrictBarChart" value="{{value.value}}" >{{value.label}}</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="flex-shrink-0">
-                                <p-dropdown [options]="date" [(ngModel)]="selectedDate" optionLabel="name"
-                                    [showClear]="true" placeholder="Select a Country">
-                                    <ng-template pTemplate="selectedItem">
-                                        <div class="flex align-items-center gap-2" *ngIf="selectedDate">
-                                            <div>{{ selectedDate }}</div>
-                                        </div>
-                                    </ng-template>
-                                    <ng-template let-country pTemplate="item">
-                                        <div class="flex align-items-center gap-2">
-                                            <div>{{ country.name }}</div>
-                                        </div>
-                                    </ng-template>
-                                </p-dropdown>
+                               
                             </div>
                         </div>
 
@@ -372,7 +372,25 @@
                 <div class="col-xl-6">
                     <div class="card card-height-100">
                         <div class="card-body">
+                        <div class="card-header align-items-center d-flex">
                             <h4 style="margin-left: 4px;" class="card-title mb-0 flex-grow-1 mt-3">Overall Sales</h4>
+                            <div class="col-md-4">
+                                <!-- year -->
+                                <div>
+                                    <select class="form-control" data-choices (change)="filterimfsAndBeerComparison($event,selecteMonth)">
+                                        <option *ngFor="let value of imfsAndBeerComparisonYear" value="{{value.value}}">{{value.label}}</option>
+                                    </select>
+                                </div>
+                            </div>&nbsp;
+                            <div class="col-md-4">
+                                <!-- month -->
+                                <div>
+                                    <select class="form-control" data-choices  (change)="filterimfsAndBeerComparison(selecteYear,$event)">
+                                        <option *ngFor="let value of imfsAndBeerComparisonMonth" value="{{value.value}}" >{{value.label}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                             <apx-chart class="apex-charts" dir="ltr" [series]="SalesCategoryChart.series"
                                 [labels]="SalesCategoryChart.labels" [chart]="SalesCategoryChart.chart"
                                 [legend]="SalesCategoryChart.legend" [stroke]="SalesCategoryChart.stroke"
