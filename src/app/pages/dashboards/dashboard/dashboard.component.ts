@@ -132,6 +132,8 @@ export class DashboardComponent implements OnInit {
   top5DistrictBarChart: any
   imfsAndBeerComparisonYear:any
   imfsAndBeerComparisonMonth:any
+  selectedOptions: number[] = [];
+
   constructor(public toastService: ToastService, public service: FormService, private router: Router,) {
     var date = new Date();
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
