@@ -62,7 +62,13 @@ export class HomeComponent {
   imfsAndBeerComparisonYear: any
   imfsAndBeerComparisonMonth: any
   yearlySalesComparison: any
-  chartData:any
+  chartData: any
+  location = [{
+    label: "Chennai", value: 1
+  },
+  {
+    label: "ChennaiNorth", value: 2
+  }]
 
   ngOnInit(): void {
     this.getDashboardData()
@@ -270,54 +276,210 @@ export class HomeComponent {
 
   products = [
     {
-      performanceName :"01",
-      shopName :"443",
-      district :"Ambattur II",
-      imfsSalesGrowth :"-5%",
-      beerSalesGrowth:"-4-5%",
-      overAllPercentage:"-10%"
+      performanceName: "01",
+      shopName: "443",
+      district: "Ambattur II",
+      imfsSalesGrowth: "-5%",
+      beerSalesGrowth: "-4-5%",
+      overAllPercentage: "-10%"
     },
     {
-      performanceName :"02",
-      shopName :"037",
-      district :"Ambattur I",
-      imfsSalesGrowth :"-9.6",
-      beerSalesGrowth:"10.4",
-      overAllPercentage:"10%"
+      performanceName: "02",
+      shopName: "037",
+      district: "Ambattur I",
+      imfsSalesGrowth: "-9.6",
+      beerSalesGrowth: "10.4",
+      overAllPercentage: "10%"
     },
     {
-      performanceName :"03",
-      shopName :"733",
-      district :"Ambattur III",
-      imfsSalesGrowth :"-5",
-      beerSalesGrowth:"-8",
-      overAllPercentage:"13%"
+      performanceName: "03",
+      shopName: "733",
+      district: "Ambattur III",
+      imfsSalesGrowth: "-5",
+      beerSalesGrowth: "-8",
+      overAllPercentage: "13%"
     },
-    // {
-    //   performanceName :"04",
-    //   shopName :"01",
-    //   district :"01",
-    //   imfsSalesGrowth :"01",
-    //   beerSalesGrowth:"01",
-    //   overAllPercentage:"10%"
-    // },
-    // {
-    //   performanceName :"05",
-    //   shopName :"01",
-    //   district :"01",
-    //   imfsSalesGrowth :"01",
-    //   beerSalesGrowth:"01",
-    //   overAllPercentage:"10%"
-    // },
-    // {
-    //   performanceName :"06",
-    //   shopName :"01",
-    //   district :"01",
-    //   imfsSalesGrowth :"01",
-    //   beerSalesGrowth:"01",
-    //   overAllPercentage:"10%"
-    // },
   ]
 
+  selectedValueRegionWise: any
+  locationType: any
+  date1: any
+  date2: any
+  filterComparison(event: any, data: any, value: any, type: any) {
+    this.selectedValueRegionWise = event.target.value;
+    this.locationType = data.target.value;
+    this.date1 = event.target.value;
+    this.date2 = event.target.value;
+    console.log('Selected value:', this.selectedValueRegionWise);
+    this.service.getFilterDashBoardComparison('comparisonBetweenDate', this.selectedValueRegionWise,
+    // this.locationType,
+    this.date1,
+    this.date2).subscribe((res: any) => {
+      console.log(res)
+      this.barChart = {
+        series: res.data.charts.comparisonBetweenDate.series,
+        chart: {
+          type: "bar",
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+            // endingShape: "rounded"
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"]
+        },
+        xaxis: res.data.
+          charts.comparisonBetweenDate
+          .xaxis,
+        yaxis: {
+          title: {
+            // text: "$ (thousands)"
+          }
+        },
+        fill: {
+          opacity: 1
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "$ " + val + " thousands";
+            }
+          }
+        }
+      } as barChartOption
+    })
+  }
+  filterLeastfiveDistricr(event: any) {
+    const selectedValueRegionWise = event.target.value;
+    console.log('Selected value:', this.selectedValueRegionWise);
+    this.service.getFilterDashBoard('leastPerformance', selectedValueRegionWise).subscribe((res: any) => {
+      console.log(res)
+      this.barChartLeast = {
+        series: res.data.charts.comparisonBetweenDate.series,
+        chart: {
+          type: "bar",
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+            // endingShape: "rounded"
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"]
+        },
+        xaxis: res.data.
+          charts.comparisonBetweenDate
+          .xaxis,
+        yaxis: {
+          title: {
+            // text: "$ (thousands)"
+          }
+        },
+        fill: {
+          opacity: 1
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "$ " + val + " thousands";
+            }
+          }
+        }
+      } as barChartOption
+    })
+  }
+  filterTopFive(event: any) {
+    const selectedValueRegionWise = event.target.value;
+    this.service.getFilterDashBoard('leastPerformance', selectedValueRegionWise).subscribe((res: any) => {
+      console.log(res)
+      this.barChartTop = {
+        series: res.data.charts.comparisonBetweenDate.series,
+        chart: {
+          type: "bar",
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "55%",
+            // endingShape: "rounded"
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"]
+        },
+        xaxis: res.data.
+          charts.comparisonBetweenDate
+          .xaxis,
+        yaxis: {
+          title: {
+            // text: "$ (thousands)"
+          }
+        },
+        fill: {
+          opacity: 1
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "$ " + val + " thousands";
+            }
+          }
+        }
+      } as barChartOption
+    })
+  }
+  filterSalesComparison(event: any) {
+    const selectedValueRegionWise = event.target.value;
+    this.service.getFilterDashBoard('yearlySalesComparison', selectedValueRegionWise).subscribe((res: any) => {
+      console.log(res)
+      this.areaChartYearlySalesComparison = {
+        series: res.data.charts.
+          yearlySalesComparison
+          .series,
+        chart: {
+          height: 350,
+          type: "area"
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: "smooth"
+        },
+        xaxis: res.data.
+          charts.
+          yearlySalesComparison
+          .xaxis,
+        tooltip: {
+          x: {
+            format: "dd/MM/yy HH:mm"
+          }
+        }
+      };
+    })
+  }
 }
 

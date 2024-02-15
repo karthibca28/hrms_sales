@@ -20,6 +20,9 @@ export class FormService {
   getFilterDashBoard(chartName:any,year:any){
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&year=${year}`);
   }
+  getFilterDashBoardComparison(chartName:any,year:any,date1:any,date2:any){
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&year=${year}&date1=${date1}&date2=${date2}`);
+  }
   getFilterDashBoardforimfsAndBeerComparison(chartName:any,year:any,month:any){
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&year=${year}&month=${month}`);
   }
