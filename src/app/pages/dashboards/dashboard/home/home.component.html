@@ -93,7 +93,13 @@
 <div class="col-xl-12">
     <div class="card">
         <div class="card-header align-items-center d-flex">
-            <h4 class="card-title mb-0 flex-grow-1">Region Wise Sales</h4>
+            <div class="header-container row">
+                <h4 class="card-title mb-0 flex-grow-1">Cumulative Growth Performance - Current Month
+                    <!-- <img style="width: 20px;height: 20px; margin: 5px;"
+                        src="../../../../assets/icons/Comparison-Data.png" /> -->
+                </h4>
+            </div>
+
             <div class="col-md-4">
                 <div>
                     <!-- <select class="form-control" data-choices (change)="filterRegionWise($event)">
@@ -107,7 +113,7 @@
         </div>
         <div class="card-body p-0 pb-2 d-flex">
             <div class="w-100">
-                <div class="col-10">
+                <div class="col-12">
                     <div id="chart">
                         <apx-chart [series]="areaChart.series" [chart]="areaChart.chart" [xaxis]="areaChart.xaxis"
                             [stroke]="areaChart.stroke" [tooltip]="areaChart.tooltip"
@@ -116,7 +122,7 @@
                 </div>
             </div>
 
-            <div class="right-card" style="display: flex;align-items: center;width:40%">
+            <!-- <div class="right-card" style="display: flex;align-items: center;width:40%">
 
                 <div class="col-12 col-md-12" style="cursor: pointer;padding: 10px;border-radius: 16px;">
                     <div class="overflow-hidden">
@@ -142,18 +148,18 @@
                     </div>
                 </div>
 
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
 <div class="col-xl-12">
     <div class="card">
         <div class="Live-Sales-img">
-            <div class="header-container">
+            <div class="header-container row">
                 <h4 class="card-title mb-0 flex-grow-1 ml-3">Comparison Data
+                    <img style="width: 20px;height: 20px; margin: 5px;"
+                        src="../../../../assets/icons/Comparison-Data.png" />
                 </h4>
-                <img style="width: 20px;height: 20px; margin: 5px;"
-                    src="../../../../assets/icons/Comparison-Data.png" />
             </div>
         </div>
         <div class="card-body p-0 pb-2 d-flex">
@@ -173,9 +179,12 @@
                 <div class="col-12 col-md-12" style="cursor: pointer;padding: 10px;border-radius: 16px;">
                     <div class="overflow-hidden">
                         <div class="card-body d-flex">
-                            <div class="flex-grow-1" style="background-color:#008FFB">
-                                <div
-                                    style="display: flex;align-items: center;background-color:#008FFB;justify-content: center;padding: 20px 20px 20px 0px">
+                            <div class="flex-grow-1" style="background-color:#008FFB;
+                            border-radius: 5px;
+                            ">
+                                <div style="display: flex;align-items: center;
+                                    border-top-left-radius: 5px;border-top-right-radius: 5px;
+                                    justify-content: center;padding: 20px 20px 20px 0px">
                                     <span style="font-weight: 900;text-align: center;font-size: 20px;">Growth
                                         Percentage</span>
                                 </div>
@@ -185,8 +194,8 @@
                                         </h2>
                                     </a>
                                 </div>
-                                <span class="d-flex gap-3 mt-2"
-                                    style="font-size:25px;justify-content: center;background-color:#F0E0E0;text-align: center;padding: 20px 20px 20px 0px;">
+                                <span class="d-flex gap-3 mt-2" style="font-size:25px;justify-content: center; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;
+                                    background-color:#F0E0E0;text-align: center;padding: 20px 20px 20px 0px;">
                                     25%
                                 </span>
                             </div>
@@ -200,12 +209,18 @@
 </div>
 <div class="row">
     <div class="col-6 card">
+        <h4 class="card-title mb-0 flex-grow-1 ml-3">Overall Sales
+            <img style="width: 20px;height: 20px; margin: 5px;" src="../../../../assets/icons/sales.png" />
+        </h4>
         <div id="chart">
             <apx-chart [series]="salesChart.series" [chart]="salesChart.chart" [labels]="salesChart.labels"
                 [responsive]="salesChart.responsive"></apx-chart>
         </div>
     </div>
     <div class="col-6 card">
+        <h4 class="card-title mb-0 flex-grow-1 ml-3">Sales Comparison 
+            <img style="width: 20px;height: 20px; margin: 5px;" src="../../../../assets/icons/sales-comp.png" />
+        </h4>
         <div id="chart">
             <apx-chart [series]="areaChartYearlySalesComparison.series" [chart]="areaChartYearlySalesComparison.chart"
                 [xaxis]="areaChartYearlySalesComparison.xaxis" [stroke]="areaChartYearlySalesComparison.stroke"
@@ -216,6 +231,9 @@
 </div>
 <div class="row">
     <div class="col-6 card">
+        <h4 class="card-title mb-0 flex-grow-1 ml-3">Top 5 District Sales 
+            <img style="width: 20px;height: 20px; margin: 5px;" src="../../../../assets/icons/top-5.png" />
+        </h4>
         <div id="chart">
             <apx-chart [series]="barChartTop.series" [chart]="barChartTop.chart" [dataLabels]="barChartTop.dataLabels"
                 [plotOptions]="barChartTop.plotOptions" [yaxis]="barChartTop.yaxis" [legend]="barChartTop.legend"
@@ -224,6 +242,9 @@
         </div>
     </div>
     <div class="col-6 card">
+        <h4 class="card-title mb-0 flex-grow-1 ml-3">Least 5 sales District
+            <img style="width: 20px;height: 20px; margin: 5px;" src="../../../../assets/icons/last-5.png" />
+        </h4>
         <div id="chart">
             <apx-chart [series]="barChartLeast.series" [chart]="barChartLeast.chart"
                 [dataLabels]="barChartLeast.dataLabels" [plotOptions]="barChartLeast.plotOptions"
