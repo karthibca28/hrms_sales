@@ -20,7 +20,7 @@ const routes: Routes = [
     component: DynamicViewTableComponent
   },
   {
-    path: "dynamic-view-table/:regionWiseSales",
+    path: "dynamic-view-table/:selectedValueRegionWise",
     component: DynamicViewTableComponent
   },
   {

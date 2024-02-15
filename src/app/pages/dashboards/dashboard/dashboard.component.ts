@@ -708,12 +708,15 @@ export class DashboardComponent implements OnInit {
     })
 
   }
-  viewRegion(){
-    const data = this.selectedValueRegionWise
-    console.log(data)
-    this.router.navigate(['/main/page/dynamic-view-table',data]);
-
+  viewRegion() {
+    const data = {
+      selectedValueRegionWise: this.selectedValueRegionWise,
+      type: "regions"
+    };
+    console.log(data);
+    this.router.navigate(['/main/page/dynamic-view-table', data]);
   }
+  
   getDashboardData() {
     this.service.getDashBoard().subscribe((res: any) => {
       console.log('>>>', res.data)

@@ -9,15 +9,21 @@ import { FormService } from 'src/app/shared/service/form.service';
 })
 export class DynamicViewTableComponent implements OnInit {
   loading: boolean = true;
-  regionWiseSales: any;
+  selectedValueRegionWise: any;
   products: any;
   columns: any;
 
   constructor(private route: ActivatedRoute, private service: FormService) {}
 
   ngOnInit() {
-    this.regionWiseSales = this.route.snapshot.params['regionWiseSales'];
-    this.getList(this.regionWiseSales);
+    this.route.params.subscribe(params => {
+      this.selectedValueRegionWise = params['selectedValueRegionWise'];
+      const type = params['type'];
+      console.log(this.selectedValueRegionWise,type)
+      if(type == "regions"){
+      this.getList(this.selectedValueRegionWise);
+    }
+    });
   }
 
   getList(data: any) {
