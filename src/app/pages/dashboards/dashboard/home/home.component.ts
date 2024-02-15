@@ -56,22 +56,32 @@ export class HomeComponent {
   public barChart: barChartOption
   public barChartTop: barChartOption
   public barChartLeast: barChartOption
-  public areaChartYearlySalesComparison :areaChart
+  public areaChartYearlySalesComparison: areaChart
+  regionwiseDropdown: any
+  top5DistrictBarChart: any
+  imfsAndBeerComparisonYear: any
+  imfsAndBeerComparisonMonth: any
+  yearlySalesComparison: any
 
   ngOnInit(): void {
     this.getDashboardData()
   }
   constructor(public service: FormService) {
     this.areaChart = {} as areaChart
-    this.barChart ={} as barChartOption
-    this.salesChart ={} as sideBarOption
-    this.areaChartYearlySalesComparison ={} as areaChart
+    this.barChart = {} as barChartOption
+    this.salesChart = {} as sideBarOption
+    this.areaChartYearlySalesComparison = {} as areaChart
     this.barChartTop = {} as barChartOption
-    this.barChartLeast ={} as barChartOption
+    this.barChartLeast = {} as barChartOption
   }
   getDashboardData() {
     this.service.getDashBoard().subscribe((res: any) => {
       console.log('>>>', res.data)
+      this.regionwiseDropdown = res.data.parameters.regionWiseBarChart.years
+      this.top5DistrictBarChart = res.data.parameters.top5DistrictBarChart.years
+      this.imfsAndBeerComparisonYear = res.data.parameters.imfsAndBeerComparison.years
+      this.imfsAndBeerComparisonMonth = res.data.parameters.imfsAndBeerComparison.month
+      this.yearlySalesComparison = res.data.parameters.yearlySalesComparison.years
       this.areaChart = {
         series: res.data.charts.yearlyCummulativeComparison.series,
         chart: {
@@ -85,7 +95,7 @@ export class HomeComponent {
           curve: "smooth"
         },
         xaxis: res.data.
-        charts.yearlyCummulativeComparison.xaxis,
+          charts.yearlyCummulativeComparison.xaxis,
         tooltip: {
           x: {
             format: "dd/MM/yy HH:mm"
@@ -94,8 +104,8 @@ export class HomeComponent {
       };
       this.areaChartYearlySalesComparison = {
         series: res.data.charts.
-        yearlySalesComparison
-        .series,
+          yearlySalesComparison
+          .series,
         chart: {
           height: 350,
           type: "area"
@@ -107,9 +117,9 @@ export class HomeComponent {
           curve: "smooth"
         },
         xaxis: res.data.
-        charts.
-        yearlySalesComparison
-        .xaxis,
+          charts.
+          yearlySalesComparison
+          .xaxis,
         tooltip: {
           x: {
             format: "dd/MM/yy HH:mm"
@@ -117,8 +127,8 @@ export class HomeComponent {
         }
       };
       this.barChart = {
-        series:res.data.charts.comparisonBetweenDate
-        .series,
+        series: res.data.charts.comparisonBetweenDate
+          .series,
         chart: {
           type: "bar",
           height: 350
@@ -139,8 +149,8 @@ export class HomeComponent {
           colors: ["transparent"]
         },
         xaxis: res.data.
-        charts.comparisonBetweenDate
-        .xaxis,
+          charts.comparisonBetweenDate
+          .xaxis,
         yaxis: {
           title: {
             text: "$ (thousands)"
@@ -178,7 +188,7 @@ export class HomeComponent {
         ]
       };
       this.barChartTop = {
-        series:res.data.charts.top5DistrictBarChart.series,
+        series: res.data.charts.top5DistrictBarChart.series,
         chart: {
           type: "bar",
           height: 350
@@ -216,7 +226,7 @@ export class HomeComponent {
         }
       } as barChartOption
       this.barChartLeast = {
-        series:res.data.charts.leastPerformance.series,
+        series: res.data.charts.leastPerformance.series,
         chart: {
           type: "bar",
           height: 350
