@@ -40,6 +40,7 @@ import { JobFooterComponent } from './landing/job/job-footer/job-footer.componen
 import { JobcategoriesComponent } from './landing/job/jobcategories/jobcategories.component';
 import { ProcessComponent } from './landing/job/process/process.component';
 import { LandingScrollspyDirective } from './landingscrollspy.directive';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { LandingScrollspyDirective } from './landingscrollspy.directive';
     FindjobsComponent,
     JobFooterComponent,
     JobcategoriesComponent,
-    ProcessComponent
+    ProcessComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
@@ -107,6 +109,7 @@ import { LandingScrollspyDirective } from './landingscrollspy.directive';
     CandidateComponent,
     BlogComponent,
     JobcategoriesComponent,
-    JobFooterComponent]
+    JobFooterComponent,
+    LoaderComponent]
 })
 export class SharedModule { }

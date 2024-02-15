@@ -7,6 +7,7 @@ import { ToastService } from '../icons/toast-service';
 import { AuthfakeauthenticationService } from '../../core/services/authfake.service';
 import { AuthService } from '../../shared/service/auth.service';
 import Swal from 'sweetalert2';
+import { LoadingService } from 'src/app/shared/service/loading.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,8 @@ export class LoginComponent {
   year: number = new Date().getFullYear();
 
   constructor(private authService: AuthService,private authenticationService: AuthenticationService,private router: Router,
-    private authFackservice: AuthfakeauthenticationService,private route: ActivatedRoute, public toastService: ToastService) {
+    private authFackservice: AuthfakeauthenticationService,private route: ActivatedRoute, public toastService: ToastService,
+    private loadingService: LoadingService) {
      
      }
 
@@ -46,6 +48,7 @@ export class LoginComponent {
   }
   login() {
     console.log("data works")
+    this.loadingService.showLoader();
     if (this.loginForm.valid) {
       this.authService.authenticate(this.loginForm.value).subscribe((resp: any) => {
 
@@ -54,6 +57,8 @@ export class LoginComponent {
           sessionStorage.setItem('userInfo', JSON.stringify(resp));
           sessionStorage.setItem('scopes', JSON.stringify(resp.scopes));
           this.userRole = resp.data.userRoleId;
+          this.loadingService.hideLoader();
+
           if (this.userRole === 1 || this.userRole === 2) {
             // this.sharedService.showSuccess(resp?.message);
             this.router.navigate(['/main/page']);
@@ -68,6 +73,7 @@ export class LoginComponent {
           } else {
             // this.sharedService.showSuccess(resp?.message);
             this.router.navigate(['/main/admin']);
+          this.loadingService.hideLoader();
           }
           //  else {
           //   this.sharedService.showError('Access Denied!');
@@ -78,9 +84,11 @@ export class LoginComponent {
         }
       }, (e:any)=>{
           // this.sharedService.showError(e?.error?.message);
+          this.loadingService.hideLoader();
       })
     } else {
       this.loginForm.markAllAsTouched();
+      this.loadingService.hideLoader();
     }
   }
 }
