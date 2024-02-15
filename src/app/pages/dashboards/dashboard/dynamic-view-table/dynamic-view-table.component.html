@@ -10,28 +10,19 @@
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       [globalFilterFields]="['srmName', 'imfsSalesValue', 'imfsSoldVolumeCases', 'beerSalesValue', 'beerSoldVolumeCases', 'totalSalesValue']"
     >
-  <ng-template pTemplate="header" let-columns>
-    <tr>
-      <th *ngFor="let col of columns" [pSortableColumn]="col.field">
-        <div
-          class="flex justify-content-between align-items-center"
-          *ngIf="col.field !== 'id'"
-        >
-          {{ col.header }}
-          <p-sortIcon [field]="col.field"></p-sortIcon>
-        </div>
-      </th>
-      <th style="width: 8rem;">
-        <div class="text-center">
-          Action
-        </div>
-      </th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-product let-columns="columns">
-    <tr>
-      <td *ngFor="let col of columns">{{ product[col.field] }}</td>
-    </tr>
-  </ng-template>
-</p-table>
-</div>
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+            {{ col.header }}
+            <p-sortIcon [field]="col.field"></p-sortIcon>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+        <tr>
+          <td *ngFor="let col of columns">{{ product[col.field] }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  
