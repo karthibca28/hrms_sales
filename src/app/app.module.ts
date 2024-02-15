@@ -19,6 +19,7 @@ import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { LoginComponent } from './pages/login/login.component';
+import { SharedModule } from "./shared/shared.module";
 
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -31,33 +32,34 @@ if (environment.defaultauth === 'firebase') {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent
-  ],
-  imports: [
-    TranslateModule.forRoot({
-      defaultLanguage: 'en',
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    }),
-    BrowserAnimationsModule,
-    HttpClientModule,
-    BrowserModule,
-    AppRoutingModule,
-    LayoutsModule,
-    // PagesModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent
+    ],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
+    ],
+    bootstrap: [AppComponent],
+    imports: [
+        TranslateModule.forRoot({
+            defaultLanguage: 'en',
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (createTranslateLoader),
+                deps: [HttpClient]
+            }
+        }),
+        BrowserAnimationsModule,
+        HttpClientModule,
+        BrowserModule,
+        AppRoutingModule,
+        LayoutsModule,
+        // PagesModule,
+        FormsModule,
+        ReactiveFormsModule,
+        SharedModule
+    ]
 })
 export class AppModule { }
