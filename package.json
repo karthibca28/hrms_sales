@@ -66,6 +66,7 @@
     "metismenujs": "^1.4.0",
     "moment": "^2.29.4",
     "ng-apexcharts": "^1.8.0",
+    "ng-multiselect-dropdown": "^1.0.0",
     "ng-otp-input": "^1.9.3",
     "ng2-charts": "^5.0.3",
     "ngx-color-picker": "^14.0.0",

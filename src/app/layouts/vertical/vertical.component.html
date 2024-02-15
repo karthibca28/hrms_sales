@@ -4,14 +4,14 @@
     <!-- Side Bar -->
     <app-sidebar></app-sidebar>
     <div class="main-content">
-        <div class="page-content">
-            <div class="container-fluid">
+        <div class="page-content" style="height: 100vh;overflow: auto;">
+            <div class="container-fluid" >
                 <!-- Main Content -->
                 <router-outlet></router-outlet>
             </div>
         </div>
         <!-- Footer -->
-        <!-- <app-footer></app-footer> -->
+        <app-footer></app-footer>
     </div>
   </div>
   <!-- Right Side Bar -->

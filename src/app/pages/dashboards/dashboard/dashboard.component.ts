@@ -3,7 +3,7 @@ import { ToastService } from './toast-service';
 
 
 import { circle, latLng, tileLayer } from 'leaflet';
-
+import { IDropdownSettings, } from 'ng-multiselect-dropdown';
 import { BestSelling, TopSelling, RecentSelling, statData } from './data';
 import { ChartType } from './dashboard.model';
 import {
@@ -109,7 +109,8 @@ export class DashboardComponent implements OnInit {
   public Barchart1: BarChartOption1
   public lineChart: lineChartOption;
   public areaChart: areaChartOption
-
+  dropdownList = [];
+  dropdownSettings: IDropdownSettings = {};
   // bread crumb items
   breadCrumbItems!: Array<{}>;
   analyticsChart!: ChartType;
@@ -130,8 +131,9 @@ export class DashboardComponent implements OnInit {
   selectedDate: string | undefined;
   regionwiseDropdown: any
   top5DistrictBarChart: any
-  imfsAndBeerComparisonYear:any
-  imfsAndBeerComparisonMonth:any
+  imfsAndBeerComparisonYear: any
+  imfsAndBeerComparisonMonth: any
+  yearlySalesComparison: any
   constructor(public toastService: ToastService, public service: FormService, private router: Router,) {
     var date = new Date();
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
@@ -529,9 +531,7 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
-    /**
-     * BreadCrumb
-     */ this.cities = [
+    this.cities = [
       { name: 'New York', code: 'NY' },
       { name: 'Rome', code: 'RM' },
       { name: 'London', code: 'LDN' },
@@ -568,7 +568,7 @@ export class DashboardComponent implements OnInit {
     this._SalesCategoryChart('["--vz-primary", "--vz-success", "--vz-warning", "--vz-danger", "--vz-info"]');
 
   }
-  selectedValueRegionWise:any
+  selectedValueRegionWise: any
   filterRegionWise(event: any) {
     this.selectedValueRegionWise = event.target.value;
     console.log('Selected value:', this.selectedValueRegionWise);
@@ -616,7 +616,7 @@ export class DashboardComponent implements OnInit {
       };
     })
   }
-  selectedTopDistrictSales:any
+  selectedTopDistrictSales: any
   filterTopFiveDistrictSales(event: any) {
     this.selectedTopDistrictSales = event.target.value;
     this.service.getFilterDashBoard('top5DistrictBarChart', this.selectedTopDistrictSales).subscribe((res: any) => {
@@ -664,14 +664,14 @@ export class DashboardComponent implements OnInit {
       };
     })
   }
-  selecteYear:any
-  selecteMonth:any
-  filterimfsAndBeerComparison(event:any,data:any){
-    console.log(data?.target?.value,event?.target?.value,this.selecteYear,this.selecteMonth)
+  selecteYear: any
+  selecteMonth: any
+  filterimfsAndBeerComparison(event: any, data: any) {
+    console.log(data?.target?.value, event?.target?.value, this.selecteYear, this.selecteMonth)
     this.selecteYear = event?.target?.value || this.selecteYear
-    console.log("selectedYear",this.selecteYear)
-    this.selecteMonth = data?.target?.value || this.selecteMonth || "all" 
-    this.service.getFilterDashBoardforimfsAndBeerComparison('imfsAndBeerComparison',this.selecteYear,this.selecteMonth).subscribe((res:any)=>{
+    console.log("selectedYear", this.selecteYear)
+    this.selecteMonth = data?.target?.value || this.selecteMonth || "all"
+    this.service.getFilterDashBoardforimfsAndBeerComparison('imfsAndBeerComparison', this.selecteYear, this.selecteMonth).subscribe((res: any) => {
       this.SalesCategoryChart = {
         "series": res.data.charts.imfsAndBeerComparison.series,
         labels: res.data.charts.imfsAndBeerComparison.labels,
@@ -711,13 +711,13 @@ export class DashboardComponent implements OnInit {
   }
   viewRegion() {
     const data = {
-      ...(this.selectedValueRegionWise?{selectedValueRegionWise: this.selectedValueRegionWise}:{}),
+      ...(this.selectedValueRegionWise ? { selectedValueRegionWise: this.selectedValueRegionWise } : {}),
       type: "regions"
     };
     console.log(data);
     this.router.navigate(['/main/page/dynamic-view-table', data]);
   }
-  viewTopFiveDistrict(){
+  viewTopFiveDistrict() {
     const data = {
       selectedValueRegionWise: this.selectedTopDistrictSales,
       type: "topFiveDistrictSales"
@@ -725,14 +725,14 @@ export class DashboardComponent implements OnInit {
     console.log(data);
     this.router.navigate(['/main/page/dynamic-view-table', data]);
   }
-  viewMonthlySalesPerformance(){
+  viewMonthlySalesPerformance() {
     const data = {
       type: "monthlySalesPerformance"
     };
     console.log(data);
     this.router.navigate(['/main/page/dynamic-view-table', data]);
   }
-  
+
   getDashboardData() {
     this.service.getDashBoard().subscribe((res: any) => {
       console.log('>>>', res.data)
@@ -740,252 +740,263 @@ export class DashboardComponent implements OnInit {
       this.top5DistrictBarChart = res.data.parameters.top5DistrictBarChart.years
       this.imfsAndBeerComparisonYear = res.data.parameters.imfsAndBeerComparison.years
       this.imfsAndBeerComparisonMonth = res.data.parameters.imfsAndBeerComparison.month
-
-
-
-      this.barChart = {
-        "series": res.data.charts.regionWiseBarChart.series,
-        chart: {
-          height: 350,
-          type: "bar"
-        },
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: "55%",
-
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          show: true,
-          width: 2,
-          colors: ["transparent"]
-        },
-        xaxis: {
-          "categories": res.data.charts.regionWiseBarChart.xaxis.categories,
-        },
-        yaxis: {
-          title: {
-            // text: "$ (thousands)"
-          }
-        },
-        fill: {
-          opacity: 1
-        },
-        tooltip: {
-          y: {
-            formatter: function (val) {
-              return "" + val;
-            }
-          }
-        }
-      };
-      this.Barchart1 = {
-        "series": res.data.charts.top5DistrictBarChart.series,
-        chart: {
-          height: 350,
-          type: "bar"
-        },
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: "55%",
-
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          show: true,
-          width: 2,
-          colors: ["#00FF00"]
-        },
-        xaxis: {
-          "categories": res.data.charts.top5DistrictBarChart.xaxis.categories,
-        },
-        yaxis: {
-          title: {
-            // text: "$ (thousands)"
-          }
-        },
-        fill: {
-          colors: ["#00E396"],
-          opacity: 1
-        },
-        tooltip: {
-          y: {
-            formatter: function (val) {
-              return "" + val;
-            }
-          }
-        }
-      };
-      this.lineChart = {
-        "series": res.data.charts.last12MonthChart.series,
-        chart: {
-          height: 350,
-          type: "line",
-          zoom: {
-            enabled: false
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          curve: "straight"
-        },
-        title: {
-          text: "",
-          align: "left"
-        },
-        grid: {
-          row: {
-            colors: ["#f3f3f3", "transparent"],
-            opacity: 0.5
-          }
-        },
-        xaxis: {
-          "categories": res.data.charts.last12MonthChart.xaxis.categories,
-        }
+      this.yearlySalesComparison = res.data.parameters.yearlySalesComparison.years
+      this.dropdownList = this.yearlySalesComparison;
+      const firstItem = this.yearlySalesComparison[0];
+      if (firstItem) {
+        this.dropdownSettings = {
+          idField: Object.keys(firstItem)[0],
+          textField: Object.keys(firstItem)[1],
+        };
+      } else {
+        this.dropdownSettings = {
+          idField: 'label',
+          textField: 'value',
+        };
       }
-      this.areaChart = {
-        "series": res.data.charts.yearlySalesComparison.series,
-        chart: {
-          height: 350,
-          type: "area"
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          curve: "smooth"
-        },
-        xaxis: {
-          "categories": res.data.charts.yearlySalesComparison.xaxis.categories,
-        },
-        tooltip: {
-          x: {
-            format: "dd/MM/yy HH:mm"
-          }
-        }
-      };
-      this.sideBarChart = {
-        "series": res.data.charts.leastPerformance.series,
-        chart: {
-          type: "bar",
-          height: 380
-        },
-        plotOptions: {
-          bar: {
-            barHeight: "100%",
-            distributed: true,
-            horizontal: true,
-            dataLabels: {
-              position: "bottom"
-            },
+        this.barChart = {
+          "series": res.data.charts.regionWiseBarChart.series,
+          chart: {
+            height: 350,
+            type: "bar"
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              columnWidth: "55%",
 
-          }
-        },
-        colors: [
-          "#E14D57",
-          "#965994",
-          "#EC932F",
-          "#71B37C",
-          "#5290EA",
-          "#8F13FD",
-          "#EC932F",
-          "#00E396"
-        ],
-        dataLabels: {
-          enabled: true,
-          textAnchor: "start",
-          style: {
-            colors: ["#fff"]
+            }
           },
-          formatter: function (val, opt) {
-            return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val;
+          dataLabels: {
+            enabled: false
           },
-          offsetX: 0,
-          dropShadow: {
-            enabled: true
-          }
-        },
-        stroke: {
-          width: 2,
-          colors: ["#fff"]
-        },
-        xaxis: {
-          "categories": res.data.charts.leastPerformance.xaxis.categories,
-        },
-        yaxis: {
-          labels: {
-            show: false
-          }
-        },
-        title: {
-          // text: "Top Performing Depot",
-          align: "left",
-          // floating: true
-        },
-        // subtitle: {
-        //   text: "Category Names as DataLabels inside bars",
-        //   align: "center"
-        // },
-        tooltip: {
-          theme: "dark",
-          x: {
-            show: false
+          stroke: {
+            show: true,
+            width: 2,
+            colors: ["transparent"]
           },
-          y: {
+          xaxis: {
+            "categories": res.data.charts.regionWiseBarChart.xaxis.categories,
+          },
+          yaxis: {
             title: {
-              formatter: function () {
-                return "";
+              // text: "$ (thousands)"
+            }
+          },
+          fill: {
+            opacity: 1
+          },
+          tooltip: {
+            y: {
+              formatter: function (val) {
+                return "" + val;
               }
             }
           }
-        }
-      };
-      // colors = this.getChartColorsArray(colors);
-      this.SalesCategoryChart = {
-        "series": res.data.charts.imfsAndBeerComparison.series,
-        labels: res.data.charts.imfsAndBeerComparison.labels,
-        chart: {
-          height: 333,
-          type: "donut",
-        },
-        legend: {
-          position: "bottom",
-        },
-        stroke: {
-          show: false
-        },
-        dataLabels: {
-          dropShadow: {
-            enabled: false,
+        };
+        this.Barchart1 = {
+          "series": res.data.charts.top5DistrictBarChart.series,
+          chart: {
+            height: 350,
+            type: "bar"
           },
-        },
-        title: {
-          text: "",
-          align: "left",
-          // floating: true
-        },
-        colors: [
-          "#E14D57",
-          "#965994",
-          "#EC932F",
-          "#71B37C",
-          "#5290EA",
-          "#8F13FD",
-          "#EC932F",
-          "#00E396"
-        ],
-      };
-    })
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              columnWidth: "55%",
+
+            }
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            show: true,
+            width: 2,
+            colors: ["#00FF00"]
+          },
+          xaxis: {
+            "categories": res.data.charts.top5DistrictBarChart.xaxis.categories,
+          },
+          yaxis: {
+            title: {
+              // text: "$ (thousands)"
+            }
+          },
+          fill: {
+            colors: ["#00E396"],
+            opacity: 1
+          },
+          tooltip: {
+            y: {
+              formatter: function (val) {
+                return "" + val;
+              }
+            }
+          }
+        };
+        this.lineChart = {
+          "series": res.data.charts.last12MonthChart.series,
+          chart: {
+            height: 350,
+            type: "line",
+            zoom: {
+              enabled: false
+            }
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            curve: "straight"
+          },
+          title: {
+            text: "",
+            align: "left"
+          },
+          grid: {
+            row: {
+              colors: ["#f3f3f3", "transparent"],
+              opacity: 0.5
+            }
+          },
+          xaxis: {
+            "categories": res.data.charts.last12MonthChart.xaxis.categories,
+          }
+        }
+        this.areaChart = {
+          "series": res.data.charts.yearlySalesComparison.series,
+          chart: {
+            height: 350,
+            type: "area"
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            curve: "smooth"
+          },
+          xaxis: {
+            "categories": res.data.charts.yearlySalesComparison.xaxis.categories,
+          },
+          tooltip: {
+            x: {
+              format: "dd/MM/yy HH:mm"
+            }
+          }
+        };
+        this.sideBarChart = {
+          "series": res.data.charts.leastPerformance.series,
+          chart: {
+            type: "bar",
+            height: 380
+          },
+          plotOptions: {
+            bar: {
+              barHeight: "100%",
+              distributed: true,
+              horizontal: true,
+              dataLabels: {
+                position: "bottom"
+              },
+
+            }
+          },
+          colors: [
+            "#E14D57",
+            "#965994",
+            "#EC932F",
+            "#71B37C",
+            "#5290EA",
+            "#8F13FD",
+            "#EC932F",
+            "#00E396"
+          ],
+          dataLabels: {
+            enabled: true,
+            textAnchor: "start",
+            style: {
+              colors: ["#fff"]
+            },
+            formatter: function (val, opt) {
+              return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val;
+            },
+            offsetX: 0,
+            dropShadow: {
+              enabled: true
+            }
+          },
+          stroke: {
+            width: 2,
+            colors: ["#fff"]
+          },
+          xaxis: {
+            "categories": res.data.charts.leastPerformance.xaxis.categories,
+          },
+          yaxis: {
+            labels: {
+              show: false
+            }
+          },
+          title: {
+            // text: "Top Performing Depot",
+            align: "left",
+            // floating: true
+          },
+          // subtitle: {
+          //   text: "Category Names as DataLabels inside bars",
+          //   align: "center"
+          // },
+          tooltip: {
+            theme: "dark",
+            x: {
+              show: false
+            },
+            y: {
+              title: {
+                formatter: function () {
+                  return "";
+                }
+              }
+            }
+          }
+        };
+        // colors = this.getChartColorsArray(colors);
+        this.SalesCategoryChart = {
+          "series": res.data.charts.imfsAndBeerComparison.series,
+          labels: res.data.charts.imfsAndBeerComparison.labels,
+          chart: {
+            height: 333,
+            type: "donut",
+          },
+          legend: {
+            position: "bottom",
+          },
+          stroke: {
+            show: false
+          },
+          dataLabels: {
+            dropShadow: {
+              enabled: false,
+            },
+          },
+          title: {
+            text: "",
+            align: "left",
+            // floating: true
+          },
+          colors: [
+            "#E14D57",
+            "#965994",
+            "#EC932F",
+            "#71B37C",
+            "#5290EA",
+            "#8F13FD",
+            "#EC932F",
+            "#00E396"
+          ],
+        };
+      })
   }
 
   // Chart Colors Set

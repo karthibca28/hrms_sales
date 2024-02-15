@@ -240,6 +240,12 @@
                         <div class="card">
                             <h4 style="margin-left: 16px;" class="card-title mb-0 flex-grow-1 mt-4">Sales Comparison
                             </h4>
+                            <div style="width:50%">
+                                <ng-multiselect-dropdown
+                                    [settings]="dropdownSettings"
+                                    [data]="dropdownList">
+                                </ng-multiselect-dropdown>
+                            </div>
                             <apx-chart [series]="areaChart.series" [chart]="areaChart.chart" [xaxis]="areaChart.xaxis"
                                 [stroke]="areaChart.stroke" [tooltip]="areaChart.tooltip"
                                 [dataLabels]="areaChart.dataLabels"></apx-chart>

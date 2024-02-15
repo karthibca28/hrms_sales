@@ -34,6 +34,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field'
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { MatFormFieldModule } from '@angular/material/form-field'
     MatInputModule,
     MatSelectModule,
     MatFormFieldModule,
-    NgFor
+    NgFor,
+    NgMultiSelectDropDownModule.forRoot()
   ],
 })
 export class DashboardsModule { }
