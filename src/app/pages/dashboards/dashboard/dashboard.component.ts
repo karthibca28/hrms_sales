@@ -134,6 +134,8 @@ export class DashboardComponent implements OnInit {
   imfsAndBeerComparisonYear: any
   imfsAndBeerComparisonMonth: any
   yearlySalesComparison: any
+  selectedOptions: number[] = [];
+
   constructor(public toastService: ToastService, public service: FormService, private router: Router,) {
     var date = new Date();
     var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
