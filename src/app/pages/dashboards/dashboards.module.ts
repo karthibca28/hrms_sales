@@ -35,6 +35,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { HomeComponent } from './dashboard/home/home.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     ProjectsComponent,
     NftComponent,
     JobComponent,
-    DynamicViewTableComponent
+    DynamicViewTableComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

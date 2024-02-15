@@ -61,7 +61,7 @@ export class LoginComponent {
 
           if (this.userRole === 1 || this.userRole === 2) {
             // this.sharedService.showSuccess(resp?.message);
-            this.router.navigate(['/main/page']);
+            this.router.navigate(['/main/page/home']);
             Swal.fire({
               position: "top-end",
               icon: "success",  

@@ -9,6 +9,7 @@ import { ProjectsComponent } from "./projects/projects.component";
 import { NftComponent } from "./nft/nft.component";
 import { JobComponent } from './job/job.component';
 import { DynamicViewTableComponent } from './dashboard/dynamic-view-table/dynamic-view-table.component';
+import { HomeComponent } from './dashboard/home/home.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: "job",
     component: JobComponent
+  },
+  {
+    path:"home",
+    component:HomeComponent
   }
 ];
 
