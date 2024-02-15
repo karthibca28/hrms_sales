@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Table } from 'primeng/table';
 import { FormService } from 'src/app/shared/service/form.service';
 
 @Component({
@@ -8,10 +9,13 @@ import { FormService } from 'src/app/shared/service/form.service';
   styleUrls: ['./dynamic-view-table.component.scss']
 })
 export class DynamicViewTableComponent implements OnInit {
+  @ViewChild('dt1') dt1!: Table;
   loading: boolean = true;
   regionWiseSales: any;
   products: any;
   columns: any;
+  cols: any[] | undefined;
+  globalSearch: any[] = ['srmName', 'imfsSalesValue', 'imfsSoldVolumeCases', 'beerSalesValue', 'beerSoldVolumeCases', 'totalSalesValue'];
 
   constructor(private route: ActivatedRoute, private service: FormService) {}
 
@@ -22,15 +26,27 @@ export class DynamicViewTableComponent implements OnInit {
 
   getList(data: any) {
     this.service.getregionWiseSales(data).subscribe(
-      (res: any) => {
-        this.products = res.data.records;
-        this.columns = res.data.columns;
-        this.loading = false; // Set loading to false when data is fetched
-      },
-      (error) => {
-        console.error('Error fetching data:', error);
-        this.loading = false; // Set loading to false even if there's an error
-      }
+        (res: any) => {
+            // console.log("Response", res);
+            this.products = res.data;
+            // this.columns = res.data.columns;
+            this.cols = this.products.columns.map((col: { field: string, header: string }) => ({ field: col.field, header: col.header }));
+            this.loading = false;
+        },
+        (error) => {
+            console.error('Error fetching data:', error);
+            this.loading = false; // Set loading to false even if there's an error
+        }
     );
   }
+
+  clear(table: Table) {
+    table.clear();
+  }
+
+  applyGlobalFilter(event: any) {
+    const filterValue = event.target.value;
+    this.dt1.filterGlobal(filterValue, 'contains');
+  }
+
 }
