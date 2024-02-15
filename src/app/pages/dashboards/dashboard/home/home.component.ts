@@ -62,6 +62,7 @@ export class HomeComponent {
   imfsAndBeerComparisonYear: any
   imfsAndBeerComparisonMonth: any
   yearlySalesComparison: any
+  chartData:any
 
   ngOnInit(): void {
     this.getDashboardData()
@@ -77,6 +78,7 @@ export class HomeComponent {
   getDashboardData() {
     this.service.getDashBoard().subscribe((res: any) => {
       console.log('>>>', res.data)
+      this.chartData = res.data.charts.liveSalesAndCompareByDate
       this.regionwiseDropdown = res.data.parameters.regionWiseBarChart.years
       this.top5DistrictBarChart = res.data.parameters.top5DistrictBarChart.years
       this.imfsAndBeerComparisonYear = res.data.parameters.imfsAndBeerComparison.years
@@ -153,7 +155,7 @@ export class HomeComponent {
           .xaxis,
         yaxis: {
           title: {
-            text: "$ (thousands)"
+            // text: "$ (thousands)"
           }
         },
         fill: {
@@ -211,7 +213,7 @@ export class HomeComponent {
         xaxis: res.data.charts.top5DistrictBarChart.xaxis,
         yaxis: {
           title: {
-            text: "$ (thousands)"
+            // text: "$ (thousands)"
           }
         },
         fill: {
@@ -249,7 +251,7 @@ export class HomeComponent {
         xaxis: res.data.charts.leastPerformance.xaxis,
         yaxis: {
           title: {
-            text: "$ (thousands)"
+            // text: "$ (thousands)"
           }
         },
         fill: {
@@ -265,6 +267,57 @@ export class HomeComponent {
       } as barChartOption
     })
   }
+
+  products = [
+    {
+      performanceName :"01",
+      shopName :"443",
+      district :"Ambattur II",
+      imfsSalesGrowth :"-5%",
+      beerSalesGrowth:"-4-5%",
+      overAllPercentage:"-10%"
+    },
+    {
+      performanceName :"02",
+      shopName :"037",
+      district :"Ambattur I",
+      imfsSalesGrowth :"-9.6",
+      beerSalesGrowth:"10.4",
+      overAllPercentage:"10%"
+    },
+    {
+      performanceName :"03",
+      shopName :"733",
+      district :"Ambattur III",
+      imfsSalesGrowth :"-5",
+      beerSalesGrowth:"-8",
+      overAllPercentage:"13%"
+    },
+    // {
+    //   performanceName :"04",
+    //   shopName :"01",
+    //   district :"01",
+    //   imfsSalesGrowth :"01",
+    //   beerSalesGrowth:"01",
+    //   overAllPercentage:"10%"
+    // },
+    // {
+    //   performanceName :"05",
+    //   shopName :"01",
+    //   district :"01",
+    //   imfsSalesGrowth :"01",
+    //   beerSalesGrowth:"01",
+    //   overAllPercentage:"10%"
+    // },
+    // {
+    //   performanceName :"06",
+    //   shopName :"01",
+    //   district :"01",
+    //   imfsSalesGrowth :"01",
+    //   beerSalesGrowth:"01",
+    //   overAllPercentage:"10%"
+    // },
+  ]
 
 }
 

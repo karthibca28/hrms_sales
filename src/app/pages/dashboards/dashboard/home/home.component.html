@@ -4,7 +4,7 @@
 </div>
 <section class="layout">
     <div class="box m-4">
-        <p>Previous Year 15 FEB 2023</p>
+        <p>{{chartData.previousYear.date}}</p>
         <div style="border: 2px solid black; border-top-right-radius: 5px;
         border-top-left-radius: 8px;border-top-right-radius: 8px;
         border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
@@ -21,18 +21,18 @@
                 </h3>
             </div>
             <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                <h3><img src="assets/icons/home.png">1283479</h3>
-                <h3><img src="assets/icons/home.png">1283479</h3>
+                <h3><img src="assets/icons/home.png">{{chartData.previousYear.imfsSoldVolumeCases}}</h3>
+                <h3><img src="assets/icons/home.png">{{chartData.previousYear.beerSoldVolumeCases}}</h3>
 
             </div>
             <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                <h3>128.38 Crs </h3>
-                <h3>16.99 Crs</h3>
+                <h3>{{chartData.previousYear.imfsSalesValue}}</h3>
+                <h3>{{chartData.previousYear.beerSalesValue}}</h3>
             </div>
         </div>
     </div>
     <div class="box m-4">
-        <p>Previous day 14 FEB 2024</p>
+        <p>{{chartData.previousDay.date}}</p>
         <div style="border: 2px solid black; border-top-right-radius: 5px;
         border-top-left-radius: 8px;border-top-right-radius: 8px; border-bottom-right-radius: 5px;
         border-bottom-left-radius: 5px;">
@@ -48,20 +48,20 @@
                 </h3>
             </div>
             <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                <h3><img src="assets/icons/home.png">1283479</h3>
-                <h3><img src="assets/icons/home.png">1283479</h3>
+                <h3><img src="assets/icons/home.png">{{chartData.previousDay.imfsSoldVolumeCases}}</h3>
+                <h3><img src="assets/icons/home.png">{{chartData.previousDay.beerSoldVolumeCases}}</h3>
 
             </div>
             <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                <h3>128.38 Crs </h3>
-                <h3>16.99 Crs</h3>
+                <h3>{{chartData.previousDay.imfsSalesValue}} </h3>
+                <h3>{{chartData.previousDay.beerSalesValue}}</h3>
             </div>
         </div>
     </div>
     <div class="box m-4">
         <div class="live">
-            <p>Today’s Overall Sales</p>
-        <!-- <img src="../../../../../assets/icons/live.png"/> -->
+            <p>{{chartData.today.date}} </p>
+            <!-- <img src="../../../../../assets/icons/live.png"/> -->
         </div>
         <div style="border: 2px solid black; border-top-right-radius: 5px;
         border-top-left-radius: 8px;border-top-right-radius: 8px; border-bottom-right-radius: 5px;
@@ -79,13 +79,13 @@
                 </h3>
             </div>
             <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                <h3><img src="assets/icons/home.png">1283479</h3>
-                <h3><img src="assets/icons/home.png">1283479</h3>
+                <h3><img src="assets/icons/home.png">{{chartData.today.imfsSoldVolumeCases}} </h3>
+                <h3><img src="assets/icons/home.png">{{chartData.today.beerSoldVolumeCases}} </h3>
 
             </div>
             <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                <h3>128.38 Crs </h3>
-                <h3>16.99 Crs</h3>
+                <h3>{{chartData.today.imfsSalesValue}} </h3>
+                <h3>{{chartData.today.beerSalesValue}} </h3>
             </div>
         </div>
     </div>
@@ -161,10 +161,10 @@
                 <div class="col-10">
                     <div id="chart">
                         <apx-chart [series]="barChart.series" [chart]="barChart.chart"
-                        [dataLabels]="barChart.dataLabels" [plotOptions]="barChart.plotOptions"
-                        [yaxis]="barChart.yaxis" [legend]="barChart.legend" [fill]="barChart.fill"
-                        [stroke]="barChart.stroke" [tooltip]="barChart.tooltip"
-                        [xaxis]="barChart.xaxis"></apx-chart>
+                            [dataLabels]="barChart.dataLabels" [plotOptions]="barChart.plotOptions"
+                            [yaxis]="barChart.yaxis" [legend]="barChart.legend" [fill]="barChart.fill"
+                            [stroke]="barChart.stroke" [tooltip]="barChart.tooltip"
+                            [xaxis]="barChart.xaxis"></apx-chart>
                     </div>
                 </div>
             </div>
@@ -207,8 +207,9 @@
     </div>
     <div class="col-6 card">
         <div id="chart">
-            <apx-chart [series]="areaChartYearlySalesComparison.series" [chart]="areaChartYearlySalesComparison.chart" [xaxis]="areaChartYearlySalesComparison.xaxis"
-                [stroke]="areaChartYearlySalesComparison.stroke" [tooltip]="areaChartYearlySalesComparison.tooltip"
+            <apx-chart [series]="areaChartYearlySalesComparison.series" [chart]="areaChartYearlySalesComparison.chart"
+                [xaxis]="areaChartYearlySalesComparison.xaxis" [stroke]="areaChartYearlySalesComparison.stroke"
+                [tooltip]="areaChartYearlySalesComparison.tooltip"
                 [dataLabels]="areaChartYearlySalesComparison.dataLabels"></apx-chart>
         </div>
     </div>
@@ -216,10 +217,9 @@
 <div class="row">
     <div class="col-6 card">
         <div id="chart">
-            <apx-chart [series]="barChartTop.series" [chart]="barChartTop.chart"
-                [dataLabels]="barChartTop.dataLabels" [plotOptions]="barChartTop.plotOptions"
-                [yaxis]="barChartTop.yaxis" [legend]="barChartTop.legend" [fill]="barChartTop.fill"
-                [stroke]="barChartTop.stroke" [tooltip]="barChartTop.tooltip"
+            <apx-chart [series]="barChartTop.series" [chart]="barChartTop.chart" [dataLabels]="barChartTop.dataLabels"
+                [plotOptions]="barChartTop.plotOptions" [yaxis]="barChartTop.yaxis" [legend]="barChartTop.legend"
+                [fill]="barChartTop.fill" [stroke]="barChartTop.stroke" [tooltip]="barChartTop.tooltip"
                 [xaxis]="barChartTop.xaxis"></apx-chart>
         </div>
     </div>
@@ -233,3 +233,27 @@
         </div>
     </div>
 </div>
+
+<p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Performance Rank</th>
+            <th>Shop Name</th>
+            <th>District</th>
+            <th>IMFS Sales Growth</th>
+            <th>Beer Sales Growtn</th>
+            <th>Overall Percentageh>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+        <tr>
+            <td>{{ product.performanceName }}</td>
+            <td>{{ product.shopName }}</td>
+            <td>{{ product.district }}</td>
+            <td>{{ product.imfsSalesGrowth }}</td>
+            <td>{{ product.beerSalesGrowth }}</td>
+            <td>{{ product.overAllPercentage }}</td>
+        </tr>
+    </ng-template>
+</p-table>
+  
