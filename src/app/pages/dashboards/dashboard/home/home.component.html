@@ -122,7 +122,7 @@
                     </div>
                 </div>
                 <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                    <h3>{{chartData.today.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}} </h3>
+                    <h3>{{chartData.today.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
                     <h3>{{chartData.today.beerSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
                 </div>
             </div>
@@ -238,7 +238,7 @@
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
                     <select class="form-control" data-choices (change)="filterComparison(selectedValueRegionWise,$event,date1,date2)">
-                        <option *ngFor="let value of location" value="{{value.value}}">
+                        <option *ngFor="let value of district" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
                 </div>&nbsp;
@@ -309,15 +309,15 @@
                 &nbsp;
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices>
-                        <option *ngFor="let value of location" value="{{value.value}}">
+                    <select class="form-control" data-choices (change)="filterOverallSales($event)">
+                        <option *ngFor="let value of overAllChart" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
                 </div>&nbsp;
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
                     <select class="form-control" data-choices>
-                        <option *ngFor="let value of imfsAndBeerComparisonMonth" value="{{value.value}}">
+                        <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
                 </div>&nbsp;
@@ -340,7 +340,7 @@
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
                     <select class="form-control" data-choices (change)="filterSalesComparison($event)">
-                        <option *ngFor="let value of location" value="{{value.value}}">
+                        <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
                 </div>
@@ -426,7 +426,7 @@
     <ng-template pTemplate="header">
         <tr>
             <th>Performance Rank</th>
-            <th>Shop Name</th>
+            <th>Shop No</th>
             <th>District</th>
             <th>IMFS Sales Growth</th>
             <th>Beer Sales Growtn</th>

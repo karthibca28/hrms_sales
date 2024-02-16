@@ -64,21 +64,23 @@ export class HomeComponent {
   imfsAndBeerComparisonMonth: any
   yearlySalesComparison: any
   chartData: any
-  location = [{
-    label: "Chennai", value: 1
-  },
-  {
-    label: "Coimbatore", value: 2
-  },
-  {
-    label: "Madurai", value: 3
-  },
-  {
-    label: "Salem", value: 4
-  },
-  {
-    label: "Trichy", value: 5
-  }]
+  location:any
+  overAllChart:any
+  // [{
+  //   label: "Chennai", value: 1
+  // },
+  // {
+  //   label: "Coimbatore", value: 2
+  // },
+  // {
+  //   label: "Madurai", value: 3
+  // },
+  // {
+  //   label: "Salem", value: 4
+  // },
+  // {
+  //   label: "Trichy", value: 5
+  // }]
 
   district = [{
     label:"Chennai Central", value: 5
@@ -109,6 +111,8 @@ export class HomeComponent {
   getDashboardData() {
     this.service.getDashBoard().subscribe((res: any) => {
       console.log('>>>', res.data)
+      this.overAllChart = res.data.parameters.imfsAndBeerComparison.periodRange
+      this.location = res.data.globalParameters.regions
       this.chartData = res.data.charts.liveSalesAndCompareByDate
       this.regionwiseDropdown = res.data.parameters.regionWiseBarChart.years
       this.top5DistrictBarChart = res.data.parameters.top5DistrictBarChart.years
@@ -389,7 +393,7 @@ export class HomeComponent {
     this.service.getFilterDashBoard('leastPerformance', selectedValueRegionWise).subscribe((res: any) => {
       console.log(res)
       this.barChartLeast = {
-        series: res.data.charts.comparisonBetweenDate.series,
+        series: res.data.charts.leastPerformance.series,
         chart: {
           type: "bar",
           height: 350
@@ -410,7 +414,7 @@ export class HomeComponent {
           colors: ["transparent"]
         },
         xaxis: res.data.
-          charts.comparisonBetweenDate
+          charts.leastPerformance
           .xaxis,
         yaxis: {
           title: {
@@ -435,7 +439,7 @@ export class HomeComponent {
     this.service.getFilterDashBoard('top5DistrictBarChart', selectedValueRegionWise).subscribe((res: any) => {
       console.log(res)
       this.barChartTop = {
-        series: res.data.charts.comparisonBetweenDate.series,
+        series: res.data.charts.top5DistrictBarChart.series,
         chart: {
           type: "bar",
           height: 350
@@ -456,7 +460,7 @@ export class HomeComponent {
           colors: ["transparent"]
         },
         xaxis: res.data.
-          charts.comparisonBetweenDate
+          charts.top5DistrictBarChart
           .xaxis,
         yaxis: {
           title: {
@@ -476,7 +480,33 @@ export class HomeComponent {
       } as barChartOption
     })
   }
-  filterSalesComparison(event: any) {
+  filterOverallSales(event: any) {
+    const selectedValueRegionWise = event.target.value;
+    this.service.getFilterDashBoardForOverallSales('imfsAndBeerComparison', selectedValueRegionWise).subscribe((res: any) => {
+      console.log(res)
+      this.salesChart = {
+        series: res.data.charts.imfsAndBeerComparison.series,
+        chart: {
+          type: "donut"
+        },
+        labels: res.data.charts.imfsAndBeerComparison.labels,
+        responsive: [
+          {
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend: {
+                position: "bottom"
+              }
+            }
+          }
+        ]
+      };
+    })
+  }
+    filterSalesComparison(event: any){
     const selectedValueRegionWise = event.target.value;
     this.service.getFilterDashBoard('yearlySalesComparison', selectedValueRegionWise).subscribe((res: any) => {
       console.log(res)
