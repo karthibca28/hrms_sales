@@ -20,6 +20,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { LoginComponent } from './pages/login/login.component';
 import { SharedModule } from "./shared/shared.module";
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -40,6 +41,7 @@ if (environment.defaultauth === 'firebase') {
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
+        {provide: LocationStrategy, useClass: HashLocationStrategy}
     ],
     bootstrap: [AppComponent],
     imports: [
