@@ -36,6 +36,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { HomeComponent } from './dashboard/home/home.component';
+import { IndianCurrencyPipe } from './indian-currency.pipe';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { HomeComponent } from './dashboard/home/home.component';
     NftComponent,
     JobComponent,
     DynamicViewTableComponent,
-    HomeComponent
+    HomeComponent,
+    IndianCurrencyPipe
   ],
   imports: [
     CommonModule,
