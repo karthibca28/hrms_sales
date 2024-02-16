@@ -1,5 +1,5 @@
 <div class="project-wrapper m-2">
-   <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center">
         <h3>Live Volume & Sales Comparison</h3>
         <img class="title-img" src="assets/icons/Live-Sales-Data.png" />
     </div>
@@ -87,7 +87,8 @@
         </div>
         <div class="box px-2">
             <div class="live flex align-items-center">
-                <p style="font-weight: 600;">Today's Overall Sales {{chartData.today.date}}  <img src="../assets/icons/live.png" height="30"/></p>
+                <p style="font-weight: 600;">Today's Overall Sales {{chartData.today.date}} <img
+                        src="../assets/icons/live.png" height="30" /></p>
             </div>
             <div style="border: 2px solid black; border-top-right-radius: 5px;
             border-top-left-radius: 8px;border-top-right-radius: 8px; border-bottom-right-radius: 5px;
@@ -138,7 +139,7 @@
                                 src="assets/icons/Comparison-Data.png" /> -->
                         </h4>
                     </div>
-    
+
                     <div class="col-md-4">
                         <div>
                             <!-- <select class="form-control" data-choices (change)="filterRegionWise($event)">
@@ -154,13 +155,13 @@
                     <div class="w-100">
                         <div class="col-12">
                             <div id="chart">
-                                <apx-chart [series]="areaChart.series" [chart]="areaChart.chart" [xaxis]="areaChart.xaxis"
-                                    [stroke]="areaChart.stroke" [tooltip]="areaChart.tooltip"
+                                <apx-chart [series]="areaChart.series" [chart]="areaChart.chart"
+                                    [xaxis]="areaChart.xaxis" [stroke]="areaChart.stroke" [tooltip]="areaChart.tooltip"
                                     [dataLabels]="areaChart.dataLabels"></apx-chart>
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- <div class="right-card" style="display: flex;align-items: center;width:40%">
     
                         <div class="col-12 col-md-12" style="cursor: pointer;padding: 10px;border-radius: 16px;">
@@ -237,17 +238,20 @@
                 </div>&nbsp;
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices (change)="filterComparison(selectedValueRegionWise,$event,date1,date2)">
+                    <select class="form-control" data-choices
+                        (change)="filterComparison(selectedValueRegionWise,$event,date1,date2)">
                         <option *ngFor="let value of district" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
                 </div>&nbsp;
                 <div class="col-xxl-3">
-                    <input type="text" (change)="filterComparison(selectedValueRegionWise,locationType,$event,date2)" class="form-control bg-light border-light" id="datepicker" mwlFlatpickr
+                    <input type="text" (change)="filterComparison(selectedValueRegionWise,locationType,$event,date2)"
+                        class="form-control bg-light border-light" id="datepicker" mwlFlatpickr
                         [convertModelValue]="true" data-date-format="d M, Y" placeholder="Select date">
                 </div>&nbsp;
                 <div class="col-xxl-3">
-                    <input type="text" (change)="filterComparison(selectedValueRegionWise,locationType,date1,$event)" class="form-control bg-light border-light" id="datepicker" mwlFlatpickr
+                    <input type="text" (change)="filterComparison(selectedValueRegionWise,locationType,date1,$event)"
+                        class="form-control bg-light border-light" id="datepicker" mwlFlatpickr
                         [convertModelValue]="true" data-date-format="d M, Y" placeholder="Select date">
                 </div>
             </div>
@@ -336,21 +340,42 @@
             </div>
 
             <div style="display: flex;">
-                &nbsp;
-                <div class="col-md-3">
+                    <div class="form-check" (click)="filterSalesComparison()">
+                        <input class="form-check-input" type="checkbox" value="2024" id="flexCheckDefault" checked >
+                        <label class="form-check-label" for="flexCheckDefault">
+                            2024
+                        </label>
+                    </div>&nbsp;
+                    <div class="form-check"(click)="filterSalesComparison()">
+                        <input class="form-check-input" type="checkbox" value="2023" id="flexCheckDefault" checked >
+                        <label class="form-check-label" for="flexCheckDefault">
+                            2023
+                        </label>
+                    </div>&nbsp;
+                    <div class="form-check"(click)="filterSalesComparison()">
+                        <input class="form-check-input" type="checkbox" value="2022" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            2022
+                        </label>
+                    </div>&nbsp;
+                    <div class="form-check"(click)="filterSalesComparison()">
+                        <input class="form-check-input" type="checkbox" value="2021" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            2021
+                        </label>
+                    </div>
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices (change)="filterSalesComparison($event)">
+                    <!-- <select class="form-control" data-choices (change)="filterSalesComparison($event)">
                         <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
                             {{value.label}}</option>
-                    </select>
-                </div>
+                    </select> -->
             </div>
             <div class="flex-shrink-0">
             </div>
             <div id="chart">
-                <apx-chart [series]="areaChartYearlySalesComparison.series" [chart]="areaChartYearlySalesComparison.chart"
-                    [xaxis]="areaChartYearlySalesComparison.xaxis" [stroke]="areaChartYearlySalesComparison.stroke"
-                    [tooltip]="areaChartYearlySalesComparison.tooltip"
+                <apx-chart [series]="areaChartYearlySalesComparison.series"
+                    [chart]="areaChartYearlySalesComparison.chart" [xaxis]="areaChartYearlySalesComparison.xaxis"
+                    [stroke]="areaChartYearlySalesComparison.stroke" [tooltip]="areaChartYearlySalesComparison.tooltip"
                     [dataLabels]="areaChartYearlySalesComparison.dataLabels"></apx-chart>
             </div>
         </div>
@@ -381,9 +406,10 @@
             <div class="flex-shrink-0">
             </div>
             <div id="chart">
-                <apx-chart [series]="barChartTop.series" [chart]="barChartTop.chart" [dataLabels]="barChartTop.dataLabels"
-                    [plotOptions]="barChartTop.plotOptions" [yaxis]="barChartTop.yaxis" [legend]="barChartTop.legend"
-                    [fill]="barChartTop.fill" [stroke]="barChartTop.stroke" [tooltip]="barChartTop.tooltip"
+                <apx-chart [series]="barChartTop.series" [chart]="barChartTop.chart"
+                    [dataLabels]="barChartTop.dataLabels" [plotOptions]="barChartTop.plotOptions"
+                    [yaxis]="barChartTop.yaxis" [legend]="barChartTop.legend" [fill]="barChartTop.fill"
+                    [stroke]="barChartTop.stroke" [tooltip]="barChartTop.tooltip"
                     [xaxis]="barChartTop.xaxis"></apx-chart>
             </div>
         </div>

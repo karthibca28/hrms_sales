@@ -20,6 +20,9 @@ export class FormService {
   getFilterDashBoard(chartName:any,year:any){
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&year=${year}`);
   }
+  getFilterSalesComparison(chartName:any,year:any){
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&years=[${year}]`);
+  }
   getFilterDashBoardForOverallSales(chartName:any,year:any){
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&periodRange=${year}`);
   }

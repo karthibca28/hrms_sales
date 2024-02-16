@@ -506,9 +506,13 @@ export class HomeComponent {
       };
     })
   }
-    filterSalesComparison(event: any){
-    const selectedValueRegionWise = event.target.value;
-    this.service.getFilterDashBoard('yearlySalesComparison', selectedValueRegionWise).subscribe((res: any) => {
+    filterSalesComparison(){
+      const checkboxes = document.querySelectorAll('.form-check-input:checked');
+      const selectedValues = Array.from(checkboxes).map((checkbox: any) => checkbox.value);
+      const selectedValuesArray = Array.isArray(selectedValues) ? selectedValues : [selectedValues];
+      console.log(selectedValuesArray)
+  
+    this.service.getFilterSalesComparison('yearlySalesComparison',selectedValuesArray).subscribe((res: any) => {
       console.log(res)
       this.areaChartYearlySalesComparison = {
         series: res.data.charts.
