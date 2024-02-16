@@ -21,13 +21,13 @@
                 </h3>
             </div>
             <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                <h3><img src="assets/icons/home.png">{{chartData.previousYear.imfsSoldVolumeCases}}</h3>
-                <h3><img src="assets/icons/home.png">{{chartData.previousYear.beerSoldVolumeCases}}</h3>
+                <h3><img src="assets/icons/home.png">{{chartData.previousYear.imfsSoldVolumeCases || 0}}</h3>
+                <h3><img src="assets/icons/home.png">{{chartData.previousYear.beerSoldVolumeCases || 0}}</h3>
 
             </div>
             <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                <h3>{{chartData.previousYear.imfsSalesValue}}</h3>
-                <h3>{{chartData.previousYear.beerSalesValue}}</h3>
+                <h3>{{chartData.previousYear.imfsSalesValue || 0}}</h3>
+                <h3>{{chartData.previousYear.beerSalesValue || 0}}</h3>
             </div>
         </div>
     </div>
@@ -48,13 +48,13 @@
                 </h3>
             </div>
             <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                <h3><img src="assets/icons/home.png">{{chartData.previousDay.imfsSoldVolumeCases}}</h3>
-                <h3><img src="assets/icons/home.png">{{chartData.previousDay.beerSoldVolumeCases}}</h3>
+                <h3><img src="assets/icons/home.png">{{chartData.previousDay.imfsSoldVolumeCases || 0}}</h3>
+                <h3><img src="assets/icons/home.png">{{chartData.previousDay.beerSoldVolumeCases || 0}}</h3>
 
             </div>
             <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                <h3>{{chartData.previousDay.imfsSalesValue}} </h3>
-                <h3>{{chartData.previousDay.beerSalesValue}}</h3>
+                <h3>{{chartData.previousDay.imfsSalesValue ||0}} </h3>
+                <h3>{{chartData.previousDay.beerSalesValue || 0}}</h3>
             </div>
         </div>
     </div>
@@ -79,13 +79,13 @@
                 </h3>
             </div>
             <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                <h3><img src="assets/icons/home.png">{{chartData.today.imfsSoldVolumeCases}} </h3>
-                <h3><img src="assets/icons/home.png">{{chartData.today.beerSoldVolumeCases}} </h3>
+                <h3><img src="assets/icons/home.png">{{chartData.today.imfsSoldVolumeCases || 0}} </h3>
+                <h3><img src="assets/icons/home.png">{{chartData.today.beerSoldVolumeCases || 0}} </h3>
 
             </div>
             <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                <h3>{{chartData.today.imfsSalesValue}} </h3>
-                <h3>{{chartData.today.beerSalesValue}} </h3>
+                <h3>{{chartData.today.imfsSalesValue ||0}} </h3>
+                <h3>{{chartData.today.beerSalesValue ||0}} </h3>
             </div>
         </div>
     </div>
@@ -172,7 +172,7 @@
             <div class="col-md-3">
                 <!--  (change)="filterRegionWise($event)" -->
                 <select class="form-control" data-choices (change)="filterComparison(selectedValueRegionWise,$event,date1,date2)">
-                    <option *ngFor="let value of location" value="{{value.value}}">
+                    <option *ngFor="let value of district" value="{{value.value}}">
                         {{value.label}}</option>
                 </select>
             </div>&nbsp;

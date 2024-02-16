@@ -67,7 +67,31 @@ export class HomeComponent {
     label: "Chennai", value: 1
   },
   {
-    label: "ChennaiNorth", value: 2
+    label: "Coimbatore", value: 2
+  },
+  {
+    label: "Madurai", value: 3
+  },
+  {
+    label: "Salem", value: 4
+  },
+  {
+    label: "Trichy", value: 5
+  }]
+
+  district = [{
+    label:"Chennai Central", value: 5
+  },{
+    label:"Chennai North", value: 5
+  },
+  {
+    label:"Chennai South", value: 5
+  },
+  {
+    label:"Chennai East", value: 5
+  },
+  {
+    label:"Chennai West", value: 5
   }]
 
   ngOnInit(): void {
@@ -407,7 +431,7 @@ export class HomeComponent {
   }
   filterTopFive(event: any) {
     const selectedValueRegionWise = event.target.value;
-    this.service.getFilterDashBoard('leastPerformance', selectedValueRegionWise).subscribe((res: any) => {
+    this.service.getFilterDashBoard('top5DistrictBarChart', selectedValueRegionWise).subscribe((res: any) => {
       console.log(res)
       this.barChartTop = {
         series: res.data.charts.comparisonBetweenDate.series,
