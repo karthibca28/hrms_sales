@@ -51,6 +51,7 @@ interface areaChart {
 })
 export class HomeComponent {
   @ViewChild("chart") chart!: ChartComponent;
+  breadCrumbItems!: Array<{}>;
   public areaChart: areaChart
   public salesChart: sideBarOption
   public barChart: barChartOption
