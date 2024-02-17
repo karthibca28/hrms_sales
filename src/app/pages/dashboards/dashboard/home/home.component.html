@@ -342,7 +342,7 @@
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
                     <select class="form-control" data-choices (change)="filterOverallSales($event,'location')">
-                        <option value="" >All</option>
+                        <option value="">All</option>
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
@@ -390,6 +390,7 @@
                 &nbsp;
                 <div class="col-md-3">
                     <select class="form-control" data-choices (change)="filterSalesComparison($event)">
+                        <option value="">All</option>
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
@@ -423,6 +424,7 @@
                 </div>&nbsp;
                 <div class="col-md-3">
                     <select class="form-control" data-choices (change)="filterTopFive($event, 'location')">
+                        <option value="">All</option>
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}
                         </option>
@@ -457,6 +459,7 @@
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
                     <select class="form-control" data-choices (change)="filterLeastfiveDistrict($event,'location')">
+                        <option value="">All</option>
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
@@ -495,6 +498,7 @@
             </div>
             <div class="col-md-3">
                 <select class="form-control" data-choices (change)="filterTable($event, 'region')">
+                    <option value="">All</option>
                     <option *ngFor="let value of location" value="{{value.value}}">
                         {{value.label}}
                     </option>
@@ -517,9 +521,9 @@
             <th>Total Previous Month Beer Sales</th>
             <th>Total Previous Month IMFS Sales</th>
             <th>Total Previous Month Sales</th> -->
-            <th>Total Bear Growth Ratio</th>
-            <th>Total Imfs Growth Ration</th>
-            <th>Total Growth Ration</th>
+            <th>Beer Sales Growth</th>
+            <th>Imfs Sales Growth</th>
+            <th>Overall Percentage</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
