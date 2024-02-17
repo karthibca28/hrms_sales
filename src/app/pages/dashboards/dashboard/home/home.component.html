@@ -514,6 +514,7 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
+            <th>S.No</th>
             <th>District</th>
             <!-- <th>Total Previous 3Months Beer Sales</th>
             <th>Total Previous 3Months IMFS Sales</th>
@@ -526,8 +527,9 @@
             <th>Overall Percentage</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-product>
+    <ng-template pTemplate="body" let-product let-ri="rowIndex" >
         <tr>
+            <td>{{ri+1}}</td>
             <td>{{ product.districtName }}</td>
             <!-- <td>{{ product.totalPrev3MonthBeerSales }}</td>
             <td>{{ product.totalPrev3MonthIMFSales }}</td>
