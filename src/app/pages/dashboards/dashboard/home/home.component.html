@@ -204,7 +204,7 @@
                     Total Sales Feb 2023
                 </div>
                 <div class="card-body text-center">
-                    <h2 class="mb-0" style="font-weight: 700;">{{valueData.previousTotal}}</h2>
+                    <h2 class="mb-0" style="font-weight: 700;">{{valueData.previousTotal}} Crs</h2>
                 </div>
             </div>
             <div class="card">
@@ -213,7 +213,7 @@
                     Total Sales Feb 2024 (12 feb 2024)
                 </div>
                 <div class="card-body text-center">
-                    <h2 class="mb-0" style="font-weight: 700;">{{valueData.previousCurrent}}</h2>
+                    <h2 class="mb-0" style="font-weight: 700;">{{valueData.previousCurrent}} Crs</h2>
                 </div>
             </div>
             <div class="card">
@@ -222,7 +222,7 @@
                     Growth Percentage Feb 2024
                 </div>
                 <div class="card-body text-center">
-                    <h1 class="mb-0" style="color: red;font-weight: 700;">{{valueData.percentage}}</h1>
+                    <h1 class="mb-0" style="color: red;font-weight: 700;">{{valueData.percentage}}%</h1>
                 </div>
             </div>
         </div>
@@ -303,7 +303,7 @@
                                     </div>
                                     <span class="d-flex gap-3 mt-2" style="font-size:25px;justify-content: center; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;
                                         background-color:#F0E0E0;text-align: center;padding: 20px 20px 20px 0px;">
-                                        {{comparisonGrowthPercentage}}
+                                        {{comparisonGrowthPercentage}}%
                                     </span>
                                 </div>
                             </div>
@@ -342,6 +342,7 @@
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
                     <select class="form-control" data-choices (change)="filterOverallSales($event,'location')">
+                        <option value="" >All</option>
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
