@@ -198,7 +198,7 @@
                     Total Sales Feb 2023
                 </div>
                 <div class="card-body text-center">
-                    <h2 class="mb-0" style="font-weight: 700;">3742.31 Crs</h2>
+                    <h2 class="mb-0" style="font-weight: 700;">{{valueData.previousTotal}}</h2>
                 </div>
             </div>
             <div class="card">
@@ -206,7 +206,7 @@
                     Total Sales Feb 2024 (12 feb 2024)
                 </div>
                 <div class="card-body text-center">
-                    <h2 class="mb-0" style="font-weight: 700;">2138.75 Crs</h2>
+                    <h2 class="mb-0" style="font-weight: 700;">{{valueData.previousCurrent}}</h2>
                 </div>
             </div>
             <div class="card">
@@ -214,7 +214,7 @@
                     Growth Percentage Feb 2024
                 </div>
                 <div class="card-body text-center">
-                    <h1 class="mb-0" style="color: red;font-weight: 700;">-42.84%</h1>
+                    <h1 class="mb-0" style="color: red;font-weight: 700;">{{valueData.percentage}}</h1>
                 </div>
             </div>
         </div>
@@ -223,10 +223,11 @@
         <div class="card">
             <div class="header-container row">
                 <h4 class="card-title mb-0 flex-grow-1">Comparison Data
+                    <img src="../../../../../assets/icons/Comparison-Data.png" />
                 </h4>
             </div>
 
-            <div style="display: flex;">
+            <div style="display: flex;margin-top: 4px;">
                 &nbsp;<div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
                     <select class="form-control" data-choices (change)="filterComparison($event,locationType,
@@ -240,19 +241,20 @@
                     <!--  (change)="filterRegionWise($event)" -->
                     <select class="form-control" data-choices
                         (change)="filterComparison(selectedValueRegionWise,$event,date1,date2)">
-                        <option *ngFor="let value of district" value="{{value.value}}">
+                        <option *ngFor="let value of districts" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
                 </div>&nbsp;
-                <div class="col-xxl-3">
+                <div class="col-xl-3">
                     <input type="text" (change)="filterComparison(selectedValueRegionWise,locationType,$event,date2)"
                         class="form-control bg-light border-light" id="datepicker" mwlFlatpickr
                         [convertModelValue]="true" data-date-format="d M, Y" placeholder="Select date">
-                </div>&nbsp;
-                <div class="col-xxl-3">
+                </div>&nbsp;Vs
+                <div class="col-xl-3 row">
                     <input type="text" (change)="filterComparison(selectedValueRegionWise,locationType,date1,$event)"
                         class="form-control bg-light border-light" id="datepicker" mwlFlatpickr
                         [convertModelValue]="true" data-date-format="d M, Y" placeholder="Select date">
+                        <a><i class="fas fa-calendar"></i></a>
                 </div>
             </div>
             <div class="flex-shrink-0">
@@ -340,32 +342,32 @@
             </div>
 
             <div style="display: flex;">
-                    <div class="form-check" (click)="filterSalesComparison()">
-                        <input class="form-check-input" type="checkbox" value="2024" id="flexCheckDefault" checked >
-                        <label class="form-check-label" for="flexCheckDefault">
-                            2024
-                        </label>
-                    </div>&nbsp;
-                    <div class="form-check"(click)="filterSalesComparison()">
-                        <input class="form-check-input" type="checkbox" value="2023" id="flexCheckDefault" checked >
-                        <label class="form-check-label" for="flexCheckDefault">
-                            2023
-                        </label>
-                    </div>&nbsp;
-                    <div class="form-check"(click)="filterSalesComparison()">
-                        <input class="form-check-input" type="checkbox" value="2022" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            2022
-                        </label>
-                    </div>&nbsp;
-                    <div class="form-check"(click)="filterSalesComparison()">
-                        <input class="form-check-input" type="checkbox" value="2021" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            2021
-                        </label>
-                    </div>
-                    <!--  (change)="filterRegionWise($event)" -->
-                    <!-- <select class="form-control" data-choices (change)="filterSalesComparison($event)">
+                <div class="form-check" (click)="filterSalesComparison()">
+                    <input class="form-check-input" type="checkbox" value="2024" id="flexCheckDefault" checked>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        2024
+                    </label>
+                </div>&nbsp;
+                <div class="form-check" (click)="filterSalesComparison()">
+                    <input class="form-check-input" type="checkbox" value="2023" id="flexCheckDefault" checked>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        2023
+                    </label>
+                </div>&nbsp;
+                <div class="form-check" (click)="filterSalesComparison()">
+                    <input class="form-check-input" type="checkbox" value="2022" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        2022
+                    </label>
+                </div>&nbsp;
+                <div class="form-check" (click)="filterSalesComparison()">
+                    <input class="form-check-input" type="checkbox" value="2021" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        2021
+                    </label>
+                </div>
+                <!--  (change)="filterRegionWise($event)" -->
+                <!-- <select class="form-control" data-choices (change)="filterSalesComparison($event)">
                         <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
                             {{value.label}}</option>
                     </select> -->
@@ -456,7 +458,8 @@
             <th>District</th>
             <th>IMFS Sales Growth</th>
             <th>Beer Sales Growtn</th>
-            <th>Overall Percentageh>
+            <th>Overall Percentage
+            <th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>

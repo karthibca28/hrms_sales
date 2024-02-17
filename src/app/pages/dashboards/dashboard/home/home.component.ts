@@ -65,7 +65,10 @@ export class HomeComponent {
   yearlySalesComparison: any
   chartData: any
   location:any
+  districts:any
   overAllChart:any
+  previousCurrent:any
+  valueData:any
   // [{
   //   label: "Chennai", value: 1
   // },
@@ -113,12 +116,14 @@ export class HomeComponent {
       console.log('>>>', res.data)
       this.overAllChart = res.data.parameters.imfsAndBeerComparison.periodRange
       this.location = res.data.globalParameters.regions
+      this.districts = res.data.globalParameters.regionId
       this.chartData = res.data.charts.liveSalesAndCompareByDate
       this.regionwiseDropdown = res.data.parameters.regionWiseBarChart.years
       this.top5DistrictBarChart = res.data.parameters.top5DistrictBarChart.years
       this.imfsAndBeerComparisonYear = res.data.parameters.imfsAndBeerComparison.years
       this.imfsAndBeerComparisonMonth = res.data.parameters.imfsAndBeerComparison.month
       this.yearlySalesComparison = res.data.parameters.yearlySalesComparison.years
+      this.valueData = res.data.charts.yearlyCummulativeComparison
       this.areaChart = {
         series: res.data.charts.yearlyCummulativeComparison.series,
         chart: {
@@ -337,6 +342,7 @@ export class HomeComponent {
   filterComparison(event: any, data: any, value: any, type: any) {
     this.selectedValueRegionWise = event.target.value;
     this.locationType = data.target.value;
+    this.districts= data.target.value
     this.date1 = event.target.value;
     this.date2 = event.target.value;
     console.log('Selected value:', this.selectedValueRegionWise);
