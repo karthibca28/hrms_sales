@@ -34,8 +34,8 @@ export class FormService {
   getFilterDashBoardForOverallSales(chartName:any,year:any,regionId:any){
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}${year?'&periodRange='+year:''}${regionId?'&regionId='+regionId:''}`);
   }
-  getFilterDashBoardComparison(chartName:any,year:any,date1:any,date2:any){
-    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&year=${year}&date1=${date1}&date2=${date2}`);
+  getFilterDashBoardComparison(chartName:any,regionId:any,districtId:any,date1:any,date2:any){
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}${regionId?'&regionId='+regionId:''}${districtId?'&districtId='+districtId:''}${date1?'&date1='+date1:''}${date2?'&date2='+date2:''}`);
   }
   getFilterDashBoardforimfsAndBeerComparison(chartName:any,year:any,month:any){
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&year=${year}&month=${month}`);

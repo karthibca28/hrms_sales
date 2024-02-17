@@ -5,7 +5,7 @@
     </div>
     <section style="margin: 5px;" class="layout">
         <div class="box px-2">
-            <p style="font-weight: 600;margin-top: 4px;">Previous Year {{chartData.previousYear.date}}</p>
+            <p style="font-weight: 600;margin-top: 4px;">Previous Year {{chartData?.previousYear?.date}}</p>
             <div style="border: 1px solid black; border-top-right-radius: 5px;margin-top: 14px;
             border-top-left-radius: 8px;border-top-right-radius: 8px;
             border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
@@ -29,24 +29,24 @@
                     <div style="display: flex;justify-content: space-between;align-items: center;">
                         <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
                         <span style="font-weight: 600;color: #000;">
-                            {{chartData.previousYear.imfsSoldVolumeCases}}
+                            {{chartData?.previousYear?.imfsSoldVolumeCases}}
                         </span>
                     </div>
                     <div style="display: flex;justify-content: space-between;align-items: center;">
                         <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
                         <span style="font-weight: 600;color: #000;">
-                            {{chartData.previousYear.beerSoldVolumeCases}}
+                            {{chartData?.previousYear?.beerSoldVolumeCases}}
                         </span>
                     </div>
                 </div>
                 <div style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                    <h3>{{chartData.previousYear.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
-                    <h3>{{chartData.previousYear.beerSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
+                    <h3>{{chartData?.previousYear?.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
+                    <h3>{{chartData?.previousYear?.beerSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
                 </div>
             </div>
         </div>
         <div class="box px-2">
-            <p style="font-weight: 700;margin-top: 4px;">Previous Day {{chartData.previousDay.date}}</p>
+            <p style="font-weight: 700;margin-top: 4px;">Previous Day {{chartData?.previousDay?.date}}</p>
             <div style="border: 1px solid black; border-top-right-radius: 5px;
             border-top-left-radius: 8px;border-top-right-radius: 8px;
              border-bottom-right-radius: 5px;margin-top: 14px;
@@ -70,24 +70,24 @@
                     <div style="display: flex;justify-content: space-between;align-items: center;">
                         <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
                         <span style="font-weight: 600;color: #000;">
-                            {{chartData.previousDay.imfsSoldVolumeCases}}
+                            {{chartData?.previousDay?.imfsSoldVolumeCases}}
                         </span>
                     </div>
                     <div style="display: flex;justify-content: space-between;align-items: center;">
                         <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
                         <span style="font-weight: 600;color: #000;">
-                            {{chartData.previousDay.beerSoldVolumeCases}}
+                            {{chartData?.previousDay?.beerSoldVolumeCases}}
                         </span>
                     </div>
                 </div>
                 <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                    <h3>{{chartData.previousDay.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}} </h3>
-                    <h3>{{chartData.previousDay.beerSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
+                    <h3>{{chartData?.previousDay?.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}} </h3>
+                    <h3>{{chartData?.previousDay?.beerSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
                 </div>
             </div>
         </div>
         <div class="box px-2">
-            <p style="font-weight: 400;font-weight: bold;">Today's Overall Sales {{chartData.today.date}}
+            <p style="font-weight: 400;font-weight: bold;">Today's Overall Sales {{chartData?.today?.date}}
                 <img style="width: 30px;height: 30px; align-items: center;justify-content: center;"
                     src="assets/icons/live.png" />
             </p>
@@ -117,19 +117,19 @@
                     <div style="display: flex;justify-content: space-between;align-items: center;">
                         <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
                         <span style="font-weight: 600;color: #000;">
-                            {{chartData.today.imfsSoldVolumeCases}}
+                            {{chartData?.today?.imfsSoldVolumeCases}}
                         </span>
                     </div>
                     <div style="display: flex;justify-content: space-between;align-items: center;">
                         <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
                         <span style="font-weight: 600;color: #000;">
-                            {{chartData.today.beerSoldVolumeCases}}
+                            {{chartData?.today?.beerSoldVolumeCases}}
                         </span>
                     </div>
                 </div>
                 <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                    <h3>{{chartData.today.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
-                    <h3>{{chartData.today.beerSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
+                    <h3>{{chartData?.today?.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
+                    <h3>{{chartData?.today?.beerSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
                 </div>
             </div>
         </div>
@@ -238,8 +238,8 @@
             <div style="display: flex;margin-top: 4px;">
                 &nbsp;<div class="col-md-2">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices
-                        (change)="filterComparison($event,locationType,date1,date2)" (change)="getDistrict($event)">
+                    <select class="form-control" data-choices (change)="filterComparison($event,'region')"
+                        (change)="getDistrict($event)">
                         <option value="">Select</option>
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
@@ -247,22 +247,21 @@
                 </div>&nbsp;
                 <div class="col-md-2">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices
-                        (change)="filterComparison(selectedValueRegionWise,$event,date1,date2)">
+                    <select class="form-control" data-choices (change)="filterComparison($event,'district')">
                         <option value="">Select</option>
                         <option *ngFor="let value of districts" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
                 </div>&nbsp;
                 <div style="width: 10%;border: 1px solid black;border-radius: 4px;margin-left: 4px;" class="col-xl-3">
-                    <input type="text" (change)="filterComparison(selectedValueRegionWise,locationType,$event,date2)"
+                    <input type="text" (change)="filterComparison($event,'date1')"
                         class="form-control bg-light border-light" id="datepicker" mwlFlatpickr
                         [convertModelValue]="true" data-date-format="d M, Y" placeholder="Select date">
                 </div>&nbsp;<span style="align-items: center;margin-left: 2px;" class="mt-2">Vs</span>
                 <!-- <a><i class="fas fa-calendar"></i></a> -->
                 <div style="margin-left: 14px;width: 100px;border: 1px solid black;border-radius: 4px;"
                     class="col-xl-6 row">
-                    <input type="text" (change)="filterComparison(selectedValueRegionWise,locationType,date1,$event)"
+                    <input type="text" (change)="filterComparison($event,'date2')"
                         class="form-control bg-light border-light" id="datepicker" mwlFlatpickr
                         [convertModelValue]="true" data-date-format="d M, Y" placeholder="Select date">
 
@@ -304,7 +303,7 @@
                                     </div>
                                     <span class="d-flex gap-3 mt-2" style="font-size:25px;justify-content: center; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;
                                         background-color:#F0E0E0;text-align: center;padding: 20px 20px 20px 0px;">
-                                        30.81%
+                                        {{comparisonGrowthPercentage}}
                                     </span>
                                 </div>
                             </div>
@@ -475,26 +474,44 @@
     </div>
 </div>
 
-<p-table [value]="tabledata" [tableStyle]="{ 'min-width': '50rem' }">
+<p-table [value]="tabledata" [rows]="10" [showCurrentPageReport]="true" [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="globalSearch"
+    responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+    <ng-template pTemplate="caption">
+        <!-- <div class="flex">
+            <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="applyGlobalFilter($event)" placeholder="Search keyword" />
+            </span>
+        </div> -->
+    </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th>Performance Rank</th>
-            <th>Shop No</th>
             <th>District</th>
-            <th>IMFS Sales Growth</th>
-            <th>Beer Sales Growtn</th>
-            <th>Overall Percentage
-            <th>
+            <th>Total Previous 3Months Beer Sales</th>
+            <th>Total Previous 3Months IMFS Sales</th>
+            <th>Total Previous 3Months Sales</th>
+            <th>Total Previous Month Beer Sales</th>
+            <th>Total Previous Month IMFS Sales</th>
+            <th>Total Previous Month Sales</th>
+            <th>Total Bear Growth Ratio</th>
+            <th>Total Imfs Growth Ration</th>
+            <th>Total Growth Ration</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
         <tr>
-            <!-- <td>{{ tabledata.performanceName }}</td>
-            <td>{{ tabledata.shopName }}</td>
-            <td>{{ tabledata.districtName }}</td>
-            <td>{{ tabledata.imfsSalesGrowth }}</td>
-            <td>{{ tabledata.beerSalesGrowth }}</td>
-            <td>{{ tabledata.overAllPercentage }}</td> -->
+            <td>{{ product.districtName }}</td>
+            <td>{{ product.totalPrev3MonthBeerSales }}</td>
+            <td>{{ product.totalPrev3MonthIMFSales }}</td>
+            <td>{{ product.totalPrev3MonthSales}}</td>
+            <td>{{ product.totalPrevMonthBeerSales}}</td>
+            <td>{{ product.totalPrevMonthIMFSales }}</td>
+            <td>{{ product.totalPrevMonthSales}}</td>
+            <td style="color: #E14D57;">{{ product.totalBeerGrowthRatio }}</td>
+            <td style="color: #E14D57;">{{ product.totalImfsGrowthRatio }}</td>
+            <td style="color: green;">{{ product.totalGrowthRatio}}</td>
         </tr>
     </ng-template>
 </p-table>
+<app-loader></app-loader>

@@ -16,7 +16,9 @@ import {
   ApexGrid,
   ApexNonAxisChartSeries
 } from "ng-apexcharts";
+import { Table } from 'primeng/table';
 import { FormService } from 'src/app/shared/service/form.service';
+import { LoadingService } from 'src/app/shared/service/loading.service';
 
 interface sideBarOption {
   series: ApexNonAxisChartSeries;
@@ -69,7 +71,9 @@ export class HomeComponent {
   overAllChart: any
   previousCurrent: any
   valueData: any
-  tabledata:any
+  tabledata: any
+  comparisonGrowthPercentage: any
+  globalSearch: any[] = ['districtName', 'totalPrev3MonthBeerSales', 'totalPrev3MonthIMFSales', 'totalPrev3MonthSales', 'totalPrevMonthBeerSales', 'totalPrevMonthIMFSales', 'totalPrevMonthSales'];
   // [{
   //   label: "Chennai", value: 1
   // },
@@ -87,11 +91,12 @@ export class HomeComponent {
   // }]
 
   district: any
-
+  @ViewChild('dt1') dt1!: Table;
+  colorPalette: string[] = ['#E14D57', '#3D88B9', '#6DB28E', '#F5A623', '#5C5C5C'];
   ngOnInit(): void {
     this.getDashboardData()
   }
-  constructor(public service: FormService) {
+  constructor(public service: FormService, private loadingService: LoadingService) {
     this.areaChart = {} as areaChart
     this.barChart = {} as barChartOption
     this.salesChart = {} as sideBarOption
@@ -99,7 +104,13 @@ export class HomeComponent {
     this.barChartTop = {} as barChartOption
     this.barChartLeast = {} as barChartOption
   }
+  applyGlobalFilter(event: any) {
+    const filterValue = event.target.value;
+    this.dt1.filterGlobal(filterValue, 'contains');
+  }
+
   getDashboardData() {
+    this.loadingService.showLoader();
     this.service.getDashBoard().subscribe((res: any) => {
       console.log('>>>', res.data)
       this.overAllChart = res.data.parameters.imfsAndBeerComparison.periodRange
@@ -112,8 +123,10 @@ export class HomeComponent {
       this.imfsAndBeerComparisonMonth = res.data.parameters.imfsAndBeerComparison.month
       this.yearlySalesComparison = res.data.parameters.yearlySalesComparison.years
       this.valueData = res.data.charts.yearlyCummulativeComparison
-      // this.tabledata= res.data.chart.leastPerformanceGrowthRate
-      // console.log(">>>>table",this.tabledata)
+      this.tabledata = res.data.charts.leastPerformanceGrowthRate
+      this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties.growthPercentage
+      this.loadingService.hideLoader();
+      console.log(">>>>table", this.tabledata)
       this.areaChart = {
         series: res.data.charts.yearlyCummulativeComparison.series,
         chart: {
@@ -202,7 +215,7 @@ export class HomeComponent {
       this.salesChart = {
         series: res.data.charts.imfsAndBeerComparison.series,
         chart: {
-          type: "donut"
+          type: "donut",
         },
         labels: res.data.charts.imfsAndBeerComparison.labels,
         responsive: [
@@ -217,14 +230,18 @@ export class HomeComponent {
               }
             }
           }
-        ]
-      };
+        ],
+        fill: {
+          colors: ['#ffff']
+        }
+      } as sideBarOption
       this.barChartTop = {
         series: res.data.charts.top5DistrictBarChart.series,
         chart: {
           type: "bar",
-          height: 350
-        },
+          height: 350,
+          colors: ["#00FF00"]
+        } as any,
         plotOptions: {
           bar: {
             horizontal: false,
@@ -325,21 +342,44 @@ export class HomeComponent {
     },
   ]
 
-  selectedValueRegionWise: any
+  districtforComparison: any
   locationType: any
   date1: any
   date2: any
-  filterComparison(event: any, data: any, value: any, type: any) {
-    this.selectedValueRegionWise = event.target.value;
-    this.locationType = data.target.value;
-    this.districts = data.target.value
-    this.date1 = event.target.value;
-    this.date2 = event.target.value;
-    console.log('Selected value:', this.selectedValueRegionWise);
-    this.service.getFilterDashBoardComparison('comparisonBetweenDate', this.selectedValueRegionWise,
-      // this.locationType,
+  filterComparison(event: any, dropdownType: any) {
+
+    this.loadingService.showLoader();
+    if (dropdownType === 'region') {
+      this.locationType = event?.target?.value;
+    } else if (dropdownType === 'district') {
+      this.districtforComparison = event?.target?.value
+    }
+    else if (dropdownType === 'date1') {
+      this.date1 = event.target.value;
+      if (!this.date2) {
+        this.date2 = new Date().toISOString().split('T')[0];
+      }
+    } else if (dropdownType === 'date2') {
+      this.date2 = event.target.value;
+      if (!this.date1) {
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        this.date1 = yesterday.toISOString().split('T')[0];
+      }
+    }
+    if (!this.date1) {
+      const yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      this.date1 = yesterday.toISOString().split('T')[0];
+    }
+    if (!this.date2) {
+      this.date2 = new Date().toISOString().split('T')[0];
+    }
+    this.service.getFilterDashBoardComparison('comparisonBetweenDate', this.locationType,
+      this.districtforComparison,
       this.date1,
       this.date2).subscribe((res: any) => {
+        this.loadingService.hideLoader();
         console.log(res)
         this.barChart = {
           series: res.data.charts.comparisonBetweenDate.series,
@@ -383,17 +423,19 @@ export class HomeComponent {
         } as barChartOption
       })
   }
-  selectLeastFiveYear:any
-  selectedDistrict:any
+  selectLeastFiveYear: any
+  selectedDistrict: any
   filterLeastfiveDistrict(event: any, dropdownType: any) {
+    this.loadingService.showLoader();
     if (dropdownType === 'year') {
       this.selectLeastFiveYear = event?.target?.value;
     } else if (dropdownType === 'location') {
       this.selectedDistrict = event?.target?.value
     }
-    console.log('Selected value:', this.selectLeastFiveYear,this.selectedDistrict);
-    this.service.getFilterDashBoard('leastPerformance', this.selectLeastFiveYear,this.selectedDistrict).subscribe((res: any) => {
+    console.log('Selected value:', this.selectLeastFiveYear, this.selectedDistrict);
+    this.service.getFilterDashBoard('leastPerformance', this.selectLeastFiveYear, this.selectedDistrict).subscribe((res: any) => {
       console.log(res)
+      this.loadingService.hideLoader();
       this.barChartLeast = {
         series: res.data.charts.leastPerformance.series,
         chart: {
@@ -439,14 +481,16 @@ export class HomeComponent {
   selectedyearForTopFive: any
   selectedDistrictTopFive: any
   filterTopFive(event: any, dropdownType: any) {
+    this.loadingService.showLoader();
     if (dropdownType === 'year') {
       this.selectedyearForTopFive = event?.target?.value;
     } else if (dropdownType === 'location') {
       this.selectedDistrictTopFive = event?.target?.value
     }
-    console.log(this.selectedDistrictTopFive,this.selectedyearForTopFive)
+    console.log(this.selectedDistrictTopFive, this.selectedyearForTopFive)
     this.service.getFilterDashBoard('top5DistrictBarChart', this.selectedyearForTopFive, this.selectedDistrictTopFive).subscribe((res: any) => {
       console.log(res)
+      this.loadingService.hideLoader();
       this.barChartTop = {
         series: res.data.charts.top5DistrictBarChart.series,
         chart: {
@@ -489,16 +533,18 @@ export class HomeComponent {
       } as barChartOption
     })
   }
-  selectedMonthOverallSales:any
-  selectedDistrictOverallSales:any
-  filterOverallSales(event: any,dropdownType:any) {
+  selectedMonthOverallSales: any
+  selectedDistrictOverallSales: any
+  filterOverallSales(event: any, dropdownType: any) {
+    this.loadingService.showLoader();
     if (dropdownType === 'month') {
       this.selectedMonthOverallSales = event?.target?.value;
     } else if (dropdownType === 'location') {
       this.selectedDistrictOverallSales = event?.target?.value
     }
-    this.service.getFilterDashBoardForOverallSales('imfsAndBeerComparison', this.selectedMonthOverallSales,this.selectedDistrictOverallSales).subscribe((res: any) => {
+    this.service.getFilterDashBoardForOverallSales('imfsAndBeerComparison', this.selectedMonthOverallSales, this.selectedDistrictOverallSales).subscribe((res: any) => {
       console.log(res)
+      this.loadingService.hideLoader();
       this.salesChart = {
         series: res.data.charts.imfsAndBeerComparison.series,
         chart: {
@@ -521,16 +567,18 @@ export class HomeComponent {
       };
     })
   }
-  selectedFilterSalesDistrict:any
-  filterSalesComparison(event?:any) {
+  selectedFilterSalesDistrict: any
+  filterSalesComparison(event?: any) {
+    this.loadingService.showLoader();
     this.selectedFilterSalesDistrict = event?.target?.value;
     const checkboxes = document.querySelectorAll('.form-check-input:checked');
     const selectedValues = Array.from(checkboxes).map((checkbox: any) => checkbox.value);
     const selectedValuesArray = Array.isArray(selectedValues) ? selectedValues : [selectedValues];
-    console.log(selectedValuesArray,this.selectedFilterSalesDistrict)
+    console.log(selectedValuesArray, this.selectedFilterSalesDistrict)
 
-    this.service.getFilterSalesComparison('yearlySalesComparison', selectedValuesArray,this.selectedFilterSalesDistrict).subscribe((res: any) => {
+    this.service.getFilterSalesComparison('yearlySalesComparison', selectedValuesArray, this.selectedFilterSalesDistrict).subscribe((res: any) => {
       console.log(res)
+      this.loadingService.hideLoader();
       this.areaChartYearlySalesComparison = {
         series: res.data.charts.
           yearlySalesComparison
