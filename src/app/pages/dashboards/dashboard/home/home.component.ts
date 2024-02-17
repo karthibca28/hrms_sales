@@ -201,7 +201,7 @@ export class HomeComponent {
           .xaxis,
         yaxis: {
           title: {
-            // text: "$ (thousands)"
+            // text: "₹ (Cr)"
           }
         },
         fill: {
@@ -210,7 +210,7 @@ export class HomeComponent {
         tooltip: {
           y: {
             formatter: function (val) {
-              return "$ " + val + " thousands";
+              return "₹ " + val + " Cr";
             }
           }
         }
@@ -263,7 +263,7 @@ export class HomeComponent {
         xaxis: res.data.charts.top5DistrictBarChart.xaxis,
         yaxis: {
           title: {
-            // text: "$ (thousands)"
+            // text: "₹ (Cr)"
           }
         },
         fill: {
@@ -272,7 +272,7 @@ export class HomeComponent {
         tooltip: {
           y: {
             formatter: function (val) {
-              return "$ " + val + " thousands";
+              return "₹ " + val + " Cr";
             }
           }
         }
@@ -301,7 +301,7 @@ export class HomeComponent {
         xaxis: res.data.charts.leastPerformance.xaxis,
         yaxis: {
           title: {
-            // text: "$ (thousands)"
+            // text: "₹ (Cr)"
           }
         },
         fill: {
@@ -310,7 +310,7 @@ export class HomeComponent {
         tooltip: {
           y: {
             formatter: function (val) {
-              return "$ " + val + " thousands";
+              return "₹ " + val + " Cr";
             }
           }
         }
@@ -382,7 +382,7 @@ export class HomeComponent {
             .xaxis,
           yaxis: {
             title: {
-              // text: "$ (thousands)"
+              // text: "₹ (Cr)"
             }
           },
           fill: {
@@ -391,7 +391,7 @@ export class HomeComponent {
           tooltip: {
             y: {
               formatter: function (val) {
-                return "$ " + val + " thousands";
+                return "₹ " + val + " Cr";
               }
             }
           }
@@ -437,7 +437,7 @@ export class HomeComponent {
           .xaxis,
         yaxis: {
           title: {
-            // text: "$ (thousands)"
+            // text: "₹ (Cr)"
           }
         },
         fill: {
@@ -446,7 +446,7 @@ export class HomeComponent {
         tooltip: {
           y: {
             formatter: function (val) {
-              return "$ " + val + " thousands";
+              return "₹ " + val + " Cr";
             }
           }
         }
@@ -492,7 +492,7 @@ export class HomeComponent {
           .xaxis,
         yaxis: {
           title: {
-            // text: "$ (thousands)"
+            // text: "₹ (Cr)"
           }
         },
         fill: {
@@ -501,7 +501,7 @@ export class HomeComponent {
         tooltip: {
           y: {
             formatter: function (val) {
-              return "$ " + val + " thousands";
+              return "₹ " + val + " Cr";
             }
           }
         }
