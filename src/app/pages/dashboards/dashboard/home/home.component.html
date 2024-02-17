@@ -474,10 +474,32 @@
     </div>
 </div>
 
+<div>
+    <span style="font-weight: bold;font-size: medium;">
+        Least Growth Performance Rate
+    </span>
+</div>
+
 <p-table [value]="tabledata" [rows]="10" [showCurrentPageReport]="true" [paginator]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="globalSearch"
     responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
     <ng-template pTemplate="caption">
+        <div class="row">
+            <div class="col-md-3">
+                <select class="form-control" data-choices (change)="filterTopFive($event, 'year')">
+                    <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
+                        {{value.label}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-control" data-choices (change)="filterTopFive($event, 'year')">
+                    <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
+                        {{value.label}}
+                    </option>
+                </select>
+            </div>
+        </div>
         <!-- <div class="flex">
             <span class="p-input-icon-left ml-auto">
                 <i class="pi pi-search"></i>
