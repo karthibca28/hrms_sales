@@ -23,6 +23,9 @@ export class FormService {
   getFilterSalesComparison(chartName:any,year:any){
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&years=[${year}]`);
   }
+  getDistrict(data:any){
+    return this.http.get(`${this.baseUrl}district-manager-offices?$for=dropdown&regionId=${data}`);
+  }
   getFilterDashBoardForOverallSales(chartName:any,year:any){
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&periodRange=${year}`);
   }

@@ -85,20 +85,7 @@ export class HomeComponent {
   //   label: "Trichy", value: 5
   // }]
 
-  district = [{
-    label:"Chennai Central", value: 5
-  },{
-    label:"Chennai North", value: 5
-  },
-  {
-    label:"Chennai South", value: 5
-  },
-  {
-    label:"Chennai East", value: 5
-  },
-  {
-    label:"Chennai West", value: 5
-  }]
+  district:any
 
   ngOnInit(): void {
     this.getDashboardData()
@@ -544,6 +531,14 @@ export class HomeComponent {
           }
         }
       };
+    })
+  }
+  getDistrict(event:any){
+    console.log(event.target.value)
+    const data = event.target.value
+    this.service.getDistrict(data).subscribe((res:any)=>{
+      console.log(res)
+      this.districts = res.data.districts
     })
   }
 }

@@ -230,9 +230,7 @@
             <div style="display: flex;margin-top: 4px;">
                 &nbsp;<div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices (change)="filterComparison($event,locationType,
-                    date1,
-                    date2)">
+                    <select class="form-control" data-choices (change)="filterComparison($event,locationType,date1,date2)" (change)="getDistrict($event)">
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
@@ -249,7 +247,7 @@
                     <input type="text" (change)="filterComparison(selectedValueRegionWise,locationType,$event,date2)"
                         class="form-control bg-light border-light" id="datepicker" mwlFlatpickr
                         [convertModelValue]="true" data-date-format="d M, Y" placeholder="Select date">
-                </div>&nbsp;Vs
+                </div>&nbsp;
                 <div class="col-xl-3 row">
                     <input type="text" (change)="filterComparison(selectedValueRegionWise,locationType,date1,$event)"
                         class="form-control bg-light border-light" id="datepicker" mwlFlatpickr
