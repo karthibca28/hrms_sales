@@ -3,15 +3,15 @@
         <h3>Live Volume & Sales Comparison</h3>
         <img class="title-img" src="assets/icons/Live-Sales-Data.png" />
     </div>
-    <section class="layout">
+    <section style="margin: 5px;" class="layout">
         <div class="box px-2">
-            <p style="font-weight: 600;">Previous Year {{chartData.previousYear.date}}</p>
-            <div style="border: 2px solid black; border-top-right-radius: 5px;
+            <p style="font-weight: 600;margin-top: 4px;">Previous Year {{chartData.previousYear.date}}</p>
+            <div style="border: 1px solid black; border-top-right-radius: 5px;margin-top: 14px;
             border-top-left-radius: 8px;border-top-right-radius: 8px;
             border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
                 <div style="display: flex;justify-content: space-between;
                     background-color: #FEB96C;padding: 5px 20px 5px 20px;border-radius: 8px;
-                    align-items: center;border: 2px solid black;">
+                    align-items: center;border: 1px solid black;">
                     <div style="display: flex;justify-content: space-between;align-items: center;">
                         <span style="font-weight: 600;color: #000;">
                             IMFS
@@ -46,12 +46,13 @@
             </div>
         </div>
         <div class="box px-2">
-            <p style="font-weight: 600;">Previous Day {{chartData.previousDay.date}}</p>
-            <div style="border: 2px solid black; border-top-right-radius: 5px;
-            border-top-left-radius: 8px;border-top-right-radius: 8px; border-bottom-right-radius: 5px;
+            <p style="font-weight: 700;margin-top: 4px;">Previous Day {{chartData.previousDay.date}}</p>
+            <div style="border: 1px solid black; border-top-right-radius: 5px;
+            border-top-left-radius: 8px;border-top-right-radius: 8px;
+             border-bottom-right-radius: 5px;margin-top: 14px;
             border-bottom-left-radius: 5px;">
                 <div class="head" style="display: flex;justify-content: space-between;border-radius: 8px;
-                    background-color: #008FFB;padding: 5px 20px 5px 20px;align-items: center;border: 2px solid black;">
+                    background-color: #008FFB;padding: 5px 20px 5px 20px;align-items: center;border: 1px solid black;">
                     <div style="display: flex;justify-content: space-between;align-items: center;">
                         <span style="font-weight: 600;color: #000;">
                             IMFS
@@ -86,15 +87,19 @@
             </div>
         </div>
         <div class="box px-2">
-            <div class="live flex align-items-center">
+            <p style="font-weight: 400;font-weight: bold;">Today's Overall Sales {{chartData.today.date}}
+                <img style="width: 30px;height: 30px; align-items: center;justify-content: center;"
+                    src="assets/icons/live.png" />
+            </p>
+            <!-- <div class="live flex align-items-center">
                 <p style="font-weight: 600;">Today's Overall Sales {{chartData.today.date}} <img
-                        src="assets/icons/live.png" height="30" /></p>
-            </div>
-            <div style="border: 2px solid black; border-top-right-radius: 5px;
+                        src="assets/icons/live.png"  /></p>
+            </div> -->
+            <div style="border: 1px solid black; border-top-right-radius: 5px;
             border-top-left-radius: 8px;border-top-right-radius: 8px; border-bottom-right-radius: 5px;
             border-bottom-left-radius: 5px;">
                 <div style="display: flex;justify-content: space-between;border-radius: 8px;
-                    border: 2px solid black;background-color: #00E396;padding: 5px 20px 5px 20px;align-items: center;">
+                    border: 1px solid black;background-color: #00E396;padding: 5px 25px 5px 20px;align-items: center;">
                     <div style="display: flex;justify-content: space-between;align-items: center;">
                         <span style="font-weight: 600;color: #000;">
                             IMFS
@@ -194,7 +199,8 @@
         </div>
         <div class="col-12 col-md-4 align-items-center">
             <div class="card">
-                <div class="card-header" style="background-color: #008FFB;">
+                <div class="card-header" style="background-color: #008FFB;
+                font-weight: bold;text-align: center;">
                     Total Sales Feb 2023
                 </div>
                 <div class="card-body text-center">
@@ -202,7 +208,8 @@
                 </div>
             </div>
             <div class="card">
-                <div class="card-header" style="background-color: #00E396;">
+                <div class="card-header" style="background-color: #00E396;
+                font-weight: bold;text-align: center;">
                     Total Sales Feb 2024 (12 feb 2024)
                 </div>
                 <div class="card-body text-center">
@@ -210,7 +217,8 @@
                 </div>
             </div>
             <div class="card">
-                <div class="card-header" style="background-color: #008FFB;">
+                <div class="card-header" style="background-color: #008FFB;
+                font-weight: bold;text-align: center;">
                     Growth Percentage Feb 2024
                 </div>
                 <div class="card-body text-center">
@@ -219,40 +227,45 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-12">
+    <div class="col-xl-12 row">
         <div class="card">
             <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Comparison Data
-                    <img src="assets/icons/Comparison-Data.png" />
+                    <img style="width: 25px;height: 25px;" src="assets/icons/Comparison-Data.png" />
                 </h4>
             </div>
 
             <div style="display: flex;margin-top: 4px;">
                 &nbsp;<div class="col-md-2">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices (change)="filterComparison($event,locationType,date1,date2)" (change)="getDistrict($event)">
+                    <select class="form-control" data-choices
+                        (change)="filterComparison($event,locationType,date1,date2)" (change)="getDistrict($event)">
+                        <option value="">Select</option>
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
                 </div>&nbsp;
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <!--  (change)="filterRegionWise($event)" -->
                     <select class="form-control" data-choices
                         (change)="filterComparison(selectedValueRegionWise,$event,date1,date2)">
+                        <option value="">Select</option>
                         <option *ngFor="let value of districts" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
                 </div>&nbsp;
-                <div style="width: 10%;" class="col-xl-3">
+                <div style="width: 10%;border: 1px solid black;border-radius: 4px;margin-left: 4px;" class="col-xl-3">
                     <input type="text" (change)="filterComparison(selectedValueRegionWise,locationType,$event,date2)"
                         class="form-control bg-light border-light" id="datepicker" mwlFlatpickr
                         [convertModelValue]="true" data-date-format="d M, Y" placeholder="Select date">
-                </div>&nbsp;<a><i class="fas fa-calendar"></i></a>
-                <div style="margin-left: 10px;width: 30px;" class="col-xl-6 row">
+                </div>&nbsp;<span style="align-items: center;margin-left: 2px;" class="mt-2">Vs</span>
+                <!-- <a><i class="fas fa-calendar"></i></a> -->
+                <div style="margin-left: 14px;width: 100px;border: 1px solid black;border-radius: 4px;"
+                    class="col-xl-6 row">
                     <input type="text" (change)="filterComparison(selectedValueRegionWise,locationType,date1,$event)"
                         class="form-control bg-light border-light" id="datepicker" mwlFlatpickr
                         [convertModelValue]="true" data-date-format="d M, Y" placeholder="Select date">
-                        
+
                 </div>
             </div>
             <div class="flex-shrink-0">
@@ -270,7 +283,7 @@
                     </div>
                 </div>
 
-                <!-- <div class="right-card" style="display: flex;align-items: center;width:40%">
+                <div class="right-card" style="display: flex;align-items: center;width:40%">
                     <div class="col-12 col-md-12" style="cursor: pointer;padding: 10px;border-radius: 16px;">
                         <div class="overflow-hidden">
                             <div class="card-body d-flex">
@@ -291,22 +304,31 @@
                                     </div>
                                     <span class="d-flex gap-3 mt-2" style="font-size:25px;justify-content: center; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;
                                         background-color:#F0E0E0;text-align: center;padding: 20px 20px 20px 0px;">
-                                        25%
+                                        30.81%
                                     </span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                </div> -->
+                </div>
             </div>
         </div>
+        <!-- <div class="card">
+            <div class="card-header" style="background-color: #008FFB;">
+                Growth Percentage Feb 2024
+            </div>
+            <div class="card-body text-center">
+                <h1 class="mb-0" style="color: red;font-weight: 700;">{{valueData.percentage}}</h1>
+            </div>
+        </div> -->
+
     </div>
     <div class="row">
         <div class="col-6 card">
             <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Overall Sales
-                    <img src="assets/icons/sales.png" />
+                    <img style="width: 30px;height: 30px;" src="assets/icons/sales.png" />
                 </h4>
             </div>
             <div style="display: flex;">
@@ -336,11 +358,11 @@
         <div class="col-6 card">
             <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Sales Comparison
-                    <img src="assets/icons/sales-comp.png" />
+                    <img style="width: 25px;height: 25px;" src="assets/icons/sales-comp.png" />
                 </h4>
             </div>
 
-            <div style="display: flex;">
+            <div style="display: flex; align-items: center;">
                 <div class="form-check" (click)="filterSalesComparison()">
                     <input class="form-check-input" type="checkbox" value="2024" id="flexCheckDefault" checked>
                     <label class="form-check-label" for="flexCheckDefault">
@@ -387,7 +409,7 @@
         <div class="col-6 card">
             <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Top Five District sales
-                    <img src="assets/icons/top-5.png" />
+                    <img style="width: 25px;height: 25px;" src="assets/icons/top-5.png" />
                 </h4>
             </div>
 
@@ -397,14 +419,14 @@
                         <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
                             {{value.label}}
                         </option>
-                    </select>                    
+                    </select>
                 </div>&nbsp;
                 <div class="col-md-3">
                     <select class="form-control" data-choices (change)="filterTopFive($event, 'location')">
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}
                         </option>
-                    </select>                    
+                    </select>
                 </div>&nbsp;
             </div>
             <div class="flex-shrink-0">
@@ -420,7 +442,7 @@
         <div class="col-6 card">
             <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Least Five District Sales
-                    <img src="assets/icons/last-5.png" />
+                    <img style="width: 25px;height: 25px;" src="assets/icons/last-5.png" />
                 </h4>
             </div>
 
@@ -453,7 +475,7 @@
     </div>
 </div>
 
-<p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+<p-table [value]="tabledata" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
         <tr>
             <th>Performance Rank</th>
@@ -467,12 +489,12 @@
     </ng-template>
     <ng-template pTemplate="body" let-product>
         <tr>
-            <td>{{ product.performanceName }}</td>
-            <td>{{ product.shopName }}</td>
-            <td>{{ product.district }}</td>
-            <td>{{ product.imfsSalesGrowth }}</td>
-            <td>{{ product.beerSalesGrowth }}</td>
-            <td>{{ product.overAllPercentage }}</td>
+            <!-- <td>{{ tabledata.performanceName }}</td>
+            <td>{{ tabledata.shopName }}</td>
+            <td>{{ tabledata.districtName }}</td>
+            <td>{{ tabledata.imfsSalesGrowth }}</td>
+            <td>{{ tabledata.beerSalesGrowth }}</td>
+            <td>{{ tabledata.overAllPercentage }}</td> -->
         </tr>
     </ng-template>
 </p-table>

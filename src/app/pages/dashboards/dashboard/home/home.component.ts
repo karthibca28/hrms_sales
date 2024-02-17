@@ -69,6 +69,7 @@ export class HomeComponent {
   overAllChart: any
   previousCurrent: any
   valueData: any
+  tabledata:any
   // [{
   //   label: "Chennai", value: 1
   // },
@@ -111,6 +112,8 @@ export class HomeComponent {
       this.imfsAndBeerComparisonMonth = res.data.parameters.imfsAndBeerComparison.month
       this.yearlySalesComparison = res.data.parameters.yearlySalesComparison.years
       this.valueData = res.data.charts.yearlyCummulativeComparison
+      // this.tabledata= res.data.chart.leastPerformanceGrowthRate
+      // console.log(">>>>table",this.tabledata)
       this.areaChart = {
         series: res.data.charts.yearlyCummulativeComparison.series,
         chart: {
