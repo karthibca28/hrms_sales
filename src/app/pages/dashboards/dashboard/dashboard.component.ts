@@ -473,99 +473,99 @@ export class DashboardComponent implements OnInit {
   }
   selectedValueRegionWise: any
   filterRegionWise(event: any) {
-    this.selectedValueRegionWise = event.target.value;
-    console.log('Selected value:', this.selectedValueRegionWise);
-    this.service.getFilterDashBoard('regionWiseBarChart', this.selectedValueRegionWise).subscribe((res: any) => {
-      console.log(res)
-      this.barChart = {
-        "series": res.data.charts.regionWiseBarChart.series,
-        chart: {
-          height: 350,
-          type: "bar"
-        },
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: "55%",
+    // this.selectedValueRegionWise = event.target.value;
+    // console.log('Selected value:', this.selectedValueRegionWise);
+    // this.service.getFilterDashBoard('regionWiseBarChart', this.selectedValueRegionWise).subscribe((res: any) => {
+    //   console.log(res)
+    //   this.barChart = {
+    //     "series": res.data.charts.regionWiseBarChart.series,
+    //     chart: {
+    //       height: 350,
+    //       type: "bar"
+    //     },
+    //     plotOptions: {
+    //       bar: {
+    //         horizontal: false,
+    //         columnWidth: "55%",
 
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          show: true,
-          width: 2,
-          colors: ["transparent"]
-        },
-        xaxis: {
-          "categories": res.data.charts.regionWiseBarChart.xaxis.categories,
-        },
-        yaxis: {
-          title: {
-            // text: "$ (thousands)"
-          }
-        },
-        fill: {
-          opacity: 1
-        },
-        tooltip: {
-          y: {
-            formatter: function (val) {
-              return "" + val;
-            }
-          }
-        }
-      };
-    })
+    //       }
+    //     },
+    //     dataLabels: {
+    //       enabled: false
+    //     },
+    //     stroke: {
+    //       show: true,
+    //       width: 2,
+    //       colors: ["transparent"]
+    //     },
+    //     xaxis: {
+    //       "categories": res.data.charts.regionWiseBarChart.xaxis.categories,
+    //     },
+    //     yaxis: {
+    //       title: {
+    //         // text: "$ (thousands)"
+    //       }
+    //     },
+    //     fill: {
+    //       opacity: 1
+    //     },
+    //     tooltip: {
+    //       y: {
+    //         formatter: function (val) {
+    //           return "" + val;
+    //         }
+    //       }
+    //     }
+    //   };
+    // })
   }
   selectedTopDistrictSales: any
   filterTopFiveDistrictSales(event: any) {
-    this.selectedTopDistrictSales = event.target.value;
-    this.service.getFilterDashBoard('top5DistrictBarChart', this.selectedTopDistrictSales).subscribe((res: any) => {
-      console.log(res)
-      this.Barchart1 = {
-        "series": res.data.charts.top5DistrictBarChart.series,
-        chart: {
-          height: 350,
-          type: "bar"
-        },
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: "55%",
+    // this.selectedTopDistrictSales = event.target.value;
+    // this.service.getFilterDashBoard('top5DistrictBarChart', this.selectedTopDistrictSales).subscribe((res: any) => {
+    //   console.log(res)
+    //   this.Barchart1 = {
+    //     "series": res.data.charts.top5DistrictBarChart.series,
+    //     chart: {
+    //       height: 350,
+    //       type: "bar"
+    //     },
+    //     plotOptions: {
+    //       bar: {
+    //         horizontal: false,
+    //         columnWidth: "55%",
 
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          show: true,
-          width: 2,
-          colors: ["#00FF00"]
-        },
-        xaxis: {
-          "categories": res.data.charts.top5DistrictBarChart.xaxis.categories,
-        },
-        yaxis: {
-          title: {
-            // text: "$ (thousands)"
-          }
-        },
-        fill: {
-          colors: ["#00E396"],
-          opacity: 1
-        },
-        tooltip: {
-          y: {
-            formatter: function (val) {
-              return "" + val;
-            }
-          }
-        }
-      };
-    })
+    //       }
+    //     },
+    //     dataLabels: {
+    //       enabled: false
+    //     },
+    //     stroke: {
+    //       show: true,
+    //       width: 2,
+    //       colors: ["#00FF00"]
+    //     },
+    //     xaxis: {
+    //       "categories": res.data.charts.top5DistrictBarChart.xaxis.categories,
+    //     },
+    //     yaxis: {
+    //       title: {
+    //         // text: "$ (thousands)"
+    //       }
+    //     },
+    //     fill: {
+    //       colors: ["#00E396"],
+    //       opacity: 1
+    //     },
+    //     tooltip: {
+    //       y: {
+    //         formatter: function (val) {
+    //           return "" + val;
+    //         }
+    //       }
+    //     }
+    //   };
+    // })
   }
   selecteYear: any
   selecteMonth: any

@@ -223,7 +223,7 @@
         <div class="card">
             <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Comparison Data
-                    <img src="../../../../../assets/icons/Comparison-Data.png" />
+                    <img src="assets/icons/Comparison-Data.png" />
                 </h4>
             </div>
 
@@ -306,21 +306,21 @@
         <div class="col-6 card">
             <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Overall Sales
-                    <img src="../../../../../assets/icons/sales.png" />
+                    <img src="assets/icons/sales.png" />
                 </h4>
             </div>
             <div style="display: flex;">
                 &nbsp;
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices (change)="filterOverallSales($event)">
+                    <select class="form-control" data-choices (change)="filterOverallSales($event,'month')">
                         <option *ngFor="let value of overAllChart" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
                 </div>&nbsp;
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices>
+                    <select class="form-control" data-choices (change)="filterOverallSales($event,'location')">
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
@@ -336,7 +336,7 @@
         <div class="col-6 card">
             <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Sales Comparison
-                    <img src="../../../../../assets/icons/sales-comp.png" />
+                    <img src="assets/icons/sales-comp.png" />
                 </h4>
             </div>
 
@@ -365,11 +365,13 @@
                         2021
                     </label>
                 </div>
-                <!--  (change)="filterRegionWise($event)" -->
-                <!-- <select class="form-control" data-choices (change)="filterSalesComparison($event)">
-                        <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
+                &nbsp;
+                <div class="col-md-3">
+                    <select class="form-control" data-choices (change)="filterSalesComparison($event)">
+                        <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
-                    </select> -->
+                    </select>
+                </div>&nbsp;
             </div>
             <div class="flex-shrink-0">
             </div>
@@ -385,24 +387,24 @@
         <div class="col-6 card">
             <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Top Five District sales
-                    <img src="../../../../../assets/icons/top-5.png" />
+                    <img src="assets/icons/top-5.png" />
                 </h4>
             </div>
 
             <div style="display: flex;">
                 &nbsp;<div class="col-md-3">
-                    <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices (change)="filterTopFive($event)">
+                    <select class="form-control" data-choices (change)="filterTopFive($event, 'year')">
                         <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
-                            {{value.label}}</option>
-                    </select>
+                            {{value.label}}
+                        </option>
+                    </select>                    
                 </div>&nbsp;
                 <div class="col-md-3">
-                    <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices>
+                    <select class="form-control" data-choices (change)="filterTopFive($event, 'location')">
                         <option *ngFor="let value of location" value="{{value.value}}">
-                            {{value.label}}</option>
-                    </select>
+                            {{value.label}}
+                        </option>
+                    </select>                    
                 </div>&nbsp;
             </div>
             <div class="flex-shrink-0">
@@ -418,21 +420,21 @@
         <div class="col-6 card">
             <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Least Five District Sales
-                    <img src="../../../../../assets/icons/last-5.png" />
+                    <img src="assets/icons/last-5.png" />
                 </h4>
             </div>
 
             <div style="display: flex;">
                 &nbsp;<div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices (change)="filterLeastfiveDistricr($event)">
+                    <select class="form-control" data-choices (change)="filterLeastfiveDistrict($event,'year')">
                         <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
                 </div>&nbsp;
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices>
+                    <select class="form-control" data-choices (change)="filterLeastfiveDistrict($event,'location')">
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
