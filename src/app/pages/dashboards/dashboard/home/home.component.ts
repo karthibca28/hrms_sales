@@ -108,6 +108,9 @@ export class HomeComponent {
     const filterValue = event.target.value;
     this.dt1.filterGlobal(filterValue, 'contains');
   }
+  getColor(value: number): string {
+    return value >= 0 ? 'green' : 'red';
+  }
 
   getDashboardData() {
     this.loadingService.showLoader();
@@ -314,34 +317,6 @@ export class HomeComponent {
       } as barChartOption
     })
   }
-
-  products = [
-    {
-      performanceName: "01",
-      shopName: "443",
-      district: "Ambattur II",
-      imfsSalesGrowth: "-5%",
-      beerSalesGrowth: "-4-5%",
-      overAllPercentage: "-10%"
-    },
-    {
-      performanceName: "02",
-      shopName: "037",
-      district: "Ambattur I",
-      imfsSalesGrowth: "-9.6",
-      beerSalesGrowth: "10.4",
-      overAllPercentage: "10%"
-    },
-    {
-      performanceName: "03",
-      shopName: "733",
-      district: "Ambattur III",
-      imfsSalesGrowth: "-5",
-      beerSalesGrowth: "-8",
-      overAllPercentage: "13%"
-    },
-  ]
-
   districtforComparison: any
   locationType: any
   date1: any
@@ -611,6 +586,20 @@ export class HomeComponent {
     this.service.getDistrict(data).subscribe((res: any) => {
       console.log(res)
       this.districts = res.data.districts
+    })
+  }
+  tableYear:any
+  tableregion:any
+  filterTable(event: any, dropdownType: any) {
+    this.loadingService.showLoader();
+    if (dropdownType === 'year') {
+      this.tableYear = event?.target?.value;
+    } else if (dropdownType === 'location') {
+      this.tableregion = event?.target?.value
+    }
+    this.service.getFilterDashBoard('leastPerformanceGrowthRate', this.tableYear, this.tableregion).subscribe((res: any) => {
+      console.log(res)
+      this.loadingService.hideLoader();
     })
   }
 }

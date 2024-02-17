@@ -487,15 +487,15 @@
     <ng-template pTemplate="caption">
         <div class="row">
             <div class="col-md-3">
-                <select class="form-control" data-choices (change)="filterTopFive($event, 'year')">
+                <select class="form-control" data-choices (change)="filterTable($event,'year')">
                     <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
                         {{value.label}}
                     </option>
                 </select>
             </div>
             <div class="col-md-3">
-                <select class="form-control" data-choices (change)="filterTopFive($event, 'year')">
-                    <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
+                <select class="form-control" data-choices (change)="filterTable($event, 'region')">
+                    <option *ngFor="let value of location" value="{{value.value}}">
                         {{value.label}}
                     </option>
                 </select>
@@ -531,9 +531,9 @@
             <td>{{ product.totalPrevMonthBeerSales}}</td>
             <td>{{ product.totalPrevMonthIMFSales }}</td>
             <td>{{ product.totalPrevMonthSales}}</td> -->
-            <td>{{ product.totalBeerGrowthRatio }}%</td>
-            <td>{{ product.totalImfsGrowthRatio }}%</td>
-            <td>{{ product.totalGrowthRatio}}%</td>
+            <td [style.color]="getColor(product.totalBeerGrowthRatio)">{{ product.totalBeerGrowthRatio }}%</td>
+            <td [style.color]="getColor(product.totalImfsGrowthRatio)">{{ product.totalImfsGrowthRatio }}%</td>
+            <td [style.color]="getColor(product.totalGrowthRatio)">{{ product.totalGrowthRatio}}%</td>
         </tr>
     </ng-template>
 </p-table>
