@@ -28,6 +28,12 @@ export class FormService {
 
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&years=[${year}]${actualRegionId ? '&regionId=' + actualRegionId : ''}`);
   }
+  getFilterFestival(chartName: any, year: any, regionId: any) {
+    const actualRegionId = (regionId !== null && regionId !== undefined) ? regionId : this.previousRegionId;
+    this.previousRegionId = actualRegionId;
+
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&years=[${year}]${actualRegionId ? '&regionId=' + actualRegionId : ''}`);
+  }
   getDistrict(data:any){
     return this.http.get(`${this.baseUrl}district-manager-offices?$for=dropdown&regionId=${data}`);
   }

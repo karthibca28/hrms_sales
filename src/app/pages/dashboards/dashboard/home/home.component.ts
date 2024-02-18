@@ -60,6 +60,7 @@ export class HomeComponent {
   public barChartTop: barChartOption
   public barChartLeast: barChartOption
   public areaChartYearlySalesComparison: areaChart
+  public areChartFestival: areaChart
   regionwiseDropdown: any
   top5DistrictBarChart: any
   imfsAndBeerComparisonYear: any
@@ -103,6 +104,7 @@ export class HomeComponent {
     this.areaChartYearlySalesComparison = {} as areaChart
     this.barChartTop = {} as barChartOption
     this.barChartLeast = {} as barChartOption
+    this.areChartFestival = {} as areaChart
   }
   applyGlobalFilter(event: any) {
     const filterValue = event.target.value;
@@ -315,6 +317,30 @@ export class HomeComponent {
           }
         }
       } as barChartOption
+      this.areChartFestival = {
+        series: res.data.charts.
+          yearlyFestival
+          .series,
+        chart: {
+          height: 350,
+          type: "area"
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: "smooth"
+        },
+        xaxis: res.data.
+          charts.
+          yearlyFestival
+          .xaxis,
+        tooltip: {
+          x: {
+            format: "dd/MM/yy HH:mm"
+          }
+        }
+      };
     })
   }
   districtforComparison: any
@@ -543,43 +569,6 @@ export class HomeComponent {
     })
   }
   selectedFilterSalesDistrict: any
-  filterSalesComparison(event?: any) {
-    this.loadingService.showLoader();
-    this.selectedFilterSalesDistrict = event?.target?.value;
-    const checkboxes = document.querySelectorAll('.form-check-input:checked');
-    const selectedValues = Array.from(checkboxes).map((checkbox: any) => checkbox.value);
-    const selectedValuesArray = Array.isArray(selectedValues) ? selectedValues : [selectedValues];
-    console.log(selectedValuesArray, this.selectedFilterSalesDistrict)
-
-    this.service.getFilterSalesComparison('yearlySalesComparison', selectedValuesArray, this.selectedFilterSalesDistrict).subscribe((res: any) => {
-      console.log(res)
-      this.loadingService.hideLoader();
-      this.areaChartYearlySalesComparison = {
-        series: res.data.charts.
-          yearlySalesComparison
-          .series,
-        chart: {
-          height: 350,
-          type: "area"
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          curve: "smooth"
-        },
-        xaxis: res.data.
-          charts.
-          yearlySalesComparison
-          .xaxis,
-        tooltip: {
-          x: {
-            format: "dd/MM/yy HH:mm"
-          }
-        }
-      };
-    })
-  }
   getDistrict(event: any) {
     console.log(event.target.value)
     const data = event.target.value
@@ -588,8 +577,8 @@ export class HomeComponent {
       this.districts = res.data.districts
     })
   }
-  tableYear:any
-  tableregion:any
+  tableYear: any
+  tableregion: any
   filterTable(event: any, dropdownType: any) {
     this.loadingService.showLoader();
     if (dropdownType === 'year') {
@@ -601,6 +590,76 @@ export class HomeComponent {
       console.log(res)
       this.loadingService.hideLoader();
     })
+  }
+  selectedFestival: any
+  selectedFestivalValues: string[] = [];
+  selectedComparisonValues: string[] = [];
+
+  filterFestival(event?: any) {
+    this.loadingService.showLoader();
+    this.selectedFestival = event?.target?.value;
+
+    const cardId = 'festivalCheckbox';
+    const checkboxes = document.querySelectorAll(`#${cardId}:checked`);
+    this.selectedFestivalValues = Array.from(checkboxes).map((checkbox: any) => checkbox.value);
+    console.log(this.selectedFestivalValues, this.selectedFestival);
+    this.service.getFilterSalesComparison('yearlyFestival', this.selectedFestivalValues, this.selectedFestival)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.loadingService.hideLoader();
+        this.areChartFestival = {
+          series: res.data.charts.yearlyFestival.series,
+          chart: {
+            height: 350,
+            type: "area"
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            curve: "smooth"
+          },
+          xaxis: res.data.charts.yearlyFestival.xaxis,
+          tooltip: {
+            x: {
+              format: "dd/MM/yy HH:mm"
+            }
+          }
+        };
+      });
+  }
+
+  filterSalesComparison(event?: any) {
+    this.loadingService.showLoader();
+    this.selectedFilterSalesDistrict = event?.target?.value;
+    const cardId = 'salesCheckbox';
+    const checkboxes = document.querySelectorAll(`#${cardId}:checked`);
+    this.selectedComparisonValues = Array.from(checkboxes).map((checkbox: any) => checkbox.value);
+    console.log(this.selectedComparisonValues, this.selectedFilterSalesDistrict);
+    this.service.getFilterSalesComparison('yearlySalesComparison', this.selectedComparisonValues, this.selectedFilterSalesDistrict)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.loadingService.hideLoader();
+        this.areaChartYearlySalesComparison = {
+          series: res.data.charts.yearlySalesComparison.series,
+          chart: {
+            height: 350,
+            type: "area"
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            curve: "smooth"
+          },
+          xaxis: res.data.charts.yearlySalesComparison.xaxis,
+          tooltip: {
+            x: {
+              format: "dd/MM/yy HH:mm"
+            }
+          }
+        };
+      });
   }
 }
 
