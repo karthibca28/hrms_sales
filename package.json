@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "deploy": "aws s3 sync \".\\dist\\hrms\" \"s3://tasmac-dashboard-wd2/tad\" --profile \"vivid-aws-hrms\"",
+    "deploy": "aws s3 sync \"./dist/hrms\" \"s3://tasmac-dashboard-wd2/tad\" --profile \"vivid-aws-hrms\"",
     "test": "ng test"
   },
   "private": true,
