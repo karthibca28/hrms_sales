@@ -661,5 +661,14 @@ export class HomeComponent {
         };
       });
   }
+  refreshLiveStatus() {
+    this.loadingService.showLoader();
+    this.service.getLiveStatus('liveSalesAndCompareByDate')
+      .subscribe((res: any) => {
+        console.log(res)
+        this.chartData = res.data.charts.liveSalesAndCompareByDate
+        this.loadingService.hideLoader();
+      })
+  }
 }
 
