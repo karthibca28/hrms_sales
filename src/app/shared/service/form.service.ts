@@ -17,17 +17,31 @@ export class FormService {
   getDashBoard() {
     return this.http.get(`${this.baseUrl}dashboard/insights`);
   }
-  getFilterDashBoard(chartName:any,year:any){
-    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&year=${year}`);
+  getFilterDashBoard(chartName:any,year:any,regionId:any){
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}${year?'&year='+year:''}${regionId?'&regionId='+regionId:''}`);
   }
-  getFilterSalesComparison(chartName:any,year:any){
-    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&years=[${year}]`);
+  private previousRegionId: any;
+
+  getFilterSalesComparison(chartName: any, year: any, regionId: any) {
+    const actualRegionId = (regionId !== null && regionId !== undefined) ? regionId : this.previousRegionId;
+    this.previousRegionId = actualRegionId;
+
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&years=[${year}]${actualRegionId ? '&regionId=' + actualRegionId : ''}`);
   }
-  getFilterDashBoardForOverallSales(chartName:any,year:any){
-    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&periodRange=${year}`);
+  getFilterFestival(chartName: any, year: any, regionId: any) {
+    const actualRegionId = (regionId !== null && regionId !== undefined) ? regionId : this.previousRegionId;
+    this.previousRegionId = actualRegionId;
+
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&years=[${year}]${actualRegionId ? '&regionId=' + actualRegionId : ''}`);
   }
-  getFilterDashBoardComparison(chartName:any,year:any,date1:any,date2:any){
-    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&year=${year}&date1=${date1}&date2=${date2}`);
+  getDistrict(data:any){
+    return this.http.get(`${this.baseUrl}district-manager-offices?$for=dropdown&regionId=${data}`);
+  }
+  getFilterDashBoardForOverallSales(chartName:any,year:any,regionId:any){
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}${year?'&periodRange='+year:''}${regionId?'&regionId='+regionId:''}`);
+  }
+  getFilterDashBoardComparison(chartName:any,regionId:any,districtId:any,date1:any,date2:any){
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}${regionId?'&regionId='+regionId:''}${districtId?'&districtId='+districtId:''}${date1?'&date1='+date1?.split('-').reverse().join('-'):''}${date2?'&date2='+date2?.split('-').reverse().join('-'):''}`);
   }
   getFilterDashBoardforimfsAndBeerComparison(chartName:any,year:any,month:any){
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&year=${year}&month=${month}`);

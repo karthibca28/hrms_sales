@@ -1,134 +1,153 @@
 <div class="project-wrapper m-2">
-    <div class="d-flex align-items-center">
-        <h3>Live Volume & Sales Comparison</h3>
-        <img class="title-img" src="assets/icons/Live-Sales-Data.png" />
-    </div>
-    <section class="layout">
-        <div class="box px-2">
-            <p style="font-weight: 600;">Previous Year {{chartData.previousYear.date}}</p>
-            <div style="border: 2px solid black; border-top-right-radius: 5px;
+    <div class="card h-50">
+        <div class="header-container row mb-2">
+            <h4 class="card-title mb-0 flex-grow-1">Live Volume & Sales Comparison
+                <img style="width: 25px;height: 25px;" src="assets/icons/Live-Sales-Data.png" />
+            </h4>
+        </div>
+        <section style="margin: 10px 0;" class="layout">
+            <div class="box px-2" style="margin: 0 5px;">
+                <p style="font-weight: 600;margin-top: 4px;">Previous Year {{chartData?.previousYear?.date}}</p>
+                <div style="border: 1px solid black; border-top-right-radius: 5px;margin-top: 14px;
             border-top-left-radius: 8px;border-top-right-radius: 8px;
             border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
-                <div style="display: flex;justify-content: space-between;
-                    background-color: #FEB96C;padding: 5px 20px 5px 20px;border-radius: 8px;
-                    align-items: center;border: 2px solid black;">
-                    <div style="display: flex;justify-content: space-between;align-items: center;">
-                        <span style="font-weight: 600;color: #000;">
-                            IMFS
-                        </span>
-                        <img src="assets/icons/Imfs.png" style="height: 30px;padding-left: 8px;">
+                    <div style="display: flex;justify-content: space-between; padding: 5px 20px;
+                    background-color: #FEB96C;border-radius: 8px;
+                    align-items: center;border: 1px solid black;">
+                        <div style="display: flex;justify-content: space-between;align-items: center;">
+                            <span style="font-weight: 600;color: #000;">
+                                IMFS
+                            </span>
+                            <img src="assets/icons/Imfs.png" style="height: 30px;padding-left: 8px;">
+                        </div>
+                        <div style="display: flex;justify-content: space-between;align-items: center;">
+                            <span style="font-weight: 600;color: #000;">
+                                Beer
+                            </span>
+                            <img src="assets/icons/beeer.png" style="height: 30px;padding-left: 8px;">
+                        </div>
                     </div>
-                    <div style="display: flex;justify-content: space-between;align-items: center;">
-                        <span style="font-weight: 600;color: #000;">
-                            Beer
-                        </span>
-                        <img src="assets/icons/beeer.png" style="height: 30px;padding-left: 8px;">
+                    <div class="p-3" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
+                        <div style="display: flex;justify-content: space-between;align-items: center;">
+                            <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
+                            <span style="font-weight: 600;color: #000;">
+                                {{chartData?.previousYear?.imfsSoldVolumeCases}} Case
+                            </span>
+                        </div>
+                        <div style="display: flex;justify-content: space-between;align-items: center;">
+                            <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
+                            <span style="font-weight: 600;color: #000;">
+                                {{chartData?.previousYear?.beerSoldVolumeCases}} Case
+                            </span>
+                        </div>
+                    </div>
+                    <div style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
+                        <h3 style="font-weight: 600;color: #000;">{{chartData?.previousYear?.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}}Cr</h3>
+                        <h3 style="font-weight: 600;color: #000;">{{chartData?.previousYear?.beerSalesValue | currency:'INR':'symbol':'1.0-2'}}Cr</h3>
                     </div>
                 </div>
-                <div class="p-3" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                    <div style="display: flex;justify-content: space-between;align-items: center;">
-                        <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
-                        <span style="font-weight: 600;color: #000;">
-                            {{chartData.previousYear.imfsSoldVolumeCases}}
-                        </span>
-                    </div>
-                    <div style="display: flex;justify-content: space-between;align-items: center;">
-                        <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
-                        <span style="font-weight: 600;color: #000;">
-                            {{chartData.previousYear.beerSoldVolumeCases}}
-                        </span>
-                    </div>
-                </div>
-                <div style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                    <h3>{{chartData.previousYear.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
-                    <h3>{{chartData.previousYear.beerSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
-                </div>
+                <span style="font-weight: bold; display: flex;
+                     align-items: center; justify-content: center; 
+                     font-size:xx-large; color: red;margin-top: 5%;">
+                    {{chartData?.previousYear?.growthPercentage}} %
+                </span>
             </div>
-        </div>
-        <div class="box px-2">
-            <p style="font-weight: 600;">Previous Day {{chartData.previousDay.date}}</p>
-            <div style="border: 2px solid black; border-top-right-radius: 5px;
+            <div class="box px-2">
+                <p style="font-weight: 400;margin-top: 6px;font-weight: bold;">Previous Day {{chartData?.previousDay?.date}}</p>
+                <div style="border: 1px solid black; border-top-right-radius: 5px;
+            border-top-left-radius: 8px;border-top-right-radius: 8px;
+             border-bottom-right-radius: 5px;margin-top: 14px;
+            border-bottom-left-radius: 5px;">
+                    <div class="head" style="display: flex;justify-content: space-between;border-radius: 8px;
+                    background-color: #008FFB;padding: 5px 20px 5px 20px;align-items: center;border: 1px solid black;">
+                        <div style="display: flex;justify-content: space-between;align-items: center;">
+                            <span style="font-weight: 600;color: #000;">
+                                IMFS
+                            </span>
+                            <img src="assets/icons/Imfs.png" style="height: 30px;padding-left: 8px;">
+                        </div>
+                        <div style="display: flex;justify-content: space-between;align-items: center;">
+                            <span style="font-weight: 600;color: #000;">
+                                Beer
+                            </span>
+                            <img src="assets/icons/beeer.png" style="height: 30px;padding-left: 8px;">
+                        </div>
+                    </div>
+                    <div class="p-3" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
+                        <div style="display: flex;justify-content: space-between;align-items: center;">
+                            <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
+                            <span style="font-weight: 600;color: #000;">
+                                {{chartData?.previousDay?.imfsSoldVolumeCases}} Case
+                            </span>
+                        </div>
+                        <div style="display: flex;justify-content: space-between;align-items: center;">
+                            <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
+                            <span style="font-weight: 600;color: #000;">
+                                {{chartData?.previousDay?.beerSoldVolumeCases}} Case
+                            </span>
+                        </div>
+                    </div>
+                    <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
+                        <h3 style="font-weight: 600;color: #000;">{{chartData?.previousDay?.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}}Cr </h3>
+                        <h3 style="font-weight: 600;color: #000;">{{chartData?.previousDay?.beerSalesValue | currency:'INR':'symbol':'1.0-2'}}Cr</h3>
+                    </div>
+                </div>
+                <span style="font-weight: bold; display: flex;
+                     align-items: center; justify-content: center; 
+                     font-size:xx-large; color: red;margin-top: 5%;">
+                    {{chartData?.previousDay?.growthPercentage}} %
+                </span>
+            </div>
+            <div class="box px-2" style="margin: 0 5px;">
+                <p style="font-weight: 200;font-weight: bold;margin: 2px;">Today's Overall Sales {{chartData?.today?.date}}
+                    <img style="width: 32px;height: 32px;margin-left:2px; align-items: center;justify-content: center;"
+                        src="assets/icons/Live-1.gif" />
+                        <span style="color: red;font-weight: bold;font-size: medium;">Live</span>
+                    <!-- <img style="width: 37px;height: 37px;margin-left: 2px; align-items: center;justify-content: center;"
+                        src="assets/icons/live.png" /> -->
+                    <img style="width: 25px;height: 25px;margin-left: 5px;" src="assets/icons/refresh.png" />
+                </p>
+
+                <div style="border: 1px solid black; border-top-right-radius: 5px;
             border-top-left-radius: 8px;border-top-right-radius: 8px; border-bottom-right-radius: 5px;
             border-bottom-left-radius: 5px;">
-                <div class="head" style="display: flex;justify-content: space-between;border-radius: 8px;
-                    background-color: #008FFB;padding: 5px 20px 5px 20px;align-items: center;border: 2px solid black;">
-                    <div style="display: flex;justify-content: space-between;align-items: center;">
-                        <span style="font-weight: 600;color: #000;">
-                            IMFS
-                        </span>
-                        <img src="assets/icons/Imfs.png" style="height: 30px;padding-left: 8px;">
+                    <div style="display: flex;justify-content: space-between;border-radius: 8px;
+                    border: 1px solid black;background-color: #00E396;padding: 5px 25px 5px 20px;align-items: center;">
+                        <div style="display: flex;justify-content: space-between;align-items: center;">
+                            <span style="font-weight: 600;color: #000;">
+                                IMFS
+                            </span>
+                            <img src="assets/icons/Imfs.png" style="height: 30px;padding-left: 8px;">
+                        </div>
+                        <div style="display: flex;justify-content: space-between;align-items: center;">
+                            <span style="font-weight: 600;color: #000;">
+                                Beer
+                            </span>
+                            <img src="assets/icons/beeer.png" style="height: 30px;padding-left: 8px;">
+                        </div>
                     </div>
-                    <div style="display: flex;justify-content: space-between;align-items: center;">
-                        <span style="font-weight: 600;color: #000;">
-                            Beer
-                        </span>
-                        <img src="assets/icons/beeer.png" style="height: 30px;padding-left: 8px;">
+                    <div class="p-3" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
+                        <div style="display: flex;justify-content: space-between;align-items: center;">
+                            <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
+                            <span style="font-weight: 600;color: #000;">
+                                {{chartData?.today?.imfsSoldVolumeCases}} Case
+                            </span>
+                        </div>
+                        <div style="display: flex;justify-content: space-between;align-items: center;">
+                            <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
+                            <span style="font-weight: 600;color: #000;">
+                                {{chartData?.today?.beerSoldVolumeCases}} Case
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div class="p-3" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                    <div style="display: flex;justify-content: space-between;align-items: center;">
-                        <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
-                        <span style="font-weight: 600;color: #000;">
-                            {{chartData.previousDay.imfsSoldVolumeCases}}
-                        </span>
+                    <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
+                        <h3 style="font-weight: 600;color: #000;">{{chartData?.today?.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}}Cr</h3>
+                        <h3 style="font-weight: 600;color: #000;">{{chartData?.today?.beerSalesValue | currency:'INR':'symbol':'1.0-2'}}Cr</h3>
                     </div>
-                    <div style="display: flex;justify-content: space-between;align-items: center;">
-                        <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
-                        <span style="font-weight: 600;color: #000;">
-                            {{chartData.previousDay.beerSoldVolumeCases}}
-                        </span>
-                    </div>
-                </div>
-                <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                    <h3>{{chartData.previousDay.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}} </h3>
-                    <h3>{{chartData.previousDay.beerSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
                 </div>
             </div>
-        </div>
-        <div class="box px-2">
-            <div class="live flex align-items-center">
-                <p style="font-weight: 600;">Today's Overall Sales {{chartData.today.date}} <img
-                        src="assets/icons/live.png" height="30" /></p>
-            </div>
-            <div style="border: 2px solid black; border-top-right-radius: 5px;
-            border-top-left-radius: 8px;border-top-right-radius: 8px; border-bottom-right-radius: 5px;
-            border-bottom-left-radius: 5px;">
-                <div style="display: flex;justify-content: space-between;border-radius: 8px;
-                    border: 2px solid black;background-color: #00E396;padding: 5px 20px 5px 20px;align-items: center;">
-                    <div style="display: flex;justify-content: space-between;align-items: center;">
-                        <span style="font-weight: 600;color: #000;">
-                            IMFS
-                        </span>
-                        <img src="assets/icons/Imfs.png" style="height: 30px;padding-left: 8px;">
-                    </div>
-                    <div style="display: flex;justify-content: space-between;align-items: center;">
-                        <span style="font-weight: 600;color: #000;">
-                            Beer
-                        </span>
-                        <img src="assets/icons/beeer.png" style="height: 30px;padding-left: 8px;">
-                    </div>
-                </div>
-                <div class="p-3" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                    <div style="display: flex;justify-content: space-between;align-items: center;">
-                        <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
-                        <span style="font-weight: 600;color: #000;">
-                            {{chartData.today.imfsSoldVolumeCases}}
-                        </span>
-                    </div>
-                    <div style="display: flex;justify-content: space-between;align-items: center;">
-                        <img src="assets/icons/home.png" style="height: 20px;padding-right: 8px;">
-                        <span style="font-weight: 600;color: #000;">
-                            {{chartData.today.beerSoldVolumeCases}}
-                        </span>
-                    </div>
-                </div>
-                <div class="" style="display: flex;justify-content: space-between;padding: 5px 20px 5px 20px;">
-                    <h3>{{chartData.today.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
-                    <h3>{{chartData.today.beerSalesValue | currency:'INR':'symbol':'1.0-2'}}</h3>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
     <div class="row">
         <div class="col-12 col-md-8">
             <div class="card">
@@ -148,8 +167,8 @@
                             </select> -->
                         </div>
                     </div>
-                    <div class="flex-shrink-0">
-                    </div>
+                    <!-- <div class="flex-shrink-0">
+                    </div> -->
                 </div>
                 <div class="card-body p-0 pb-2 d-flex">
                     <div class="w-100">
@@ -192,67 +211,74 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-4 align-items-center">
             <div class="card">
-                <div class="card-header" style="background-color: #008FFB;">
+                <div class="card-header" style="background-color: #008FFB;
+                font-weight: bold;text-align: center;">
                     Total Sales Feb 2023
                 </div>
                 <div class="card-body text-center">
-                    <h2 class="mb-0" style="font-weight: 700;">3742.31 Crs</h2>
+                    <h2 class="mb-0" style="font-weight: 700;">{{valueData.previousTotal}} Crs</h2>
                 </div>
             </div>
             <div class="card">
-                <div class="card-header" style="background-color: #00E396;">
+                <div class="card-header" style="background-color: #00E396;
+                font-weight: bold;text-align: center;">
                     Total Sales Feb 2024 (12 feb 2024)
                 </div>
                 <div class="card-body text-center">
-                    <h2 class="mb-0" style="font-weight: 700;">2138.75 Crs</h2>
+                    <h2 class="mb-0" style="font-weight: 700;">{{valueData.previousCurrent}} Crs</h2>
                 </div>
             </div>
             <div class="card">
-                <div class="card-header" style="background-color: #008FFB;">
+                <div class="card-header" style="background-color: #008FFB;
+                font-weight: bold;text-align: center;">
                     Growth Percentage Feb 2024
                 </div>
                 <div class="card-body text-center">
-                    <h1 class="mb-0" style="color: red;font-weight: 700;">-42.84%</h1>
+                    <h1 class="mb-0" style="color: red;font-weight: 700;">{{valueData.percentage}}%</h1>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-xl-12">
+    <div class="col-xl-12 row">
         <div class="card">
-            <div class="header-container row">
+            <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Comparison Data
+                    <img style="width: 25px;height: 25px;" src="assets/icons/Comparison-Data.png" />
                 </h4>
             </div>
 
-            <div style="display: flex;">
-                &nbsp;<div class="col-md-3">
+            <div style="display: flex;margin-top: 4px;">
+                &nbsp;<div class="col-md-2">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices (change)="filterComparison($event,locationType,
-                    date1,
-                    date2)">
+                    <select class="form-control" data-choices (change)="filterComparison($event,'region')"
+                        (change)="getDistrict($event)">
+                        <option value="">Select</option>
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
                 </div>&nbsp;
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices
-                        (change)="filterComparison(selectedValueRegionWise,$event,date1,date2)">
-                        <option *ngFor="let value of district" value="{{value.value}}">
+                    <select class="form-control" data-choices (change)="filterComparison($event,'district')">
+                        <option value="">Select</option>
+                        <option *ngFor="let value of districts" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
                 </div>&nbsp;
-                <div class="col-xxl-3">
-                    <input type="text" (change)="filterComparison(selectedValueRegionWise,locationType,$event,date2)"
+                <div style="width: 10%;border: 1px solid black;border-radius: 4px;margin-left: 4px;" class="col-xl-3">
+                    <input type="text" (change)="filterComparison($event,'date1')"
                         class="form-control bg-light border-light" id="datepicker" mwlFlatpickr
                         [convertModelValue]="true" data-date-format="d M, Y" placeholder="Select date">
-                </div>&nbsp;
-                <div class="col-xxl-3">
-                    <input type="text" (change)="filterComparison(selectedValueRegionWise,locationType,date1,$event)"
+                </div>&nbsp;<span style="align-items: center;margin-left: 2px;" class="mt-2">Vs</span>
+                <!-- <a><i class="fas fa-calendar"></i></a> -->
+                <div style="margin-left: 14px;width: 100px;border: 1px solid black;border-radius: 4px;"
+                    class="col-xl-6 row">
+                    <input type="text" (change)="filterComparison($event,'date2')"
                         class="form-control bg-light border-light" id="datepicker" mwlFlatpickr
                         [convertModelValue]="true" data-date-format="d M, Y" placeholder="Select date">
+
                 </div>
             </div>
             <div class="flex-shrink-0">
@@ -270,7 +296,7 @@
                     </div>
                 </div>
 
-                <!-- <div class="right-card" style="display: flex;align-items: center;width:40%">
+                <div class="right-card" style="display: flex;align-items: center;width:40%">
                     <div class="col-12 col-md-12" style="cursor: pointer;padding: 10px;border-radius: 16px;">
                         <div class="overflow-hidden">
                             <div class="card-body d-flex">
@@ -291,36 +317,46 @@
                                     </div>
                                     <span class="d-flex gap-3 mt-2" style="font-size:25px;justify-content: center; border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;
                                         background-color:#F0E0E0;text-align: center;padding: 20px 20px 20px 0px;">
-                                        25%
+                                        {{comparisonGrowthPercentage}}%
                                     </span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                </div> -->
+                </div>
             </div>
         </div>
+        <!-- <div class="card">
+            <div class="card-header" style="background-color: #008FFB;">
+                Growth Percentage Feb 2024
+            </div>
+            <div class="card-body text-center">
+                <h1 class="mb-0" style="color: red;font-weight: 700;">{{valueData.percentage}}</h1>
+            </div>
+        </div> -->
+
     </div>
     <div class="row">
-        <div class="col-6 card">
-            <div class="header-container row">
+        <div class="col-md-6 card">
+            <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Overall Sales
+                    <img style="width: 30px;height: 30px;" src="assets/icons/sales.png" />
                 </h4>
             </div>
-
             <div style="display: flex;">
                 &nbsp;
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices (change)="filterOverallSales($event)">
+                    <select class="form-control" data-choices (change)="filterOverallSales($event,'month')">
                         <option *ngFor="let value of overAllChart" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
                 </div>&nbsp;
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices>
+                    <select class="form-control" data-choices (change)="filterOverallSales($event,'location')">
+                        <option value="">All</option>
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
@@ -333,42 +369,46 @@
                     [responsive]="salesChart.responsive"></apx-chart>
             </div>
         </div>
-        <div class="col-6 card">
-            <div class="header-container row">
+        <div class="card col-md-6">
+            <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Sales Comparison
+                    <img style="width: 25px;height: 25px;" src="assets/icons/sales-comp.png" />
                 </h4>
             </div>
 
-            <div style="display: flex;">
-                    <div class="form-check" (click)="filterSalesComparison()">
-                        <input class="form-check-input" type="checkbox" value="2024" id="flexCheckDefault" checked >
-                        <label class="form-check-label" for="flexCheckDefault">
-                            2024
-                        </label>
-                    </div>&nbsp;
-                    <div class="form-check"(click)="filterSalesComparison()">
-                        <input class="form-check-input" type="checkbox" value="2023" id="flexCheckDefault" checked >
-                        <label class="form-check-label" for="flexCheckDefault">
-                            2023
-                        </label>
-                    </div>&nbsp;
-                    <div class="form-check"(click)="filterSalesComparison()">
-                        <input class="form-check-input" type="checkbox" value="2022" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            2022
-                        </label>
-                    </div>&nbsp;
-                    <div class="form-check"(click)="filterSalesComparison()">
-                        <input class="form-check-input" type="checkbox" value="2021" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            2021
-                        </label>
-                    </div>
-                    <!--  (change)="filterRegionWise($event)" -->
-                    <!-- <select class="form-control" data-choices (change)="filterSalesComparison($event)">
-                        <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
+            <div style="display: flex; align-items: center;">
+                <div class="form-check" (click)="filterSalesComparison()">
+                    <input class="form-check-input" type="checkbox" value="2024" id="salesCheckbox" checked>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        2024
+                    </label>
+                </div>&nbsp;
+                <div class="form-check" (click)="filterSalesComparison()">
+                    <input class="form-check-input" type="checkbox" value="2023" id="salesCheckbox" checked>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        2023
+                    </label>
+                </div>&nbsp;
+                <div class="form-check" (click)="filterSalesComparison()">
+                    <input class="form-check-input" type="checkbox" value="2022" id="salesCheckbox">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        2022
+                    </label>
+                </div>&nbsp;
+                <div class="form-check" (click)="filterSalesComparison()">
+                    <input class="form-check-input" type="checkbox" value="2021" id="salesCheckbox">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        2021
+                    </label>
+                </div>
+                &nbsp;
+                <div class="col-md-3">
+                    <select class="form-control" data-choices (change)="filterSalesComparison($event)">
+                        <option value="">All</option>
+                        <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
-                    </select> -->
+                    </select>
+                </div>&nbsp;
             </div>
             <div class="flex-shrink-0">
             </div>
@@ -382,24 +422,26 @@
     </div>
     <div class="row">
         <div class="col-6 card">
-            <div class="header-container row">
+            <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Top Five District sales
+                    <img style="width: 25px;height: 25px;" src="assets/icons/top-5.png" />
                 </h4>
             </div>
 
             <div style="display: flex;">
                 &nbsp;<div class="col-md-3">
-                    <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices (change)="filterTopFive($event)">
+                    <select class="form-control" data-choices (change)="filterTopFive($event, 'year')">
                         <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
-                            {{value.label}}</option>
+                            {{value.label}}
+                        </option>
                     </select>
                 </div>&nbsp;
                 <div class="col-md-3">
-                    <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices>
+                    <select class="form-control" data-choices (change)="filterTopFive($event, 'location')">
+                        <option value="">All</option>
                         <option *ngFor="let value of location" value="{{value.value}}">
-                            {{value.label}}</option>
+                            {{value.label}}
+                        </option>
                     </select>
                 </div>&nbsp;
             </div>
@@ -414,22 +456,24 @@
             </div>
         </div>
         <div class="col-6 card">
-            <div class="header-container row">
+            <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Least Five District Sales
+                    <img style="width: 25px;height: 25px;" src="assets/icons/last-5.png" />
                 </h4>
             </div>
 
             <div style="display: flex;">
                 &nbsp;<div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices (change)="filterLeastfiveDistricr($event)">
+                    <select class="form-control" data-choices (change)="filterLeastfiveDistrict($event,'year')">
                         <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
                 </div>&nbsp;
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices>
+                    <select class="form-control" data-choices (change)="filterLeastfiveDistrict($event,'location')">
+                        <option value="">All</option>
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
                     </select>
@@ -448,25 +492,118 @@
     </div>
 </div>
 
-<p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+<div>
+    <span style="font-weight: bold;font-size: medium;">
+        Least Growth Performance Rate
+    </span>
+</div>
+
+<p-table [value]="tabledata" [rows]="10" [showCurrentPageReport]="true" [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [globalFilterFields]="globalSearch"
+    responsiveLayout="stack" [breakpoint]="'960px'" [tableStyle]="{'min-width': '50rem'}">
+    <ng-template pTemplate="caption">
+        <div class="row">
+            <div class="col-md-3">
+                <select class="form-control" data-choices (change)="filterTable($event,'year')">
+                    <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
+                        {{value.label}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-control" data-choices (change)="filterTable($event, 'region')">
+                    <option value="">All</option>
+                    <option *ngFor="let value of location" value="{{value.value}}">
+                        {{value.label}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <!-- <div class="flex">
+            <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="applyGlobalFilter($event)" placeholder="Search keyword" />
+            </span>
+        </div> -->
+    </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th>Performance Rank</th>
-            <th>Shop No</th>
+            <th>S.No</th>
             <th>District</th>
-            <th>IMFS Sales Growth</th>
-            <th>Beer Sales Growtn</th>
-            <th>Overall Percentageh>
+            <!-- <th>Total Previous 3Months Beer Sales</th>
+            <th>Total Previous 3Months IMFS Sales</th>
+            <th>Total Previous 3Months Sales</th>
+            <th>Total Previous Month Beer Sales</th>
+            <th>Total Previous Month IMFS Sales</th>
+            <th>Total Previous Month Sales</th> -->
+            <th>Beer Sales Growth</th>
+            <th>Imfs Sales Growth</th>
+            <th>Overall Percentage</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-product>
+    <ng-template pTemplate="body" let-product let-ri="rowIndex">
         <tr>
-            <td>{{ product.performanceName }}</td>
-            <td>{{ product.shopName }}</td>
-            <td>{{ product.district }}</td>
-            <td>{{ product.imfsSalesGrowth }}</td>
-            <td>{{ product.beerSalesGrowth }}</td>
-            <td>{{ product.overAllPercentage }}</td>
+            <td>{{ri+1}}</td>
+            <td>{{ product.districtName }}</td>
+            <!-- <td>{{ product.totalPrev3MonthBeerSales }}</td>
+            <td>{{ product.totalPrev3MonthIMFSales }}</td>
+            <td>{{ product.totalPrev3MonthSales}}</td>
+            <td>{{ product.totalPrevMonthBeerSales}}</td>
+            <td>{{ product.totalPrevMonthIMFSales }}</td>
+            <td>{{ product.totalPrevMonthSales}}</td> -->
+            <td [style.color]="getColor(product.totalBeerGrowthRatio)">{{ product.totalBeerGrowthRatio }}%</td>
+            <td [style.color]="getColor(product.totalImfsGrowthRatio)">{{ product.totalImfsGrowthRatio }}%</td>
+            <td [style.color]="getColor(product.totalGrowthRatio)">{{ product.totalGrowthRatio}}%</td>
         </tr>
     </ng-template>
 </p-table>
+<div class="col-md-6 card mt-2">
+    <div class="header-container row mb-2 mt-3">
+        <h4 class="card-title mb-0 flex-grow-1">Sales Comparison on Festival
+            <img style="width: 25px;height: 25px;" src="assets/icons/sales-comp.png" />
+        </h4>
+    </div>
+
+    <div style="display: flex; align-items: center;margin-left: 10px;">
+        <div class="form-check" (click)="filterFestival()">
+            <input class="form-check-input" type="checkbox" value="2024" id="festivalCheckbox" checked>
+            <label class="form-check-label" for="flexCheckDefault">
+                2024
+            </label>
+        </div>&nbsp;
+        <div class="form-check" (click)="filterFestival()">
+            <input class="form-check-input" type="checkbox" value="2023" id="festivalCheckbox" checked>
+            <label class="form-check-label" for="flexCheckDefault">
+                2023
+            </label>
+        </div>&nbsp;
+        <div class="form-check" (click)="filterFestival()">
+            <input class="form-check-input" type="checkbox" value="2022" id="festivalCheckbox">
+            <label class="form-check-label" for="flexCheckDefault">
+                2022
+            </label>
+        </div>&nbsp;
+        <div class="form-check" (click)="filterFestival()">
+            <input class="form-check-input" type="checkbox" value="2021" id="festivalCheckbox">
+            <label class="form-check-label" for="flexCheckDefault">
+                2021
+            </label>
+        </div>
+        &nbsp;
+        <div class="col-md-3">
+            <select class="form-control" data-choices (change)="filterFestival($event)">
+                <option value="">All</option>
+                <option *ngFor="let value of location" value="{{value.value}}">
+                    {{value.label}}</option>
+            </select>
+        </div>&nbsp;
+    </div>
+    <div class="flex-shrink-0">
+    </div>
+    <div id="chart">
+        <apx-chart [series]="areChartFestival.series" [chart]="areChartFestival.chart" [xaxis]="areChartFestival.xaxis"
+            [stroke]="areChartFestival.stroke" [tooltip]="areChartFestival.tooltip"
+            [dataLabels]="areChartFestival.dataLabels"></apx-chart>
+    </div>
+</div>
+<app-loader></app-loader>

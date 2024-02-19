@@ -2,4 +2,12 @@
     font-weight: bold;
     font-size: x-large;
     color: red;
+    margin-top: 8px;
+}
+
+.row {
+    display: grid;
+    flex-direction: row;
+    grid-template-columns: auto 1fr;
+    padding: 10px;
 }
