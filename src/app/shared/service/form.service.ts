@@ -46,6 +46,9 @@ export class FormService {
   getFilterDashBoardforimfsAndBeerComparison(chartName:any,year:any,month:any){
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&year=${year}&month=${month}`);
   }
+  getLiveStatus(chartName:any){
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}`);
+  }
   getregionWiseSales(data:any) {
     return this.http.get(`${this.baseUrl}sales/regions?${data?'year='+data:''}`);
   }
