@@ -196,17 +196,15 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xl-7">
+            <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title mb-0 flex-grow-1">Comparison Data
-                            <img style="width: 25px; height: 25px;" src="assets/icons/Comparison-Data.png" />
-                        </h4>
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="card-title mb-0 flex-grow-1">Comparison Data</h4>
+                        <img style="width: 25px; height: 25px;" src="assets/icons/Comparison-Data.png" />
                     </div>
 
-                    <div style="margin-left: 1%;" class="row mt-2">
-
-                        <div class="col-md-3">
+                    <div class="row mt-2 px-2">
+                        <div class="col-6 col-md-3">
                             <!-- <select style="margin-left: 5px;" class="form-control"
                                 (change)="filterComparison($event,'district')">
                                 <option value="">Select</option>
@@ -217,7 +215,7 @@
                                 [items]="location" bindLabel="label" bindValue="value"
                                 placeholder="Select District"></ng-select>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-6 col-md-3">
                             <ng-select (change)="filterComparison($event, 'district')"
                                 [items]="districts" bindLabel="label" bindValue="value"
                                 placeholder="Select"></ng-select>
@@ -228,18 +226,14 @@
                                     {{value.label}}</option>
                             </select> -->
                         </div>
-
-                        <div style="width: 20%;" class="col-md-3">
+                        <div class="col-6 col-md-3">
                             <div class="input-group">
                                 <input type="text" (change)="filterComparison($event,'date1')" class="form-control"
                                     id="datepicker1" mwlFlatpickr [convertModelValue]="true" data-date-format="d M, Y"
                                     placeholder="From Date">
                             </div>
                         </div>
-                        <!-- <span>Vs</span> -->
-                        <!-- <div class="col-md-1 mt-2">Vs</div> -->
-
-                        <div style="width: 15%;" class="col-md-3">
+                        <div class="col-6 col-md-3">
                             <div class="input-group">
                                 <input type="text" (change)="filterComparison($event,'date2')" class="form-control"
                                     id="datepicker2" mwlFlatpickr [convertModelValue]="true" data-date-format="d M, Y"
@@ -247,90 +241,80 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="card-body p-0 pb-2 d-flex">
-                        <div class="w-100">
-                            <div class="col-12">
-                                <div id="chart">
-                                    <apx-chart [series]="barChart.series" [chart]="barChart.chart"
-                                        [dataLabels]="barChart.dataLabels" [plotOptions]="barChart.plotOptions"
-                                        [yaxis]="barChart.yaxis" [legend]="barChart.legend" [fill]="barChart.fill"
-                                        [stroke]="barChart.stroke" [tooltip]="barChart.tooltip"
-                                        [xaxis]="barChart.xaxis"></apx-chart>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style="margin-left: 5%;" class="right-card d-flex align-items-center w-50">
-                            <div class="col-12">
-                                <div class="card small-card">
-                                    <div style="font-size:large;"
-                                        class="small-card-child bg-primary text-white text-center">
-                                        Growth Percentage
-                                    </div>
-                                    <div class="card-body-child text-center">
-                                        <h2 style="font-size: xx-large;" class="font-weight-bold mt-2">
-                                            {{comparisonGrowthPercentage}}%</h2>
-                                    </div>
-                                </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="chart">
+                                <apx-chart [series]="barChart.series" [chart]="barChart.chart"
+                                    [dataLabels]="barChart.dataLabels" [plotOptions]="barChart.plotOptions"
+                                    [yaxis]="barChart.yaxis" [legend]="barChart.legend" [fill]="barChartColor.fill"
+                                    [stroke]="barChart.stroke" [tooltip]="barChart.tooltip"
+                                    [xaxis]="barChart.xaxis"></apx-chart>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-5 card mt-2">
-                <div class="header-container row mb-2 mt-3">
-                    <h4 style="margin-left: 2%;" class="card-title mb-0 flex-grow-1">Sales Comparison on Festival
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="card-title mb-0 flex-grow-1">Sales Comparison on Festival</h4>
                         <img style="width: 20px;height: 20px;" src="assets/icons/gift.png" />
-                    </h4>
-                </div>
-
-                <div style="display: flex; align-items: center;margin-left: 10px;">
-                    <div class="form-check" (click)="filterFestival()">
-                        <input class="form-check-input" type="checkbox" value="2024" id="festivalCheckbox" checked>
-                        <label class="form-check-label" for="flexCheckDefault">
-                            2024
-                        </label>
-                    </div>&nbsp;
-                    <div class="form-check" (click)="filterFestival()">
-                        <input class="form-check-input" type="checkbox" value="2023" id="festivalCheckbox" checked>
-                        <label class="form-check-label" for="flexCheckDefault">
-                            2023
-                        </label>
-                    </div>&nbsp;
-                    <div class="form-check" (click)="filterFestival()">
-                        <input class="form-check-input" type="checkbox" value="2022" id="festivalCheckbox">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            2022
-                        </label>
-                    </div>&nbsp;
-                    <div class="form-check" (click)="filterFestival()">
-                        <input class="form-check-input" type="checkbox" value="2021" id="festivalCheckbox">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            2021
-                        </label>
                     </div>
-                    &nbsp;
-                    <div class="col-md-3">
-                        <ng-select (change)="filterFestival($event)" [items]="location"
-                            bindLabel="label" bindValue="value" placeholder="All"></ng-select>
 
-                        <!-- <select class="form-control" data-choices >
-                            <option value=""></option>
-                            <option *ngFor="let value of location" value="{{value.value}}">
-                                {{value.label}}</option>
-                        </select> -->
-                    </div>&nbsp;
-                </div>
-                <div class="flex-shrink-0">
-                </div>
-                <div id="chart">
-                    <apx-chart [series]="areChartFestival.series" [chart]="areChartFestival.chart"
-                        [xaxis]="areChartFestival.xaxis" [stroke]="areChartFestival.stroke"
-                        [tooltip]="areChartFestival.tooltip" [dataLabels]="areChartFestival.dataLabels"></apx-chart>
+                    <div class="row mt-2 px-2 align-items-center">
+                        <div class="col-2">
+                            <div class="form-check" (click)="filterFestival()">
+                                <input class="form-check-input" type="checkbox" value="2024" id="festivalCheckbox" checked>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    2024
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-check" (click)="filterFestival()">
+                                <input class="form-check-input" type="checkbox" value="2023" id="festivalCheckbox" checked>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    2023
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-check" (click)="filterFestival()">
+                                <input class="form-check-input" type="checkbox" value="2022" id="festivalCheckbox">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    2022
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-check" (click)="filterFestival()">
+                                <input class="form-check-input" type="checkbox" value="2021" id="festivalCheckbox">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    2021
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <ng-select (change)="filterFestival($event)" [items]="location"
+                                bindLabel="label" bindValue="value" placeholder="All"></ng-select>
+                            <!-- <select class="form-control" data-choices >
+                                <option value=""></option>
+                                <option *ngFor="let value of location" value="{{value.value}}">
+                                    {{value.label}}</option>
+                            </select> -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div id="chart">
+                                <apx-chart [series]="areChartFestival.series" [chart]="areChartFestival.chart"
+                                    [xaxis]="areChartFestival.xaxis" [stroke]="areChartFestival.stroke"
+                                    [tooltip]="areChartFestival.tooltip" [dataLabels]="areChartFestival.dataLabels"></apx-chart>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 
