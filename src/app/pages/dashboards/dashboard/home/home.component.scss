@@ -25,7 +25,7 @@
   display: flex;
   justify-content: space-between;
   padding: 5px 20px;
-  background-color: rgb(175, 29, 192);
+  background-color: #FEB96C;
   border-radius: 8px;
   align-items: center;
   border: 1px solid black;
@@ -91,6 +91,12 @@
   font-size: xx-large;
   color: red;
   margin-top: 5%;
+  margin-right: 20%;
+}
+
+h3{
+  font-weight: bold;
+  color: black;
 }
 
 h4 {
@@ -104,9 +110,9 @@ h4 {
   display: flex;
 }
 
-.small-card-child{
+.small-card-child {
   padding: 10px;
- border-radius: 3px;
+  border-radius: 3px;
 }
 
 .col-12 {
@@ -118,7 +124,7 @@ h4 {
 
 }
 
-.card-body-child{
+.card-body-child {
   background-color: #F0E0E0;
 }
 
@@ -126,6 +132,18 @@ h4 {
   flex-direction: row;
   display: inline-flex;
 }
+
+.col-md-2 {
+  position: relative;
+}
+
+.col-md-2 i {
+  top: 50%;
+  right: 10px; 
+  color: red;
+  transform: translateY(-50%);
+}
+
 
 .right-card {
   display: flex;
@@ -136,11 +154,83 @@ h4 {
   width: 100%;
 }
 
+.ng-select {
+  width: 100% !important;
+  border-color: white;
+}
+
+::ng-deep .ng-dropdown-panel {
+  background-color: #EEEEEE;
+}
+
+
+.form-control {
+  background-color: #EEEEEE;
+}
+
 .table-head {
   margin: 10px;
   margin-top: 1%;
   margin-left: 1%;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+
+form-control {
+  width: 100%;
+  padding: 8px;
+  margin: 4px 0;
+  box-sizing: border-box;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  // background-color: #ffc900;
+  color: #919191;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #e0e0e0;
+}
+
+:host ::ng-deep .p-sortable-column {
+  cursor: pointer;
+  position: relative;
+}
+
+:host ::ng-deep .p-sortable-column:hover {
+  color: var(--text-primary-hover, #007ad9);
+}
+
+:host ::ng-deep .p-sortable-column:focus {
+  outline: none;
+}
+
+:host ::ng-deep .p-sortable-column-icon {
+  position: absolute;
+  right: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 
 // Mobile View 
 

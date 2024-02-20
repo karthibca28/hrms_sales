@@ -27,7 +27,7 @@
 .navbar-menu {
     width: var(--#{$prefix}vertical-menu-width);
     z-index: $vertical-menu-z-index;
-    // background: var(--#{$prefix}vertical-menu-bg);
+     background: var(--#{$prefix}vertical-menu-bg);
     background-image: linear-gradient(310deg,#141727,#3a416f);
     border-right: 1px solid var(--#{$prefix}vertical-menu-border);
     bottom: 0;

@@ -110,9 +110,17 @@ export class HomeComponent {
     const filterValue = event.target.value;
     this.dt1.filterGlobal(filterValue, 'contains');
   }
+
   getColor(value: number): string {
-    return value >= 0 ? 'green' : 'red';
+    if (value > 0) {
+      return 'green';
+    } else if (value < 0) {
+      return 'red';
+    } else {
+      return 'orange';
+    }
   }
+  
 
   getDashboardData() {
     this.loadingService.showLoader();
@@ -131,7 +139,7 @@ export class HomeComponent {
       this.tabledata = res.data.charts.leastPerformanceGrowthRate
       this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties.growthPercentage
       this.loadingService.hideLoader();
-      console.log(">>>>table", this.tabledata)
+      // console.log(">>>>table", this.tabledata)
       this.areaChart = {
         series: res.data.charts.yearlyCummulativeComparison.series,
         chart: {
@@ -245,12 +253,12 @@ export class HomeComponent {
         chart: {
           type: "bar",
           height: 350,
-          colors: ["#00FF00"]
         } as any,
         plotOptions: {
           bar: {
             horizontal: false,
             columnWidth: "55%",
+            // colors:['#00E396']
             // endingShape: "rounded"
           }
         },
@@ -277,7 +285,8 @@ export class HomeComponent {
               return "₹ " + val + " Cr";
             }
           }
-        }
+        },
+        legend: {}
       } as barChartOption
       this.barChartLeast = {
         series: res.data.charts.leastPerformance.series,
@@ -570,11 +579,11 @@ export class HomeComponent {
   }
   selectedFilterSalesDistrict: any
   getDistrict(event: any) {
-    console.log(event.target.value)
+    console.log(">>>> District 2",event.target.value)
     const data = event.target.value
     this.service.getDistrict(data).subscribe((res: any) => {
-      console.log(res)
       this.districts = res.data.districts
+      console.log(">>>>>> District 2",res.data.districts)
     })
   }
   tableYear: any

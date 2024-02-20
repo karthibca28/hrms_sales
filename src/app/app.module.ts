@@ -22,6 +22,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { SharedModule } from "./shared/shared.module";
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
+
+
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }

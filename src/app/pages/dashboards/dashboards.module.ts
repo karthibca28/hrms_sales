@@ -16,6 +16,7 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
 // Flat Picker
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 //Module
 import { DashboardsRoutingModule } from "./dashboards-routing.module";
@@ -64,7 +65,7 @@ import { IndianCurrencyPipe } from './indian-currency.pipe';
     FlatpickrModule.forRoot(),
     DashboardsRoutingModule,
     SharedModule,
-    WidgetModule,
+    WidgetModule,NgSelectModule,
     NgbTypeaheadModule,
     NgbPaginationModule,
     NgbTooltipModule,

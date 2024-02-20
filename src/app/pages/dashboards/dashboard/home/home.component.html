@@ -50,7 +50,7 @@
             <div class="box px-2">
                 <p class="body-title">Previous Day {{chartData?.previousDay?.date}}</p>
                 <div class="card-head">
-                    <div class="card-sub-body-1 bg-primary">
+                    <div class="card-sub-body-1">
                         <div class="child-card-body">
                             <span style="font-weight: 600;color: white;">
                                 IMFS
@@ -95,19 +95,21 @@
                         <span style="color: white;font-weight: bold;border-radius: 5px;
                             font-size:small;margin-left: 5px;padding: 4px;background-color: red;">Live</span>
                         <img style="width: 20px;height: 20px;position: absolute;" src="assets/icons/Live-1.gif" />
-                        <img  (click)="refreshLiveStatus()" style="width: 18px;height: 18px;margin-left: 25px;cursor: pointer;" src="assets/icons/refresh.png" />
+                        <img (click)="refreshLiveStatus()"
+                            style="width: 18px;height: 18px;margin-left: 25px;cursor: pointer;"
+                            src="assets/icons/refresh.png" />
                     </p>
                 </div>
                 <div class="card-head">
                     <div class="card-sub-body-2">
                         <div class="child-card-body">
-                            <span style="font-weight: 600;color: #000;">
+                            <span style="font-weight: 600;color: white;">
                                 IMFS
                             </span>
                             <img src="assets/icons/Imfs.png" style="height: 30px;padding-left: 8px;">
                         </div>
                         <div style="display: flex;justify-content: space-between;align-items: center;">
-                            <span style="font-weight: 600;color: #000;">
+                            <span style="font-weight: 600;color: white;">
                                 Beer
                             </span>
                             <img src="assets/icons/beeer.png" style="height: 30px;padding-left: 8px;">
@@ -194,7 +196,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-xl-7">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title mb-0 flex-grow-1">Comparison Data
@@ -203,37 +205,45 @@
                     </div>
 
                     <div style="margin-left: 1%;" class="row mt-2">
-                        <div class="col-md-2">
-                            <select class="form-control" (change)="filterComparison($event,'region')">
-                                <option value="">Select</option>
-                                <option *ngFor="let value of location" value="{{value.value}}">
-                                    {{value.label}}</option>
-                            </select>
-                        </div>
 
-                        <div class="col-md-2">
-                            <select class="form-control" (change)="filterComparison($event,'district')">
+                        <div class="col-md-3">
+                            <!-- <select style="margin-left: 5px;" class="form-control"
+                                (change)="filterComparison($event,'district')">
                                 <option value="">Select</option>
                                 <option *ngFor="let value of districts" value="{{value.value}}">
                                     {{value.label}}</option>
-                            </select>
+                            </select> -->
+                            <ng-select [(ngModel)]="location" (change)="filterComparison($event, 'region')"
+                                [items]="location" bindLabel="label" bindValue="value"
+                                placeholder="Select District"></ng-select>
+                        </div>
+                        <div class="col-md-3">
+                            <ng-select [(ngModel)]="districts" (change)="filterComparison($event, 'district')"
+                                [items]="districts" bindLabel="label" bindValue="value"
+                                placeholder="Select"></ng-select>
+                            <!-- <select style="margin-left: 5px;" class="form-control"
+                                (change)="filterComparison($event,'district')">
+                                <option value="">Select</option>
+                                <option *ngFor="let value of districts" value="{{value.value}}">
+                                    {{value.label}}</option>
+                            </select> -->
                         </div>
 
-                        <div style="width: 10%;" class="col-md-3">
+                        <div style="width: 20%;" class="col-md-3">
                             <div class="input-group">
                                 <input type="text" (change)="filterComparison($event,'date1')" class="form-control"
                                     id="datepicker1" mwlFlatpickr [convertModelValue]="true" data-date-format="d M, Y"
-                                    placeholder="Select date">
+                                    placeholder="From Date">
                             </div>
                         </div>
                         <!-- <span>Vs</span> -->
                         <!-- <div class="col-md-1 mt-2">Vs</div> -->
 
-                        <div style="width: 10%;margin-right: 20%;" class="col-md-3">
+                        <div style="width: 15%;" class="col-md-3">
                             <div class="input-group">
                                 <input type="text" (change)="filterComparison($event,'date2')" class="form-control"
                                     id="datepicker2" mwlFlatpickr [convertModelValue]="true" data-date-format="d M, Y"
-                                    placeholder="Select date">
+                                    placeholder="To Date">
                             </div>
                         </div>
                     </div>
@@ -251,14 +261,16 @@
                             </div>
                         </div>
 
-                        <div class="right-card d-flex align-items-center w-50">
+                        <div style="margin-left: 5%;" class="right-card d-flex align-items-center w-50">
                             <div class="col-12">
                                 <div class="card small-card">
-                                    <div style="font-size:large;" class="small-card-child bg-primary text-white text-center">
+                                    <div style="font-size:large;"
+                                        class="small-card-child bg-primary text-white text-center">
                                         Growth Percentage
                                     </div>
                                     <div class="card-body-child text-center">
-                                        <h2 style="font-size: xx-large;" class="font-weight-bold mt-2">{{comparisonGrowthPercentage}}%</h2>
+                                        <h2 style="font-size: xx-large;" class="font-weight-bold mt-2">
+                                            {{comparisonGrowthPercentage}}%</h2>
                                     </div>
                                 </div>
                             </div>
@@ -266,11 +278,64 @@
                     </div>
                 </div>
             </div>
+            <div class="col-sm-5 card mt-2">
+                <div class="header-container row mb-2 mt-3">
+                    <h4 style="margin-left: 2%;" class="card-title mb-0 flex-grow-1">Sales Comparison on Festival
+                        <img style="width: 20px;height: 20px;" src="assets/icons/gift.png" />
+                    </h4>
+                </div>
+
+                <div style="display: flex; align-items: center;margin-left: 10px;">
+                    <div class="form-check" (click)="filterFestival()">
+                        <input class="form-check-input" type="checkbox" value="2024" id="festivalCheckbox" checked>
+                        <label class="form-check-label" for="flexCheckDefault">
+                            2024
+                        </label>
+                    </div>&nbsp;
+                    <div class="form-check" (click)="filterFestival()">
+                        <input class="form-check-input" type="checkbox" value="2023" id="festivalCheckbox" checked>
+                        <label class="form-check-label" for="flexCheckDefault">
+                            2023
+                        </label>
+                    </div>&nbsp;
+                    <div class="form-check" (click)="filterFestival()">
+                        <input class="form-check-input" type="checkbox" value="2022" id="festivalCheckbox">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            2022
+                        </label>
+                    </div>&nbsp;
+                    <div class="form-check" (click)="filterFestival()">
+                        <input class="form-check-input" type="checkbox" value="2021" id="festivalCheckbox">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            2021
+                        </label>
+                    </div>
+                    &nbsp;
+                    <div class="col-md-3">
+                        <ng-select [(ngModel)]="location" (change)="filterFestival($event)" [items]="location"
+                            bindLabel="label" bindValue="value" placeholder="All"></ng-select>
+
+                        <!-- <select class="form-control" data-choices >
+                            <option value=""></option>
+                            <option *ngFor="let value of location" value="{{value.value}}">
+                                {{value.label}}</option>
+                        </select> -->
+                    </div>&nbsp;
+                </div>
+                <div class="flex-shrink-0">
+                </div>
+                <div id="chart">
+                    <apx-chart [series]="areChartFestival.series" [chart]="areChartFestival.chart"
+                        [xaxis]="areChartFestival.xaxis" [stroke]="areChartFestival.stroke"
+                        [tooltip]="areChartFestival.tooltip" [dataLabels]="areChartFestival.dataLabels"></apx-chart>
+                </div>
+            </div>
+
         </div>
     </div>
 
 
-    <div class="row">
+    <div class="row" id="#overall">
         <div class="col-md-5 card mb-3">
             <div class="header-container row mb-2">
                 <h4 class="card-title mb-0 flex-grow-1">Overall Sales
@@ -281,18 +346,25 @@
                 &nbsp;
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices (change)="filterOverallSales($event,'month')">
+                    <ng-select [(ngModel)]="overAllChart" (change)="filterOverallSales($event,'month')"
+                        [items]="overAllChart" bindLabel="label" bindValue="value" placeholder="All"></ng-select>
+
+                    <!-- <select class="form-control" data-choices (change)="filterOverallSales($event,'month')">
                         <option *ngFor="let value of overAllChart" value="{{value.value}}">
                             {{value.label}}</option>
-                    </select>
+                    </select> -->
+                    <!-- <i class="fas fa-caret-down"></i> -->
                 </div>&nbsp;
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices (change)="filterOverallSales($event,'location')">
+                    <ng-select [(ngModel)]="location" data-choices (change)="filterOverallSales($event,'location')"
+                        [items]="location" bindLabel="label" bindValue="value" placeholder="All"></ng-select>
+
+                    <!-- <select class="form-control" data-choices (change)="filterOverallSales($event,'location')">
                         <option value="">All</option>
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
-                    </select>
+                    </select> -->
                 </div>&nbsp;
             </div>
             <div class="flex-shrink-0">
@@ -336,11 +408,14 @@
                 </div>
                 &nbsp;
                 <div class="col-md-3">
-                    <select class="form-control" data-choices (change)="filterSalesComparison($event)">
+                    <ng-select [(ngModel)]="location" data-choices (change)="filterSalesComparison($event)"
+                        [items]="location" bindLabel="label" bindValue="value" placeholder="All"></ng-select>
+
+                    <!-- <select class="form-control" data-choices (change)="filterSalesComparison($event)">
                         <option value="">All</option>
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
-                    </select>
+                    </select> -->
                 </div>&nbsp;
             </div>
             <div class="flex-shrink-0">
@@ -363,19 +438,26 @@
 
             <div style="display: flex;">
                 &nbsp;<div class="col-md-3">
-                    <select class="form-control" data-choices (change)="filterTopFive($event, 'year')">
+                    <ng-select [(ngModel)]="regionwiseDropdown" data-choices (change)="filterTopFive($event, 'year')"
+                        [items]="regionwiseDropdown" bindLabel="label" bindValue="value"
+                        placeholder="Select Year"></ng-select>
+
+                    <!-- <select class="form-control" data-choices (change)="filterTopFive($event, 'year')">
                         <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
                             {{value.label}}
                         </option>
-                    </select>
+                    </select> -->
                 </div>&nbsp;
                 <div class="col-md-3">
-                    <select class="form-control" data-choices (change)="filterTopFive($event, 'location')">
+                    <ng-select [(ngModel)]="location" data-choices (change)="filterTopFive($event, 'location')"
+                        [items]="location" bindLabel="label" bindValue="value" placeholder="All"></ng-select>
+
+                    <!-- <select class="form-control" data-choices (change)="filterTopFive($event, 'location')">
                         <option value="">All</option>
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}
                         </option>
-                    </select>
+                    </select> -->
                 </div>&nbsp;
             </div>
             <div class="flex-shrink-0">
@@ -398,18 +480,27 @@
             <div style="display: flex;">
                 &nbsp;<div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices (change)="filterLeastfiveDistrict($event,'year')">
+                    <ng-select [(ngModel)]="regionwiseDropdown" data-choices
+                        (change)="filterLeastfiveDistrict($event,'year')" [items]="regionwiseDropdown" bindLabel="label"
+                        bindValue="value" placeholder="Select Year"></ng-select>
+
+                    <!-- <select class="form-control" data-choices (change)="filterLeastfiveDistrict($event,'year')">
                         <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
                             {{value.label}}</option>
-                    </select>
+                    </select> -->
                 </div>&nbsp;
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <select class="form-control" data-choices (change)="filterLeastfiveDistrict($event,'location')">
+                    <ng-select [(ngModel)]="location" data-choices data-choices
+                        (change)="filterLeastfiveDistrict($event,'location')" [items]="location" bindLabel="label"
+                        bindValue="value" placeholder="All"></ng-select>
+
+
+                    <!-- <select class="form-control" data-choices (change)="filterLeastfiveDistrict($event,'location')">
                         <option value="">All</option>
                         <option *ngFor="let value of location" value="{{value.value}}">
                             {{value.label}}</option>
-                    </select>
+                    </select> -->
                 </div>&nbsp;
             </div>
             <div class="flex-shrink-0">
@@ -430,29 +521,39 @@
         <span style="font-weight: bold;font-size: medium;">
             Least Growth Performance Rate
         </span>
+        <div class="col-md-2">
+            <ng-select style="width: 50%;" [(ngModel)]="regionwiseDropdown" data-choices data-choices
+                (change)="filterTable($event,'year')" [items]="regionwiseDropdown" bindLabel="label" bindValue="value"
+                placeholder="Select Year"></ng-select>
+        </div>
+
+        <!-- <select style="width:10%;background-color: #EEEEEE;" class="form-control" data-choices
+            (change)="filterTable($event,'year')">
+            <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
+                {{value.label}}
+            </option>
+        </select> -->
+        <!-- <div class="col-md-3">
+        </div> -->
+        <div style="background-color: #EEEEEE;" class="col-md-2">
+            <ng-select [(ngModel)]="location" data-choices data-choices (change)="filterTable($event, 'region')"
+                [items]="location" bindLabel="label" bindValue="value" placeholder="All"></ng-select>
+
+            <!-- <select style="width: 30%;background-color: #EEEEEE;" class="form-control" data-choices
+                (change)="filterTable($event, 'region')">
+                <option value="">All</option>
+                <option *ngFor="let value of location" value="{{value.value}}">
+                    {{value.label}}
+                </option>
+            </select> -->
+        </div>
+
     </div>
     <p-table [value]="tabledata" [rows]="10" [showCurrentPageReport]="true" [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="globalSearch" responsiveLayout="stack" [breakpoint]="'960px'"
         [tableStyle]="{'min-width': '50rem'}">
         <ng-template pTemplate="caption">
-            <div class="row">
-                <div class="col-md-3">
-                    <select class="form-control" data-choices (change)="filterTable($event,'year')">
-                        <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
-                            {{value.label}}
-                        </option>
-                    </select>
-                </div>
-                <div class="col-md-3">
-                    <select class="form-control" data-choices (change)="filterTable($event, 'region')">
-                        <option value="">All</option>
-                        <option *ngFor="let value of location" value="{{value.value}}">
-                            {{value.label}}
-                        </option>
-                    </select>
-                </div>
-            </div>
             <!-- <div class="flex">
                 <span class="p-input-icon-left ml-auto">
                     <i class="pi pi-search"></i>
@@ -462,19 +563,45 @@
         </ng-template>
         <ng-template pTemplate="header">
             <tr>
+                <th pSortableColumn="serialNumber">
+                    S.No
+                    <!-- <p-sortIcon [field]="'serialNumber'"></p-sortIcon> -->
+                </th>
+                <th pSortableColumn="districtName">
+                    District
+                    <p-sortIcon [field]="'districtName'"></p-sortIcon>
+                </th>
+                <th pSortableColumn="totalBeerGrowthRatio">
+                    Beer Sales Growth
+                    <p-sortIcon [field]="'totalBeerGrowthRatio'"></p-sortIcon>
+                </th>
+                <th pSortableColumn="totalImfsGrowthRatio">
+                    Imfs Sales Growth
+                    <p-sortIcon [field]="'totalImfsGrowthRatio'"></p-sortIcon>
+                </th>
+                <th pSortableColumn="totalGrowthRatio">
+                    Overall Percentage
+                    <p-sortIcon [field]="'totalGrowthRatio'"></p-sortIcon>
+                </th>
+            </tr>
+        </ng-template>
+
+
+        <!-- <ng-template pTemplate="header">
+            <tr>
                 <th>S.No</th>
-                <th>District</th>
-                <!-- <th>Total Previous 3Months Beer Sales</th>
+                <th>District</th> -->
+        <!-- <th>Total Previous 3Months Beer Sales</th>
                 <th>Total Previous 3Months IMFS Sales</th>
                 <th>Total Previous 3Months Sales</th>
                 <th>Total Previous Month Beer Sales</th>
                 <th>Total Previous Month IMFS Sales</th>
                 <th>Total Previous Month Sales</th> -->
-                <th>Beer Sales Growth</th>
+        <!-- <th>Beer Sales Growth</th>
                 <th>Imfs Sales Growth</th>
                 <th>Overall Percentage</th>
             </tr>
-        </ng-template>
+        </ng-template> -->
         <ng-template pTemplate="body" let-product let-ri="rowIndex">
             <tr>
                 <td>{{ri+1}}</td>
@@ -492,53 +619,5 @@
         </ng-template>
     </p-table>
 </div>
-<div class="col-md-6 card mt-2">
-    <div class="header-container row mb-2 mt-3">
-        <h4 style="margin-left: 2%;" class="card-title mb-0 flex-grow-1">Sales Comparison on Festival
-            <img style="width: 25px;height: 25px;" src="assets/icons/sales-comp.png" />
-        </h4>
-    </div>
 
-    <div style="display: flex; align-items: center;margin-left: 10px;">
-        <div class="form-check" (click)="filterFestival()">
-            <input class="form-check-input" type="checkbox" value="2024" id="festivalCheckbox" checked>
-            <label class="form-check-label" for="flexCheckDefault">
-                2024
-            </label>
-        </div>&nbsp;
-        <div class="form-check" (click)="filterFestival()">
-            <input class="form-check-input" type="checkbox" value="2023" id="festivalCheckbox" checked>
-            <label class="form-check-label" for="flexCheckDefault">
-                2023
-            </label>
-        </div>&nbsp;
-        <div class="form-check" (click)="filterFestival()">
-            <input class="form-check-input" type="checkbox" value="2022" id="festivalCheckbox">
-            <label class="form-check-label" for="flexCheckDefault">
-                2022
-            </label>
-        </div>&nbsp;
-        <div class="form-check" (click)="filterFestival()">
-            <input class="form-check-input" type="checkbox" value="2021" id="festivalCheckbox">
-            <label class="form-check-label" for="flexCheckDefault">
-                2021
-            </label>
-        </div>
-        &nbsp;
-        <div class="col-md-3">
-            <select class="form-control" data-choices (change)="filterFestival($event)">
-                <option value="">All</option>
-                <option *ngFor="let value of location" value="{{value.value}}">
-                    {{value.label}}</option>
-            </select>
-        </div>&nbsp;
-    </div>
-    <div class="flex-shrink-0">
-    </div>
-    <div id="chart">
-        <apx-chart [series]="areChartFestival.series" [chart]="areChartFestival.chart" [xaxis]="areChartFestival.xaxis"
-            [stroke]="areChartFestival.stroke" [tooltip]="areChartFestival.tooltip"
-            [dataLabels]="areChartFestival.dataLabels"></apx-chart>
-    </div>
-</div>
 <app-loader></app-loader>

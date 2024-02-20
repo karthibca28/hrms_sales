@@ -25,13 +25,13 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     // Menu Items
     this.menuItems = MENU;
-    // this.router.events.subscribe((event) => {
-    //   if (document.documentElement.getAttribute('data-layout') != "twocolumn") {
-    //     if (event instanceof NavigationEnd) {
-    //       this.initActiveMenu();
-    //     }
-    //   }
-    // });
+     this.router.events.subscribe((event) => {
+       if (document.documentElement.getAttribute('data-layout') != "twocolumn") {
+         if (event instanceof NavigationEnd) {
+           this.initActiveMenu();
+         }
+       }
+     });
   }
 
   /***
