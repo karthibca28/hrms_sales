@@ -213,12 +213,12 @@
                                 <option *ngFor="let value of districts" value="{{value.value}}">
                                     {{value.label}}</option>
                             </select> -->
-                            <ng-select [(ngModel)]="location" (change)="filterComparison($event, 'region')"
+                            <ng-select (change)="filterComparison($event, 'region')" (change)="getDistrict($event)"
                                 [items]="location" bindLabel="label" bindValue="value"
                                 placeholder="Select District"></ng-select>
                         </div>
                         <div class="col-md-3">
-                            <ng-select [(ngModel)]="districts" (change)="filterComparison($event, 'district')"
+                            <ng-select (change)="filterComparison($event, 'district')"
                                 [items]="districts" bindLabel="label" bindValue="value"
                                 placeholder="Select"></ng-select>
                             <!-- <select style="margin-left: 5px;" class="form-control"
@@ -312,7 +312,7 @@
                     </div>
                     &nbsp;
                     <div class="col-md-3">
-                        <ng-select [(ngModel)]="location" (change)="filterFestival($event)" [items]="location"
+                        <ng-select (change)="filterFestival($event)" [items]="location"
                             bindLabel="label" bindValue="value" placeholder="All"></ng-select>
 
                         <!-- <select class="form-control" data-choices >
@@ -346,7 +346,7 @@
                 &nbsp;
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <ng-select [(ngModel)]="overAllChart" (change)="filterOverallSales($event,'month')"
+                    <ng-select (change)="filterOverallSales($event,'month')"
                         [items]="overAllChart" bindLabel="label" bindValue="value" placeholder="All"></ng-select>
 
                     <!-- <select class="form-control" data-choices (change)="filterOverallSales($event,'month')">
@@ -357,7 +357,7 @@
                 </div>&nbsp;
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <ng-select [(ngModel)]="location" data-choices (change)="filterOverallSales($event,'location')"
+                    <ng-select data-choices (change)="filterOverallSales($event,'location')"
                         [items]="location" bindLabel="label" bindValue="value" placeholder="All"></ng-select>
 
                     <!-- <select class="form-control" data-choices (change)="filterOverallSales($event,'location')">
@@ -408,7 +408,7 @@
                 </div>
                 &nbsp;
                 <div class="col-md-3">
-                    <ng-select [(ngModel)]="location" data-choices (change)="filterSalesComparison($event)"
+                    <ng-select data-choices (change)="filterSalesComparison($event)"
                         [items]="location" bindLabel="label" bindValue="value" placeholder="All"></ng-select>
 
                     <!-- <select class="form-control" data-choices (change)="filterSalesComparison($event)">
@@ -438,7 +438,7 @@
 
             <div style="display: flex;">
                 &nbsp;<div class="col-md-3">
-                    <ng-select [(ngModel)]="regionwiseDropdown" data-choices (change)="filterTopFive($event, 'year')"
+                    <ng-select data-choices (change)="filterTopFive($event, 'year')"
                         [items]="regionwiseDropdown" bindLabel="label" bindValue="value"
                         placeholder="Select Year"></ng-select>
 
@@ -449,7 +449,7 @@
                     </select> -->
                 </div>&nbsp;
                 <div class="col-md-3">
-                    <ng-select [(ngModel)]="location" data-choices (change)="filterTopFive($event, 'location')"
+                    <ng-select data-choices (change)="filterTopFive($event, 'location')"
                         [items]="location" bindLabel="label" bindValue="value" placeholder="All"></ng-select>
 
                     <!-- <select class="form-control" data-choices (change)="filterTopFive($event, 'location')">
@@ -480,7 +480,7 @@
             <div style="display: flex;">
                 &nbsp;<div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <ng-select [(ngModel)]="regionwiseDropdown" data-choices
+                    <ng-select data-choices
                         (change)="filterLeastfiveDistrict($event,'year')" [items]="regionwiseDropdown" bindLabel="label"
                         bindValue="value" placeholder="Select Year"></ng-select>
 
@@ -491,7 +491,7 @@
                 </div>&nbsp;
                 <div class="col-md-3">
                     <!--  (change)="filterRegionWise($event)" -->
-                    <ng-select [(ngModel)]="location" data-choices data-choices
+                    <ng-select data-choices data-choices
                         (change)="filterLeastfiveDistrict($event,'location')" [items]="location" bindLabel="label"
                         bindValue="value" placeholder="All"></ng-select>
 
@@ -522,7 +522,7 @@
             Least Growth Performance Rate
         </span>
         <div class="col-md-2">
-            <ng-select style="width: 50%;" [(ngModel)]="regionwiseDropdown" data-choices data-choices
+            <ng-select style="width: 50%;" data-choices data-choices
                 (change)="filterTable($event,'year')" [items]="regionwiseDropdown" bindLabel="label" bindValue="value"
                 placeholder="Select Year"></ng-select>
         </div>
@@ -536,7 +536,7 @@
         <!-- <div class="col-md-3">
         </div> -->
         <div style="background-color: #EEEEEE;" class="col-md-2">
-            <ng-select [(ngModel)]="location" data-choices data-choices (change)="filterTable($event, 'region')"
+            <ng-select data-choices data-choices (change)="filterTable($event, 'region')"
                 [items]="location" bindLabel="label" bindValue="value" placeholder="All"></ng-select>
 
             <!-- <select style="width: 30%;background-color: #EEEEEE;" class="form-control" data-choices

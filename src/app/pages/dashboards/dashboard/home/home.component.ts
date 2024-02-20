@@ -357,12 +357,13 @@ export class HomeComponent {
   date1: any
   date2: any
   filterComparison(event: any, dropdownType: any) {
+    console.log(event,dropdownType)
 
     this.loadingService.showLoader();
     if (dropdownType === 'region') {
-      this.locationType = event?.target?.value;
+      this.locationType = event.value;
     } else if (dropdownType === 'district') {
-      this.districtforComparison = event?.target?.value
+      this.districtforComparison = event.value
     }
     else if (dropdownType === 'date1') {
       this.date1 = event.target.value;
@@ -438,9 +439,9 @@ export class HomeComponent {
   filterLeastfiveDistrict(event: any, dropdownType: any) {
     this.loadingService.showLoader();
     if (dropdownType === 'year') {
-      this.selectLeastFiveYear = event?.target?.value;
+      this.selectLeastFiveYear = event?.value;
     } else if (dropdownType === 'location') {
-      this.selectedDistrict = event?.target?.value
+      this.selectedDistrict = event?.value
     }
     console.log('Selected value:', this.selectLeastFiveYear, this.selectedDistrict);
     this.service.getFilterDashBoard('leastPerformance', this.selectLeastFiveYear, this.selectedDistrict).subscribe((res: any) => {
@@ -493,9 +494,9 @@ export class HomeComponent {
   filterTopFive(event: any, dropdownType: any) {
     this.loadingService.showLoader();
     if (dropdownType === 'year') {
-      this.selectedyearForTopFive = event?.target?.value;
+      this.selectedyearForTopFive = event?.value;
     } else if (dropdownType === 'location') {
-      this.selectedDistrictTopFive = event?.target?.value
+      this.selectedDistrictTopFive = event?.value
     }
     console.log(this.selectedDistrictTopFive, this.selectedyearForTopFive)
     this.service.getFilterDashBoard('top5DistrictBarChart', this.selectedyearForTopFive, this.selectedDistrictTopFive).subscribe((res: any) => {
@@ -548,9 +549,9 @@ export class HomeComponent {
   filterOverallSales(event: any, dropdownType: any) {
     this.loadingService.showLoader();
     if (dropdownType === 'month') {
-      this.selectedMonthOverallSales = event?.target?.value;
+      this.selectedMonthOverallSales = event?.value;
     } else if (dropdownType === 'location') {
-      this.selectedDistrictOverallSales = event?.target?.value
+      this.selectedDistrictOverallSales = event?.value
     }
     this.service.getFilterDashBoardForOverallSales('imfsAndBeerComparison', this.selectedMonthOverallSales, this.selectedDistrictOverallSales).subscribe((res: any) => {
       console.log(res)
@@ -579,8 +580,8 @@ export class HomeComponent {
   }
   selectedFilterSalesDistrict: any
   getDistrict(event: any) {
-    console.log(">>>> District 2",event.target.value)
-    const data = event.target.value
+    console.log(">>>> District 2",event)
+    const data = event.value
     this.service.getDistrict(data).subscribe((res: any) => {
       this.districts = res.data.districts
       console.log(">>>>>> District 2",res.data.districts)
@@ -591,9 +592,9 @@ export class HomeComponent {
   filterTable(event: any, dropdownType: any) {
     this.loadingService.showLoader();
     if (dropdownType === 'year') {
-      this.tableYear = event?.target?.value;
+      this.tableYear = event?.value;
     } else if (dropdownType === 'location') {
-      this.tableregion = event?.target?.value
+      this.tableregion = event?.value
     }
     this.service.getFilterDashBoard('leastPerformanceGrowthRate', this.tableYear, this.tableregion).subscribe((res: any) => {
       console.log(res)
@@ -606,7 +607,7 @@ export class HomeComponent {
 
   filterFestival(event?: any) {
     this.loadingService.showLoader();
-    this.selectedFestival = event?.target?.value;
+    this.selectedFestival = event?.value;
 
     const cardId = 'festivalCheckbox';
     const checkboxes = document.querySelectorAll(`#${cardId}:checked`);
@@ -640,7 +641,7 @@ export class HomeComponent {
 
   filterSalesComparison(event?: any) {
     this.loadingService.showLoader();
-    this.selectedFilterSalesDistrict = event?.target?.value;
+    this.selectedFilterSalesDistrict = event?.value;
     const cardId = 'salesCheckbox';
     const checkboxes = document.querySelectorAll(`#${cardId}:checked`);
     this.selectedComparisonValues = Array.from(checkboxes).map((checkbox: any) => checkbox.value);
