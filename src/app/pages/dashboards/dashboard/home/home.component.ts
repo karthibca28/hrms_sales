@@ -74,11 +74,6 @@ export class HomeComponent {
   valueData: any
   tabledata: any
   comparisonGrowthPercentage: any;
-  barChartColor = {
-    fill: {
-      colors: ['#00798C', '#EDAE49']
-    }
-  }
   globalSearch: any[] = ['districtName', 'totalPrev3MonthBeerSales', 'totalPrev3MonthIMFSales', 'totalPrev3MonthSales', 'totalPrevMonthBeerSales', 'totalPrevMonthIMFSales', 'totalPrevMonthSales'];
   // [{
   //   label: "Chennai", value: 1
@@ -220,7 +215,8 @@ export class HomeComponent {
           }
         },
         fill: {
-          opacity: 1
+          opacity: 1,
+          colors: ['#00798C', '#EDAE49']
         },
         tooltip: {
           y: {
