@@ -18,6 +18,7 @@ import {
 } from "ng-apexcharts";
 import { Table } from 'primeng/table';
 import { FormService } from 'src/app/shared/service/form.service';
+import { InterpageService } from 'src/app/shared/service/interpage.service';
 import { LoadingService } from 'src/app/shared/service/loading.service';
 
 interface sideBarOption {
@@ -42,6 +43,7 @@ interface areaChart {
   series: ApexAxisChartSeries;
   chart: ApexChart;
   xaxis: ApexXAxis;
+  yaxis: ApexYAxis;
   stroke: ApexStroke;
   tooltip: ApexTooltip;
   dataLabels: ApexDataLabels;
@@ -73,6 +75,7 @@ export class HomeComponent {
   previousCurrent: any
   valueData: any
   tabledata: any
+  receivedId: any
   comparisonGrowthPercentage: any;
   globalSearch: any[] = ['districtName', 'totalPrev3MonthBeerSales', 'totalPrev3MonthIMFSales', 'totalPrev3MonthSales', 'totalPrevMonthBeerSales', 'totalPrevMonthIMFSales', 'totalPrevMonthSales'];
   // [{
@@ -96,8 +99,12 @@ export class HomeComponent {
   colorPalette: string[] = ['#E14D57', '#3D88B9', '#6DB28E', '#F5A623', '#5C5C5C'];
   ngOnInit(): void {
     this.getDashboardData()
+    this.InterpageService.id$.subscribe((id) => {
+      this.receivedId = id;
+    });
+
   }
-  constructor(public service: FormService, private loadingService: LoadingService) {
+  constructor(public service: FormService, private loadingService: LoadingService, private InterpageService: InterpageService) {
     this.areaChart = {} as areaChart
     this.barChart = {} as barChartOption
     this.salesChart = {} as sideBarOption
@@ -120,7 +127,6 @@ export class HomeComponent {
       return 'orange';
     }
   }
-  
 
   getDashboardData() {
     this.loadingService.showLoader();
@@ -154,6 +160,14 @@ export class HomeComponent {
         },
         xaxis: res.data.
           charts.yearlyCummulativeComparison.xaxis,
+        yaxis: {
+          title: {
+            // text: "₹ (Cr)"
+          },
+          labels: {
+            formatter: (value:any) => 'l',
+          }
+        },
         tooltip: {
           x: {
             format: "dd/MM/yy HH:mm"
@@ -177,7 +191,14 @@ export class HomeComponent {
         xaxis: res.data.
           charts.
           yearlySalesComparison
-          .xaxis,
+          .xaxis, yaxis: {
+            title: {
+              // text: "₹ (Cr)"
+            },
+            labels: {
+              formatter: (value) => { return `${value} Cr` },
+            }
+          },
         tooltip: {
           x: {
             format: "dd/MM/yy HH:mm"
@@ -212,6 +233,9 @@ export class HomeComponent {
         yaxis: {
           title: {
             // text: "₹ (Cr)"
+          },
+          labels: {
+            formatter: (value) => { return `${value} Cr` },
           }
         },
         fill: {
@@ -275,10 +299,14 @@ export class HomeComponent {
         yaxis: {
           title: {
             // text: "₹ (Cr)"
+          },
+          labels: {
+            formatter: (value) => { return `${value} Cr` },
           }
         },
         fill: {
-          opacity: 1
+          opacity: 1,
+          colors: ['#00E396']
         },
         tooltip: {
           y: {
@@ -314,10 +342,14 @@ export class HomeComponent {
         yaxis: {
           title: {
             // text: "₹ (Cr)"
+          },
+          labels: {
+            formatter: (value) => { return `${value} Cr` },
           }
         },
         fill: {
-          opacity: 1
+          opacity: 1,
+          colors: ['#E14D57']
         },
         tooltip: {
           y: {
@@ -341,10 +373,15 @@ export class HomeComponent {
         stroke: {
           curve: "smooth"
         },
-        xaxis: res.data.
-          charts.
-          yearlyFestival
-          .xaxis,
+        xaxis: res.data.charts.yearlyFestival,
+        yaxis: {
+          title: {
+            // text: "₹ (Cr)"
+          },
+          labels: {
+            formatter: (value) => { return `${value} Cr` },
+          }
+        },
         tooltip: {
           x: {
             format: "dd/MM/yy HH:mm"
@@ -358,7 +395,7 @@ export class HomeComponent {
   date1: any
   date2: any
   filterComparison(event: any, dropdownType: any) {
-    console.log(event,dropdownType)
+    console.log(event, dropdownType)
 
     this.loadingService.showLoader();
     if (dropdownType === 'region') {
@@ -420,6 +457,9 @@ export class HomeComponent {
           yaxis: {
             title: {
               // text: "₹ (Cr)"
+            },
+            labels: {
+              formatter: (value) => { return `${value} Cr` },
             }
           },
           fill: {
@@ -475,6 +515,9 @@ export class HomeComponent {
         yaxis: {
           title: {
             // text: "₹ (Cr)"
+          },
+          labels: {
+            formatter: (value) => { return `${value} Cr` },
           }
         },
         fill: {
@@ -581,11 +624,11 @@ export class HomeComponent {
   }
   selectedFilterSalesDistrict: any
   getDistrict(event: any) {
-    console.log(">>>> District 2",event)
+    console.log(">>>> District 2", event)
     const data = event.value
     this.service.getDistrict(data).subscribe((res: any) => {
       this.districts = res.data.districts
-      console.log(">>>>>> District 2",res.data.districts)
+      console.log(">>>>>> District 2", res.data.districts)
     })
   }
   tableYear: any
@@ -631,6 +674,14 @@ export class HomeComponent {
             curve: "smooth"
           },
           xaxis: res.data.charts.yearlyFestival.xaxis,
+          yaxis: {
+            title: {
+              // text: "₹ (Cr)"
+            },
+            labels: {
+              formatter: (value) => { return `${value} Cr` },
+            }
+          },
           tooltip: {
             x: {
               format: "dd/MM/yy HH:mm"
@@ -664,6 +715,14 @@ export class HomeComponent {
             curve: "smooth"
           },
           xaxis: res.data.charts.yearlySalesComparison.xaxis,
+          yaxis: {
+            title: {
+              // text: "₹ (Cr)"
+            },
+            labels: {
+              formatter: (value) => { return `${value} Cr` },
+            }
+          },
           tooltip: {
             x: {
               format: "dd/MM/yy HH:mm"

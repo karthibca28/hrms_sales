@@ -6,6 +6,7 @@ import { NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimplebarAngularModule } from 'simplebar-angular';
 import { LanguageService } from '../core/services/language.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { SharedModule } from '../shared/shared.module';
 
 // Component pages
 import { LayoutComponent } from './layout.component';
@@ -41,6 +42,7 @@ import { TwoColumnSidebarComponent } from './two-column-sidebar/two-column-sideb
     NgbNavModule,
     SimplebarAngularModule,
     TranslateModule,
+   
   ],
   providers: [LanguageService]
 })

@@ -15,6 +15,7 @@ import { LanguageService } from '../../core/services/language.service';
 import { TranslateService } from '@ngx-translate/core';
 import { CartModel } from './topbar.model';
 import { cartData } from './data';
+import { InterpageService } from 'src/app/shared/service/interpage.service';
 
 @Component({
   selector: 'app-topbar',
@@ -39,12 +40,13 @@ export class TopbarComponent implements OnInit {
 
   constructor(@Inject(DOCUMENT) private document: any, private eventService: EventService, public languageService: LanguageService,
     public _cookiesService: CookieService, public translate: TranslateService, private authService: AuthenticationService, private authFackservice: AuthfakeauthenticationService,
-    private router: Router, private TokenStorageService: TokenStorageService) { }
+    private router: Router, private TokenStorageService: TokenStorageService, private service: InterpageService) { }
 
   ngOnInit(): void {
     this.userData = this.TokenStorageService.getUser();
     this.element = document.documentElement;
-
+    document.querySelector('.hamburger-icon')?.classList.toggle('open');
+    this.mobileMenuButtonClicked.emit();
     // Cookies wise Language set
     this.cookieValue = this._cookiesService.get('lang');
     const val = this.listLang.filter(x => x.lang === this.cookieValue);
@@ -62,6 +64,12 @@ export class TopbarComponent implements OnInit {
       var item_price = item.quantity * item.price
       this.total += item_price
     });
+  }
+
+  sendId(data:any) {
+    const idToSend = data; 
+    this.service.setId(idToSend);
+    console.log(idToSend)
   }
 
   /**
@@ -237,4 +245,18 @@ export class TopbarComponent implements OnInit {
     searchInputReponsive.value = "";
   }
 
+}
+
+function showScreen(screenName: any) {
+  // Hide all screens
+  var screens = document.querySelectorAll('.screen');
+  screens.forEach(function (screen) {
+    screenName = 'none';
+  });
+
+  // Show the selected screen
+  var selectedScreen = document.getElementById(screenName);
+  if (selectedScreen) {
+    selectedScreen.style.display = 'block';
+  }
 }
