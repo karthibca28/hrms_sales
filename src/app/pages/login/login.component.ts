@@ -36,8 +36,8 @@ export class LoginComponent {
   }
 
   private users = [
-    { username: 'tasmac@managingdirector', password: 'tasmac@123', name: "Managing Director" },
-    { username: 'tasmac@chairman', password: 'tasmac@123', name: "Chairman" },
+    { username: 'md@tasmac', password: 'tasmac@123', name: "Managing Director" },
+    { username: 'chairman@tasmac', password: 'tasmac@123', name: "Chairman" },
   ];
   initLoginForm() {
     this.loginForm = new FormGroup({
@@ -50,7 +50,7 @@ export class LoginComponent {
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
   }
-  login(): boolean {
+  login() {
     const user = this.users.find(u => u.username === this.loginForm.value.username && u.password === this.loginForm.value.password);
 
     if (user) {
@@ -67,8 +67,16 @@ export class LoginComponent {
         timer: 1250
       })
     }
-
-    return false;
+    else{
+      // this.sharedService.showError('Access Denied!');
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Access Denied",
+        showConfirmButton: false,
+        timer: 1250
+      })
+    }
   }
   // login() {
   //   console.log("data works")

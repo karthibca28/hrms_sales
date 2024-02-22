@@ -25,6 +25,7 @@ interface sideBarOption {
   series: ApexNonAxisChartSeries;
   chart: ApexChart;
   responsive: ApexResponsive[];
+  dataLabels: any;
   labels: any;
 };
 interface barChartOption {
@@ -107,7 +108,12 @@ export class HomeComponent {
   constructor(public service: FormService, private loadingService: LoadingService, private InterpageService: InterpageService) {
     this.areaChart = {} as areaChart
     this.barChart = {} as barChartOption
-    this.salesChart = {} as sideBarOption
+    this.salesChart = {
+      dataLabels: {
+        enabled: false,
+        formatter: (v: string) => `${v} cr`
+      },
+    } as sideBarOption
     this.areaChartYearlySalesComparison = {} as areaChart
     this.barChartTop = {} as barChartOption
     this.barChartLeast = {} as barChartOption
@@ -133,6 +139,7 @@ export class HomeComponent {
     this.service.getDashBoard().subscribe((res: any) => {
       this.overAllChart = res.data.parameters.imfsAndBeerComparison.periodRange
       this.location = res.data.globalParameters.regions
+      this.location.unshift({ value: '', label: 'All' })
       this.districts = res.data.globalParameters.regionId
       this.chartData = res.data.charts.liveSalesAndCompareByDate
       this.regionwiseDropdown = res.data.parameters.regionWiseBarChart.years
@@ -247,10 +254,32 @@ export class HomeComponent {
           }
         }
       } as barChartOption
+      const numericSeries = res.data.charts.imfsAndBeerComparison.series;
+      const seriesWithCr = numericSeries.map((value:any) => value.toString() + "Cr");      
+      console.log(seriesWithCr)
       this.salesChart = {
         series: res.data.charts.imfsAndBeerComparison.series,
         chart: {
           type: "donut",
+        },
+        plotOptions: {
+          pie: {
+            expandOnClick: false
+          }
+        },
+        dataLabels: {
+          enabled: true,
+          textAnchor: "start",
+          style: {
+            colors: ["#fff"]
+          },
+          formatter: function () {
+            return ''
+          },
+          offsetX: 0,
+          dropShadow: {
+            enabled: true
+          }
         },
         labels: res.data.charts.imfsAndBeerComparison.labels,
         responsive: [
@@ -258,18 +287,18 @@ export class HomeComponent {
             breakpoint: 480,
             options: {
               chart: {
-                width: 200
+                width: 200,
               },
               legend: {
-                position: "bottom"
-              }
-            }
-          }
+                position: "bottom",
+              },
+            },
+          },
         ],
         fill: {
-          colors: ['#ffff']
-        }
-      } as sideBarOption
+          colors: ['#ffff'],
+        },
+      } as sideBarOption;
       this.barChartTop = {
         series: res.data.charts.top5DistrictBarChart.series,
         chart: {
@@ -593,6 +622,10 @@ export class HomeComponent {
     this.service.getFilterDashBoardForOverallSales('imfsAndBeerComparison', this.selectedMonthOverallSales, this.selectedDistrictOverallSales).subscribe((res: any) => {
       this.loadingService.hideLoader();
       this.salesChart = {
+        dataLabels: {
+          enabled: false,
+          formatter: (v: string) => `${v} cr`
+        },
         series: res.data.charts.imfsAndBeerComparison.series,
         chart: {
           type: "donut"
@@ -619,6 +652,7 @@ export class HomeComponent {
     const data = event.value
     this.service.getDistrict(data).subscribe((res: any) => {
       this.districts = res.data.districts
+      this.districts.unshift({ value: '', label: 'All' })
     })
   }
   tableYear: any

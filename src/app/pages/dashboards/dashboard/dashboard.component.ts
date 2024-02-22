@@ -50,7 +50,7 @@ interface sideBarOption {
   tooltip: ApexTooltip;
   colors: string[];
   title: ApexTitleSubtitle;
-  // subtitle: ApexTitleSubtitle;
+
 };
 
 interface BarChartOption {
