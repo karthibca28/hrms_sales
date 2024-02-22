@@ -18,7 +18,7 @@ export class FormService {
     return this.http.get(`${this.baseUrl}dashboard/insights`);
   }
   getFilterDashBoard(chartName:any,year:any,regionId:any){
-    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}${year?'&month='+year:''}${regionId?'&regionId='+regionId:''}`);
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}${year?'&year='+year:''}${regionId?'&regionId='+regionId:''}`);
   }
   private previousRegionId: any;
 
