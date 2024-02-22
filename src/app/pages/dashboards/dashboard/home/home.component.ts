@@ -240,7 +240,7 @@ export class HomeComponent {
         },
         fill: {
           opacity: 1,
-          colors: ['#00798C', '#EDAE49']
+          // colors: ['#00798C', '#EDAE49']
         },
         tooltip: {
           y: {
