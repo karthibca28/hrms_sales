@@ -1,7 +1,7 @@
 <div class="project-wrapper m-2" id="live1">
     <div class="card">
-        <div style="justify-content: space-between;position: absolute;" class="header-container row">
-            <h4 style="margin-left:2%;display: inline-flex;" class="card-title mb-0 flex-grow-1">Live Sales & Volume
+        <div style="justify-content: space-between;" class="header-container row">
+            <h4 style="margin-left:20px;display: inline-flex;" class="card-title mb-0 flex-grow-1">Live Sales & Volume
                 Comparison
                 <img class="card-img" src="assets/icons/Live-Sales-Data.png" />
             </h4>
@@ -22,9 +22,11 @@
                         </span>
                         <div class="item-head-child">
                             <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;" class="item-title">{{chartData?.previousYear?.imfsSoldVolumeCases}}</span>
+                            <span style="margin-top: 3px;"
+                                class="item-title">{{chartData?.previousYear?.imfsSoldVolumeCases}}</span>
                         </div>
-                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.previousYear?.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}} Crs</span>
+                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.previousYear?.imfsSalesValue |
+                            currency:'INR':'symbol':'1.0-2'}} Crs</span>
                     </div>
                     <div class="item">
                         <span class="item-title">BEER
@@ -32,9 +34,11 @@
                         </span>
                         <div class="item-head-child">
                             <img style="margin-top: 1px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;" class="item-title">{{chartData?.previousYear?.beerSoldVolumeCases}}</span>
+                            <span style="margin-top: 3px;"
+                                class="item-title">{{chartData?.previousYear?.beerSoldVolumeCases}}</span>
                         </div>
-                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.previousYear?.beerSalesValue | currency:'INR':'symbol':'1.0-2'}} Crs</span>
+                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.previousYear?.beerSalesValue |
+                            currency:'INR':'symbol':'1.0-2'}} Crs</span>
                     </div>
                 </div>
                 <div class="percentage">{{chartData?.previousYear?.growthPercentage}} %</div>
@@ -50,9 +54,11 @@
                         </span>
                         <div class="item-head-child">
                             <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;" class="item-title">{{chartData?.previousDay?.imfsSoldVolumeCases}}</span>
+                            <span style="margin-top: 3px;"
+                                class="item-title">{{chartData?.previousDay?.imfsSoldVolumeCases}}</span>
                         </div>
-                        <span style="margin-bottom: 10px;" class="item-title">{{chartData?.previousDay?.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}} Crs</span>
+                        <span style="margin-bottom: 10px;" class="item-title">{{chartData?.previousDay?.imfsSalesValue |
+                            currency:'INR':'symbol':'1.0-2'}} Crs</span>
                     </div>
                     <div class="item">
                         <span class="item-title">BEER
@@ -60,9 +66,11 @@
                         </span>
                         <div class="item-head-child">
                             <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;" class="item-title"> {{chartData?.previousDay?.beerSoldVolumeCases}}</span>
+                            <span style="margin-top: 3px;" class="item-title">
+                                {{chartData?.previousDay?.beerSoldVolumeCases}}</span>
                         </div>
-                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.previousDay?.beerSalesValue | currency:'INR':'symbol':'1.0-2'}} Crs</span>
+                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.previousDay?.beerSalesValue |
+                            currency:'INR':'symbol':'1.0-2'}} Crs</span>
                     </div>
                 </div>
                 <div class="percentage">{{chartData?.previousDay?.growthPercentage}} %</div>
@@ -73,7 +81,8 @@
                     <!-- <img style="width: 20px;height: 20px;" src="assets/icons/Live-1.gif" /> -->
                     <span style="color: white;font-weight: bold;border-radius: 5px;
                             font-size:small;margin-left: 5px;padding: 2px;background-color: red;">Live</span>
-                    <img style="height: 20px;margin-left: 2px;cursor: pointer;" (click)="refreshLiveStatus()" src="assets/icons/refresh.png" />
+                    <img style="height: 20px;margin-left: 2px;cursor: pointer;" (click)="refreshLiveStatus()"
+                        src="assets/icons/refresh.png" />
                 </div>
                 <div class="content">
                     <div class="item">
@@ -82,9 +91,11 @@
                         </span>
                         <div class="item-head-child">
                             <img style="margin-top: 1px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;" style="margin-left: 2px;" class="item-title">{{chartData?.today?.imfsSoldVolumeCases}}</span>
+                            <span style="margin-top: 3px;" style="margin-left: 2px;"
+                                class="item-title">{{chartData?.today?.imfsSoldVolumeCases}}</span>
                         </div>
-                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.today?.imfsSalesValue | currency:'INR':'symbol':'1.0-2'}} Crs</span>
+                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.today?.imfsSalesValue |
+                            currency:'INR':'symbol':'1.0-2'}} Crs</span>
                     </div>
                     <div class="item">
                         <span class="item-title">BEER
@@ -92,9 +103,11 @@
                         </span>
                         <div class="item-head-child">
                             <img style="margin-top: px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;" class="item-title">{{chartData?.today?.beerSoldVolumeCases}}</span>
+                            <span style="margin-top: 3px;"
+                                class="item-title">{{chartData?.today?.beerSoldVolumeCases}}</span>
                         </div>
-                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.today?.beerSalesValue | currency:'INR':'symbol':'1.0-2'}} Crs</span>
+                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.today?.beerSalesValue |
+                            currency:'INR':'symbol':'1.0-2'}} Crs</span>
                     </div>
                 </div>
             </div>
@@ -105,7 +118,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div  class="card-header">
+                    <div class="card-header">
                         <h4 class="card-title">Cumulative Growth Performance - Current Month</h4>
                     </div>
                     <div class="card-body d-flex">
@@ -178,12 +191,12 @@
                             <span>Region</span>
                             <ng-select (change)="filterComparison($event, 'region')" (change)="getDistrict($event)"
                                 [items]="location" bindLabel="label" bindValue="value"
-                                placeholder="Select Region"></ng-select>
+                                placeholder="Across TN"></ng-select>
                         </div>
                         <div class="col-6 col-md-3">
                             <span>District</span>
                             <ng-select (change)="filterComparison($event, 'district')" [items]="districts"
-                                bindLabel="label" bindValue="value" placeholder="Select District"></ng-select>
+                                bindLabel="label" bindValue="value" placeholder="All"></ng-select>
                             <!-- <select style="margin-left: 5px;" class="form-control"
                                 (change)="filterComparison($event,'district')">
                                 <option value="">Select</option>
@@ -192,7 +205,7 @@
                             </select> -->
                         </div>
                         <div class="col-6 col-md-3">
-                            <span>From Date</span>
+                            <span>Date</span>
                             <div class="input-group">
                                 <input type="text" (change)="filterComparison($event,'date1')" class="form-control"
                                     id="datepicker1" mwlFlatpickr [convertModelValue]="true" data-date-format="d M, Y"
@@ -200,7 +213,7 @@
                             </div>
                         </div>
                         <div class="col-6 col-md-3">
-                            <span>To Date</span>
+                            <span>Date</span>
                             <div class="input-group">
                                 <input type="text" (change)="filterComparison($event,'date2')" class="form-control"
                                     id="datepicker2" mwlFlatpickr [convertModelValue]="true" data-date-format="d M, Y"
@@ -222,6 +235,49 @@
                 </div>
             </div>
             <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="card-title mb-0 flex-grow-1">Overall Sales</h4>
+                        <img style="width: 20px;height: 20px;" src="assets/icons/sales.png" />
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <!--  (change)="filterRegionWise($event)" -->
+                                <span>Month</span>
+                                <ng-select (change)="filterOverallSales($event,'month')" [items]="overAllChart"
+                                    bindLabel="label" bindValue="value" placeholder="All"></ng-select>
+
+                                <!-- <select class="form-control" data-choices (change)="filterOverallSales($event,'month')">
+                                    <option *ngFor="let value of overAllChart" value="{{value.value}}">
+                                        {{value.label}}</option>
+                                </select> -->
+                                <!-- <i class="fas fa-caret-down"></i> -->
+                            </div>
+                            <div class="col-md-3">
+                                <!--  (change)="filterRegionWise($event)" -->
+                                <span>Region</span>
+                                <ng-select data-choices (change)="filterOverallSales($event,'location')"
+                                    [items]="location" bindLabel="label" bindValue="value"
+                                    placeholder="All"></ng-select>
+
+                                <!-- <select class="form-control" data-choices (change)="filterOverallSales($event,'location')">
+                                    <option value="">All</option>
+                                    <option *ngFor="let value of location" value="{{value.value}}">
+                                        {{value.label}}</option>
+                                </select> -->
+                            </div>
+                            <div class="col-12">
+                                <div id="chart">
+                                    <apx-chart [series]="salesChart.series" [chart]="salesChart.chart"
+                                        [labels]="salesChart.labels" [responsive]="salesChart.responsive"></apx-chart>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-md-6">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title mb-0 flex-grow-1">Sales Comparison on Festival</h4>
@@ -267,11 +323,11 @@
                             <span>Region</span>
                             <ng-select (change)="filterFestival($event)" [items]="location" bindLabel="label"
                                 bindValue="value" placeholder="Across TN"></ng-select>
-                            <!-- <select class="form-control" data-choices >
+                            <select class="form-control" data-choices >
                                 <option value=""></option>
                                 <option *ngFor="let value of location" value="{{value.value}}">
                                     {{value.label}}</option>
-                            </select> -->
+                            </select>
                         </div>
                     </div>
                     <div class="row">
@@ -285,58 +341,15 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <div class="row" id="over4">
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="card-title mb-0 flex-grow-1">Overall Sales</h4>
-                        <img style="width: 20px;height: 20px;" src="assets/icons/sales.png" />
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <!--  (change)="filterRegionWise($event)" -->
-                                <span>Month</span>
-                                <ng-select (change)="filterOverallSales($event,'month')" [items]="overAllChart"
-                                    bindLabel="label" bindValue="value" placeholder="All"></ng-select>
-
-                                <!-- <select class="form-control" data-choices (change)="filterOverallSales($event,'month')">
-                                    <option *ngFor="let value of overAllChart" value="{{value.value}}">
-                                        {{value.label}}</option>
-                                </select> -->
-                                <!-- <i class="fas fa-caret-down"></i> -->
-                            </div>
-                            <div class="col-md-3">
-                                <!--  (change)="filterRegionWise($event)" -->
-                                <span>Region</span>
-                                <ng-select data-choices (change)="filterOverallSales($event,'location')"
-                                    [items]="location" bindLabel="label" bindValue="value"
-                                    placeholder="All"></ng-select>
-
-                                <!-- <select class="form-control" data-choices (change)="filterOverallSales($event,'location')">
-                                    <option value="">All</option>
-                                    <option *ngFor="let value of location" value="{{value.value}}">
-                                        {{value.label}}</option>
-                                </select> -->
-                            </div>
-                            <div class="col-12">
-                                <div id="chart">
-                                    
-                                    <apx-chart [series]="salesChart.series" [chart]="salesChart.chart" 
-                                        [labels]="salesChart.labels" [responsive]="salesChart.responsive"></apx-chart>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title mb-0 flex-grow-1">Yearly Comparison</h4>
+                        <h4 class="card-title mb-0 flex-grow-1">Annual sales comparison</h4>
                         <img style="width: 20px;height: 20px;" src="assets/icons/sales-comp.png" />
                     </div>
                     <div class="card-body">
@@ -405,7 +418,7 @@
         <div class="row" id="top5">
             <div class="col-5 card">
                 <div class="header-container row mb-2">
-                    <h4 class="card-title mb-0 flex-grow-1">Top Five District sales
+                    <h4 class="card-title mb-0 flex-grow-1">Region wise Sales Performance Chart
                         <img style="width: 25px;height: 25px;" src="assets/icons/top-5.png" />
                     </h4>
                 </div>
@@ -447,7 +460,7 @@
             </div>
             <div class="col-6 card" style="margin-left: 4%;">
                 <div class="header-container row mb-2">
-                    <h4 class="card-title mb-0 flex-grow-1">Least Five District Sales
+                    <h4 class="card-title mb-0 flex-grow-1">Overall/Regionwise Least performance
                         <img style="width: 25px;height: 25px;" src="assets/icons/last-5.png" />
                     </h4>
                 </div>
@@ -500,8 +513,8 @@
         </span>
         <div class="col-md-2">
             <span>Month</span>
-            <ng-select style="width: 50%;" data-choices data-choices (change)="filterTable($event,'year')"
-                [items]="regionwiseDropdown" bindLabel="label" bindValue="value" placeholder="Select Year"></ng-select>
+            <ng-select style="width: 50%;" data-choices data-choices (change)="filterTable($event,'month')"
+                [items]="overAllChart" bindLabel="label" bindValue="value" placeholder="Select Year"></ng-select>
         </div>
 
         <!-- <select style="width:10%;background-color: #EEEEEE;" class="form-control" data-choices
@@ -512,7 +525,7 @@
         </select> -->
         <!-- <div class="col-md-3">
         </div> -->
-        <div  class="col-md-2">
+        <div class="col-md-2">
             <span>Region</span>
             <ng-select data-choices data-choices (change)="filterTable($event, 'region')" [items]="location"
                 bindLabel="label" bindValue="value" placeholder="All"></ng-select>
