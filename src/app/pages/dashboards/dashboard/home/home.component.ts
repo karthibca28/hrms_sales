@@ -165,7 +165,7 @@ export class HomeComponent {
             // text: "₹ (Cr)"
           },
           labels: {
-            formatter: (value:any) => 'l',
+            formatter: val => `${val} Cr`
           }
         },
         tooltip: {
@@ -189,16 +189,15 @@ export class HomeComponent {
           curve: "smooth"
         },
         xaxis: res.data.
-          charts.
-          yearlySalesComparison
-          .xaxis, yaxis: {
-            title: {
-              // text: "₹ (Cr)"
-            },
-            labels: {
-              formatter: (value) => { return `${value} Cr` },
-            }
+          charts.yearlySalesComparison.xaxis,
+        yaxis: {
+          title: {
+            // text: "Sales (in Cr)"
           },
+          labels: {
+            formatter: val => `${val} Cr`
+          }
+        },
         tooltip: {
           x: {
             format: "dd/MM/yy HH:mm"
