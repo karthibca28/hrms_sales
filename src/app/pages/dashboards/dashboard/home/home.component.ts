@@ -215,7 +215,7 @@ export class HomeComponent {
         plotOptions: {
           bar: {
             horizontal: false,
-            columnWidth: "55%",
+            columnWidth: "30%",
             // endingShape: "rounded"
           }
         },
@@ -282,7 +282,7 @@ export class HomeComponent {
         plotOptions: {
           bar: {
             horizontal: false,
-            columnWidth: "55%",
+            columnWidth: "40%",
             // colors:['#00E396']
             // endingShape: "rounded"
           }
@@ -326,7 +326,7 @@ export class HomeComponent {
         plotOptions: {
           bar: {
             horizontal: false,
-            columnWidth: "55%",
+            columnWidth: "40%",
             // endingShape: "rounded"
           }
         },
@@ -439,7 +439,7 @@ export class HomeComponent {
           plotOptions: {
             bar: {
               horizontal: false,
-              columnWidth: "55%",
+              columnWidth: "25%",
               // endingShape: "rounded"
             }
           },
@@ -497,7 +497,7 @@ export class HomeComponent {
         plotOptions: {
           bar: {
             horizontal: false,
-            columnWidth: "55%",
+            columnWidth: "30%",
             // endingShape: "rounded"
           }
         },
@@ -521,7 +521,8 @@ export class HomeComponent {
           }
         },
         fill: {
-          opacity: 1
+          opacity: 1,
+          colors: ['#E14D57']
         },
         tooltip: {
           y: {
@@ -555,7 +556,7 @@ export class HomeComponent {
         plotOptions: {
           bar: {
             horizontal: false,
-            columnWidth: "55%",
+            columnWidth: "30%",
             // endingShape: "rounded"
           }
         },
@@ -576,7 +577,8 @@ export class HomeComponent {
           }
         },
         fill: {
-          opacity: 1
+          opacity: 1,
+          colors: ['#00E396']
         },
         tooltip: {
           y: {
