@@ -135,20 +135,20 @@
                                 <div class="col-10">
                                     <div class="card-small-card">
                                         <div class="small-card-child bg-primary text-white text-center">
-                                            Total Sales Feb 2023
+                                            Total Sales {{valueData.previousYear.month}} {{valueData.previousYear.year}}
                                         </div>
                                         <div class="card-body-child text-center">
-                                            <h2 class="font-weight-bold mt-2">{{valueData.previousTotal}} Crs</h2>
+                                            <h2 class="font-weight-bold mt-2">{{valueData.previousYear.total}} Crs</h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-10 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-success text-white text-center">
-                                            Total Sales Feb 2024 (12 feb 2024)
+                                            Total Sales {{valueData.currentYear.month}} {{valueData.currentYear.year}} 
                                         </div>
                                         <div class="card-body-child text-center">
-                                            <h2 class="font-weight-bold mt-2">{{valueData.previousCurrent}} Crs</h2>
+                                            <h2 class="font-weight-bold mt-2">{{valueData.currentYear.total}} Crs</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -299,17 +299,13 @@
                     </div>
                 </div>
             </div> -->
-
-
                     </div>
-
-
                 </div>
             </div>
 
             <div class="row" id="top5">
                 <div class="col-6 card">
-                    <div class="header-container row mb-2">
+                    <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title mb-0 flex-grow-1">Region wise Sales Performance Chart
                             <img style="width: 25px;height: 25px;" src="assets/icons/top-5.png" />
                         </h4>
@@ -399,8 +395,8 @@
             </div>
 
             <div class="row justify-content-between" id="over4">
-                <div  class="col-6 card">
-                    <div class="header-container row mb-2">
+                <div class="col-6 card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title mb-0 flex-grow-1">Overall/Regionwise Least performance
                             <img style="width: 25px;height: 25px;" src="assets/icons/last-5.png" />
                         </h4>
