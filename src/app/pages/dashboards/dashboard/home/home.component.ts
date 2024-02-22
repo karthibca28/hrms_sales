@@ -637,7 +637,7 @@ export class HomeComponent {
   tableregion: any
   filterTable(event: any, dropdownType: any) {
     this.loadingService.showLoader();
-    if (dropdownType === 'year') {
+    if (dropdownType === 'month') {
       this.tableYear = event?.value;
     } else if (dropdownType === 'location') {
       this.tableregion = event?.value
