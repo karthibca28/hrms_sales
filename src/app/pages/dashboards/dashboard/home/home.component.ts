@@ -150,6 +150,7 @@ export class HomeComponent {
       this.valueData = res.data.charts.yearlyCummulativeComparison
       this.tabledata = res.data.charts.leastPerformanceGrowthRate
       this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties.growthPercentage
+      console.log(">>>> %",this.comparisonGrowthPercentage)
       this.loadingService.hideLoader();
       this.areaChart = {
         series: res.data.charts.yearlyCummulativeComparison.series,

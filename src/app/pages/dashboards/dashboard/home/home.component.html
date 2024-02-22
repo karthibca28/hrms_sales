@@ -155,7 +155,7 @@
                                 <div class="col-10 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-primary text-white text-center">
-                                            Growth Percentage Feb 2024
+                                            Growth Percentage {{valueData.currentYear.month}} {{valueData.currentYear.year}}
                                         </div>
                                         <div class="card-body-child text-center">
                                             <h2 style="color: red;font-size: xx-large;" class="font-weight-bold mt-2">
@@ -224,11 +224,11 @@
                             <div style="margin-top: 20%;" class="col-6">
                                 <div class="card small-card">
                                     <div class="small-card-child bg-primary text-white text-center">
-                                        Growth Percentage Feb 2024
+                                        Growth Percentage
                                     </div>
                                     <div class="card-body-child text-center">
                                         <h2 style="color: red; font-size: xx-large;" class="font-weight-bold mt-2">
-                                            {{valueData.percentage}}%
+                                            {{comparisonGrowthPercentage}}%
                                         </h2>
                                     </div>
                                 </div>
