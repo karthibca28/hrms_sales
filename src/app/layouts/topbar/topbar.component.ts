@@ -37,12 +37,16 @@ export class TopbarComponent implements OnInit {
   valueset: any;
   countryName: any;
   cookieValue: any;
+  user:any
 
   constructor(@Inject(DOCUMENT) private document: any, private eventService: EventService, public languageService: LanguageService,
     public _cookiesService: CookieService, public translate: TranslateService, private authService: AuthenticationService, private authFackservice: AuthfakeauthenticationService,
     private router: Router, private TokenStorageService: TokenStorageService, private service: InterpageService) { }
 
   ngOnInit(): void {
+    this.user = sessionStorage.getItem('userName')
+    this.user = JSON.parse(this.user)
+    console.log(this.user)
     this.userData = this.TokenStorageService.getUser();
     this.element = document.documentElement;
     document.querySelector('.hamburger-icon')?.classList.toggle('open');
