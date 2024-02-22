@@ -25,6 +25,7 @@ interface sideBarOption {
   series: ApexNonAxisChartSeries;
   chart: ApexChart;
   responsive: ApexResponsive[];
+  dataLabels: any;
   labels: any;
 };
 interface barChartOption {
@@ -107,7 +108,12 @@ export class HomeComponent {
   constructor(public service: FormService, private loadingService: LoadingService, private InterpageService: InterpageService) {
     this.areaChart = {} as areaChart
     this.barChart = {} as barChartOption
-    this.salesChart = {} as sideBarOption
+    this.salesChart = {
+      dataLabels: {
+        enabled: false,
+        formatter: (v: string) => `${v} cr`
+      },
+    } as sideBarOption
     this.areaChartYearlySalesComparison = {} as areaChart
     this.barChartTop = {} as barChartOption
     this.barChartLeast = {} as barChartOption
@@ -131,9 +137,9 @@ export class HomeComponent {
   getDashboardData() {
     this.loadingService.showLoader();
     this.service.getDashBoard().subscribe((res: any) => {
-      console.log('>>>', res.data)
       this.overAllChart = res.data.parameters.imfsAndBeerComparison.periodRange
       this.location = res.data.globalParameters.regions
+      this.location.unshift({ value: '', label: 'All' })
       this.districts = res.data.globalParameters.regionId
       this.chartData = res.data.charts.liveSalesAndCompareByDate
       this.regionwiseDropdown = res.data.parameters.regionWiseBarChart.years
@@ -145,7 +151,6 @@ export class HomeComponent {
       this.tabledata = res.data.charts.leastPerformanceGrowthRate
       this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties.growthPercentage
       this.loadingService.hideLoader();
-      // console.log(">>>>table", this.tabledata)
       this.areaChart = {
         series: res.data.charts.yearlyCummulativeComparison.series,
         chart: {
@@ -249,10 +254,32 @@ export class HomeComponent {
           }
         }
       } as barChartOption
+      const numericSeries = res.data.charts.imfsAndBeerComparison.series;
+      const seriesWithCr = numericSeries.map((value:any) => value.toString() + "Cr");      
+      console.log(seriesWithCr)
       this.salesChart = {
         series: res.data.charts.imfsAndBeerComparison.series,
         chart: {
           type: "donut",
+        },
+        plotOptions: {
+          pie: {
+            expandOnClick: false
+          }
+        },
+        dataLabels: {
+          enabled: true,
+          textAnchor: "start",
+          style: {
+            colors: ["#fff"]
+          },
+          formatter: function () {
+            return ''
+          },
+          offsetX: 0,
+          dropShadow: {
+            enabled: true
+          }
         },
         labels: res.data.charts.imfsAndBeerComparison.labels,
         responsive: [
@@ -260,18 +287,18 @@ export class HomeComponent {
             breakpoint: 480,
             options: {
               chart: {
-                width: 200
+                width: 200,
               },
               legend: {
-                position: "bottom"
-              }
-            }
-          }
+                position: "bottom",
+              },
+            },
+          },
         ],
         fill: {
-          colors: ['#ffff']
-        }
-      } as sideBarOption
+          colors: ['#ffff'],
+        },
+      } as sideBarOption;
       this.barChartTop = {
         series: res.data.charts.top5DistrictBarChart.series,
         chart: {
@@ -394,7 +421,6 @@ export class HomeComponent {
   date1: any
   date2: any
   filterComparison(event: any, dropdownType: any) {
-    console.log(event, dropdownType)
 
     this.loadingService.showLoader();
     if (dropdownType === 'region') {
@@ -428,7 +454,6 @@ export class HomeComponent {
       this.date1,
       this.date2).subscribe((res: any) => {
         this.loadingService.hideLoader();
-        console.log(res)
         this.barChart = {
           series: res.data.charts.comparisonBetweenDate.series,
           chart: {
@@ -483,9 +508,7 @@ export class HomeComponent {
     } else if (dropdownType === 'location') {
       this.selectedDistrict = event?.value
     }
-    console.log('Selected value:', this.selectLeastFiveYear, this.selectedDistrict);
     this.service.getFilterDashBoard('leastPerformance', this.selectLeastFiveYear, this.selectedDistrict).subscribe((res: any) => {
-      console.log(res)
       this.loadingService.hideLoader();
       this.barChartLeast = {
         series: res.data.charts.leastPerformance.series,
@@ -542,9 +565,7 @@ export class HomeComponent {
     } else if (dropdownType === 'location') {
       this.selectedDistrictTopFive = event?.value
     }
-    console.log(this.selectedDistrictTopFive, this.selectedyearForTopFive)
     this.service.getFilterDashBoard('top5DistrictBarChart', this.selectedyearForTopFive, this.selectedDistrictTopFive).subscribe((res: any) => {
-      console.log(res)
       this.loadingService.hideLoader();
       this.barChartTop = {
         series: res.data.charts.top5DistrictBarChart.series,
@@ -599,9 +620,12 @@ export class HomeComponent {
       this.selectedDistrictOverallSales = event?.value
     }
     this.service.getFilterDashBoardForOverallSales('imfsAndBeerComparison', this.selectedMonthOverallSales, this.selectedDistrictOverallSales).subscribe((res: any) => {
-      console.log(res)
       this.loadingService.hideLoader();
       this.salesChart = {
+        dataLabels: {
+          enabled: false,
+          formatter: (v: string) => `${v} cr`
+        },
         series: res.data.charts.imfsAndBeerComparison.series,
         chart: {
           type: "donut"
@@ -625,11 +649,10 @@ export class HomeComponent {
   }
   selectedFilterSalesDistrict: any
   getDistrict(event: any) {
-    console.log(">>>> District 2", event)
     const data = event.value
     this.service.getDistrict(data).subscribe((res: any) => {
       this.districts = res.data.districts
-      console.log(">>>>>> District 2", res.data.districts)
+      this.districts.unshift({ value: '', label: 'All' })
     })
   }
   tableYear: any
@@ -642,7 +665,6 @@ export class HomeComponent {
       this.tableregion = event?.value
     }
     this.service.getFilterDashBoard('leastPerformanceGrowthRate', this.tableYear, this.tableregion).subscribe((res: any) => {
-      console.log(res)
       this.loadingService.hideLoader();
     })
   }
@@ -657,10 +679,8 @@ export class HomeComponent {
     const cardId = 'festivalCheckbox';
     const checkboxes = document.querySelectorAll(`#${cardId}:checked`);
     this.selectedFestivalValues = Array.from(checkboxes).map((checkbox: any) => checkbox.value);
-    console.log(this.selectedFestivalValues, this.selectedFestival);
     this.service.getFilterSalesComparison('yearlyFestival', this.selectedFestivalValues, this.selectedFestival)
       .subscribe((res: any) => {
-        console.log(res);
         this.loadingService.hideLoader();
         this.areChartFestival = {
           series: res.data.charts.yearlyFestival.series,
@@ -698,10 +718,8 @@ export class HomeComponent {
     const cardId = 'salesCheckbox';
     const checkboxes = document.querySelectorAll(`#${cardId}:checked`);
     this.selectedComparisonValues = Array.from(checkboxes).map((checkbox: any) => checkbox.value);
-    console.log(this.selectedComparisonValues, this.selectedFilterSalesDistrict);
     this.service.getFilterSalesComparison('yearlySalesComparison', this.selectedComparisonValues, this.selectedFilterSalesDistrict)
       .subscribe((res: any) => {
-        console.log(res);
         this.loadingService.hideLoader();
         this.areaChartYearlySalesComparison = {
           series: res.data.charts.yearlySalesComparison.series,
@@ -736,7 +754,6 @@ export class HomeComponent {
     this.loadingService.showLoader();
     this.service.getLiveStatus('liveSalesAndCompareByDate')
       .subscribe((res: any) => {
-        console.log(res)
         this.chartData = res.data.charts.liveSalesAndCompareByDate
         this.loadingService.hideLoader();
       })
