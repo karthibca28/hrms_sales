@@ -514,9 +514,10 @@
                         Least Growth Performance Rate
                     </span>
                     <div class="col-md-2">
+                        <!-- (change)="filterTable($event,'month')" -->
                         <span>Month</span>
-                        <ng-select style="width: 50%;" data-choices data-choices (change)="filterTable($event,'month')"
-                            [items]="overAllChart" bindLabel="label" bindValue="value"
+                        <ng-select style="width: 50%;" data-choices data-choices 
+                            [items]="monthFilter" bindLabel="label" bindValue="value"
                             placeholder="Select Year"></ng-select>
                     </div>
 
@@ -528,9 +529,10 @@
         </select> -->
                     <!-- <div class="col-md-3">
         </div> -->
+        <!-- (change)="filterTable($event, 'region')" -->
                     <div class="col-md-2">
                         <span>Region</span>
-                        <ng-select data-choices data-choices (change)="filterTable($event, 'region')" [items]="location"
+                        <ng-select data-choices data-choices [items]="location"
                             bindLabel="label" bindValue="value" placeholder="All"></ng-select>
 
                         <!-- <select style="width: 30%;background-color: #EEEEEE;" class="form-control" data-choices

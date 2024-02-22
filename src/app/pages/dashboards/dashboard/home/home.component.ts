@@ -94,7 +94,7 @@ export class HomeComponent {
   // {
   //   label: "Trichy", value: 5
   // }]
-
+  monthFilter:any
   district: any
   @ViewChild('dt1') dt1!: Table;
   colorPalette: string[] = ['#E14D57', '#3D88B9', '#6DB28E', '#F5A623', '#5C5C5C'];
@@ -149,6 +149,8 @@ export class HomeComponent {
       this.yearlySalesComparison = res.data.parameters.yearlySalesComparison.years
       this.valueData = res.data.charts.yearlyCummulativeComparison
       this.tabledata = res.data.charts.leastPerformanceGrowthRate
+      this.monthFilter = res.data.charts.leastPerformanceGrowthRate.periodRange
+      console.log(this.monthFilter)
       this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties.growthPercentage
       console.log(">>>> %",this.comparisonGrowthPercentage)
       this.loadingService.hideLoader();
