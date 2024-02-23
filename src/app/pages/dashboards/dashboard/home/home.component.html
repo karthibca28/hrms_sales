@@ -23,7 +23,7 @@
                         <div class="item-head-child">
                             <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
                             <span style="margin-top: 3px;"
-                                class="item-title">{{chartData?.previousYear?.imfsSoldVolumeCases}}</span>
+                                class="item-title">{{chartData?.previousYear?.imfsSoldVolumeCases}} <p style="font-size: x-small;">Cases</p></span>
                         </div>
                         <span style="margin-bottom: 6px;" class="item-title">{{chartData?.previousYear?.imfsSalesValue |
                             currency:'INR':'symbol':'1.0-2'}} Crs</span>
@@ -35,7 +35,7 @@
                         <div class="item-head-child">
                             <img style="margin-top: 1px;" class="item-img" src="assets/icons/home.png">&nbsp;
                             <span style="margin-top: 3px;"
-                                class="item-title">{{chartData?.previousYear?.beerSoldVolumeCases}}</span>
+                                class="item-title">{{chartData?.previousYear?.beerSoldVolumeCases}} <p style="font-size: x-small;">Cases</p></span>
                         </div>
                         <span style="margin-bottom: 6px;" class="item-title">{{chartData?.previousYear?.beerSalesValue |
                             currency:'INR':'symbol':'1.0-2'}} Crs</span>
@@ -55,7 +55,7 @@
                         <div class="item-head-child">
                             <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
                             <span style="margin-top: 3px;"
-                                class="item-title">{{chartData?.previousDay?.imfsSoldVolumeCases}}</span>
+                                class="item-title">{{chartData?.previousDay?.imfsSoldVolumeCases}} Case</span>
                         </div>
                         <span style="margin-bottom: 10px;" class="item-title">{{chartData?.previousDay?.imfsSalesValue |
                             currency:'INR':'symbol':'1.0-2'}} Crs</span>
@@ -67,7 +67,7 @@
                         <div class="item-head-child">
                             <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
                             <span style="margin-top: 3px;" class="item-title">
-                                {{chartData?.previousDay?.beerSoldVolumeCases}}</span>
+                                {{chartData?.previousDay?.beerSoldVolumeCases}} Case</span>
                         </div>
                         <span style="margin-bottom: 6px;" class="item-title">{{chartData?.previousDay?.beerSalesValue |
                             currency:'INR':'symbol':'1.0-2'}} Crs</span>
@@ -79,10 +79,10 @@
                 <div style="background-color: #00E396;" class="header">
                     Today's Overall Sales {{chartData?.today?.date}}
                     <!-- <img style="width: 20px;height: 20px;" src="assets/icons/Live-1.gif" /> -->
-                    <span style="color: white;font-weight: bold;border-radius: 5px;
+                    <!-- <span style="color: white;font-weight: bold;border-radius: 5px;
                             font-size:small;margin-left: 5px;padding: 2px;background-color: red;">Live</span>
                     <img style="height: 20px;margin-left: 2px;cursor: pointer;" (click)="refreshLiveStatus()"
-                        src="assets/icons/refresh.png" />
+                        src="assets/icons/refresh.png" /> -->
                 </div>
                 <div class="content">
                     <div class="item">
@@ -92,7 +92,7 @@
                         <div class="item-head-child">
                             <img style="margin-top: 1px;" class="item-img" src="assets/icons/home.png">&nbsp;
                             <span style="margin-top: 3px;" style="margin-left: 2px;"
-                                class="item-title">{{chartData?.today?.imfsSoldVolumeCases}}</span>
+                                class="item-title">{{chartData?.today?.imfsSoldVolumeCases}} Cases</span>
                         </div>
                         <span style="margin-bottom: 6px;" class="item-title">{{chartData?.today?.imfsSalesValue |
                             currency:'INR':'symbol':'1.0-2'}} Crs</span>
@@ -104,7 +104,7 @@
                         <div class="item-head-child">
                             <img style="margin-top: px;" class="item-img" src="assets/icons/home.png">&nbsp;
                             <span style="margin-top: 3px;"
-                                class="item-title">{{chartData?.today?.beerSoldVolumeCases}}</span>
+                                class="item-title">{{chartData?.today?.beerSoldVolumeCases}} </span>
                         </div>
                         <span style="margin-bottom: 6px;" class="item-title">{{chartData?.today?.beerSalesValue |
                             currency:'INR':'symbol':'1.0-2'}} Crs</span>
@@ -400,7 +400,7 @@
             <div class="row justify-content-between" id="over4">
                 <div class="col-6 card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="card-title mb-0 flex-grow-1">Overall Least performance
+                        <h4 class="card-title mb-0 flex-grow-1">Overall Least Performed District
                             <!-- <img style="width: 25px;height: 25px;" src="assets/icons/last-5.png" /> -->
                         </h4>
                     </div>

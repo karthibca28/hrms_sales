@@ -172,6 +172,7 @@ export class HomeComponent {
       this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties.growthPercentage
       console.log(">>>> %", this.comparisonGrowthPercentage)
       this.loadingService.hideLoader();
+      const now = new Date()
       this.areaChart = {
         series: res.data.charts.yearlyCummulativeComparison.series,
         chart: {
@@ -184,8 +185,10 @@ export class HomeComponent {
         stroke: {
           curve: "smooth"
         },
-        xaxis: res.data.
-          charts.yearlyCummulativeComparison.xaxis,
+        xaxis: {categories:res.data.
+          charts.yearlyCummulativeComparison.xaxis.categories,
+       
+        },
         yaxis: {
           title: {
             // text: "₹ (Cr)"
@@ -195,9 +198,8 @@ export class HomeComponent {
           }
         },
         tooltip: {
-          x: {
-            format: "dd/MM/yy HH:mm"
-          }
+        
+          
         }
       };
       this.areaChartYearlySalesComparison = {
@@ -665,7 +667,7 @@ export class HomeComponent {
         chart: {
           type: "donut"
         },
-        labels: res.data.charts.imfsAndBeerComparison.labels,
+        labels: res.data.charts.imfsAndBeerComparison.map((value: any) => value + " in Crores"),
         responsive: [
           {
             breakpoint: 480,
