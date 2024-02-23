@@ -185,9 +185,10 @@ export class HomeComponent {
         stroke: {
           curve: "smooth"
         },
-        xaxis: {categories:res.data.
-          charts.yearlyCummulativeComparison.xaxis.categories,
-       
+        xaxis: {
+          categories: res.data.
+            charts.yearlyCummulativeComparison.xaxis.categories,
+
         },
         yaxis: {
           title: {
@@ -198,8 +199,8 @@ export class HomeComponent {
           }
         },
         tooltip: {
-        
-          
+
+
         }
       };
       this.areaChartYearlySalesComparison = {
@@ -689,10 +690,15 @@ export class HomeComponent {
     this.districts = []
     this.districtName = ''
     const data = event.value
-    this.service.getDistrict(data).subscribe((res: any) => {
-      this.districts = res.data.districts
+    if (data == '') {
       this.districts.unshift({ value: '', label: 'All' })
-    })
+    }
+    else {
+      this.service.getDistrict(data).subscribe((res: any) => {
+        this.districts = res.data.districts
+        this.districts.unshift({ value: '', label: 'All' })
+      })
+    }
   }
   tableYear: any
   tableregion: any
