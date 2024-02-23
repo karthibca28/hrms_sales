@@ -139,7 +139,7 @@ export class HomeComponent {
     this.service.getDashBoard().subscribe((res: any) => {
       this.overAllChart = res.data.parameters.imfsAndBeerComparison.periodRange
       this.location = res.data.globalParameters.regions
-      this.location.unshift({ value: '', label: 'All' })
+      this.location.unshift({ value: '', label: 'Across TamilNadu' })
       this.districts = res.data.globalParameters.regionId
       this.chartData = res.data.charts.liveSalesAndCompareByDate
       this.regionwiseDropdown = res.data.parameters.regionWiseBarChart.years
@@ -268,6 +268,18 @@ export class HomeComponent {
         plotOptions: {
           pie: {
             expandOnClick: false
+          }
+        },
+        tooltip: {
+          y: {
+            formatter: function(val:any) {
+              return val + ".00" + " Rs"
+            },
+            title: {
+              formatter: function (seriesName:any) {
+                return ''
+              }
+            }
           }
         },
         dataLabels: {
@@ -508,6 +520,7 @@ export class HomeComponent {
     this.loadingService.showLoader();
     if (dropdownType === 'year') {
       this.selectLeastFiveYear = event?.value;
+      this.selectedDistrict = ''
     } else if (dropdownType === 'location') {
       this.selectedDistrict = event?.value
     }
@@ -652,10 +665,11 @@ export class HomeComponent {
   }
   selectedFilterSalesDistrict: any
   getDistrict(event: any) {
+    this.districts = []
     const data = event.value
     this.service.getDistrict(data).subscribe((res: any) => {
       this.districts = res.data.districts
-      this.districts.unshift({ value: '', label: 'All' })
+      this.districts.unshift({ value: '', label: 'Across TamilNadu' })
     })
   }
   tableYear: any
