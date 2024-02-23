@@ -1,6 +1,6 @@
 .layout {
   display: grid;
-   max-height: 300px;
+  max-height: 340px;
   margin: 30px 0;
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(3, 1fr);
@@ -52,6 +52,7 @@
 
 .item-head-child {
   display: flex;
+  margin-top: 6%;
 }
 
 .item:last-child {
@@ -66,7 +67,7 @@
   font-weight: bold;
 }
 
-.card-live{
+.card-live {
   justify-content: space-between;
 }
 
@@ -189,7 +190,7 @@ td {
 }
 
 th {
-   background-color: #EEEEEE;
+  background-color: #EEEEEE;
   color: black;
 }
 
