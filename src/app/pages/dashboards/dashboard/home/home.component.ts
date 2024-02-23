@@ -754,7 +754,8 @@ export class HomeComponent {
     this.selectedFilterSalesDistrict = event?.value;
     const cardId = 'salesCheckbox';
     const checkboxes = document.querySelectorAll(`#${cardId}:checked`);
-    this.selectedComparisonValues = Array.from(checkboxes).map((checkbox: any) => checkbox.value);
+    this.selectedComparisonValues = Array.from(checkboxes).map((checkbox: any) => String(checkbox.value));
+    console.log(this.selectedComparisonValues)
     this.service.getFilterSalesComparison('yearlySalesComparison', this.selectedComparisonValues, this.selectedFilterSalesDistrict)
       .subscribe((res: any) => {
         this.loadingService.hideLoader();

@@ -8,7 +8,7 @@ import { environment, environmentdata } from 'src/environments/environment';
 export class FormService {
 
   apiUrl: string = '';
-  baseUrl:string =''
+  baseUrl: string = ''
   constructor(private http: HttpClient) {
     this.apiUrl = environmentdata.endPoint;
     this.baseUrl = environmentdata.dataEndPoint
@@ -17,16 +17,16 @@ export class FormService {
   getDashBoard() {
     return this.http.get(`${this.baseUrl}dashboard/insights`);
   }
-  getFilterDashBoard(chartName:any,year:any,regionId:any){
-    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}${year?'&year='+year:''}${regionId?'&regionId='+regionId:''}`);
+  getFilterDashBoard(chartName: any, year: any, regionId: any) {
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}${year ? '&year=' + year : ''}${regionId ? '&regionId=' + regionId : ''}`);
   }
   private previousRegionId: any;
 
   getFilterSalesComparison(chartName: any, year: any, regionId: any) {
     const actualRegionId = (regionId !== null && regionId !== undefined) ? regionId : this.previousRegionId;
-    this.previousRegionId = actualRegionId;
-
-    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&years=[${year}]${actualRegionId ? '&regionId=' + actualRegionId : ''}`);
+    const yearStrings = year.map((year:any) => `"${year}"`).join(',');
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&years=[${yearStrings}]${actualRegionId ? '&regionId=' + actualRegionId : ''}`);
+    // return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&years=[${year.toString()}]${actualRegionId ? '&regionId=' + actualRegionId : ''}`);
   }
   getFilterFestival(chartName: any, year: any, regionId: any) {
     const actualRegionId = (regionId !== null && regionId !== undefined) ? regionId : this.previousRegionId;
@@ -34,26 +34,26 @@ export class FormService {
 
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&years=[${year}]${actualRegionId ? '&regionId=' + actualRegionId : ''}`);
   }
-  getDistrict(data:any){
+  getDistrict(data: any) {
     return this.http.get(`${this.baseUrl}district-manager-offices?$for=dropdown&regionId=${data}`);
   }
-  getFilterDashBoardForOverallSales(chartName:any,year:any,regionId:any){
-    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}${year?'&periodRange='+year:''}${regionId?'&regionId='+regionId:''}`);
+  getFilterDashBoardForOverallSales(chartName: any, year: any, regionId: any) {
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}${year ? '&periodRange=' + year : ''}${regionId ? '&regionId=' + regionId : ''}`);
   }
-  getFilterDashBoardComparison(chartName:any,regionId:any,districtId:any,date1:any,date2:any){
-    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}${regionId?'&regionId='+regionId:''}${districtId?'&districtId='+districtId:''}${date1?'&date1='+date1?.split('-').reverse().join('-'):''}${date2?'&date2='+date2?.split('-').reverse().join('-'):''}`);
+  getFilterDashBoardComparison(chartName: any, regionId: any, districtId: any, date1: any, date2: any) {
+    return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}${regionId ? '&regionId=' + regionId : ''}${districtId ? '&districtId=' + districtId : ''}${date1 ? '&date1=' + date1?.split('-').reverse().join('-') : ''}${date2 ? '&date2=' + date2?.split('-').reverse().join('-') : ''}`);
   }
-  getFilterDashBoardforimfsAndBeerComparison(chartName:any,year:any,month:any){
+  getFilterDashBoardforimfsAndBeerComparison(chartName: any, year: any, month: any) {
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}&year=${year}&month=${month}`);
   }
-  getLiveStatus(chartName:any){
+  getLiveStatus(chartName: any) {
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}`);
   }
-  getregionWiseSales(data:any) {
-    return this.http.get(`${this.baseUrl}sales/regions?${data?'year='+data:''}`);
+  getregionWiseSales(data: any) {
+    return this.http.get(`${this.baseUrl}sales/regions?${data ? 'year=' + data : ''}`);
   }
-  getTopFiveDistrictSales(data:any) {
-    return this.http.get(`${this.baseUrl}sales/districts?${data?'year='+data:''}`);
+  getTopFiveDistrictSales(data: any) {
+    return this.http.get(`${this.baseUrl}sales/districts?${data ? 'year=' + data : ''}`);
   }
   getMonthlySalesPerformance() {
     return this.http.get(`${this.baseUrl}sales/monthlyPerformance`);
