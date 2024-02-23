@@ -78,6 +78,7 @@ export class HomeComponent {
   tabledata: any
   receivedId: any
   comparisonGrowthPercentage: any;
+  districtName:any
   globalSearch: any[] = ['districtName', 'totalPrev3MonthBeerSales', 'totalPrev3MonthIMFSales', 'totalPrev3MonthSales', 'totalPrevMonthBeerSales', 'totalPrevMonthIMFSales', 'totalPrevMonthSales'];
   // [{
   //   label: "Chennai", value: 1
@@ -94,7 +95,17 @@ export class HomeComponent {
   // {
   //   label: "Trichy", value: 5
   // }]
-  monthFilter:any
+  monthFilter = [
+    {
+      label: "3 Months",value:'3'
+    },
+    {
+      label: "6 Months",value:'6'
+    },
+    {
+      label: "9 Months",value:'9'
+    }
+  ]
   district: any
   @ViewChild('dt1') dt1!: Table;
   colorPalette: string[] = ['#E14D57', '#3D88B9', '#6DB28E', '#F5A623', '#5C5C5C'];
@@ -149,10 +160,10 @@ export class HomeComponent {
       this.yearlySalesComparison = res.data.parameters.yearlySalesComparison.years
       this.valueData = res.data.charts.yearlyCummulativeComparison
       this.tabledata = res.data.charts.leastPerformanceGrowthRate
-      this.monthFilter = res.data.charts.leastPerformanceGrowthRate.periodRange
+      // this.monthFilter = res.data.charts.leastPerformanceGrowthRate.periodRange
       console.log(this.monthFilter)
       this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties.growthPercentage
-      console.log(">>>> %",this.comparisonGrowthPercentage)
+      console.log(">>>> %", this.comparisonGrowthPercentage)
       this.loadingService.hideLoader();
       this.areaChart = {
         series: res.data.charts.yearlyCummulativeComparison.series,
@@ -258,7 +269,7 @@ export class HomeComponent {
         }
       } as barChartOption
       const numericSeries = res.data.charts.imfsAndBeerComparison.series;
-      const seriesWithCr = numericSeries.map((value:any) => value.toString() + "Cr");      
+      const seriesWithCr = numericSeries.map((value: any) => value.toString() + "Cr");
       console.log(seriesWithCr)
       this.salesChart = {
         series: res.data.charts.imfsAndBeerComparison.series,
@@ -272,11 +283,11 @@ export class HomeComponent {
         },
         tooltip: {
           y: {
-            formatter: function(val:any) {
+            formatter: function (val: any) {
               return val + ".00" + " Rs"
             },
             title: {
-              formatter: function (seriesName:any) {
+              formatter: function (seriesName: any) {
                 return ''
               }
             }
@@ -440,6 +451,7 @@ export class HomeComponent {
     this.loadingService.showLoader();
     if (dropdownType === 'region') {
       this.locationType = event.value;
+      this.districtforComparison = ''
     } else if (dropdownType === 'district') {
       this.districtforComparison = event.value
     }
@@ -666,10 +678,11 @@ export class HomeComponent {
   selectedFilterSalesDistrict: any
   getDistrict(event: any) {
     this.districts = []
+    this.districtName = ''
     const data = event.value
     this.service.getDistrict(data).subscribe((res: any) => {
       this.districts = res.data.districts
-      this.districts.unshift({ value: '', label: 'Across TamilNadu' })
+      this.districts.unshift({ value: '', label: 'All' })
     })
   }
   tableYear: any
