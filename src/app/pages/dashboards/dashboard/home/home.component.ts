@@ -491,6 +491,7 @@ export class HomeComponent {
       this.date1,
       this.date2).subscribe((res: any) => {
         this.loadingService.hideLoader();
+        this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties.growthPercentage
         this.barChart = {
           series: res.data.charts.comparisonBetweenDate.series,
           chart: {
