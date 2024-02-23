@@ -668,7 +668,7 @@ export class HomeComponent {
         chart: {
           type: "donut"
         },
-        labels: res.data.charts.imfsAndBeerComparison.map((value: any) => value + " in Crores"),
+        labels: res.data.charts.imfsAndBeerComparison.labels.map((value: any) => value + " in Crores"),
         responsive: [
           {
             breakpoint: 480,
