@@ -1,9 +1,9 @@
 <div class="project-wrapper m-2" id="live1">
     <div class="card">
-        <div style="justify-content: space-between;" class="header-container row">
+        <div style="justify-content: space-between;" class="header-container match-height">
             <h4 style="margin-left:20px;display: inline-flex;" class="card-title mb-0 flex-grow-1">Live Sales & Volume
                 Comparison
-                <img class="card-img" src="assets/icons/Live-Sales-Data.png" />
+                <!-- <img class="card-img" src="assets/icons/Live-Sales-Data.png" /> -->
             </h4>
             <!-- <img style="width: 20px;height: 20px;" src="assets/icons/Live-1.gif" />
                 <span style="color: white;font-weight: bold;border-radius: 5px;
@@ -177,7 +177,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title mb-0 flex-grow-1">Comparison Data</h4>
-                        <img style="width: 25px; height: 25px;" src="assets/icons/Comparison-Data.png" />
+                        <!-- <img style="width: 25px; height: 25px;" src="assets/icons/Comparison-Data.png" /> -->
                     </div>
 
                     <div class="row mt-2 px-2">
@@ -307,7 +307,7 @@
                 <div class="col-6 card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title mb-0 flex-grow-1">Region wise Sales Performance Chart
-                            <img style="width: 25px;height: 25px;" src="assets/icons/top-5.png" />
+                            <!-- <img style="width: 25px;height: 25px;" src="assets/icons/top-5.png" /> -->
                         </h4>
                     </div>
 
@@ -352,13 +352,13 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h4 class="card-title mb-0 flex-grow-1">Overall Sales</h4>
-                            <img style="width: 20px;height: 20px;" src="assets/icons/sales.png" />
+                            <!-- <img style="width: 20px;height: 20px;" src="assets/icons/sales.png" /> -->
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-3">
                                     <!--  (change)="filterRegionWise($event)" -->
-                                    <span>Month</span>
+                                    <span>Year</span>
                                     <ng-select (change)="filterOverallSales($event,'month')" [items]="overAllChart"
                                         bindLabel="label" bindValue="value" placeholder="All"></ng-select>
 
@@ -397,8 +397,8 @@
             <div class="row justify-content-between" id="over4">
                 <div class="col-6 card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="card-title mb-0 flex-grow-1">Overall/Regionwise Least performance
-                            <img style="width: 25px;height: 25px;" src="assets/icons/last-5.png" />
+                        <h4 class="card-title mb-0 flex-grow-1">Overall Least performance
+                            <!-- <img style="width: 25px;height: 25px;" src="assets/icons/last-5.png" /> -->
                         </h4>
                     </div>
 
@@ -443,41 +443,41 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <h4 class="card-title mb-0 flex-grow-1">Annual sales comparison</h4>
-                            <img style="width: 20px;height: 20px;" src="assets/icons/sales-comp.png" />
+                            <!-- <img style="width: 20px;height: 20px;" src="assets/icons/sales-comp.png" /> -->
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-2">
                                     <div class="form-check" (click)="filterSalesComparison()">
-                                        <input class="form-check-input" type="checkbox" value="2024" id="salesCheckbox"
+                                        <input class="form-check-input" type="checkbox" value="FY 2023-2024" id="salesCheckbox"
                                             checked>
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            2024
+                                            FY 2023-2024
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-check" (click)="filterSalesComparison()">
-                                        <input class="form-check-input" type="checkbox" value="2023" id="salesCheckbox"
+                                        <input class="form-check-input" type="checkbox" value="FY 2022-2023" id="salesCheckbox"
                                             checked>
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            2023
+                                            FY 2022-2023
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-check" (click)="filterSalesComparison()">
-                                        <input class="form-check-input" type="checkbox" value="2022" id="salesCheckbox">
+                                        <input class="form-check-input" type="checkbox" value="FY 2021-2022" id="salesCheckbox">
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            2022
+                                            FY 2021-2022
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="form-check" (click)="filterSalesComparison()">
-                                        <input class="form-check-input" type="checkbox" value="2021" id="salesCheckbox">
+                                        <input class="form-check-input" type="checkbox" value="FY 2020-2021" id="salesCheckbox">
                                         <label class="form-check-label" for="flexCheckDefault">
-                                            2021
+                                            FY 2020-2021
                                         </label>
                                     </div>
                                 </div>
@@ -518,7 +518,7 @@
                         <span>Month</span>
                         <ng-select style="width: 50%;" data-choices data-choices 
                             [items]="monthFilter" bindLabel="label" bindValue="value"
-                            placeholder="Select Year"></ng-select>
+                            placeholder="Select Month"></ng-select>
                     </div>
 
                     <!-- <select style="width:10%;background-color: #EEEEEE;" class="form-control" data-choices
