@@ -7,6 +7,17 @@ html{
     overflow: hidden;
 }
 
+.match-height {
+    > [class*='col'] {
+      display: flex;
+      flex-flow: column;
+  
+      > .card {
+        flex: 1 1 auto;
+      }
+    }
+}
+
 .coverflowslide .slide {
     position: relative;
     transition: transform 0.3s;
