@@ -12,6 +12,44 @@
         </div>
         <section style="margin: 10px 0;" class="layout">
             <div class="card-main">
+                <div style="background-color: #00E396;cursor: pointer;" class="header" (click)="refreshLiveStatus()">
+                    Today's Overall Sales {{chartData?.today?.date}}
+                    <!-- <img style="width: 20px;height: 20px;" src="assets/icons/Live-1.gif" /> -->
+                    <!-- <span style="color: white;font-weight: bold;border-radius: 5px;
+                            font-size:small;margin-left: 5px;padding: 2px;background-color: red;">Live</span>
+                    <img style="height: 20px;margin-left: 2px;cursor: pointer;" (click)="refreshLiveStatus()"
+                        src="assets/icons/refresh.png" /> -->
+                </div>
+                <div class="content">
+                    <div class="item">
+                        <span class="item-title">IMFS
+                            <img src="assets/icons/Imfs.png">
+                        </span>
+                        <div class="item-head-child">
+                            <img style="margin-top: 1px;" class="item-img" src="assets/icons/home.png">&nbsp;
+                            <span style="margin-top: 3px;" style="margin-left: 2px;"
+                                class="item-title">{{chartData?.today?.imfsSoldVolumeCases}} <p
+                                    style="font-size: x-small;">Cases</span>
+                        </div>
+                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.today?.imfsSalesValue |
+                            currency:'INR':'symbol':'1.0-2'}} Crs</span>
+                    </div>
+                    <div class="item">
+                        <span class="item-title">BEER
+                            <img class="item-img" src="assets/icons/beeer.png">
+                        </span>
+                        <div class="item-head-child">
+                            <img style="margin-top: px;" class="item-img" src="assets/icons/home.png">&nbsp;
+                            <span style="margin-top: 3px;" class="item-title">{{chartData?.today?.beerSoldVolumeCases}}
+                                <p style="font-size: x-small;">Cases
+                            </span>
+                        </div>
+                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.today?.beerSalesValue |
+                            currency:'INR':'symbol':'1.0-2'}} Crs</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card-main">
                 <div class="header">
                     Previous Year {{chartData?.previousYear?.date}}
                 </div>
@@ -79,44 +117,7 @@
                 </div>
                 <div class="percentage" [style.color]="getColor(chartData?.previousDay?.growthPercentage)">{{chartData?.previousDay?.growthPercentage}} %</div>
             </div>
-            <div class="card-main">
-                <div style="background-color: #00E396;cursor: pointer;" class="header" (click)="refreshLiveStatus()">
-                    Today's Overall Sales {{chartData?.today?.date}}
-                    <!-- <img style="width: 20px;height: 20px;" src="assets/icons/Live-1.gif" /> -->
-                    <!-- <span style="color: white;font-weight: bold;border-radius: 5px;
-                            font-size:small;margin-left: 5px;padding: 2px;background-color: red;">Live</span>
-                    <img style="height: 20px;margin-left: 2px;cursor: pointer;" (click)="refreshLiveStatus()"
-                        src="assets/icons/refresh.png" /> -->
-                </div>
-                <div class="content">
-                    <div class="item">
-                        <span class="item-title">IMFS
-                            <img src="assets/icons/Imfs.png">
-                        </span>
-                        <div class="item-head-child">
-                            <img style="margin-top: 1px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;" style="margin-left: 2px;"
-                                class="item-title">{{chartData?.today?.imfsSoldVolumeCases}} <p
-                                    style="font-size: x-small;">Cases</span>
-                        </div>
-                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.today?.imfsSalesValue |
-                            currency:'INR':'symbol':'1.0-2'}} Crs</span>
-                    </div>
-                    <div class="item">
-                        <span class="item-title">BEER
-                            <img class="item-img" src="assets/icons/beeer.png">
-                        </span>
-                        <div class="item-head-child">
-                            <img style="margin-top: px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;" class="item-title">{{chartData?.today?.beerSoldVolumeCases}}
-                                <p style="font-size: x-small;">Cases
-                            </span>
-                        </div>
-                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.today?.beerSalesValue |
-                            currency:'INR':'symbol':'1.0-2'}} Crs</span>
-                    </div>
-                </div>
-            </div>
+            
         </section>
     </div>
 

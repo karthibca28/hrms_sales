@@ -24,7 +24,30 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     // Menu Items
-    this.menuItems = MENU;
+    // this.menuItems = MENU;
+    this.menuItems = [
+      {
+        id: 1,
+        label: 'Dashboard',
+        icon: 'mdi mdi-speedometer',
+      },
+      {
+        id: 2,
+        label:'Customer Status',
+        icon: 'mdi mdi-account',
+      },
+      {
+        id: 3,
+        label: 'Consumer Court Status',
+        icon: 'mdi mdi-account',
+      },
+      {
+        id: 4,
+        label: 'Reports',
+        icon: 'mdi mdi-book-open',
+      },
+      
+    ];
      this.router.events.subscribe((event) => {
        if (document.documentElement.getAttribute('data-layout') != "twocolumn") {
          if (event instanceof NavigationEnd) {
@@ -44,6 +67,9 @@ export class SidebarComponent implements OnInit {
   }
 
 
+  // sideChart(data:any){
+  //   console.log(data)
+  // }
   removeActivation(items: any) {
     items.forEach((item: any) => {
       if (item.classList.contains("menu-link")) {
