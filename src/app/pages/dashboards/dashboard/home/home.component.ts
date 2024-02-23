@@ -79,6 +79,7 @@ export class HomeComponent {
   receivedId: any
   comparisonGrowthPercentage: any;
   districtName: any
+  currentDateofComparison:any
   globalSearch: any[] = ['districtName', 'totalPrev3MonthBeerSales', 'totalPrev3MonthIMFSales', 'totalPrev3MonthSales', 'totalPrevMonthBeerSales', 'totalPrevMonthIMFSales', 'totalPrevMonthSales'];
   // [{
   //   label: "Chennai", value: 1
@@ -124,6 +125,7 @@ export class HomeComponent {
     this.yesterdayDate = yesterday.toISOString().split('T')[0];
     const today = new Date();
     this.currentDate = today.toISOString().split('T')[0];
+    this.currentDateofComparison = today.toISOString().split('T')[0];
     this.areaChart = {} as areaChart
     this.barChart = {} as barChartOption
     this.salesChart = {
@@ -452,6 +454,7 @@ export class HomeComponent {
       }
     } else if (dropdownType === 'date2') {
       this.date2 = event.target.value;
+      this.currentDateofComparison = this.date2
       if (!this.date1) {
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
