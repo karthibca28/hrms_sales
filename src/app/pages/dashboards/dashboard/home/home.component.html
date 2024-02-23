@@ -228,8 +228,8 @@
                                     [xaxis]="barChart.xaxis"></apx-chart>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div style="margin-top: 20%;" class="col-6">
+                        <!-- <div class="col-md-4">
+                            <div class="col-6">
                                 <div class="card small-card">
                                     <div class="small-card-child bg-primary text-white text-center">
                                         Growth Percentage as on {{currentDateofComparison}}
@@ -238,6 +238,65 @@
                                         <h2 style=" font-size: xx-large; " [style.color]="getColor(comparisonGrowthPercentage)" class="font-weight-bold mt-2">
                                             {{comparisonGrowthPercentage}}%
                                         </h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="card small-card">
+                                    <div class="small-card-child bg-primary text-white text-center">
+                                        Growth Percentage as on {{currentDateofComparison}}
+                                    </div>
+                                    <div class="card-body-child text-center">
+                                        <h2 style=" font-size: xx-large; " [style.color]="getColor(comparisonGrowthPercentage)" class="font-weight-bold mt-2">
+                                            {{comparisonGrowthPercentage}}%
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="card small-card">
+                                    <div class="small-card-child bg-primary text-white text-center">
+                                        Growth Percentage as on {{currentDateofComparison}}
+                                    </div>
+                                    <div class="card-body-child text-center">
+                                        <h2 style=" font-size: xx-large; " [style.color]="getColor(comparisonGrowthPercentage)" class="font-weight-bold mt-2">
+                                            {{comparisonGrowthPercentage}}%
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="col-md-4">
+                            <div style="margin-left: 10%;" class="row">
+                                <div class="col-10">
+                                    <div class="card-small-card">
+                                        <div class="small-card-child bg-primary text-white text-center">
+                                            Growth Percentage as on <br> {{currentDateofComparison}}
+                                        </div>
+                                        <div class="card-body-child text-center">
+                                            <h2  [style.color]="getColor(comparisonGrowthPercentage.growthPercentage)" class="font-weight-bold mt-2">{{comparisonGrowthPercentage.growthPercentage}}%</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-10 mt-3">
+                                    <div class="card small-card">
+                                        <div class="small-card-child bg-success text-white text-center">
+                                            IMFS Growth Percentage
+                                        </div>
+                                        <div class="card-body-child text-center">
+                                            <h2 [style.color]="getColor(comparisonGrowthPercentage.imfsGrowthPercentage)" class="font-weight-bold mt-2">{{comparisonGrowthPercentage.imfsGrowthPercentage}}%</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-10 mt-3">
+                                    <div class="card small-card">
+                                        <div class="small-card-child bg-success text-white text-center">
+                                            Beer Growth  Percentage
+                                        </div>
+                                        <div class="card-body-child text-center">
+                                            <h2 [style.color]="getColor(comparisonGrowthPercentage.imfsGrowthPercentage)" style="font-size: xx-large;" class="font-weight-bold mt-2">
+                                                {{comparisonGrowthPercentage.imfsGrowthPercentage}}%</h2>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
