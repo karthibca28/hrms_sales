@@ -108,6 +108,8 @@ export class HomeComponent {
   ]
   district: any
   @ViewChild('dt1') dt1!: Table;
+  yesterdayDate: any;
+  currentDate: any;
   colorPalette: string[] = ['#E14D57', '#3D88B9', '#6DB28E', '#F5A623', '#5C5C5C'];
   ngOnInit(): void {
     this.getDashboardData()
@@ -117,6 +119,11 @@ export class HomeComponent {
 
   }
   constructor(public service: FormService, private loadingService: LoadingService, private InterpageService: InterpageService) {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    this.yesterdayDate = yesterday.toISOString().split('T')[0];
+    const today = new Date();
+    this.currentDate = today.toISOString().split('T')[0];
     this.areaChart = {} as areaChart
     this.barChart = {} as barChartOption
     this.salesChart = {
@@ -307,7 +314,7 @@ export class HomeComponent {
             enabled: true
           }
         },
-        labels: res.data.charts.imfsAndBeerComparison.labels,
+        labels: res.data.charts.imfsAndBeerComparison.labels.map((value: any) => value + " in Crores"),
         responsive: [
           {
             breakpoint: 480,

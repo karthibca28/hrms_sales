@@ -198,15 +198,15 @@
                             <span>Date</span>
                             <div class="input-group">
                                 <input type="text" (change)="filterComparison($event,'date1')" class="form-control"
-                                    id="datepicker1" mwlFlatpickr [convertModelValue]="true" data-date-format="d M, Y"
-                                    placeholder="Select Date">
+                                    [value]="yesterdayDate" mwlFlatpickr [convertModelValue]="true"
+                                    data-date-format="d M, Y" placeholder="Select Date">
                             </div>
                         </div>vs
                         <div class="col-md-2">
                             <span>Date</span>
                             <div class="input-group">
                                 <input type="text" (change)="filterComparison($event,'date2')" class="form-control"
-                                    id="datepicker2" mwlFlatpickr [convertModelValue]="true" data-date-format="d M, Y"
+                                [value]="currentDate"  id="datepicker2" mwlFlatpickr [convertModelValue]="true" data-date-format="d M, Y"
                                     placeholder="Select Date">
                             </div>
                         </div>
