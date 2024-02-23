@@ -303,7 +303,7 @@ export class HomeComponent {
         },
       } as sideBarOption;
       this.barChartTop = {
-        series: res.data.charts.top5DistrictBarChart.series,
+        series: res.data.charts.regionWiseBarChart.series,
         chart: {
           type: "bar",
           height: 350,
@@ -324,7 +324,7 @@ export class HomeComponent {
           width: 2,
           colors: ["transparent"]
         },
-        xaxis: res.data.charts.top5DistrictBarChart.xaxis,
+        xaxis: res.data.charts.regionWiseBarChart.xaxis,
         yaxis: {
           title: {
             // text: "₹ (Cr)"
@@ -568,10 +568,10 @@ export class HomeComponent {
     } else if (dropdownType === 'location') {
       this.selectedDistrictTopFive = event?.value
     }
-    this.service.getFilterDashBoard('top5DistrictBarChart', this.selectedyearForTopFive, this.selectedDistrictTopFive).subscribe((res: any) => {
+    this.service.getFilterDashBoard('regionWiseBarChart', this.selectedyearForTopFive, this.selectedDistrictTopFive).subscribe((res: any) => {
       this.loadingService.hideLoader();
       this.barChartTop = {
-        series: res.data.charts.top5DistrictBarChart.series,
+        series: res.data.charts.regionWiseBarChart.series,
         chart: {
           type: "bar",
           height: 350
@@ -592,7 +592,7 @@ export class HomeComponent {
           colors: ["transparent"]
         },
         xaxis: res.data.
-          charts.top5DistrictBarChart
+          charts.regionWiseBarChart
           .xaxis,
         yaxis: {
           title: {
