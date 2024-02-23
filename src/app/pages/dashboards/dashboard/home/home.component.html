@@ -49,6 +49,43 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card-main">
+                <div style="background-color: #7FB3D5;" class="header">
+                    Yesterday Sales {{chartData?.previousDay?.date}}
+                </div>
+                <div class="content">
+                    <div class="item">
+                        <span class="item-title">IMFS
+                            <img class="item-img" src="assets/icons/Imfs.png">
+                        </span>
+                        <div class="item-head-child">
+                            <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
+                            <span style="margin-top: 3px;"
+                                class="item-title">{{chartData?.previousDay?.imfsSoldVolumeCases}} <p
+                                    style="font-size: x-small;">Cases</span>
+                        </div>
+                        <span style="margin-bottom: 10px;" class="item-title">{{chartData?.previousDay?.imfsSalesValue |
+                            currency:'INR':'symbol':'1.0-2'}} Crs</span>
+                    </div>
+                    <div class="item">
+                        <span class="item-title">BEER
+                            <img class="item-img" src="assets/icons/beeer.png">
+                        </span>
+                        <div class="item-head-child">
+                            <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
+                            <span style="margin-top: 3px;" class="item-title">
+                                {{chartData?.previousDay?.beerSoldVolumeCases}} <p style="font-size: x-small;">
+                                    Cases</span>
+                        </div>
+                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.previousDay?.beerSalesValue |
+                            currency:'INR':'symbol':'1.0-2'}} Crs</span>
+                    </div>
+                </div>
+                <div class="percentage" [style.color]="getColor(chartData?.previousDay?.growthPercentage)">
+                    {{chartData?.previousDay?.growthPercentage}} %</div>
+            </div>
+
             <div class="card-main">
                 <div class="header">
                     Previous Year {{chartData?.previousYear?.date}}
@@ -81,43 +118,9 @@
                             currency:'INR':'symbol':'1.0-2'}} Crs</span>
                     </div>
                 </div>
-                <div class="percentage" [style.color]="getColor(chartData?.previousYear?.growthPercentage)">{{chartData?.previousYear?.growthPercentage}} %</div>
+                <div class="percentage" [style.color]="getColor(chartData?.previousYear?.growthPercentage)">
+                    {{chartData?.previousYear?.growthPercentage}} %</div>
             </div>
-            <div class="card-main">
-                <div style="background-color: #7FB3D5;" class="header">
-                    Previous Day {{chartData?.previousDay?.date}}
-                </div>
-                <div class="content">
-                    <div class="item">
-                        <span class="item-title">IMFS
-                            <img class="item-img" src="assets/icons/Imfs.png">
-                        </span>
-                        <div class="item-head-child">
-                            <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;"
-                                class="item-title">{{chartData?.previousDay?.imfsSoldVolumeCases}} <p
-                                    style="font-size: x-small;">Cases</span>
-                        </div>
-                        <span style="margin-bottom: 10px;" class="item-title">{{chartData?.previousDay?.imfsSalesValue |
-                            currency:'INR':'symbol':'1.0-2'}} Crs</span>
-                    </div>
-                    <div class="item">
-                        <span class="item-title">BEER
-                            <img class="item-img" src="assets/icons/beeer.png">
-                        </span>
-                        <div class="item-head-child">
-                            <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;" class="item-title">
-                                {{chartData?.previousDay?.beerSoldVolumeCases}} <p style="font-size: x-small;">
-                                    Cases</span>
-                        </div>
-                        <span style="margin-bottom: 6px;" class="item-title">{{chartData?.previousDay?.beerSalesValue |
-                            currency:'INR':'symbol':'1.0-2'}} Crs</span>
-                    </div>
-                </div>
-                <div class="percentage" [style.color]="getColor(chartData?.previousDay?.growthPercentage)">{{chartData?.previousDay?.growthPercentage}} %</div>
-            </div>
-            
         </section>
     </div>
 
@@ -166,7 +169,8 @@
                                             {{valueData.currentYear.year}}
                                         </div>
                                         <div class="card-body-child text-center">
-                                            <h2 [style.color]="getColor(valueData.percentage)" style="font-size: xx-large;" class="font-weight-bold mt-2">
+                                            <h2 [style.color]="getColor(valueData.percentage)"
+                                                style="font-size: xx-large;" class="font-weight-bold mt-2">
                                                 {{valueData.percentage}}%</h2>
                                         </div>
                                     </div>
@@ -275,7 +279,9 @@
                                             Growth Percentage as on <br> {{currentDateofComparison}}
                                         </div>
                                         <div class="card-body-child text-center">
-                                            <h2  [style.color]="getColor(comparisonGrowthPercentage.growthPercentage)" class="font-weight-bold mt-2">{{comparisonGrowthPercentage.growthPercentage}}%</h2>
+                                            <h2 [style.color]="getColor(comparisonGrowthPercentage.growthPercentage)"
+                                                class="font-weight-bold mt-2">
+                                                {{comparisonGrowthPercentage.growthPercentage}}%</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -285,18 +291,21 @@
                                             IMFS Growth Percentage
                                         </div>
                                         <div class="card-body-child text-center">
-                                            <h2 [style.color]="getColor(comparisonGrowthPercentage.imfsGrowthPercentage)" class="font-weight-bold mt-2">{{comparisonGrowthPercentage.imfsGrowthPercentage}}%</h2>
+                                            <h2 [style.color]="getColor(comparisonGrowthPercentage.imfsGrowthPercentage)"
+                                                class="font-weight-bold mt-2">
+                                                {{comparisonGrowthPercentage.imfsGrowthPercentage}}%</h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-10 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-success text-white text-center">
-                                            Beer Growth  Percentage
+                                            Beer Growth Percentage
                                         </div>
                                         <div class="card-body-child text-center">
-                                            <h2 [style.color]="getColor(comparisonGrowthPercentage.imfsGrowthPercentage)" style="font-size: xx-large;" class="font-weight-bold mt-2">
-                                                {{comparisonGrowthPercentage.imfsGrowthPercentage}}%</h2>
+                                            <h2 [style.color]="getColor(comparisonGrowthPercentage.imfsGrowthPercentage)"
+                                                style="font-size: xx-large;" class="font-weight-bold mt-2">
+                                                {{comparisonGrowthPercentage.beerGrowthPercentage}}%</h2>
                                         </div>
                                     </div>
                                 </div>

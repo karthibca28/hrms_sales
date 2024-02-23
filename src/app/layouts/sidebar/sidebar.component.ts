@@ -28,23 +28,39 @@ export class SidebarComponent implements OnInit {
     this.menuItems = [
       {
         id: 1,
-        label: 'Dashboard',
-        icon: 'mdi mdi-speedometer',
+        label: 'Live Sales & Volume Comparison',
+        icon: 'mdi mdi-signal-variant',
+        href:"#live1" 
       },
       {
         id: 2,
-        label:'Customer Status',
-        icon: 'mdi mdi-account',
+        label:'Cumulative Growth Performance',
+        icon: 'mdi mdi-chart-line',
+        href:"#cum2"
       },
       {
         id: 3,
-        label: 'Consumer Court Status',
-        icon: 'mdi mdi-account',
+        label: 'Comparison Data',
+        icon: 'mdi mdi-chart-bar',
+        href:"#com3"
       },
       {
         id: 4,
-        label: 'Reports',
-        icon: 'mdi mdi-book-open',
+        label: 'Region Sales & Overall Sales',
+        icon: 'mdi mdi-chart-donut',
+        href:"#over4"
+      },
+      {
+        id: 5,
+        label: 'Overall Lease Performance & Annual Sales ',
+        icon: 'mdi mdi-chart-bar',
+        href:"#top5"
+      },
+      {
+        id: 5,
+        label: 'Least Growth Performace Sales',
+        icon: 'mdi-table-large',
+        href:"#table6"
       },
       
     ];
@@ -67,9 +83,16 @@ export class SidebarComponent implements OnInit {
   }
 
 
-  // sideChart(data:any){
-  //   console.log(data)
-  // }
+  sideChart(data: any) {
+    const idValue = data.href;
+    const projectWrapper = document.querySelector('.project-wrapper');
+    if (projectWrapper) {
+      projectWrapper.setAttribute('id', idValue);
+    } else {
+      console.error('Element with class "project-wrapper" not found.');
+    }
+  }
+  
   removeActivation(items: any) {
     items.forEach((item: any) => {
       if (item.classList.contains("menu-link")) {
