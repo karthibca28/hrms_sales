@@ -23,7 +23,8 @@
                         <div class="item-head-child">
                             <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
                             <span style="margin-top: 3px;"
-                                class="item-title">{{chartData?.previousYear?.imfsSoldVolumeCases}} <p style="font-size: x-small;">Cases</p></span>
+                                class="item-title">{{chartData?.previousYear?.imfsSoldVolumeCases}} <p
+                                    style="font-size: x-small;">Cases</p></span>
                         </div>
                         <span style="margin-bottom: 6px;" class="item-title">{{chartData?.previousYear?.imfsSalesValue |
                             currency:'INR':'symbol':'1.0-2'}} Crs</span>
@@ -35,7 +36,8 @@
                         <div class="item-head-child">
                             <img style="margin-top: 1px;" class="item-img" src="assets/icons/home.png">&nbsp;
                             <span style="margin-top: 3px;"
-                                class="item-title">{{chartData?.previousYear?.beerSoldVolumeCases}} <p style="font-size: x-small;">Cases</p></span>
+                                class="item-title">{{chartData?.previousYear?.beerSoldVolumeCases}} <p
+                                    style="font-size: x-small;">Cases</p></span>
                         </div>
                         <span style="margin-bottom: 6px;" class="item-title">{{chartData?.previousYear?.beerSalesValue |
                             currency:'INR':'symbol':'1.0-2'}} Crs</span>
@@ -55,7 +57,8 @@
                         <div class="item-head-child">
                             <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
                             <span style="margin-top: 3px;"
-                                class="item-title">{{chartData?.previousDay?.imfsSoldVolumeCases}} <p style="font-size: x-small;">Cases</span>
+                                class="item-title">{{chartData?.previousDay?.imfsSoldVolumeCases}} <p
+                                    style="font-size: x-small;">Cases</span>
                         </div>
                         <span style="margin-bottom: 10px;" class="item-title">{{chartData?.previousDay?.imfsSalesValue |
                             currency:'INR':'symbol':'1.0-2'}} Crs</span>
@@ -67,7 +70,8 @@
                         <div class="item-head-child">
                             <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
                             <span style="margin-top: 3px;" class="item-title">
-                                {{chartData?.previousDay?.beerSoldVolumeCases}} <p style="font-size: x-small;">Cases</span>
+                                {{chartData?.previousDay?.beerSoldVolumeCases}} <p style="font-size: x-small;">
+                                    Cases</span>
                         </div>
                         <span style="margin-bottom: 6px;" class="item-title">{{chartData?.previousDay?.beerSalesValue |
                             currency:'INR':'symbol':'1.0-2'}} Crs</span>
@@ -92,7 +96,8 @@
                         <div class="item-head-child">
                             <img style="margin-top: 1px;" class="item-img" src="assets/icons/home.png">&nbsp;
                             <span style="margin-top: 3px;" style="margin-left: 2px;"
-                                class="item-title">{{chartData?.today?.imfsSoldVolumeCases}} <p style="font-size: x-small;">Cases</span>
+                                class="item-title">{{chartData?.today?.imfsSoldVolumeCases}} <p
+                                    style="font-size: x-small;">Cases</span>
                         </div>
                         <span style="margin-bottom: 6px;" class="item-title">{{chartData?.today?.imfsSalesValue |
                             currency:'INR':'symbol':'1.0-2'}} Crs</span>
@@ -103,8 +108,9 @@
                         </span>
                         <div class="item-head-child">
                             <img style="margin-top: px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;"
-                                class="item-title">{{chartData?.today?.beerSoldVolumeCases}} <p style="font-size: x-small;">Cases</span>
+                            <span style="margin-top: 3px;" class="item-title">{{chartData?.today?.beerSoldVolumeCases}}
+                                <p style="font-size: x-small;">Cases
+                            </span>
                         </div>
                         <span style="margin-bottom: 6px;" class="item-title">{{chartData?.today?.beerSalesValue |
                             currency:'INR':'symbol':'1.0-2'}} Crs</span>
@@ -206,8 +212,8 @@
                             <span>Date</span>
                             <div class="input-group">
                                 <input type="text" (change)="filterComparison($event,'date2')" class="form-control"
-                                [value]="currentDate"  id="datepicker2" mwlFlatpickr [convertModelValue]="true" data-date-format="d M, Y"
-                                    placeholder="Select Date">
+                                    [value]="currentDate" id="datepicker2" mwlFlatpickr [convertModelValue]="true"
+                                    data-date-format="d M, Y" placeholder="Select Date">
                             </div>
                         </div>
                     </div>
@@ -552,7 +558,7 @@
                     </div>
 
                 </div>
-                <p-table [value]="tabledata" [rows]="10" [showCurrentPageReport]="true" [paginator]="true"
+                <p-table [value]="sampledata" [rows]="10" [showCurrentPageReport]="true" [paginator]="true"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                     [globalFilterFields]="globalSearch" responsiveLayout="stack" [breakpoint]="'960px'"
                     [tableStyle]="{'min-width': '50rem'}">
@@ -571,7 +577,15 @@
                                 <!-- <p-sortIcon [field]="'serialNumber'"></p-sortIcon> -->
                             </th>
                             <th pSortableColumn="districtName">
+                                Region
+                                <p-sortIcon [field]="'districtName'"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="districtName">
                                 District
+                                <p-sortIcon [field]="'districtName'"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="districtName">
+                                Rv Shop
                                 <p-sortIcon [field]="'districtName'"></p-sortIcon>
                             </th>
                             <th pSortableColumn="totalBeerGrowthRatio">
@@ -608,18 +622,20 @@
                     <ng-template pTemplate="body" let-product let-ri="rowIndex">
                         <tr>
                             <td>{{ri+1}}</td>
-                            <td>{{ product.districtName }}</td>
+                            <td>{{ product.region }}</td>
                             <!-- <td>{{ product.totalPrev3MonthBeerSales }}</td>
                 <td>{{ product.totalPrev3MonthIMFSales }}</td>
                 <td>{{ product.totalPrev3MonthSales}}</td>
                 <td>{{ product.totalPrevMonthBeerSales}}</td>
                 <td>{{ product.totalPrevMonthIMFSales }}</td>
                 <td>{{ product.totalPrevMonthSales}}</td> -->
-                            <td [style.color]="getColor(product.totalBeerGrowthRatio)">{{ product.totalBeerGrowthRatio
+                            <td>{{product.dis}}</td>
+                            <td>{{product.rvshop}}</td>
+                            <td [style.color]="getColor(product.beersalesgrowth)">{{ product.beersalesgrowth
                                 }}%</td>
-                            <td [style.color]="getColor(product.totalImfsGrowthRatio)">{{ product.totalImfsGrowthRatio
+                            <td [style.color]="getColor(product.imfs)">{{ product.imfs
                                 }}%</td>
-                            <td [style.color]="getColor(product.totalGrowthRatio)">{{ product.totalGrowthRatio}}%</td>
+                            <td [style.color]="getColor(product.overall)">{{ product.overall}}%</td>
                         </tr>
                     </ng-template>
                 </p-table>

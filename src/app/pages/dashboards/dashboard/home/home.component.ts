@@ -804,5 +804,50 @@ export class HomeComponent {
         this.loadingService.hideLoader();
       })
   }
+  sampledata = [
+    {
+      region: "Coimbatore",
+      dis:"THE NILGIRIS",
+      rvshop: "8203",
+      beersalesgrowth:'-1.13',
+      imfs:'-1.55',
+      overall:'-1.25'
+    },
+    {
+      region: "Madurai",
+      dis:"MADURAI (SOUTH)",
+      rvshop: "5105",
+      beersalesgrowth:'-0.9',
+      imfs:'-1.2',
+      overall:'-1.1'
+    },
+    {
+      region: "Chennai",
+      dis:"CHENNAI  ( CENTRAL)",
+      rvshop: "302",
+      beersalesgrowth:'-0.60',
+      imfs:'-0.22',
+      overall:'-0.43'
+    },
+    {
+      region: "Coimbatore",
+      dis:"THE NILGIRIS",
+      rvshop: "8202",
+      beersalesgrowth:'-0.40',
+      imfs:'-0.60',
+      overall:'-0.40'
+    },
+    {
+      region: "Chennai",
+      dis:"CHENNAI  ( CENTRAL)",
+      rvshop: "306",
+      beersalesgrowth:'-0.06',
+      imfs:'-0.02',
+      overall:'-0.02'
+    },
+    
+  ]
 }
+
+
 
