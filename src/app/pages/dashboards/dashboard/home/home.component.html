@@ -185,12 +185,12 @@
                             <span>Region</span>
                             <ng-select (change)="filterComparison($event, 'region')" (change)="getDistrict($event)"
                                 [items]="location" bindLabel="label" bindValue="value"
-                                placeholder="All"></ng-select>
+                                placeholder="Across TN"></ng-select>
                         </div>
                         <div class="col-md-2">
                             <span>District</span>
                             <ng-select (change)="filterComparison($event, 'district')" [items]="districts"
-                                bindLabel="label" bindValue="value" placeholder="All"></ng-select>
+                                bindLabel="label" bindValue="value" placeholder="Select District"></ng-select>
                         </div>
                         <div class="col-md-2">
                             <span>Date</span>
@@ -316,7 +316,7 @@
                             <span>Year</span>
                             <ng-select data-choices (change)="filterTopFive($event, 'year')"
                                 [items]="regionwiseDropdown" bindLabel="label" bindValue="value"
-                                placeholder="Select Year"></ng-select>
+                                placeholder="FY 2023-2024"></ng-select>
 
                             <!-- <select class="form-control" data-choices (change)="filterTopFive($event, 'year')">
                     <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
@@ -360,7 +360,7 @@
                                     <!--  (change)="filterRegionWise($event)" -->
                                     <span>Year</span>
                                     <ng-select (change)="filterOverallSales($event,'month')" [items]="overAllChart"
-                                        bindLabel="label" bindValue="value" placeholder="All"></ng-select>
+                                        bindLabel="label" bindValue="value" placeholder="FY 2023-2024"></ng-select>
 
                                     <!-- <select class="form-control" data-choices (change)="filterOverallSales($event,'month')">
                             <option *ngFor="let value of overAllChart" value="{{value.value}}">
@@ -373,7 +373,7 @@
                                     <span>Region</span>
                                     <ng-select data-choices (change)="filterOverallSales($event,'location')"
                                         [items]="location" bindLabel="label" bindValue="value"
-                                        placeholder="All"></ng-select>
+                                        placeholder="Across TN"></ng-select>
 
                                     <!-- <select class="form-control" data-choices (change)="filterOverallSales($event,'location')">
                             <option value="">All</option>
@@ -408,7 +408,7 @@
                             <span>Year</span>
                             <ng-select data-choices (change)="filterLeastfiveDistrict($event,'year')"
                                 [items]="regionwiseDropdown" bindLabel="label" bindValue="value"
-                                placeholder="Select Year"></ng-select>
+                                placeholder="FY 2023-2024"></ng-select>
 
                             <!-- <select class="form-control" data-choices (change)="filterLeastfiveDistrict($event,'year')">
                     <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
@@ -419,7 +419,7 @@
                             <span>Region</span>
                             <!--  (change)="filterRegionWise($event)" -->
                             <ng-select data-choices data-choices (change)="filterLeastfiveDistrict($event,'location')"
-                                [items]="location" bindLabel="label" bindValue="value" placeholder="All"></ng-select>
+                                [items]="location" bindLabel="label" bindValue="value" placeholder="Across TN"></ng-select>
 
 
                             <!-- <select class="form-control" data-choices (change)="filterLeastfiveDistrict($event,'location')">
@@ -484,7 +484,7 @@
                                 <div class="col-md-3">
                                     <!-- <span>Region</span> -->
                                     <ng-select data-choices (change)="filterSalesComparison($event)" [items]="location"
-                                        bindLabel="label" bindValue="value" placeholder="All"></ng-select>
+                                        bindLabel="label" bindValue="value" placeholder="Across TN"></ng-select>
                                     <!-- <select class="form-control" data-choices (change)="filterSalesComparison($event)">
                             <option value="">All</option>
                             <option *ngFor="let value of location" value="{{value.value}}">
@@ -533,7 +533,7 @@
                     <div class="col-md-2">
                         <span>Region</span>
                         <ng-select data-choices data-choices [items]="location"
-                            bindLabel="label" bindValue="value" placeholder="All"></ng-select>
+                            bindLabel="label" bindValue="value" placeholder="Across TN"></ng-select>
 
                         <!-- <select style="width: 30%;background-color: #EEEEEE;" class="form-control" data-choices
                 (change)="filterTable($event, 'region')">
