@@ -286,31 +286,11 @@ export class HomeComponent {
         chart: {
           type: "donut",
         },
-        plotOptions: {
-          pie: {
-            expandOnClick: false
-          }
-        },
-        tooltip: {
-          y: {
-            formatter: function (val: any) {
-              return val + ".00" + " Rs"
-            },
-            title: {
-              formatter: function (seriesName: any) {
-                return ''
-              }
-            }
-          }
-        },
         dataLabels: {
           enabled: true,
           textAnchor: "start",
           style: {
             colors: ["#fff"]
-          },
-          formatter: function () {
-            return ''
           },
           offsetX: 0,
           dropShadow: {
@@ -662,8 +642,7 @@ export class HomeComponent {
       this.loadingService.hideLoader();
       this.salesChart = {
         dataLabels: {
-          enabled: false,
-          formatter: (v: string) => `${v} cr`
+          enabled: true,
         },
         series: res.data.charts.imfsAndBeerComparison.series,
         chart: {
