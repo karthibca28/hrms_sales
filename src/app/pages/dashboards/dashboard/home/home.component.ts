@@ -78,7 +78,7 @@ export class HomeComponent {
   tabledata: any
   receivedId: any
   comparisonGrowthPercentage: any;
-  districtName:any
+  districtName: any
   globalSearch: any[] = ['districtName', 'totalPrev3MonthBeerSales', 'totalPrev3MonthIMFSales', 'totalPrev3MonthSales', 'totalPrevMonthBeerSales', 'totalPrevMonthIMFSales', 'totalPrevMonthSales'];
   // [{
   //   label: "Chennai", value: 1
@@ -97,13 +97,13 @@ export class HomeComponent {
   // }]
   monthFilter = [
     {
-      label: "3 Months",value:'3'
+      label: "3 Months", value: '3'
     },
     {
-      label: "6 Months",value:'6'
+      label: "6 Months", value: '6'
     },
     {
-      label: "9 Months",value:'9'
+      label: "9 Months", value: '9'
     }
   ]
   district: any
@@ -278,7 +278,7 @@ export class HomeComponent {
         }
       } as barChartOption
       const numericSeries = res.data.charts.imfsAndBeerComparison.series;
-      const seriesWithCr = numericSeries.map((value: any) => value.toString() + "Cr");
+      const seriesWithCr = numericSeries.map((value: any) => value.toString() + "value(Croses)");
       console.log(seriesWithCr)
       this.salesChart = {
         series: res.data.charts.imfsAndBeerComparison.series,
@@ -316,7 +316,7 @@ export class HomeComponent {
             enabled: true
           }
         },
-        labels: res.data.charts.imfsAndBeerComparison.labels.map((value: any) => value + " in Crores"),
+        labels: res.data.charts.imfsAndBeerComparison.labels.map((value: any) => value + " in value(Crores)"),
         responsive: [
           {
             breakpoint: 480,
