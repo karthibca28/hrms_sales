@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ApexNonAxisChartSeries, ApexChart, ApexResponsive } from 'ng-apexcharts';
+import { HomeComponent } from '../home/home.component';
 
 interface sideBarOption {
   series: ApexNonAxisChartSeries;
@@ -19,7 +21,7 @@ export class ViewOverallSalesComponent {
   public salesChart: sideBarOption
 
 
-  constructor(){
+  constructor(public dialogRef: MatDialogRef<HomeComponent>,){
     this.salesChart = {
       series: [5000,4000,3000,2000,1000],
       chart: {
@@ -57,4 +59,7 @@ export class ViewOverallSalesComponent {
     } as sideBarOption;
   }
 
+  closeDialog(){
+    this.dialogRef.close();
+  }
 }
