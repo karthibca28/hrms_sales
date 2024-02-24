@@ -29,7 +29,7 @@ export class SidebarComponent implements OnInit {
       {
         id: 1,
         label: 'Live Sales & Volume Comparison',
-        icon: 'mdi mdi-signal-variant',
+        icon: 'mdi mdi-access-point',
         href:"#live1" 
       },
       {
