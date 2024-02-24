@@ -1,4 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { pad } from 'lodash';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -20,6 +22,7 @@ import { Table } from 'primeng/table';
 import { FormService } from 'src/app/shared/service/form.service';
 import { InterpageService } from 'src/app/shared/service/interpage.service';
 import { LoadingService } from 'src/app/shared/service/loading.service';
+import { ViewOverallSalesComponent } from '../view-overall-sales/view-overall-sales.component';
 
 interface sideBarOption {
   series: ApexNonAxisChartSeries;
@@ -79,7 +82,7 @@ export class HomeComponent {
   receivedId: any
   comparisonGrowthPercentage: any;
   districtName: any
-  currentDateofComparison:any
+  currentDateofComparison: any
   globalSearch: any[] = ['districtName', 'totalPrev3MonthBeerSales', 'totalPrev3MonthIMFSales', 'totalPrev3MonthSales', 'totalPrevMonthBeerSales', 'totalPrevMonthIMFSales', 'totalPrevMonthSales'];
   // [{
   //   label: "Chennai", value: 1
@@ -119,7 +122,7 @@ export class HomeComponent {
     });
 
   }
-  constructor(public service: FormService, private loadingService: LoadingService, private InterpageService: InterpageService) {
+  constructor(public dialog: MatDialog, public service: FormService, private loadingService: LoadingService, private InterpageService: InterpageService) {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     this.yesterdayDate = yesterday.toISOString().split('T')[0];
@@ -287,6 +290,16 @@ export class HomeComponent {
         series: res.data.charts.imfsAndBeerComparison.series,
         chart: {
           type: "donut",
+          events: {
+            dataPointSelection: (event, chartContext, config) => {
+              const selecteddate = pad(config.dataPointIndex + 1, 2);
+              if (selecteddate as any == 1) {
+                console.log(selecteddate);
+                const dialogRef = this.dialog.open(ViewOverallSalesComponent,
+                  { width: '60%', panelClass: 'my-dialog', });
+              }
+            }
+          }
         },
         dataLabels: {
           enabled: true,
@@ -649,7 +662,17 @@ export class HomeComponent {
         },
         series: res.data.charts.imfsAndBeerComparison.series,
         chart: {
-          type: "donut"
+          type: "donut",
+          events: {
+            dataPointSelection: (event, chartContext, config) => {
+              const selecteddate = pad(config.dataPointIndex + 1, 2);
+              if (selecteddate as any == 1) {
+                console.log(selecteddate);
+                const dialogRef = this.dialog.open(ViewOverallSalesComponent,
+                  { width: '60%', panelClass: 'my-dialog', });
+              }
+            }
+          }
         },
         labels: res.data.charts.imfsAndBeerComparison.labels.map((value: any) => value + " in Crores"),
         responsive: [
@@ -790,46 +813,50 @@ export class HomeComponent {
   sampledata = [
     {
       region: "Coimbatore",
-      dis:"THE NILGIRIS",
+      dis: "THE NILGIRIS",
       rvshop: "8203",
-      beersalesgrowth:'-1.13',
-      imfs:'-1.55',
-      overall:'-1.25'
+      beersalesgrowth: '-1.13',
+      imfs: '-1.55',
+      overall: '-1.25'
     },
     {
       region: "Madurai",
-      dis:"MADURAI (SOUTH)",
+      dis: "MADURAI (SOUTH)",
       rvshop: "5105",
-      beersalesgrowth:'-0.9',
-      imfs:'-1.2',
-      overall:'-1.1'
+      beersalesgrowth: '-0.9',
+      imfs: '-1.2',
+      overall: '-1.1'
     },
     {
       region: "Chennai",
-      dis:"CHENNAI  ( CENTRAL)",
+      dis: "CHENNAI  ( CENTRAL)",
       rvshop: "302",
-      beersalesgrowth:'-0.60',
-      imfs:'-0.22',
-      overall:'-0.43'
+      beersalesgrowth: '-0.60',
+      imfs: '-0.22',
+      overall: '-0.43'
     },
     {
       region: "Coimbatore",
-      dis:"THE NILGIRIS",
+      dis: "THE NILGIRIS",
       rvshop: "8202",
-      beersalesgrowth:'-0.40',
-      imfs:'-0.60',
-      overall:'-0.40'
+      beersalesgrowth: '-0.40',
+      imfs: '-0.60',
+      overall: '-0.40'
     },
     {
       region: "Chennai",
-      dis:"CHENNAI  ( CENTRAL)",
+      dis: "CHENNAI  ( CENTRAL)",
       rvshop: "306",
-      beersalesgrowth:'-0.06',
-      imfs:'-0.02',
-      overall:'-0.02'
+      beersalesgrowth: '-0.06',
+      imfs: '-0.02',
+      overall: '-0.02'
     },
-    
+
   ]
+
+  salesChartData(data: any) {
+    console.log(data)
+  }
 }
 
 

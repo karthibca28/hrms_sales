@@ -38,6 +38,8 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { HomeComponent } from './dashboard/home/home.component';
 import { IndianCurrencyPipe } from './indian-currency.pipe';
+import { ViewOverallSalesComponent } from './dashboard/view-overall-sales/view-overall-sales.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { IndianCurrencyPipe } from './indian-currency.pipe';
     JobComponent,
     DynamicViewTableComponent,
     HomeComponent,
-    IndianCurrencyPipe
+    IndianCurrencyPipe,
+    ViewOverallSalesComponent
   ],
   imports: [
     CommonModule,
@@ -77,7 +80,8 @@ import { IndianCurrencyPipe } from './indian-currency.pipe';
     MatSelectModule,
     MatFormFieldModule,
     NgFor,
-    NgMultiSelectDropDownModule.forRoot()
+    NgMultiSelectDropDownModule.forRoot(),
+    MatDialogModule
   ],
 })
 export class DashboardsModule { }

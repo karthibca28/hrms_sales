@@ -1,0 +1,17 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h4 class="card-title mb-0 flex-grow-1">Overall Brands in IMFS</h4>
+            <button class="btn btn-warn" >Close</button>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div id="chart">
+                    <apx-chart [series]="salesChart.series" [chart]="salesChart.chart"
+                        [dataLabels]="salesChart.dataLabels" [labels]="salesChart.labels"
+                        [responsive]="salesChart.responsive"></apx-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
