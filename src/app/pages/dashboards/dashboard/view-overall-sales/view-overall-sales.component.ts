@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ApexNonAxisChartSeries, ApexChart, ApexResponsive } from 'ng-apexcharts';
 import { HomeComponent } from '../home/home.component';
+import { pad } from 'lodash';
+import { ViewOverallBrandComponent } from '../view-overall-brand/view-overall-brand.component';
 
 interface sideBarOption {
   series: ApexNonAxisChartSeries;
@@ -19,14 +21,29 @@ interface sideBarOption {
 })
 export class ViewOverallSalesComponent {
   public salesChart: sideBarOption
+  dataFlag : boolean = false
 
+  constructor(public dialog: MatDialog,){
+    this.salesChart = {} as sideBarOption
+  }
 
-  constructor(public dialogRef: MatDialogRef<HomeComponent>,){
+  ngOnInit(){
     this.salesChart = {
       series: [5000,4000,3000,2000,1000],
       chart: {
         type: "donut",
-        height: '300px'
+        height: '300px',
+        events: {
+          dataPointSelection: (event, chartContext, config) => {
+            const selecteddate = pad(config.dataPointIndex + 1, 2);
+            console.log(selecteddate);
+              if (selecteddate as any == 1) {
+                console.log(selecteddate,"true");
+                const dialogRef = this.dialog.open(ViewOverallBrandComponent,
+                  { width: '60%', panelClass: 'my-dialog', });
+              }
+          }
+        }
       },
       dataLabels: {
         enabled: true,
@@ -58,8 +75,9 @@ export class ViewOverallSalesComponent {
       },
     } as sideBarOption;
   }
+  
 
   closeDialog(){
-    this.dialogRef.close();
+    // this.dialogRef.close();
   }
 }

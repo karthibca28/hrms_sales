@@ -40,6 +40,7 @@ import { HomeComponent } from './dashboard/home/home.component';
 import { IndianCurrencyPipe } from './indian-currency.pipe';
 import { ViewOverallSalesComponent } from './dashboard/view-overall-sales/view-overall-sales.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ViewOverallBrandComponent } from './dashboard/view-overall-brand/view-overall-brand.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     DynamicViewTableComponent,
     HomeComponent,
     IndianCurrencyPipe,
-    ViewOverallSalesComponent
+    ViewOverallSalesComponent,
+    ViewOverallBrandComponent
   ],
   imports: [
     CommonModule,

@@ -10,6 +10,7 @@ import { NftComponent } from "./nft/nft.component";
 import { JobComponent } from './job/job.component';
 import { DynamicViewTableComponent } from './dashboard/dynamic-view-table/dynamic-view-table.component';
 import { HomeComponent } from './dashboard/home/home.component';
+import { ViewOverallSalesComponent } from './dashboard/view-overall-sales/view-overall-sales.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,11 @@ const routes: Routes = [
   {
     path:"home",
     component:HomeComponent
+  }
+  ,
+  {
+    path:"view-overall-sales",
+    component:ViewOverallSalesComponent
   }
 ];
 

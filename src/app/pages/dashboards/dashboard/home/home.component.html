@@ -1,4 +1,4 @@
-<div class="project-wrapper m-2" id="live1">
+<div class="project-wrapper m-2" id="live">
     <div class="card">
         <div style="justify-content: space-between;" class="header-container match-height">
             <h4 style="margin-left:20px;display: inline-flex;" class="card-title mb-0 flex-grow-1">Live Sales & Volume
@@ -142,9 +142,9 @@
 
                         <div class="col-md-4">
                             <div style="margin-left: 10%;" class="row">
-                                <div class="col-10">
+                                <div class="col-6">
                                     <div class="card-small-card">
-                                        <div class="small-card-child bg-primary text-white text-center">
+                                        <div class="small-card-child bg-info text-white text-center">
                                             Total Sales {{valueData.previousYear.month}} {{valueData.previousYear.year}}
                                         </div>
                                         <div class="card-body-child text-center">
@@ -152,7 +152,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-10 mt-3">
+                                <div class="col-6">
+                                    <div class="card-small-card">
+                                        <div class="small-card-child bg-info text-white text-center">
+                                            IMFS Sales Volume {{valueData.previousYear.month}} {{valueData.previousYear.year}}
+                                        </div>
+                                        <div class="card-body-child text-center">
+                                            <h2 class="font-weight-bold mt-2">{{valueData.previousYear.imfsCases}} Crs</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-success text-white text-center">
                                             Total Sales {{valueData.currentYear.month}} {{valueData.currentYear.year}}
@@ -162,7 +172,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-10 mt-3">
+                                <div class="col-6 mt-3">
+                                    <div class="card small-card">
+                                        <div class="small-card-child bg-success text-white text-center">
+                                            Beer Sales Volume {{valueData.currentYear.month}} {{valueData.currentYear.year}}
+                                        </div>
+                                        <div class="card-body-child text-center">
+                                            <h2 class="font-weight-bold mt-2">{{valueData.currentYear.beerCases}} Crs</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-primary text-white text-center">
                                             Growth Percentage {{valueData.currentYear.month}}
@@ -273,7 +293,7 @@
                         </div> -->
                         <div class="col-md-4">
                             <div style="margin-left: 10%;" class="row">
-                                <div class="col-10">
+                                <div class="col-6">
                                     <div class="card-small-card">
                                         <div class="small-card-child bg-primary text-white text-center">
                                             Growth Percentage as on <br> {{currentDateofComparison}}
@@ -285,7 +305,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-10 mt-3">
+                                <div class="col-6">
+                                    <div class="card-small-card">
+                                        <div class="small-card-child bg-primary text-white text-center">
+                                            Total Sales Volume <br> 
+                                        </div>
+                                        <div class="card-body-child text-center">
+                                            <h4 style="font-size: small;"
+                                                class="font-weight-bold mt-2">
+                                               IMFS {{comparisonGrowthPercentage.date1.imfsCases}} Cases</h4>
+                                            <h4 style="font-size: small;"
+                                                class="font-weight-bold mt-2">
+                                               BEER {{comparisonGrowthPercentage.date1.beerCases}} Cases</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-success text-white text-center">
                                             IMFS Growth Percentage
@@ -297,7 +332,22 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-10 mt-3">
+                                <div class="col-6 mt-3">
+                                    <div class="card small-card">
+                                        <div class="small-card-child bg-success text-white text-center">
+                                            Total Sales Volume
+                                        </div>
+                                        <div class="card-body-child text-center">
+                                            <h4 style="font-size: small;"
+                                                class="font-weight-bold mt-2">
+                                               IMFS {{comparisonGrowthPercentage.date2.imfsCases}} Cases</h4>
+                                            <h4  style="font-size: small;"
+                                                class="font-weight-bold mt-2">
+                                              BEER {{comparisonGrowthPercentage.date2.beerCases}} Cases</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-success text-white text-center">
                                             Beer Growth Percentage
@@ -380,7 +430,7 @@
                 </div>
             </div>
 
-            <div class="row match-height" id="top5">
+            <div class="row match-height" id="over4">
                 <div class="col-6 card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title mb-0 flex-grow-1">Region wise Sales Performance Chart
@@ -472,7 +522,7 @@
                 </div>
             </div>
 
-            <div class="row match-height justify-content-between" id="over4">
+            <div class="row match-height justify-content-between" id="annual">
                 <div class="col-6 card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title mb-0 flex-grow-1">Overall Least Performed District
@@ -669,6 +719,14 @@
                                 Overall Percentage
                                 <p-sortIcon [field]="'overall'"></p-sortIcon>
                             </th>
+                            <th pSortableColumn="highestsold">
+                                Brand (Highest sold)
+                                <p-sortIcon [field]="'highestsold'"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="nosold">
+                               Brand (No sold)
+                                <p-sortIcon [field]="'nosold'"></p-sortIcon>
+                            </th>
                         </tr>
                     </ng-template>
 
@@ -705,6 +763,8 @@
                             <td [style.color]="getColor(product.imfs)">{{ product.imfs
                                 }}%</td>
                             <td [style.color]="getColor(product.overall)">{{ product.overall}}%</td>
+                            <td>{{ product.highestsold}}</td>
+                            <td>{{ product.nosold}}</td>
                         </tr>
                     </ng-template>
                 </p-table>

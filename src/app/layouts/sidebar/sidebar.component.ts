@@ -30,7 +30,7 @@ export class SidebarComponent implements OnInit {
         id: 1,
         label: 'Live Sales & Volume Comparison',
         icon: 'mdi mdi-access-point',
-        href:"#live1" 
+        href:"#live" 
       },
       {
         id: 2,
@@ -54,12 +54,12 @@ export class SidebarComponent implements OnInit {
         id: 5,
         label: 'Overall Lease Performance & Annual Sales ',
         icon: 'mdi mdi-chart-bar',
-        href:"#top5"
+        href:"#annual"
       },
       {
         id: 5,
         label: 'Least Growth Performace Sales',
-        icon: 'mdi-table-large',
+        icon: 'mdi mdi-table-large',
         href:"#table6"
       },
       

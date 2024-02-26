@@ -23,6 +23,7 @@ import { FormService } from 'src/app/shared/service/form.service';
 import { InterpageService } from 'src/app/shared/service/interpage.service';
 import { LoadingService } from 'src/app/shared/service/loading.service';
 import { ViewOverallSalesComponent } from '../view-overall-sales/view-overall-sales.component';
+import { Router } from '@angular/router';
 
 interface sideBarOption {
   series: ApexNonAxisChartSeries;
@@ -122,7 +123,7 @@ export class HomeComponent {
     });
 
   }
-  constructor(public dialog: MatDialog, public service: FormService, private loadingService: LoadingService, private InterpageService: InterpageService) {
+  constructor( private router: Router,public dialog: MatDialog, public service: FormService, private loadingService: LoadingService, private InterpageService: InterpageService) {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     this.yesterdayDate = yesterday.toISOString().split('T')[0];
@@ -295,8 +296,10 @@ export class HomeComponent {
               const selecteddate = pad(config.dataPointIndex + 1, 2);
               if (selecteddate as any == 1) {
                 console.log(selecteddate);
-                const dialogRef = this.dialog.open(ViewOverallSalesComponent,
-                  { width: '60%', panelClass: 'my-dialog', });
+                this.router.navigate(['/main/page/view-overall-sales']);
+
+                // const dialogRef = this.dialog.open(ViewOverallSalesComponent,
+                //   { width: '60%', panelClass: 'my-dialog', });
               }
             }
           }
@@ -817,7 +820,9 @@ export class HomeComponent {
       rvshop: "8203",
       beersalesgrowth: '-1.13',
       imfs: '-1.55',
-      overall: '-1.25'
+      overall: '-1.25',
+      highestsold: 'Brandy',
+      nosold: '0'
     },
     {
       region: "Madurai",
@@ -825,7 +830,9 @@ export class HomeComponent {
       rvshop: "5105",
       beersalesgrowth: '-0.9',
       imfs: '-1.2',
-      overall: '-1.1'
+      overall: '-1.1',
+      highestsold: 'Whisky',
+      nosold: '0'
     },
     {
       region: "Chennai",
@@ -833,7 +840,9 @@ export class HomeComponent {
       rvshop: "302",
       beersalesgrowth: '-0.60',
       imfs: '-0.22',
-      overall: '-0.43'
+      overall: '-0.43',
+      highestsold: 'Rum',
+      nosold: '0'
     },
     {
       region: "Coimbatore",
@@ -841,7 +850,9 @@ export class HomeComponent {
       rvshop: "8202",
       beersalesgrowth: '-0.40',
       imfs: '-0.60',
-      overall: '-0.40'
+      overall: '-0.40',
+      highestsold: 'Wine',
+      nosold: '0'
     },
     {
       region: "Chennai",
@@ -849,7 +860,9 @@ export class HomeComponent {
       rvshop: "306",
       beersalesgrowth: '-0.06',
       imfs: '-0.02',
-      overall: '-0.02'
+      overall: '-0.02',
+      highestsold: 'Votka',
+      nosold: '0'
     },
 
   ]
