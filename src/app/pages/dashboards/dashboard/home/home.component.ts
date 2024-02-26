@@ -84,6 +84,8 @@ export class HomeComponent {
   comparisonGrowthPercentage: any;
   districtName: any
   currentDateofComparison: any
+  finalCalculatedResult: any
+  BeerResult: any
   globalSearch: any[] = ['districtName', 'totalPrev3MonthBeerSales', 'totalPrev3MonthIMFSales', 'totalPrev3MonthSales', 'totalPrevMonthBeerSales', 'totalPrevMonthIMFSales', 'totalPrevMonthSales'];
   // [{
   //   label: "Chennai", value: 1
@@ -123,7 +125,7 @@ export class HomeComponent {
     });
 
   }
-  constructor( private router: Router,public dialog: MatDialog, public service: FormService, private loadingService: LoadingService, private InterpageService: InterpageService) {
+  constructor(private router: Router, public dialog: MatDialog, public service: FormService, private loadingService: LoadingService, private InterpageService: InterpageService) {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     this.yesterdayDate = yesterday.toISOString().split('T')[0];
@@ -176,7 +178,11 @@ export class HomeComponent {
       // this.monthFilter = res.data.charts.leastPerformanceGrowthRate.periodRange
       console.log(this.monthFilter)
       this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties
-      console.log(">>>> %", this.comparisonGrowthPercentage)
+      const date1IMFS = this.comparisonGrowthPercentage.date1.imfsCases + this.comparisonGrowthPercentage.date1.beerCases;
+      const date2IMFS = this.comparisonGrowthPercentage.date2.imfsCases + this.comparisonGrowthPercentage.date2.beerCases;
+      const nonNegativeResult = date2IMFS !== 0 ? parseFloat((((date1IMFS / date2IMFS) - 1) * 100).toFixed(2)) : 0;
+      this.finalCalculatedResult = Math.abs(nonNegativeResult);
+      console.log(this.finalCalculatedResult)
       this.loadingService.hideLoader();
       const now = new Date()
       this.areaChart = {
@@ -488,9 +494,15 @@ export class HomeComponent {
     this.service.getFilterDashBoardComparison('comparisonBetweenDate', this.locationType,
       this.districtforComparison,
       this.date1,
+
       this.date2).subscribe((res: any) => {
         this.loadingService.hideLoader();
         this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties
+        const date1IMFS = this.comparisonGrowthPercentage.date1.imfsCases + this.comparisonGrowthPercentage.date1.beerCases;
+        const date2IMFS = this.comparisonGrowthPercentage.date2.imfsCases + this.comparisonGrowthPercentage.date2.beerCases;
+        const nonNegativeResult = date2IMFS !== 0 ? parseFloat((((date1IMFS / date2IMFS) - 1) * 100).toFixed(2)) : 0;
+        this.finalCalculatedResult = Math.abs(nonNegativeResult);
+        console.log(this.finalCalculatedResult)
         this.barChart = {
           series: res.data.charts.comparisonBetweenDate.series,
           chart: {
