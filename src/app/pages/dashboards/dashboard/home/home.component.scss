@@ -250,3 +250,32 @@ tr:hover {
     font-size: 10px;
   }
 }
+
+
+
+ /* Basic table styles */
+ table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Responsive styles */
+// @media (max-width: 600px) {
+//   th, td {
+//       display: block;
+//       width: 100%;
+//       box-sizing: border-box;
+//   }
+
+//   th, td {
+//       /* Optional: Add some spacing or other styles for better readability on small screens */
+//       margin-bottom: 5px;
+//   }
+// }

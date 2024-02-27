@@ -41,6 +41,7 @@ import { IndianCurrencyPipe } from './indian-currency.pipe';
 import { ViewOverallSalesComponent } from './dashboard/view-overall-sales/view-overall-sales.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ViewOverallBrandComponent } from './dashboard/view-overall-brand/view-overall-brand.component';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,7 @@ import { ViewOverallBrandComponent } from './dashboard/view-overall-brand/view-o
     SlickCarouselModule,
     FlatpickrModule.forRoot(),
     DashboardsRoutingModule,
-    SharedModule,
+    SharedModule,TooltipModule,
     WidgetModule,NgSelectModule,
     NgbTypeaheadModule,
     NgbPaginationModule,

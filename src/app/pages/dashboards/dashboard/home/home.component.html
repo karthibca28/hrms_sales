@@ -31,8 +31,8 @@
                                 <div class="item-head-child">
                                     <img style="margin-top: 0.6rem;" class="item-img" src="assets/icons/home.png">&nbsp;
                                     <span style="margin-top: 0.6rem;" style="margin-left: 2px;"
-                                        class="item-title">{{chartData?.today?.imfsSoldVolumeCases}} <p
-                                            style="font-size: x-small;">Cases</span>
+                                        class="item-title">{{chartData?.today?.imfsSoldVolumeCases |
+                                        number:'1.0-2':'en-IN'}} <p style="font-size: x-small;">Cases</span>
                                 </div>
                                 <span style="margin-bottom: 6px;" class="item-title">{{chartData?.today?.imfsSalesValue
                                     |
@@ -45,7 +45,8 @@
                                 <div class="item-head-child">
                                     <img style="margin-top: 0.6rem;" class="item-img" src="assets/icons/home.png">&nbsp;
                                     <span style="margin-top: 0.6rem;"
-                                        class="item-title">{{chartData?.today?.beerSoldVolumeCases}}
+                                        class="item-title">{{chartData?.today?.beerSoldVolumeCases |
+                                        number:'1.0-2':'en-IN'}}
                                         <p style="font-size: x-small;">Cases
                                     </span>
                                 </div>
@@ -83,7 +84,8 @@
                                 <div class="item-head-child">
                                     <img style="margin-top: 0.6rem;" class="item-img" src="assets/icons/home.png">&nbsp;
                                     <span style="margin-top: 0.6rem;" class="item-title">
-                                        {{chartData?.previousDay?.beerSoldVolumeCases}} <p style="font-size: x-small;">
+                                        {{chartData?.previousDay?.beerSoldVolumeCases |
+                                        number:'1.0-2':'en-IN'}} <p style="font-size: x-small;">
                                             Cases</span>
                                 </div>
                                 <span style="margin-bottom: 6px;"
@@ -110,8 +112,8 @@
                                 <div class="item-head-child">
                                     <img style="margin-top: 0.6rem;" class="item-img" src="assets/icons/home.png">&nbsp;
                                     <span style="margin-top: 0.6rem;"
-                                        class="item-title">{{chartData?.previousYear?.imfsSoldVolumeCases}} <p
-                                            style="font-size: x-small;">Cases</p></span>
+                                        class="item-title">{{chartData?.previousYear?.imfsSoldVolumeCases |
+                                        number:'1.0-2':'en-IN'}} <p style="font-size: x-small;">Cases</p></span>
                                 </div>
                                 <span style="margin-bottom: 6px;"
                                     class="item-title">{{chartData?.previousYear?.imfsSalesValue |
@@ -124,8 +126,8 @@
                                 <div class="item-head-child">
                                     <img style="margin-top: 0.6rem;" class="item-img" src="assets/icons/home.png">&nbsp;
                                     <span style="margin-top: 0.6rem;"
-                                        class="item-title">{{chartData?.previousYear?.beerSoldVolumeCases}} <p
-                                            style="font-size: x-small;">Cases</p></span>
+                                        class="item-title">{{chartData?.previousYear?.beerSoldVolumeCases |
+                                        number:'1.0-2':'en-IN'}} <p style="font-size: x-small;">Cases</p></span>
                                 </div>
                                 <span style="margin-bottom: 6px;"
                                     class="item-title">{{chartData?.previousYear?.beerSalesValue |
@@ -172,7 +174,8 @@
                         <div class="card-small-card">
                             <span class="text-center">(In Crs)</span>
                             <div class="small-card-child bg-info text-white text-center">
-                                Overall Sales Value in<br> {{valueData.previousYear.month}} {{valueData.previousYear.year}}
+                                Overall Sales Value in<br> {{valueData.previousYear.month}}
+                                {{valueData.previousYear.year}}
                             </div>
                             <div class="card-body-child text-center">
                                 <h4 class="font-weight-bold mt-2">{{valueData.previousYear.total}} Crs</h4>
@@ -203,7 +206,8 @@
                     <div class="col-6 mt-3">
                         <div class="card small-card">
                             <div class="small-card-child bg-success text-white text-center">
-                                Overall Sales value in <br> {{valueData.currentYear.month}} {{valueData.currentYear.year}}
+                                Overall Sales value in <br> {{valueData.currentYear.month}}
+                                {{valueData.currentYear.year}}
                             </div>
                             <div class="card-body-child text-center">
                                 <h4 class="font-weight-bold mt-2">{{valueData.currentYear.total}} Crs</h4>
@@ -780,8 +784,12 @@
                             <td [style.color]="getColor(product.imfs)">{{ product.imfs
                                 }}%</td>
                             <td [style.color]="getColor(product.overall)">{{ product.overall}}%</td>
-                            <!-- <td class="tooltip" data-tooltip="{{ product.highestsold }}">{{ product.highestsold }}</td>
-                            <td class="tooltip" data-tooltip="{{ product.nosold }}">{{ product.nosold }}</td> -->
+                            <td ngbTooltip="{{ product.highsoldbrands }}">
+                                {{ product.highestsold }}
+                            </td>
+                            <td ngbTooltip="{{ product.nosoldbrands }}">
+                                {{ product.nosold }}
+                            </td>
                         </tr>
                     </ng-template>
                 </p-table>
