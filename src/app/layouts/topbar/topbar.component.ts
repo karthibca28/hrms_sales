@@ -49,8 +49,8 @@ export class TopbarComponent implements OnInit {
     console.log(this.user)
     this.userData = this.TokenStorageService.getUser();
     this.element = document.documentElement;
-    document.querySelector('.hamburger-icon')?.classList.toggle('open');
-    this.mobileMenuButtonClicked.emit();
+    // document.querySelector('.hamburger-icon')?.classList.toggle('open');
+    // this.mobileMenuButtonClicked.emit();
     // Cookies wise Language set
     this.cookieValue = this._cookiesService.get('lang');
     const val = this.listLang.filter(x => x.lang === this.cookieValue);

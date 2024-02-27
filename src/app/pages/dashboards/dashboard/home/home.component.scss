@@ -39,7 +39,7 @@
 
 .item-title {
   font-weight: bold;
-  font-size: clamp(12px, 4vw, 15px);
+  font-size: 12px;
   align-items: center;
   justify-content: center;
 }
@@ -59,7 +59,6 @@
 }
 
 .percentage {
-  // color: red;
   font-size: 2em;
   text-align: center;
   margin-top: 4%;
@@ -75,25 +74,12 @@
   justify-content: space-between;
 }
 
-/* Responsive styles */
-@media (max-width: 600px) {
-  .item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .item>span {
-    margin-bottom: 10px;
-  }
-}
-
 .card-img {
   width: 30px;
   height: 30px;
   margin-left: 5px;
   align-items: center;
 }
-
 
 h3 {
   font-weight: bold;
@@ -116,10 +102,8 @@ h4 {
   border-radius: 3px;
 }
 
-
 .card-small-card {
   display: grid;
-
 }
 
 .card-body-child {
@@ -131,14 +115,12 @@ h4 {
   display: inline-flex;
 }
 
-
 .col-md-2 i {
   top: 50%;
   right: 10px;
   color: red;
   transform: translateY(-50%);
 }
-
 
 .right-card {
   display: flex;
@@ -157,7 +139,6 @@ h4 {
 ::ng-deep .ng-dropdown-panel {
   background-color: #EEEEEE;
 }
-
 
 .form-control {
   background-color: #EEEEEE;
@@ -206,49 +187,33 @@ tr:hover {
   background-color: #e0e0e0;
 }
 
-:host ::ng-deep .p-sortable-column {
-  cursor: pointer;
-  position: relative;
-}
-
-:host ::ng-deep .p-sortable-column:hover {
-  color: var(--text-primary-hover, #007ad9);
-}
-
-:host ::ng-deep .p-sortable-column:focus {
-  outline: none;
-}
-
-:host ::ng-deep .p-sortable-column-icon {
-  position: absolute;
-  right: 0.25rem;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-
-// Mobile View 
-
-@media screen and (max-width: 768px) {
+/* Media Query for Tablets */
+@media only screen and (max-width: 768px) {
   .layout {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 576px) {
+  .layout {
+    grid-template-columns: 1fr;
   }
 
-  .card-sub-body,
-  .card-sub-body-1,
-  .card-sub-body-2 {
-    padding: 5px 10px;
+  .card-main {
+    margin: 10px;
   }
 
-  .card-sub-body,
-  .card-sub-body-1,
-  .card-sub-body-2,
-  .body-title {
-    font-size: clamp(12px, 4vw, 32px);
+  .header {
+    font-size: 14px;
+    padding: 8px;
   }
 
-  .child-last {
-    flex-direction: column;
-    align-items: center;
+  .content {
+    padding: 15px;
+  }
+
+  .item-title {
+    font-size: 10px;
   }
 }

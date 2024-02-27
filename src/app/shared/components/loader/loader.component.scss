@@ -11,146 +11,107 @@
     z-index: 1000;
 }
 
-.wineglass {
-    height: 36px;
+.dot-spinner {
+    --uib-size: 4rem;
+    --uib-speed: .9s;
+    --uib-color: white;
     position: relative;
-}
-
-.wineglass:after {
-    content: '';
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: var(--uib-size);
+    width: var(--uib-size);
+  }
+  
+  .dot-spinner__dot {
     position: absolute;
-    top: 47px;
-    left: 5px;
-    width: 20px;
-    height: 5px;
-    background: white;
-    box-shadow: 0 0 1px white;
-}
-
-.top {
-    background: white;
-    width: 30px;
-    height: 36px;
-    border-radius: 0 0 36px 36px;
-    box-shadow: 0 0 1px white;
-}
-
-.top:before {
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .dot-spinner__dot::before {
     content: '';
-    position: absolute;
-    left: 4px;
-    bottom: 4px;
-    width: 22px;
-    height: 22px;
+    height: 20%;
+    width: 20%;
     border-radius: 50%;
-    background: linear-gradient(transparent 50%, #F36E3E 50%);
-}
-
-.left .top:before {
-    animation: rotate2 2s linear infinite;
-}
-
-.right .top:before {
-    animation: rotate1 2s linear infinite;
-}
-
-.top:after {
-    content: '';
-    position: absolute;
-    top: 35px;
-    left: 12px;
-    width: 6px;
-    height: 13px;
-    background: white;
-    box-shadow: 0 0 1px white;
-}
-
-.left {
-    display: inline-block;
-    margin-right: 10px;
-    animation: rotate1 2s cubic-bezier(.39, 1.52, .46, .92) infinite;
-}
-
-.right {
-    display: inline-block;
-    animation: rotate2 2s cubic-bezier(.39, 1.52, .46, .92) infinite;
-}
-
-@keyframes rotate1 {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    50% {
-        transform: rotate(22deg);
-    }
-}
-
-@keyframes rotate2 {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    50% {
-        transform: rotate(-22deg);
-    }
-}
-
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 70px;
-    height: 25px;
-    position: relative;
-    opacity: 0;
-    animation: 2s fadeInUp infinite linear 2s;
-}
-
-li {
-    width: 6px;
-    height: 15px;
-    background: white;
-    position: absolute;
-    box-shadow: 0 0 1px white;
-    transform-origin: bottom;
-}
-
-li:nth-child(1) {
-    left: 26px;
-    bottom: 5px;
-    transform: rotate(-35deg);
-}
-
-li:nth-child(2) {
-    left: 34px;
-    bottom: 8px;
-}
-
-li:nth-child(3) {
-    left: 42px;
-    bottom: 5px;
-    transform: rotate(35deg);
-}
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: scaleY(1);
-    }
-
-    33% {
-        opacity: 1;
-        transform: scaleY(1.4);
-    }
-
-    64% {
-        opacity: .1;
-        transform: scaleY(1);
-    }
-
+    background-color: var(--uib-color);
+    transform: scale(0);
+    opacity: 0.5;
+    animation: pulse0112 calc(var(--uib-speed) * 1.111) ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(18, 31, 53, 0.3);
+  }
+  
+  .dot-spinner__dot:nth-child(2) {
+    transform: rotate(45deg);
+  }
+  
+  .dot-spinner__dot:nth-child(2)::before {
+    animation-delay: calc(var(--uib-speed) * -0.875);
+  }
+  
+  .dot-spinner__dot:nth-child(3) {
+    transform: rotate(90deg);
+  }
+  
+  .dot-spinner__dot:nth-child(3)::before {
+    animation-delay: calc(var(--uib-speed) * -0.75);
+  }
+  
+  .dot-spinner__dot:nth-child(4) {
+    transform: rotate(135deg);
+  }
+  
+  .dot-spinner__dot:nth-child(4)::before {
+    animation-delay: calc(var(--uib-speed) * -0.625);
+  }
+  
+  .dot-spinner__dot:nth-child(5) {
+    transform: rotate(180deg);
+  }
+  
+  .dot-spinner__dot:nth-child(5)::before {
+    animation-delay: calc(var(--uib-speed) * -0.5);
+  }
+  
+  .dot-spinner__dot:nth-child(6) {
+    transform: rotate(225deg);
+  }
+  
+  .dot-spinner__dot:nth-child(6)::before {
+    animation-delay: calc(var(--uib-speed) * -0.375);
+  }
+  
+  .dot-spinner__dot:nth-child(7) {
+    transform: rotate(270deg);
+  }
+  
+  .dot-spinner__dot:nth-child(7)::before {
+    animation-delay: calc(var(--uib-speed) * -0.25);
+  }
+  
+  .dot-spinner__dot:nth-child(8) {
+    transform: rotate(315deg);
+  }
+  
+  .dot-spinner__dot:nth-child(8)::before {
+    animation-delay: calc(var(--uib-speed) * -0.125);
+  }
+  
+  @keyframes pulse0112 {
+    0%,
     100% {
-        opacity: 0;
-        transform: scaleY(.3);
+      transform: scale(0);
+      opacity: 0.5;
     }
-}
+  
+    50% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  

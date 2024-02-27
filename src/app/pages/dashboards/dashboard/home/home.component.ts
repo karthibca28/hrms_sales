@@ -834,7 +834,7 @@ export class HomeComponent {
       imfs: '-1.55',
       overall: '-1.25',
       highestsold: 'Brandy',
-      nosold: '0'
+      nosold: 'Whisky'
     },
     {
       region: "Madurai",
@@ -844,7 +844,7 @@ export class HomeComponent {
       imfs: '-1.2',
       overall: '-1.1',
       highestsold: 'Whisky',
-      nosold: '0'
+      nosold: 'Vodka'
     },
     {
       region: "Chennai",
@@ -854,7 +854,7 @@ export class HomeComponent {
       imfs: '-0.22',
       overall: '-0.43',
       highestsold: 'Rum',
-      nosold: '0'
+      nosold: 'Wine'
     },
     {
       region: "Coimbatore",
@@ -864,7 +864,7 @@ export class HomeComponent {
       imfs: '-0.60',
       overall: '-0.40',
       highestsold: 'Wine',
-      nosold: '0'
+      nosold: 'Jin'
     },
     {
       region: "Chennai",
@@ -874,7 +874,7 @@ export class HomeComponent {
       imfs: '-0.02',
       overall: '-0.02',
       highestsold: 'Votka',
-      nosold: '0'
+      nosold: 'Brandy'
     },
 
   ]

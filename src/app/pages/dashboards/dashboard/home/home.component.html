@@ -26,8 +26,8 @@
                             <img src="assets/icons/Imfs.png">
                         </span>
                         <div class="item-head-child">
-                            <img style="margin-top: 1px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;" style="margin-left: 2px;"
+                            <img style="margin-top: 0.6rem;" class="item-img" src="assets/icons/home.png">&nbsp;
+                            <span style="margin-top: 0.6rem;" style="margin-left: 2px;"
                                 class="item-title">{{chartData?.today?.imfsSoldVolumeCases}} <p
                                     style="font-size: x-small;">Cases</span>
                         </div>
@@ -39,8 +39,9 @@
                             <img class="item-img" src="assets/icons/beeer.png">
                         </span>
                         <div class="item-head-child">
-                            <img style="margin-top: px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;" class="item-title">{{chartData?.today?.beerSoldVolumeCases}}
+                            <img style="margin-top: 0.6rem;" class="item-img" src="assets/icons/home.png">&nbsp;
+                            <span style="margin-top: 0.6rem;"
+                                class="item-title">{{chartData?.today?.beerSoldVolumeCases}}
                                 <p style="font-size: x-small;">Cases
                             </span>
                         </div>
@@ -60,8 +61,8 @@
                             <img class="item-img" src="assets/icons/Imfs.png">
                         </span>
                         <div class="item-head-child">
-                            <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;"
+                            <img style="margin-top: 0.6rem;" class="item-img" src="assets/icons/home.png">&nbsp;
+                            <span style="margin-top: 0.6rem;"
                                 class="item-title">{{chartData?.previousDay?.imfsSoldVolumeCases}} <p
                                     style="font-size: x-small;">Cases</span>
                         </div>
@@ -73,8 +74,8 @@
                             <img class="item-img" src="assets/icons/beeer.png">
                         </span>
                         <div class="item-head-child">
-                            <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;" class="item-title">
+                            <img style="margin-top: 0.6rem;" class="item-img" src="assets/icons/home.png">&nbsp;
+                            <span style="margin-top: 0.6rem;" class="item-title">
                                 {{chartData?.previousDay?.beerSoldVolumeCases}} <p style="font-size: x-small;">
                                     Cases</span>
                         </div>
@@ -96,8 +97,8 @@
                             <img class="item-img" src="assets/icons/Imfs.png">
                         </span>
                         <div class="item-head-child">
-                            <img style="margin-top: 2px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;"
+                            <img style="margin-top: 0.6rem;" class="item-img" src="assets/icons/home.png">&nbsp;
+                            <span style="margin-top: 0.6rem;"
                                 class="item-title">{{chartData?.previousYear?.imfsSoldVolumeCases}} <p
                                     style="font-size: x-small;">Cases</p></span>
                         </div>
@@ -109,8 +110,8 @@
                             <img class="item-img" src="assets/icons/beeer.png">
                         </span>
                         <div class="item-head-child">
-                            <img style="margin-top: 1px;" class="item-img" src="assets/icons/home.png">&nbsp;
-                            <span style="margin-top: 3px;"
+                            <img style="margin-top: 0.6rem;" class="item-img" src="assets/icons/home.png">&nbsp;
+                            <span style="margin-top: 0.6rem;"
                                 class="item-title">{{chartData?.previousYear?.beerSoldVolumeCases}} <p
                                     style="font-size: x-small;">Cases</p></span>
                         </div>
@@ -126,97 +127,145 @@
 
     <div class="container-fluid" id="cum2">
         <div class="row match-height">
-            <div class="col-md-12">
+            <!-- Chart Section -->
+            <div class="col-md-7">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Cumulative Growth Performance - Current Month</h4>
+                        <h4 class="card-title">Overall Cumulative Growth Performance - Current Month</h4>
                     </div>
                     <div class="card-body d-flex">
-                        <div class="col-sm-8">
+                        <div class="col-md-12">
                             <div id="chart">
+                                <!-- Assuming this is an Angular component for chart -->
                                 <apx-chart [series]="areaChart.series" [chart]="areaChart.chart"
                                     [yaxis]="areaChart.yaxis" [xaxis]="areaChart.xaxis" [stroke]="areaChart.stroke"
                                     [tooltip]="areaChart.tooltip" [dataLabels]="areaChart.dataLabels"></apx-chart>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="col-md-4">
-                            <div style="margin-left: 10%;" class="row">
-                                <div class="col-6">
-                                    <div class="card-small-card">
-                                        <span class="text-center">(in Crs)</span>
-                                        <div class="small-card-child bg-info text-white text-center">
-                                            Overall Sales {{valueData.previousYear.month}} {{valueData.previousYear.year}}
-                                        </div>
-                                        <div class="card-body-child text-center">
-                                            <h2 class="font-weight-bold mt-2">{{valueData.previousYear.total}} Crs</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="card-small-card">
-                                        <span class="text-center">(in Cases)</span>
-                                        <div class="small-card-child bg-info text-white text-center">
-                                            Total Volume Sold in {{valueData.previousYear.month}} {{valueData.previousYear.year}}
-                                        </div>
-                                        <div class="card-body-child text-center">
-                                            <h2 class="font-weight-bold mt-2">{{valueData.previousYear.imfsCases}} Crs</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 mt-3">
-                                    <div class="card small-card">
-                                        <div class="small-card-child bg-success text-white text-center">
-                                            Overall Sales in {{valueData.currentYear.month}} {{valueData.currentYear.year}}
-                                        </div>
-                                        <div class="card-body-child text-center">
-                                            <h2 class="font-weight-bold mt-2">{{valueData.currentYear.total}} Crs</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 mt-3">
-                                    <div class="card small-card">
-                                        <div class="small-card-child bg-success text-white text-center">
-                                            Total Volume Sold in {{valueData.currentYear.month}} {{valueData.currentYear.year}}
-                                        </div>
-                                        <div class="card-body-child text-center">
-                                            <h2 class="font-weight-bold mt-2">{{valueData.currentYear.beerCases}} Crs</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 mt-3">
-                                    <div class="card small-card">
-                                        <div class="small-card-child bg-primary text-white text-center">
-                                            Overall Growth Percentage (in %) {{valueData.currentYear.month}}
-                                            {{valueData.currentYear.year}}
-                                        </div>
-                                        <div class="card-body-child text-center">
-                                            <h2 [style.color]="getColor(valueData.percentage)"
-                                                style="font-size: xx-large;" class="font-weight-bold mt-2">
-                                                {{valueData.percentage}}%</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6 mt-3">
-                                    <div class="card small-card">
-                                        <div class="small-card-child bg-primary text-white text-center">
-                                            Net Growth in Volume (in %) {{valueData.currentYear.month}}
-                                            {{valueData.currentYear.year}}
-                                        </div>
-                                        <div class="card-body-child text-center">
-                                            <h2 [style.color]="getColor(valueData.percentage)"
-                                                style="font-size: xx-large;" class="font-weight-bold mt-2">
-                                                {{valueData.percentage}}%</h2>
-                                        </div>
-                                    </div>
-                                </div>
+            <!-- Statistics Section -->
+            <div class="card col-md-5">
+                <div class="row">
+
+                    <!-- Previous Year Sales Value Card -->
+                    <div class="col-6 mt-2">
+                        <div class="card-small-card">
+                            <span class="text-center">(In Crs)</span>
+                            <div class="small-card-child bg-info text-white text-center">
+                                Overall Sales Value {{valueData.previousYear.month}} {{valueData.previousYear.year}}
+                            </div>
+                            <div class="card-body-child text-center">
+                                <h4 class="font-weight-bold mt-2">{{valueData.previousYear.total}} Crs</h4>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Previous Year Volume Card -->
+                    <div class="col-6 mt-2">
+                        <div class="card-small-card">
+                            <span class="text-center">(In Cases)</span>
+                            <div class="small-card-child bg-info text-white text-center">
+                                Total Volume Sold in {{valueData.previousYear.month}} {{valueData.previousYear.year}}
+                            </div>
+                            <div class="card-body-child text-center">
+                                <h4 style="font-size: small;" class="font-weight-bold mt-2">
+                                    IMFS :  Cases</h4>
+                                <h4 style="font-size: small;" class="font-weight-bold mt-2">
+                                    BEER :  Cases</h4>
+                            </div>
+                            <!-- <div class="card-body-child text-center">
+                                <h4 class="font-weight-bold mt-2">{{valueData.previousYear.imfsCases}} Lakhs</h4>
+                            </div> -->
+                        </div>
+                    </div>
+
+                    <!-- Current Year Sales Value Card -->
+                    <div class="col-6 mt-3">
+                        <div class="card small-card">
+                            <div class="small-card-child bg-success text-white text-center">
+                                Overall Sales in {{valueData.currentYear.month}} {{valueData.currentYear.year}}
+                            </div>
+                            <div class="card-body-child text-center">
+                                <h4 class="font-weight-bold mt-2">{{valueData.currentYear.total}} Crs</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current Year Volume Card -->
+                    <div class="col-6 mt-3">
+                        <div class="card-small-card">
+                            <div class="small-card-child bg-success text-white text-center">
+                                Total Volume Sold
+                            </div>
+                            <div class="card-body-child text-center">
+                                <h4 style="font-size: small;" class="font-weight-bold mt-2">
+                                    IMFS : {{comparisonGrowthPercentage.date1.imfsCases}} Cases</h4>
+                                <h4 style="font-size: small;" class="font-weight-bold mt-2">
+                                    BEER : {{comparisonGrowthPercentage.date1.beerCases}} Cases</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current Year Beer Volume Card -->
+                    <div class="col-6 mt-3">
+                        <div class="card small-card">
+                            <div class="small-card-child bg-success text-white text-center">
+                                Total Volume Sold in {{valueData.currentYear.month}} {{valueData.currentYear.year}}
+                            </div>
+                            <div class="card-body-child text-center">
+                                <h4 class="font-weight-bold mt-2">{{valueData.currentYear.beerCases}} Lakhs</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6 mt-3">
+                        <div class="card small-card">
+                            <div class="small-card-child bg-success text-white text-center">
+                                Total Volume Sold
+                            </div>
+                            <div class="card-body-child text-center">
+                                <h4 style="font-size: small;" class="font-weight-bold mt-2">
+                                    IMFS : {{comparisonGrowthPercentage.date2.imfsCases}} Cases</h4>
+                                <h4 style="font-size: small;" class="font-weight-bold mt-2">
+                                    BEER : {{comparisonGrowthPercentage.date2.beerCases}} Cases</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current Year Growth Percentage Card -->
+                    <div class="col-6 mt-3">
+                        <div class="card small-card">
+                            <div class="small-card-child bg-primary text-white text-center">
+                                Overall Growth % {{valueData.previousYear.month}} {{valueData.previousYear.year}}
+                            </div>
+                            <div class="card-body-child text-center">
+                                <h4 [style.color]="getColor(valueData.percentage)" style="font-size: x-large;"
+                                    class="font-weight-bold mt-2">{{valueData.percentage}}%</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current Year Net Growth in Volume Percentage Card -->
+                    <div class="col-6 mt-3">
+                        <div class="card small-card">
+                            <div style="font-size: small;" class="small-card-child bg-primary text-white text-center">
+                                Net Growth in Volume % {{valueData.currentYear.month}} {{valueData.currentYear.year}}
+                            </div>
+                            <div class="card-body-child text-center">
+                                <h4 [style.color]="getColor(valueData.percentage)" style="font-size: x-large;"
+                                    class="font-weight-bold mt-2">{{valueData.percentage}}%</h4>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+
 
     <div class="container-fluid" id="com3">
         <div class="row match-height">
@@ -259,7 +308,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div id="chart">
                                 <apx-chart [series]="barChart.series" [chart]="barChart.chart"
                                     [dataLabels]="barChart.dataLabels" [plotOptions]="barChart.plotOptions"
@@ -268,50 +317,14 @@
                                     [xaxis]="barChart.xaxis"></apx-chart>
                             </div>
                         </div>
-                        <!-- <div class="col-md-4">
-                            <div class="col-6">
-                                <div class="card small-card">
-                                    <div class="small-card-child bg-primary text-white text-center">
-                                        Growth Percentage as on {{currentDateofComparison}}
-                                    </div>
-                                    <div class="card-body-child text-center">
-                                        <h2 style=" font-size: xx-large; " [style.color]="getColor(comparisonGrowthPercentage)" class="font-weight-bold mt-2">
-                                            {{comparisonGrowthPercentage}}%
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="card small-card">
-                                    <div class="small-card-child bg-primary text-white text-center">
-                                        Growth Percentage as on {{currentDateofComparison}}
-                                    </div>
-                                    <div class="card-body-child text-center">
-                                        <h2 style=" font-size: xx-large; " [style.color]="getColor(comparisonGrowthPercentage)" class="font-weight-bold mt-2">
-                                            {{comparisonGrowthPercentage}}%
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="card small-card">
-                                    <div class="small-card-child bg-primary text-white text-center">
-                                        Growth Percentage as on {{currentDateofComparison}}
-                                    </div>
-                                    <div class="card-body-child text-center">
-                                        <h2 style=" font-size: xx-large; " [style.color]="getColor(comparisonGrowthPercentage)" class="font-weight-bold mt-2">
-                                            {{comparisonGrowthPercentage}}%
-                                        </h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <div class="col-md-4">
+
+                        <div class="col-md-6">
                             <div style="margin-left: 10%;" class="row">
-                                <div class="col-6">
+                                <div class="col-6 mt-2">
                                     <div class="card-small-card">
-                                        <div class="small-card-child bg-primary text-white text-center">
-                                            Overall Sales in (in %) {{currentDateofComparison}}
+                                        <div style="font-size: small;"
+                                            class="small-card-child bg-primary text-white text-center">
+                                            Overall Sales<br>{{currentDateofComparison}}
                                         </div>
                                         <div class="card-body-child text-center">
                                             <h2 [style.color]="getColor(comparisonGrowthPercentage.growthPercentage)"
@@ -320,25 +333,23 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-6 mt-2">
                                     <div class="card-small-card">
                                         <div class="small-card-child bg-primary text-white text-center">
-                                            Total Volume Sold<br> 
+                                            Total Volume Sold<br>
                                         </div>
                                         <div class="card-body-child text-center">
-                                            <h4 style="font-size: small;"
-                                                class="font-weight-bold mt-2">
-                                               IMFS {{comparisonGrowthPercentage.date1.imfsCases}} Cases</h4>
-                                            <h4 style="font-size: small;"
-                                                class="font-weight-bold mt-2">
-                                               BEER {{comparisonGrowthPercentage.date1.beerCases}} Cases</h4>
+                                            <h4 style="font-size: small;" class="font-weight-bold mt-2">
+                                                IMFS : {{comparisonGrowthPercentage.date1.imfsCases}} Cases</h4>
+                                            <h4 style="font-size: small;" class="font-weight-bold mt-2">
+                                                BEER : {{comparisonGrowthPercentage.date1.beerCases}} Cases</h4>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-6 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-success text-white text-center">
-                                            Overall Sales (in %)
+                                            Overall Sales<br>{{yesterdayDate}}
                                         </div>
                                         <div class="card-body-child text-center">
                                             <h2 [style.color]="getColor(comparisonGrowthPercentage.imfsGrowthPercentage)"
@@ -353,12 +364,10 @@
                                             Total Volume Sold
                                         </div>
                                         <div class="card-body-child text-center">
-                                            <h4 style="font-size: small;"
-                                                class="font-weight-bold mt-2">
-                                               IMFS {{comparisonGrowthPercentage.date2.imfsCases}} Cases</h4>
-                                            <h4  style="font-size: small;"
-                                                class="font-weight-bold mt-2">
-                                              BEER {{comparisonGrowthPercentage.date2.beerCases}} Cases</h4>
+                                            <h4 style="font-size: small;" class="font-weight-bold mt-2">
+                                                IMFS : {{comparisonGrowthPercentage.date2.imfsCases}} Cases</h4>
+                                            <h4 style="font-size: small;" class="font-weight-bold mt-2">
+                                                BEER : {{comparisonGrowthPercentage.date2.beerCases}} Cases</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -457,8 +466,8 @@
                 </div>
             </div>
 
-            <div class="row match-height" id="over4">
-                <div class="col-6 card">
+            <div class="row match-height justify-content-between" id="over4">
+                <div class="col-md-6 card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4 class="card-title mb-0 flex-grow-1">Region wise Sales Performance Chart
                             <!-- <img style="width: 25px;height: 25px;" src="assets/icons/top-5.png" /> -->
@@ -471,27 +480,7 @@
                             <ng-select data-choices (change)="filterTopFive($event, 'year')"
                                 [items]="regionwiseDropdown" bindLabel="label" bindValue="value"
                                 placeholder="FY 2023-2024" [clearable]="false" [searchable]="false"></ng-select>
-
-                            <!-- <select class="form-control" data-choices (change)="filterTopFive($event, 'year')">
-                    <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
-                        {{value.label}}
-                    </option>
-                </select> -->
                         </div>&nbsp;
-                        <!-- <div class="col-md-3">
-                <span>Region</span>
-                <ng-select data-choices (change)="filterTopFive($event, 'location')" [items]="location"
-                    bindLabel="label" bindValue="value" placeholder="All"  [clearable]="false" [searchable]="false"></ng-select>
-
-                <select class="form-control" data-choices (change)="filterTopFive($event, 'location')">
-                    <option value="">All</option>
-                    <option *ngFor="let value of location" value="{{value.value}}">
-                        {{value.label}}
-                    </option>
-                </select>
-            </div>&nbsp; -->
-                    </div>
-                    <div class="flex-shrink-0">
                     </div>
                     <div id="chart">
                         <apx-chart [series]="barChartTop.series" [chart]="barChartTop.chart"
@@ -501,49 +490,33 @@
                             [xaxis]="barChartTop.xaxis"></apx-chart>
                     </div>
                 </div>
-
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h4 class="card-title mb-0 flex-grow-1">Overall Sales</h4>
-                            <!-- <img style="width: 20px;height: 20px;" src="assets/icons/sales.png" /> -->
+                <div class="col-md-6 card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="card-title mb-0 flex-grow-1">Region wise Sales Performance Chart
+                            <!-- <img style="width: 25px;height: 25px;" src="assets/icons/top-5.png" /> -->
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <!--  (change)="filterRegionWise($event)" -->
+                            <span>Year</span>
+                            <ng-select (change)="filterOverallSales($event,'month')" [items]="overAllChart"
+                                bindLabel="label" bindValue="value" placeholder="FY 2023-2024" [clearable]="false"
+                                [searchable]="false"></ng-select>
                         </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <!--  (change)="filterRegionWise($event)" -->
-                                    <span>Year</span>
-                                    <ng-select (change)="filterOverallSales($event,'month')" [items]="overAllChart"
-                                        bindLabel="label" bindValue="value" placeholder="FY 2023-2024"
-                                        [clearable]="false" [searchable]="false"></ng-select>
-
-                                    <!-- <select class="form-control" data-choices (change)="filterOverallSales($event,'month')">
-                            <option *ngFor="let value of overAllChart" value="{{value.value}}">
-                                {{value.label}}</option>
-                        </select> -->
-                                    <!-- <i class="fas fa-caret-down"></i> -->
-                                </div>
-                                <div class="col-md-3">
-                                    <!--  (change)="filterRegionWise($event)" -->
-                                    <span>Region</span>
-                                    <ng-select data-choices (change)="filterOverallSales($event,'location')"
-                                        [items]="location" bindLabel="label" bindValue="value" placeholder="Across TN"
-                                        [clearable]="false" [searchable]="false"></ng-select>
-
-                                    <!-- <select class="form-control" data-choices (change)="filterOverallSales($event,'location')">
-                            <option value="">All</option>
-                            <option *ngFor="let value of location" value="{{value.value}}">
-                                {{value.label}}</option>
-                        </select> -->
-                                </div>
-                                <div class="col-12">
-                                    <div id="chart">
-                                        <apx-chart [series]="salesChart.series" [chart]="salesChart.chart"
-                                            [dataLabels]="salesChart.dataLabels" [labels]="salesChart.labels"
-                                            [responsive]="salesChart.responsive"></apx-chart>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-md-4">
+                            <!--  (change)="filterRegionWise($event)" -->
+                            <span>Region</span>
+                            <ng-select data-choices (change)="filterOverallSales($event,'location')" [items]="location"
+                                bindLabel="label" bindValue="value" placeholder="Across TN" [clearable]="false"
+                                [searchable]="false"></ng-select>
+                        </div>
+                    </div>
+                    <div style="margin-top: 5rem;">
+                        <div id="chart">
+                            <apx-chart [series]="salesChart.series" [chart]="salesChart.chart"
+                                [dataLabels]="salesChart.dataLabels" [labels]="salesChart.labels"
+                                [responsive]="salesChart.responsive"></apx-chart>
                         </div>
                     </div>
                 </div>
@@ -747,11 +720,11 @@
                                 <p-sortIcon [field]="'overall'"></p-sortIcon>
                             </th>
                             <th pSortableColumn="highestsold">
-                                Brand (Highest sold)
+                                Highest Sold Item
                                 <p-sortIcon [field]="'highestsold'"></p-sortIcon>
                             </th>
                             <th pSortableColumn="nosold">
-                               Brand (No sold)
+                                Not Sold Item
                                 <p-sortIcon [field]="'nosold'"></p-sortIcon>
                             </th>
                         </tr>
