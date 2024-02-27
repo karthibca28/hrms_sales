@@ -1,16 +1,20 @@
-.layout {
-  display: grid;
-  max-height: 340px;
-  margin: 30px 0;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+// .layout {
+//   display: grid;
+//   max-height: 340px;
+//   margin: 30px 0;
+//   grid-template-rows: repeat(3, 1fr);
+//   grid-template-columns: repeat(3, 1fr);
+//   gap: 8px;
+// }
+
+.new-card .card .card-body {
+  border: 1px solid #333;
 }
 
 .card-main {
   border-radius: 8px;
-  padding: 20px;
-  margin: 20px;
+  // padding: 20px;
+  // margin: 20px;
 }
 
 .header {
@@ -25,7 +29,7 @@
 
 .content {
   background-color: #EEEEEE;
-  padding: 20px;
+  padding: 10px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   border: 1px solid black;
@@ -186,6 +190,35 @@ tr:nth-child(even) {
 tr:hover {
   background-color: #e0e0e0;
 }
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+}
+
+.tooltip::after {
+  content: attr(data-title);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  padding: 5px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+
 
 /* Media Query for Tablets */
 @media only screen and (max-width: 768px) {
