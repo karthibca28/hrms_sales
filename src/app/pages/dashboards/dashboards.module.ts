@@ -41,6 +41,7 @@ import { IndianCurrencyPipe } from './indian-currency.pipe';
 import { ViewOverallSalesComponent } from './dashboard/view-overall-sales/view-overall-sales.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ViewOverallBrandComponent } from './dashboard/view-overall-brand/view-overall-brand.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,9 @@ import { ViewOverallBrandComponent } from './dashboard/view-overall-brand/view-o
     MatFormFieldModule,
     NgFor,
     NgMultiSelectDropDownModule.forRoot(),
-    MatDialogModule
+    MatDialogModule,
+    NgChartsModule,
+    
   ],
 })
 export class DashboardsModule { }
