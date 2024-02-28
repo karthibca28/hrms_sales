@@ -42,6 +42,7 @@ import { ViewOverallSalesComponent } from './dashboard/view-overall-sales/view-o
 import {MatDialogModule} from '@angular/material/dialog';
 import { ViewOverallBrandComponent } from './dashboard/view-overall-brand/view-overall-brand.component';
 import { NgChartsModule } from 'ng2-charts';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,7 @@ import { NgChartsModule } from 'ng2-charts';
     SlickCarouselModule,
     FlatpickrModule.forRoot(),
     DashboardsRoutingModule,
-    SharedModule,
+    SharedModule,TooltipModule,
     WidgetModule,NgSelectModule,
     NgbTypeaheadModule,
     NgbPaginationModule,

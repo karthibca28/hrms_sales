@@ -123,6 +123,7 @@ export class HomeComponent {
     this.InterpageService.id$.subscribe((id) => {
       this.receivedId = id;
     });
+    
 
   }
   constructor(private router: Router, public dialog: MatDialog, public service: FormService, private loadingService: LoadingService, private InterpageService: InterpageService) {
@@ -833,8 +834,10 @@ export class HomeComponent {
       beersalesgrowth: '-1.13',
       imfs: '-1.55',
       overall: '-1.25',
-      highestsold: 'Brandy',
-      nosold: 'Whisky'
+      highestsold: '1',
+      highsoldbrands:'Wine',
+      nosold: '3',
+      nosoldbrands:'Brandy : GOLDEN GRAPE ORDINARY BRANDY,HONEY BEE MEDIUM BRANDY,DIAMOND BRANDY'
     },
     {
       region: "Madurai",
@@ -843,8 +846,10 @@ export class HomeComponent {
       beersalesgrowth: '-0.9',
       imfs: '-1.2',
       overall: '-1.1',
-      highestsold: 'Whisky',
-      nosold: 'Vodka'
+      highestsold: '3',
+      highsoldbrands:'Brandy,Rum,Whisky',
+      nosold: '1',
+      nosoldbrands:'Wine'
     },
     {
       region: "Chennai",
@@ -853,8 +858,10 @@ export class HomeComponent {
       beersalesgrowth: '-0.60',
       imfs: '-0.22',
       overall: '-0.43',
-      highestsold: 'Rum',
-      nosold: 'Wine'
+      highestsold: '1',
+      highsoldbrands:'Votka',
+      nosold: '4',
+      nosoldbrands:'Brandy,Rum,Whisky,Wine'
     },
     {
       region: "Coimbatore",
@@ -863,8 +870,10 @@ export class HomeComponent {
       beersalesgrowth: '-0.40',
       imfs: '-0.60',
       overall: '-0.40',
-      highestsold: 'Wine',
-      nosold: 'Jin'
+      highestsold: '2',
+      highsoldbrands:'Wine,Brandy',
+      nosold: '2',
+      nosoldbrands:'Brandy,Rum'
     },
     {
       region: "Chennai",
@@ -873,8 +882,10 @@ export class HomeComponent {
       beersalesgrowth: '-0.06',
       imfs: '-0.02',
       overall: '-0.02',
-      highestsold: 'Votka',
-      nosold: 'Brandy'
+      highestsold: '5',
+      highsoldbrands:'Brandy,Rum,Whisky,Wine,Votka',
+      nosold: '0',
+      nosoldbrands:'No Items'
     },
 
   ]
@@ -882,6 +893,7 @@ export class HomeComponent {
   salesChartData(data: any) {
     console.log(data)
   }
+  
 }
 
 
