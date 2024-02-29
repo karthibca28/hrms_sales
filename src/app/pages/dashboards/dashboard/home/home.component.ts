@@ -24,6 +24,7 @@ import { InterpageService } from 'src/app/shared/service/interpage.service';
 import { LoadingService } from 'src/app/shared/service/loading.service';
 import { ViewOverallSalesComponent } from '../view-overall-sales/view-overall-sales.component';
 import { Router } from '@angular/router';
+import { ChartOptions, ChartType, ChartData } from 'chart.js/auto';
 
 interface sideBarOption {
   series: ApexNonAxisChartSeries;
@@ -32,6 +33,14 @@ interface sideBarOption {
   dataLabels: any;
   labels: any;
 };
+interface barChartOptionChartJs {
+  barChartLabels: string[];
+  barChartData: ChartData;
+  type: ChartType;
+  barChartLegend: boolean;
+  barChartPlugins: any[];
+};
+
 interface barChartOption {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -65,7 +74,7 @@ export class HomeComponent {
   public salesChart: sideBarOption
   public barChart: barChartOption
   public barChartTop: barChartOption
-  public barChartLeast: barChartOption
+  public barChartLeast: barChartOptionChartJs
   public areaChartYearlySalesComparison: areaChart
   public areChartFestival: areaChart
   regionwiseDropdown: any
@@ -86,6 +95,7 @@ export class HomeComponent {
   currentDateofComparison: any
   finalCalculatedResult: any
   BeerResult: any
+  leastperformance: any
   globalSearch: any[] = ['districtName', 'totalPrev3MonthBeerSales', 'totalPrev3MonthIMFSales', 'totalPrev3MonthSales', 'totalPrevMonthBeerSales', 'totalPrevMonthIMFSales', 'totalPrevMonthSales'];
   // [{
   //   label: "Chennai", value: 1
@@ -123,7 +133,7 @@ export class HomeComponent {
     this.InterpageService.id$.subscribe((id) => {
       this.receivedId = id;
     });
-    
+
 
   }
   constructor(private router: Router, public dialog: MatDialog, public service: FormService, private loadingService: LoadingService, private InterpageService: InterpageService) {
@@ -143,7 +153,8 @@ export class HomeComponent {
     } as sideBarOption
     this.areaChartYearlySalesComparison = {} as areaChart
     this.barChartTop = {} as barChartOption
-    this.barChartLeast = {} as barChartOption
+    this.barChartLeast = {
+    } as barChartOptionChartJs
     this.areChartFestival = {} as areaChart
   }
   applyGlobalFilter(event: any) {
@@ -176,6 +187,8 @@ export class HomeComponent {
       this.yearlySalesComparison = res.data.parameters.yearlySalesComparison.years
       this.valueData = res.data.charts.yearlyCummulativeComparison
       this.tabledata = res.data.charts.leastPerformanceGrowthRate
+      this.leastperformance = res.data.charts.leastPerformance.barChartLabels;
+      this.leastperformance = res.data.charts.leastPerformance
       // this.monthFilter = res.data.charts.leastPerformanceGrowthRate.periodRange
       console.log(this.monthFilter)
       this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties
@@ -384,48 +397,15 @@ export class HomeComponent {
         },
         legend: {}
       } as barChartOption
+
       this.barChartLeast = {
-        series: res.data.charts.leastPerformance.series,
-        chart: {
-          type: "bar",
-          height: 350
-        },
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: "40%",
-            // endingShape: "rounded"
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          show: true,
-          width: 2,
-          colors: ["transparent"]
-        },
-        xaxis: res.data.charts.leastPerformance.xaxis,
-        yaxis: {
-          title: {
-            // text: "₹ (Cr)"
-          },
-          labels: {
-            formatter: (value) => { return `${value} Cr` },
-          }
-        },
-        fill: {
-          opacity: 1,
-          colors: ['#E14D57']
-        },
-        tooltip: {
-          y: {
-            formatter: function (val) {
-              return "₹ " + val + " Cr";
-            }
-          }
-        }
-      } as barChartOption
+        barChartLabels: res.data.charts.leastPerformance.barChartLabels,
+        barChartData: { datasets: res.data.charts.leastPerformance.datasets },
+        type: 'bar',
+        barChartLegend: true,
+        barChartPlugins: [],
+      } as barChartOptionChartJs
+      
       this.areChartFestival = {
         series: res.data.charts.
           yearlyFestival
@@ -562,49 +542,13 @@ export class HomeComponent {
     this.service.getFilterDashBoard('leastPerformance', this.selectLeastFiveYear, this.selectedDistrict).subscribe((res: any) => {
       this.loadingService.hideLoader();
       this.barChartLeast = {
-        series: res.data.charts.leastPerformance.series,
-        chart: {
-          type: "bar",
-          height: 350
-        },
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            columnWidth: "30%",
-            // endingShape: "rounded"
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          show: true,
-          width: 2,
-          colors: ["transparent"]
-        },
-        xaxis: res.data.
-          charts.leastPerformance
-          .xaxis,
-        yaxis: {
-          title: {
-            // text: "₹ (Cr)"
-          },
-          labels: {
-            formatter: (value) => { return `${value} Cr` },
-          }
-        },
-        fill: {
-          opacity: 1,
-          colors: ['#E14D57']
-        },
-        tooltip: {
-          y: {
-            formatter: function (val) {
-              return "₹ " + val + " Cr";
-            }
-          }
-        }
-      } as barChartOption
+        barChartLabels: res.data.charts.leastPerformance.barChartLabels,
+        barChartData: { datasets: res.data.charts.leastPerformance.datasets },
+
+        type: 'bar',
+        barChartLegend: true,
+        barChartPlugins: [],
+      } as barChartOptionChartJs
     })
   }
   selectedyearForTopFive: any
@@ -835,9 +779,9 @@ export class HomeComponent {
       imfs: '-1.55',
       overall: '-1.25',
       highestsold: '1',
-      highsoldbrands:'Wine',
+      highsoldbrands: 'Wine',
       nosold: '3',
-      nosoldbrands:'Brandy : GOLDEN GRAPE ORDINARY BRANDY,HONEY BEE MEDIUM BRANDY,DIAMOND BRANDY'
+      nosoldbrands: 'Brandy : GOLDEN GRAPE ORDINARY BRANDY,HONEY BEE MEDIUM BRANDY,DIAMOND BRANDY'
     },
     {
       region: "Madurai",
@@ -847,9 +791,9 @@ export class HomeComponent {
       imfs: '-1.2',
       overall: '-1.1',
       highestsold: '3',
-      highsoldbrands:'Brandy,Rum,Whisky',
+      highsoldbrands: 'Brandy,Rum,Whisky',
       nosold: '1',
-      nosoldbrands:'Wine'
+      nosoldbrands: 'Wine'
     },
     {
       region: "Chennai",
@@ -859,9 +803,9 @@ export class HomeComponent {
       imfs: '-0.22',
       overall: '-0.43',
       highestsold: '1',
-      highsoldbrands:'Votka',
+      highsoldbrands: 'Votka',
       nosold: '4',
-      nosoldbrands:'Brandy,Rum,Whisky,Wine'
+      nosoldbrands: 'Brandy,Rum,Whisky,Wine'
     },
     {
       region: "Coimbatore",
@@ -871,9 +815,9 @@ export class HomeComponent {
       imfs: '-0.60',
       overall: '-0.40',
       highestsold: '2',
-      highsoldbrands:'Wine,Brandy',
+      highsoldbrands: 'Wine,Brandy',
       nosold: '2',
-      nosoldbrands:'Brandy,Rum'
+      nosoldbrands: 'Brandy,Rum'
     },
     {
       region: "Chennai",
@@ -883,9 +827,9 @@ export class HomeComponent {
       imfs: '-0.02',
       overall: '-0.02',
       highestsold: '5',
-      highsoldbrands:'Brandy,Rum,Whisky,Wine,Votka',
+      highsoldbrands: 'Brandy,Rum,Whisky,Wine,Votka',
       nosold: '0',
-      nosoldbrands:'No Items'
+      nosoldbrands: 'No Items'
     },
 
   ]
@@ -893,8 +837,33 @@ export class HomeComponent {
   salesChartData(data: any) {
     console.log(data)
   }
-  
+
+  dataFlag: boolean = false
+  barChartOptions: ChartOptions = {
+    responsive: true,
+    scales: {
+      //   yAxes: [{
+      //   ticks: {
+      //     callback: function(value: any) {
+      //       return `${value} Cr`;
+      //     }
+      //   }
+      // }]
+      x: {
+        stacked: true
+      },
+      y: {
+        stacked: false,
+        ticks: {
+          callback: function (value, index, ticks) {
+            return value + "Cr";
+          }
+        }
+
+      }
+    }
+
+  };
+
+
 }
-
-
-
