@@ -200,9 +200,31 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3 mb-2rem">
+
+                            <div class="col-3 mt-3">
+                                <!-- Current Year Growth Percentage Card -->
+                                <div class="card small-card">
+                                    <div class="small-card-child bg-primary text-white text-center">
+                                        Overall Growth % <br> {{valueData.previousYear.month}}
+                                        {{valueData.previousYear.year}}
+                                    </div>
+                                    <div class="card-body-child text-center">
+                                        <h4 [style.color]="getColor(valueData.percentage)" style="font-size: x-large;"
+                                            class="font-weight-bold mt-2">{{valueData.percentage}}%</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+
+                        </div>
+
+                        <!-- Second Row -->
+                        
+                        <div class="row align-items-center justify-content-center">
+                            <div class="col-3">
                                 <div class="card-small-card d-flex flex-column justify-content-between">
-                                    <span class="text-center">(In Cases)</span>
+                                    <!-- <span class="text-center">(In Cases)</span> -->
                                     <div class="small-card-child bg-success text-white text-center">
                                         Overall Sales value in <br> {{valueData.currentYear.month}}
                                         {{valueData.currentYear.year}}
@@ -213,11 +235,6 @@
                                 </div>
                             </div>
 
-
-                        </div>
-
-                        <!-- Second Row -->
-                        <div class="row align-items-center justify-content-center">
                             <div class="col-sm-3">
                                 <!-- Total Volume Sold Card -->
                                 <div class="card-small-card">
@@ -230,22 +247,6 @@
                                             IMFS : {{comparisonGrowthPercentage.date2.imfsCases}} Cases</h4>
                                         <h4 style="font-size: x-small;" class="font-weight-bold">
                                             BEER : {{comparisonGrowthPercentage.date2.beerCases}} Cases</h4>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Add the other two cards for the second row here -->
-
-                            <div class="col-3 mt-3">
-                                <!-- Current Year Growth Percentage Card -->
-                                <div class="card small-card">
-                                    <div class="small-card-child bg-primary text-white text-center">
-                                        Overall Growth % <br> {{valueData.previousYear.month}}
-                                        {{valueData.previousYear.year}}
-                                    </div>
-                                    <div class="card-body-child text-center">
-                                        <h4 [style.color]="getColor(valueData.percentage)" style="font-size: x-large;"
-                                            class="font-weight-bold mt-2">{{valueData.percentage}}%</h4>
                                     </div>
                                 </div>
                             </div>
@@ -339,7 +340,7 @@
                                     <div class="card-small-card">
                                         <div style="font-size: small;"
                                             class="small-card-child bg-info text-white text-center">
-                                            Overall Sales<br>{{yesterdayDate}}
+                                            Overall Sales as on<br>{{yesterdayDate}}
                                         </div>
                                         <div class="card-body-child text-center">
                                             <h2 [style.color]="getColor(comparisonGrowthPercentage.growthPercentage)"
@@ -351,7 +352,7 @@
                                 <div class="col-6 mt-2">
                                     <div class="card-small-card">
                                         <div class="small-card-child bg-info text-white text-center">
-                                            Total Volume Sold<br>
+                                            Total Volume Sold as on<br>
                                             {{yesterdayDate}}
                                         </div>
                                         <div class="card-body-child text-center">
@@ -365,7 +366,7 @@
                                 <div class="col-6 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-success text-white text-center">
-                                            Overall Sales<br>
+                                            Overall Sales as on<br>
                                             {{currentDateofComparison}}
                                         </div>
                                         <div class="card-body-child text-center">
@@ -378,7 +379,7 @@
                                 <div class="col-6 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-success text-white text-center">
-                                            Total Volume Sold<br>
+                                            Total Volume Sold as on<br>
                                             {{currentDateofComparison}}
                                         </div>
                                         <div class="card-body-child text-center">
@@ -392,7 +393,7 @@
                                 <div class="col-6 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-primary text-white text-center">
-                                            Overall Growth in (%)
+                                            Overall Growth as on date in (%)
                                         </div>
                                         <div class="card-body-child text-center">
                                             <h2 [style.color]="getColor(comparisonGrowthPercentage.imfsGrowthPercentage)"
@@ -404,7 +405,7 @@
                                 <div class="col-6 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-primary text-white text-center">
-                                            Net Growth in (%)
+                                            Net Growth as on date <br> in (%)
                                         </div>
                                         <div class="card-body-child text-center">
                                             <h2 [style.color]="getColor(comparisonGrowthPercentage.imfsGrowthPercentage)"
@@ -510,7 +511,7 @@
                 </div>
                 <div class="col-md-6 card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="card-title mb-0 flex-grow-1">Region wise Sales Performance Chart
+                        <h4 class="card-title mb-0 flex-grow-1">Over All Sales
                             <!-- <img style="width: 25px;height: 25px;" src="assets/icons/top-5.png" /> -->
                         </h4>
                     </div>
