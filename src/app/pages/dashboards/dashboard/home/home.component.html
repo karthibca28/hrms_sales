@@ -568,16 +568,16 @@
                     <div class="flex-shrink-0">
                     </div>
                     <div id="chart">
-                        <canvas style="height: 200px;" baseChart [datasets]="barChartLeast.barChartData.datasets"
+                        <!-- <canvas style="height: 200px;" baseChart [datasets]="barChartLeast.barChartData.datasets"
                             [labels]="barChartLeast.barChartLabels" [options]="barChartOptions"
                             [plugins]="barChartLeast.barChartPlugins" [legend]="barChartLeast.barChartLegend"
                             [type]="barChartLeast.type">
-                        </canvas>
-                        <!-- <apx-chart [series]="barChartLeast.series" [chart]="barChartLeast.chart"
+                        </canvas> -->
+                        <apx-chart [series]="barChartLeast.series" [chart]="barChartLeast.chart"
                             [dataLabels]="barChartLeast.dataLabels" [plotOptions]="barChartLeast.plotOptions"
                             [yaxis]="barChartLeast.yaxis" [legend]="barChartLeast.legend" [fill]="barChartLeast.fill"
                             [stroke]="barChartLeast.stroke" [tooltip]="barChartLeast.tooltip"
-                            [xaxis]="barChartLeast.xaxis"></apx-chart> -->
+                            [xaxis]="barChartLeast.xaxis"></apx-chart>
                     </div>
                 </div>
                 <div class="col-6">
@@ -778,8 +778,13 @@
                             <td ngbTooltip="{{ product.highsoldbrands }}">
                                 {{ product.highestsold }}
                             </td>
-                            <td ngbTooltip="{{ product.nosoldbrands }}">
+                            <td [pTooltip]="tooltipContent">
                                 {{ product.nosold }}
+                                <ng-template #tooltipContent>
+                                    <div class="flex align-items-center">
+                                        <span> data </span>
+                                    </div>
+                                </ng-template>
                             </td>
                         </tr>
                     </ng-template>

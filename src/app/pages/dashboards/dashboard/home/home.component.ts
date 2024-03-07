@@ -34,25 +34,6 @@ interface sideBarOption {
   labels: any;
 };
 
-interface barChartLeast{
-    series: ApexAxisChartSeries;
-    chart: ApexChart;
-    dataLabels: ApexDataLabels;
-    plotOptions: ApexPlotOptions;
-    yaxis: ApexYAxis;
-    xaxis: ApexXAxis;
-    fill: ApexFill;
-    tooltip: ApexTooltip;
-    stroke: ApexStroke;
-    legend: ApexLegend;
-}
-interface barChartOptionChartJs {
-  barChartLabels: string[];
-  barChartData: ChartData;
-  type: ChartType;
-  barChartLegend: boolean;
-  barChartPlugins: any[];
-};
 
 interface barChartOption {
   series: ApexAxisChartSeries;
@@ -87,7 +68,7 @@ export class HomeComponent {
   public salesChart: sideBarOption
   public barChart: barChartOption
   public barChartTop: barChartOption
-  public barChartLeast: barChartOptionChartJs
+  public barChartLeast: barChartOption
   public areaChartYearlySalesComparison: areaChart
   public areChartFestival: areaChart
   regionwiseDropdown: any
@@ -109,8 +90,8 @@ export class HomeComponent {
   finalCalculatedResult: any
   BeerResult: any
   leastperformance: any
-  voloumeSecondChart:any
-  voloumeThirdChart:any
+  voloumeSecondChart: any
+  voloumeThirdChart: any
   globalSearch: any[] = ['districtName', 'totalPrev3MonthBeerSales', 'totalPrev3MonthIMFSales', 'totalPrev3MonthSales', 'totalPrevMonthBeerSales', 'totalPrevMonthIMFSales', 'totalPrevMonthSales'];
   // [{
   //   label: "Chennai", value: 1
@@ -169,7 +150,7 @@ export class HomeComponent {
     this.areaChartYearlySalesComparison = {} as areaChart
     this.barChartTop = {} as barChartOption
     this.barChartLeast = {
-    } as barChartOptionChartJs
+    } as barChartOption
     this.areChartFestival = {} as areaChart
   }
   applyGlobalFilter(event: any) {
@@ -207,14 +188,15 @@ export class HomeComponent {
       // this.monthFilter = res.data.charts.leastPerformanceGrowthRate.periodRange
       console.log(this.monthFilter)
       this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties
-      const date1IMFS = this.comparisonGrowthPercentage.date1.imfsCases + this.comparisonGrowthPercentage.date1.beerCases;
-      const date2IMFS = this.comparisonGrowthPercentage.date2.imfsCases + this.comparisonGrowthPercentage.date2.beerCases;
+      const date1IMFS = parseInt(this.comparisonGrowthPercentage.date1.imfsCases, 10) + parseInt(this.comparisonGrowthPercentage.date1.beerCases, 10);
+      const date2IMFS = parseInt(this.comparisonGrowthPercentage.date2.imfsCases, 10) + parseInt(this.comparisonGrowthPercentage.date2.beerCases, 10);
       const nonNegativeResult = date2IMFS !== 0 ? parseFloat((((date1IMFS / date2IMFS) - 1) * 100).toFixed(2)) : 0;
       this.finalCalculatedResult = Math.abs(nonNegativeResult);
-      console.log(this.finalCalculatedResult)
-      const chart1Volume = this.chartData?.today?.imfsSoldVolumeCases +this.chartData?.today?.beerSoldVolumeCases
-      const chart2Volume = this.chartData?.previousDay?.imfsSoldVolumeCases +this.chartData?.previousDay?.beerSoldVolumeCases
-      const chart3Volume = this.chartData?.previousYear?.imfsSoldVolumeCases +this.chartData?.previousYear?.beerSoldVolumeCases
+      console.log(date1IMFS,
+        date2IMFS)
+      const chart1Volume = parseInt(this.chartData?.today?.imfsSoldVolumeCases) + parseInt(this.chartData?.today?.beerSoldVolumeCases)
+      const chart2Volume = parseInt(this.chartData?.previousDay?.imfsSoldVolumeCases) + parseInt(this.chartData?.previousDay?.beerSoldVolumeCases)
+      const chart3Volume = parseInt(this.chartData?.previousYear?.imfsSoldVolumeCases) + parseInt(this.chartData?.previousYear?.beerSoldVolumeCases)
       const voloume1 = parseFloat((((chart1Volume / chart2Volume) - 1) * 100).toFixed(2))
       this.voloumeSecondChart = Math.abs(voloume1);
       const voloume2 = parseFloat((((chart1Volume / chart3Volume) - 1) * 100).toFixed(2))
@@ -419,16 +401,52 @@ export class HomeComponent {
         },
         legend: {}
       } as barChartOption
-      
-      
+
+
       this.barChartLeast = {
-        barChartLabels: res.data.charts.leastPerformance.barChartLabels,
-        barChartData: { datasets: res.data.charts.leastPerformance.datasets },
-        type: 'bar',
-        barChartLegend: true,
-        barChartPlugins: [],
-      } as barChartOptionChartJs
-      
+        series: res.data.charts.leastPerformance.series,
+        chart: {
+          type: "bar",
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "30%",
+            // endingShape: "rounded"
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"]
+        },
+        xaxis: res.data.
+          charts.leastPerformance.xaxis,
+        yaxis: {
+          title: {
+            // text: "₹ (Cr)"
+          },
+          labels: {
+            formatter: (value) => { return `${value} Cr` },
+          }
+        },
+        fill: {
+          opacity: 1,
+          colors: ['#00798C', '#EDAE49']
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "₹ " + val + " Cr";
+            }
+          }
+        }
+      } as barChartOption
+
       this.areChartFestival = {
         series: res.data.charts.
           yearlyFestival
@@ -503,8 +521,10 @@ export class HomeComponent {
       this.date2).subscribe((res: any) => {
         this.loadingService.hideLoader();
         this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties
-        const date1IMFS = this.comparisonGrowthPercentage.date1.imfsCases + this.comparisonGrowthPercentage.date1.beerCases;
-        const date2IMFS = this.comparisonGrowthPercentage.date2.imfsCases + this.comparisonGrowthPercentage.date2.beerCases;
+        const date1IMFS = parseInt(this.comparisonGrowthPercentage.date1.imfsCases, 10) + parseInt(this.comparisonGrowthPercentage.date1.beerCases, 10);
+        const date2IMFS = parseInt(this.comparisonGrowthPercentage.date2.imfsCases, 10) + parseInt(this.comparisonGrowthPercentage.date2.beerCases, 10);
+        // const date1IMFS = this.comparisonGrowthPercentage.date1.imfsCases + this.comparisonGrowthPercentage.date1.beerCases;
+        // const date2IMFS = this.comparisonGrowthPercentage.date2.imfsCases + this.comparisonGrowthPercentage.date2.beerCases;
         const nonNegativeResult = date2IMFS !== 0 ? parseFloat((((date1IMFS / date2IMFS) - 1) * 100).toFixed(2)) : 0;
         this.finalCalculatedResult = Math.abs(nonNegativeResult);
         console.log(this.finalCalculatedResult)
@@ -565,14 +585,58 @@ export class HomeComponent {
     }
     this.service.getFilterDashBoard('leastPerformance', this.selectLeastFiveYear, this.selectedDistrict).subscribe((res: any) => {
       this.loadingService.hideLoader();
-      this.barChartLeast = {
-        barChartLabels: res.data.charts.leastPerformance.barChartLabels,
-        barChartData: { datasets: res.data.charts.leastPerformance.datasets },
+      // this.barChartLeast = {
+      //   barChartLabels: res.data.charts.leastPerformance.barChartLabels,
+      //   barChartData: { datasets: res.data.charts.leastPerformance.datasets },
 
-        type: 'bar',
-        barChartLegend: true,
-        barChartPlugins: [],
-      } as barChartOptionChartJs
+      //   type: 'bar',
+      //   barChartLegend: true,
+      //   barChartPlugins: [],
+      // } as barChartOptionChartJs
+
+      this.barChartLeast = {
+        series: res.data.charts.leastPerformance.series,
+        chart: {
+          type: "bar",
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "30%",
+            // endingShape: "rounded"
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"]
+        },
+        xaxis: res.data.
+          charts.leastPerformance.xaxis,
+        yaxis: {
+          title: {
+            // text: "₹ (Cr)"
+          },
+          labels: {
+            formatter: (value) => { return `${value} Cr` },
+          }
+        },
+        fill: {
+          opacity: 1,
+          colors: ['#00798C', '#EDAE49']
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "₹ " + val + " Cr";
+            }
+          }
+        }
+      } as barChartOption
     })
   }
   selectedyearForTopFive: any
