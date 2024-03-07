@@ -6,7 +6,7 @@
                     <div class="card">
                         <div style="background-color: #00E396;cursor: pointer;" class="header"
                             (click)="refreshLiveStatus()">
-                            Today's Overall Sales {{chartData?.today?.date}}
+                            Overall Sales {{chartData?.today?.date}}
                             <!-- <img style="width: 20px;height: 20px;" src="assets/icons/Live-1.gif" /> -->
                             <!-- <span style="color: white;font-weight: bold;border-radius: 5px;
                                     font-size:small;margin-left: 5px;padding: 2px;background-color: red;">Live</span>
@@ -49,7 +49,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div style="background-color: #7FB3D5;" class="header">
-                            Yesterday Sales {{chartData?.previousDay?.date}}
+                            Overall Sales on {{chartData?.previousDay?.date}}
                         </div>
                         <div class="card-body">
                             <div class="item">
