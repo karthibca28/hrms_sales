@@ -33,6 +33,19 @@ interface sideBarOption {
   dataLabels: any;
   labels: any;
 };
+
+interface barChartLeast{
+    series: ApexAxisChartSeries;
+    chart: ApexChart;
+    dataLabels: ApexDataLabels;
+    plotOptions: ApexPlotOptions;
+    yaxis: ApexYAxis;
+    xaxis: ApexXAxis;
+    fill: ApexFill;
+    tooltip: ApexTooltip;
+    stroke: ApexStroke;
+    legend: ApexLegend;
+}
 interface barChartOptionChartJs {
   barChartLabels: string[];
   barChartData: ChartData;

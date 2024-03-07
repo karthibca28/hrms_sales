@@ -340,12 +340,12 @@
                                     <div class="card-small-card">
                                         <div style="font-size: small;"
                                             class="small-card-child bg-info text-white text-center">
-                                            Overall Sales as on<br>{{yesterdayDate}}
+                                            Overall Beer Value in Growth Percentage
                                         </div>
                                         <div class="card-body-child text-center">
                                             <h2 [style.color]="getColor(comparisonGrowthPercentage.growthPercentage)"
                                                 class="font-weight-bold mt-2">
-                                                {{comparisonGrowthPercentage.growthPercentage}}%</h2>
+                                                {{comparisonGrowthPercentage.beerGrowthPercentage}}%</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -366,8 +366,7 @@
                                 <div class="col-6 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-success text-white text-center">
-                                            Overall Sales as on<br>
-                                            {{currentDateofComparison}}
+                                            Overall IMFS Value in Growth Percentage
                                         </div>
                                         <div class="card-body-child text-center">
                                             <h2 [style.color]="getColor(comparisonGrowthPercentage.imfsGrowthPercentage)"
@@ -393,12 +392,12 @@
                                 <div class="col-6 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-primary text-white text-center">
-                                            Overall Growth as on date in (%)
+                                            Overall Growth (%)
                                         </div>
                                         <div class="card-body-child text-center">
                                             <h2 [style.color]="getColor(comparisonGrowthPercentage.imfsGrowthPercentage)"
                                                 style="font-size: xx-large;" class="font-weight-bold mt-2">
-                                                {{comparisonGrowthPercentage.beerGrowthPercentage}}%</h2>
+                                                {{comparisonGrowthPercentage.growthPercentage}}</h2>
                                         </div>
                                     </div>
                                 </div>
