@@ -398,6 +398,7 @@ export class HomeComponent {
         legend: {}
       } as barChartOption
       
+      
       this.barChartLeast = {
         barChartLabels: res.data.charts.leastPerformance.barChartLabels,
         barChartData: { datasets: res.data.charts.leastPerformance.datasets },
@@ -454,6 +455,7 @@ export class HomeComponent {
       this.date1 = event.target.value;
       if (!this.date2) {
         this.date2 = new Date().toISOString().split('T')[0];
+        this.yesterdayDate = this.date1
       }
     } else if (dropdownType === 'date2') {
       this.date2 = event.target.value;
@@ -842,13 +844,6 @@ export class HomeComponent {
   barChartOptions: ChartOptions = {
     responsive: true,
     scales: {
-      //   yAxes: [{
-      //   ticks: {
-      //     callback: function(value: any) {
-      //       return `${value} Cr`;
-      //     }
-      //   }
-      // }]
       x: {
         stacked: true
       },

@@ -320,7 +320,7 @@
                                     <div class="card-small-card">
                                         <div style="font-size: small;"
                                             class="small-card-child bg-info text-white text-center">
-                                            Overall Sales<br>{{currentDateofComparison}}
+                                            Overall Sales<br>{{yesterdayDate}}
                                         </div>
                                         <div class="card-body-child text-center">
                                             <h2 [style.color]="getColor(comparisonGrowthPercentage.growthPercentage)"
@@ -333,7 +333,7 @@
                                     <div class="card-small-card">
                                         <div class="small-card-child bg-info text-white text-center">
                                             Total Volume Sold<br>
-                                            {{currentDateofComparison}}
+                                            {{yesterdayDate}}
                                         </div>
                                         <div class="card-body-child text-center">
                                             <h4 style="font-size: small;" class="font-weight-bold mt-2">
@@ -346,7 +346,8 @@
                                 <div class="col-6 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-success text-white text-center">
-                                            Overall Sales<br>{{yesterdayDate}}
+                                            Overall Sales<br>
+                                            {{currentDateofComparison}}
                                         </div>
                                         <div class="card-body-child text-center">
                                             <h2 [style.color]="getColor(comparisonGrowthPercentage.imfsGrowthPercentage)"
@@ -359,7 +360,7 @@
                                     <div class="card small-card">
                                         <div class="small-card-child bg-success text-white text-center">
                                             Total Volume Sold<br>
-                                            {{yesterdayDate}}
+                                            {{currentDateofComparison}}
                                         </div>
                                         <div class="card-body-child text-center">
                                             <h4 style="font-size: small;" class="font-weight-bold mt-2">
@@ -372,7 +373,7 @@
                                 <div class="col-6 mt-3">
                                     <div class="card small-card">
                                         <div class="small-card-child bg-primary text-white text-center">
-                                            Overall Growth in (%) 
+                                            Overall Growth in (%)
                                         </div>
                                         <div class="card-body-child text-center">
                                             <h2 [style.color]="getColor(comparisonGrowthPercentage.imfsGrowthPercentage)"
@@ -560,8 +561,9 @@
                     </div>
                     <div id="chart">
                         <canvas style="height: 200px;" baseChart [datasets]="barChartLeast.barChartData.datasets"
-                            [labels]="barChartLeast.barChartLabels" [options]="barChartOptions" [plugins]="barChartLeast.barChartPlugins"
-                            [legend]="barChartLeast.barChartLegend" [type]="barChartLeast.type">
+                            [labels]="barChartLeast.barChartLabels" [options]="barChartOptions"
+                            [plugins]="barChartLeast.barChartPlugins" [legend]="barChartLeast.barChartLegend"
+                            [type]="barChartLeast.type">
                         </canvas>
                         <!-- <apx-chart [series]="barChartLeast.series" [chart]="barChartLeast.chart"
                             [dataLabels]="barChartLeast.dataLabels" [plotOptions]="barChartLeast.plotOptions"
