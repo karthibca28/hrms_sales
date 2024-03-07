@@ -190,7 +190,7 @@ export class HomeComponent {
       this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties
       const date1IMFS = parseInt(this.comparisonGrowthPercentage.date1.imfsCases, 10) + parseInt(this.comparisonGrowthPercentage.date1.beerCases, 10);
       const date2IMFS = parseInt(this.comparisonGrowthPercentage.date2.imfsCases, 10) + parseInt(this.comparisonGrowthPercentage.date2.beerCases, 10);
-      const nonNegativeResult = date2IMFS !== 0 ? parseFloat((((date1IMFS / date2IMFS) - 1) * 100).toFixed(2)) : 0;
+      const nonNegativeResult = date2IMFS !== 0 ? parseFloat((((date2IMFS / date1IMFS) - 1) * 100).toFixed(2)) : 0;
       this.finalCalculatedResult = Math.abs(nonNegativeResult);
       console.log(date1IMFS,
         date2IMFS)
@@ -525,7 +525,7 @@ export class HomeComponent {
         const date2IMFS = parseInt(this.comparisonGrowthPercentage.date2.imfsCases, 10) + parseInt(this.comparisonGrowthPercentage.date2.beerCases, 10);
         // const date1IMFS = this.comparisonGrowthPercentage.date1.imfsCases + this.comparisonGrowthPercentage.date1.beerCases;
         // const date2IMFS = this.comparisonGrowthPercentage.date2.imfsCases + this.comparisonGrowthPercentage.date2.beerCases;
-        const nonNegativeResult = date2IMFS !== 0 ? parseFloat((((date1IMFS / date2IMFS) - 1) * 100).toFixed(2)) : 0;
+        const nonNegativeResult = date2IMFS !== 0 ? parseFloat((((date2IMFS / date1IMFS) - 1) * 100).toFixed(2)) : 0;
         this.finalCalculatedResult = Math.abs(nonNegativeResult);
         console.log(this.finalCalculatedResult)
         this.barChart = {
