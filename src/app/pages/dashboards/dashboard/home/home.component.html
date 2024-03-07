@@ -6,7 +6,7 @@
                     <div class="card">
                         <div style="background-color: #00E396;cursor: pointer;" class="header"
                             (click)="refreshLiveStatus()">
-                            Overall Sales {{chartData?.today?.date}}
+                            Overall Sales on {{chartData?.today?.date}}
                             <!-- <img style="width: 20px;height: 20px;" src="assets/icons/Live-1.gif" /> -->
                             <!-- <span style="color: white;font-weight: bold;border-radius: 5px;
                                     font-size:small;margin-left: 5px;padding: 2px;background-color: red;">Live</span>
@@ -90,7 +90,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="header">
-                            Previous Year {{chartData?.previousYear?.date}}
+                            Previous Year on {{chartData?.previousYear?.date}}
                         </div>
                         <div class="card-body">
                             <div class="item">
@@ -119,10 +119,10 @@
                                     currency:'INR':'symbol':'1.0-2'}} Crs</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="percentage" [style.color]="getColor(chartData?.previousYear?.growthPercentage)">
-                            {{chartData?.previousYear?.growthPercentage}} %</div>
+                        <div class="card-footer">
+                            <div class="percentage" [style.color]="getColor(chartData?.previousYear?.growthPercentage)">
+                                {{chartData?.previousYear?.growthPercentage}} %</div>
+                        </div>
                     </div>
                 </div>
             </div>
