@@ -96,6 +96,8 @@ export class HomeComponent {
   finalCalculatedResult: any
   BeerResult: any
   leastperformance: any
+  voloumeSecondChart:any
+  voloumeThirdChart:any
   globalSearch: any[] = ['districtName', 'totalPrev3MonthBeerSales', 'totalPrev3MonthIMFSales', 'totalPrev3MonthSales', 'totalPrevMonthBeerSales', 'totalPrevMonthIMFSales', 'totalPrevMonthSales'];
   // [{
   //   label: "Chennai", value: 1
@@ -197,6 +199,13 @@ export class HomeComponent {
       const nonNegativeResult = date2IMFS !== 0 ? parseFloat((((date1IMFS / date2IMFS) - 1) * 100).toFixed(2)) : 0;
       this.finalCalculatedResult = Math.abs(nonNegativeResult);
       console.log(this.finalCalculatedResult)
+      const chart1Volume = this.chartData?.today?.imfsSoldVolumeCases +this.chartData?.today?.beerSoldVolumeCases
+      const chart2Volume = this.chartData?.previousDay?.imfsSoldVolumeCases +this.chartData?.previousDay?.beerSoldVolumeCases
+      const chart3Volume = this.chartData?.previousYear?.imfsSoldVolumeCases +this.chartData?.previousYear?.beerSoldVolumeCases
+      const voloume1 = parseFloat((((chart1Volume / chart2Volume) - 1) * 100).toFixed(2))
+      this.voloumeSecondChart = Math.abs(voloume1);
+      const voloume2 = parseFloat((((chart1Volume / chart3Volume) - 1) * 100).toFixed(2))
+      this.voloumeThirdChart = Math.abs(voloume2);
       this.loadingService.hideLoader();
       const now = new Date()
       this.areaChart = {

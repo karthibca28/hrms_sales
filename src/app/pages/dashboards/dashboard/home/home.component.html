@@ -78,7 +78,7 @@
                                     <span class="item-title">
                                         {{chartData?.previousDay?.beerSoldVolumeCases |
                                         number:'1.0-2':'en-IN'}} <p style="font-size: x-small;">
-                                            </span>
+                                    </span>
                                 </div>
                                 <span style="margin-bottom: 6px;"
                                     class="item-title">{{chartData?.previousDay?.beerSalesValue |
@@ -86,8 +86,15 @@
                             </div>
                         </div>
                         <div class="card-footer">
+                            <div class="item-title"
+                                style="font-size: small;color: black;text-align: center;display: flex;justify-content: space-between;">
+                                <div>In Value</div>
+                                <div> In Volume</div>
+                            </div>
                             <div class="percentage" [style.color]="getColor(chartData?.previousDay?.growthPercentage)">
-                                {{chartData?.previousDay?.growthPercentage}} %</div>
+                                <div>{{chartData?.previousDay?.growthPercentage}} %</div>
+                                <div>{{voloumeSecondChart}}%</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -126,8 +133,14 @@
                             </div>
                         </div>
                         <div class="card-footer">
+                            <div class="item-title"
+                                style="font-size: small;color: black;text-align: center;display: flex;justify-content: space-between;">
+                                <div>In Value</div>
+                                <div> In Volume</div>
+                            </div>
+
                             <div class="percentage" [style.color]="getColor(chartData?.previousYear?.growthPercentage)">
-                                {{chartData?.previousYear?.growthPercentage}} %</div>
+                                <div>{{chartData?.previousYear?.growthPercentage}}%</div>  <div>{{voloumeThirdChart}}%</div></div>
                         </div>
                     </div>
                 </div>

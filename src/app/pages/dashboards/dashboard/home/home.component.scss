@@ -62,7 +62,9 @@
 }
 
 .percentage {
-  font-size: 2em;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: space-between;
   text-align: center;
   margin-top: 4%;
   font-weight: bold;
