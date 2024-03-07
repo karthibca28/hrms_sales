@@ -140,7 +140,9 @@
                             </div>
 
                             <div class="percentage" [style.color]="getColor(chartData?.previousYear?.growthPercentage)">
-                                <div>{{chartData?.previousYear?.growthPercentage}}%</div>  <div>{{voloumeThirdChart}}%</div></div>
+                                <div>{{chartData?.previousYear?.growthPercentage}}%</div>
+                                <div>{{voloumeThirdChart}}%</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -183,7 +185,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-3 mb-2rem">
+                            <div class="col-3 mb-2">
                                 <div class="card-small-card d-flex flex-column justify-content-between">
                                     <span class="text-center">(In Cases)</span>
                                     <div class="small-card-child bg-info text-white text-center">
@@ -214,13 +216,10 @@
                                     </div>
                                 </div>
                             </div>
-                            
-
-
                         </div>
 
                         <!-- Second Row -->
-                        
+
                         <div class="row align-items-center justify-content-center">
                             <div class="col-3">
                                 <div class="card-small-card d-flex flex-column justify-content-between">
@@ -243,9 +242,9 @@
                                         {{valueData.currentYear.year}}
                                     </div>
                                     <div class="card-body-child text-center">
-                                        <h4  class="font-weight-bold">
+                                        <h4 class="font-weight-bold">
                                             IMFS : {{comparisonGrowthPercentage.date2.imfsCases}} Cases</h4>
-                                        <h4  class="font-weight-bold">
+                                        <h4 class="font-weight-bold">
                                             BEER : {{comparisonGrowthPercentage.date2.beerCases}} Cases</h4>
                                     </div>
                                 </div>
@@ -267,16 +266,6 @@
                             </div>
                         </div>
                     </div>
-
-                </div>
-            </div>
-
-            <!-- Statistics Section -->
-            <div class="card col-md-5">
-                <div class="row">
-
-
-
                 </div>
             </div>
         </div>
