@@ -397,7 +397,7 @@ export class HomeComponent {
         },
         legend: {}
       } as barChartOption
-
+      
       this.barChartLeast = {
         barChartLabels: res.data.charts.leastPerformance.barChartLabels,
         barChartData: { datasets: res.data.charts.leastPerformance.datasets },
