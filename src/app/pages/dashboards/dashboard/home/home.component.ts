@@ -867,7 +867,7 @@ export class HomeComponent {
       imfs: '-1.55',
       overall: '-1.25',
       highestsold: '1',
-      highsoldbrands: 'Wine',
+      highsoldbrands: 'Wine : MISTY GRAPES RED WINE',
       nosold: '3',
       nosoldbrands: 'Brandy : GOLDEN GRAPE ORDINARY BRANDY,HONEY BEE MEDIUM BRANDY,DIAMOND BRANDY'
     },
@@ -879,9 +879,9 @@ export class HomeComponent {
       imfs: '-1.2',
       overall: '-1.1',
       highestsold: '3',
-      highsoldbrands: 'Brandy,Rum,Whisky',
+      highsoldbrands: 'Brandy : HONEY BEE MEDIUM BRANDY,Rum : OLD MONK GOLD RESERVE PREMIUM RUM,Whisky: VORION NO.1 INDIAN CLASSIC WHISKY,TOP STAR SPECIAL WHISKY ',
       nosold: '1',
-      nosoldbrands: 'Wine'
+      nosoldbrands: 'Wine : RED SEA RUBY FORTIFIED WINE'
     },
     {
       region: "Chennai",
@@ -891,9 +891,9 @@ export class HomeComponent {
       imfs: '-0.22',
       overall: '-0.43',
       highestsold: '1',
-      highsoldbrands: 'Votka',
+      highsoldbrands: 'Votka : MAGIC MOMENTS PREMIUM CHOCOLATE VODKA,BRISNOFF MED VODKA',
       nosold: '4',
-      nosoldbrands: 'Brandy,Rum,Whisky,Wine'
+      nosoldbrands: 'Brandy : ANACONDA NO.1 EXTRA VSOP BRANDY,Rum : OLD MONSTER XXX RUM,Whisky : TEACHERS 50 12 YRS SCOTCH WHISKY,Wine : GLOBUS FORTIFIED PORT WINE,THE WAREHOUSE RED WINE'
     },
     {
       region: "Coimbatore",
@@ -903,9 +903,9 @@ export class HomeComponent {
       imfs: '-0.60',
       overall: '-0.40',
       highestsold: '2',
-      highsoldbrands: 'Wine,Brandy',
+      highsoldbrands: 'Wine : THE WAREHOUSE RED WINE,Brandy : 1848 PREMIUM XO BRANDY',
       nosold: '2',
-      nosoldbrands: 'Brandy,Rum'
+      nosoldbrands: 'Brandy : RADIUM HOUSE FRENCH BRANDY,Rum : BLACK PEARL XXX RUM,TI MADIRA XXX RUM'
     },
     {
       region: "Chennai",
@@ -915,7 +915,7 @@ export class HomeComponent {
       imfs: '-0.02',
       overall: '-0.02',
       highestsold: '5',
-      highsoldbrands: 'Brandy,Rum,Whisky,Wine,Votka',
+      highsoldbrands: 'Brandy : SHOT OLP BRANDY,Rum : TI MADIRA XXX RUM,Whisky : 00 PIPER DELUXE BLENDED SCOTCH WHISKY,Wine : RED SEA RUBY FORTIFIED WINE,Votka : ACTIVATOR VANILLA VODKA',
       nosold: '0',
       nosoldbrands: 'No Items'
     },
