@@ -24,7 +24,7 @@
                                     <img class="item-img" src="assets/icons/Imfs.png">
                                 </span>
                                 <div class="item-head-child">
-                                    <img  class="item-img" src="assets/icons/home.png">&nbsp;
+                                    <img class="item-img" src="assets/icons/home.png">&nbsp;
                                     <span style="margin-left: 2px;"
                                         class="item-title">{{chartData?.today?.imfsSoldVolumeCases |
                                         number:'1.0-2':'en-IN'}} <p style="font-size: x-small;"></span>
@@ -42,7 +42,7 @@
                                 </span>
                                 <div class="item-head-child">
                                     <!-- <p class="item-title">Cases</p> -->
-                                    <img  class="item-img" src="assets/icons/home.png">&nbsp;
+                                    <img class="item-img" src="assets/icons/home.png">&nbsp;
                                     <span class="item-title">{{chartData?.today?.beerSoldVolumeCases |
                                         number:'1.0-2':'en-IN'}}
                                         <p style="font-size: x-small;">
@@ -83,11 +83,11 @@
                             </div>
                             <div class="item">
                                 <span class="item-title">BEER
-                                    <img  class="item-img" src="assets/icons/beeer.png">
+                                    <img class="item-img" src="assets/icons/beeer.png">
                                 </span>
                                 <div class="item-head-child">
                                     <!-- <p class="item-title">Cases</p> -->
-                                    <img  class="item-img" src="assets/icons/home.png">&nbsp;
+                                    <img class="item-img" src="assets/icons/home.png">&nbsp;
                                     <span class="item-title">
                                         {{chartData?.previousDay?.beerSoldVolumeCases |
                                         number:'1.0-2':'en-IN'}} <p style="font-size: x-small;">
@@ -426,71 +426,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="card-title mb-0 flex-grow-1">Sales Comparison on Festival</h4>
-                        <img style="width: 20px;height: 20px;" src="assets/icons/gift.png" />
-                    </div>
-
-                    <div class="row mt-2 px-2 align-items-center">
-                        <div class="col-2">
-                            <div class="form-check" (click)="filterFestival()">
-                                <input class="form-check-input" type="checkbox" value="2024" id="festivalCheckbox"
-                                    checked>
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    2024
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div class="form-check" (click)="filterFestival()">
-                                <input class="form-check-input" type="checkbox" value="2023" id="festivalCheckbox"
-                                    checked>
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    2023
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div class="form-check" (click)="filterFestival()">
-                                <input class="form-check-input" type="checkbox" value="2022" id="festivalCheckbox">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    2022
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div class="form-check" (click)="filterFestival()">
-                                <input class="form-check-input" type="checkbox" value="2021" id="festivalCheckbox">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    2021
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <span>Region</span>
-                            <ng-select (change)="filterFestival($event)" [items]="location" bindLabel="label"
-                                bindValue="value" placeholder="Across TN"  [clearable]="false" [searchable]="false"></ng-select>
-                            <select class="form-control" data-choices >
-                                <option value=""></option>
-                                <option *ngFor="let value of location" value="{{value.value}}">
-                                    {{value.label}}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div id="chart">
-                                <apx-chart [series]="areChartFestival.series" [chart]="areChartFestival.chart"
-                                    [xaxis]="areChartFestival.xaxis" [stroke]="areChartFestival.stroke"
-                                    [tooltip]="areChartFestival.tooltip" [yaxis]="areChartFestival.yaxis"
-                                    [dataLabels]="areChartFestival.dataLabels"></apx-chart>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
                     </div>
                 </div>
             </div>
@@ -566,11 +501,6 @@
                             <ng-select data-choices (change)="filterLeastfiveDistrict($event,'year')"
                                 [items]="regionwiseDropdown" bindLabel="label" bindValue="value"
                                 placeholder="FY 2023-2024" [clearable]="false" [searchable]="false"></ng-select>
-
-                            <!-- <select class="form-control" data-choices (change)="filterLeastfiveDistrict($event,'year')">
-                    <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
-                        {{value.label}}</option>
-                </select> -->
                         </div>&nbsp;
                         <div class="col-md-3">
                             <span>Region</span>
@@ -578,13 +508,6 @@
                             <ng-select data-choices data-choices (change)="filterLeastfiveDistrict($event,'location')"
                                 [items]="location" bindLabel="label" bindValue="value" placeholder="Across TN"
                                 [clearable]="false" [searchable]="false"></ng-select>
-
-
-                            <!-- <select class="form-control" data-choices (change)="filterLeastfiveDistrict($event,'location')">
-                    <option value="">All</option>
-                    <option *ngFor="let value of location" value="{{value.value}}">
-                        {{value.label}}</option>
-                </select> -->
                         </div>&nbsp;
                     </div>
                     <div class="flex-shrink-0">
@@ -651,11 +574,6 @@
                                     <ng-select data-choices (change)="filterSalesComparison($event)" [items]="location"
                                         bindLabel="label" bindValue="value" placeholder="Across TN" [clearable]="false"
                                         [searchable]="false"></ng-select>
-                                    <!-- <select class="form-control" data-choices (change)="filterSalesComparison($event)">
-                            <option value="">All</option>
-                            <option *ngFor="let value of location" value="{{value.value}}">
-                                {{value.label}}</option>
-                        </select> -->
                                 </div>
                             </div>
                             <div class="row">
@@ -686,43 +604,16 @@
                             bindValue="value" placeholder="Select Month" [clearable]="false"
                             [searchable]="false"></ng-select>
                     </div>
-
-                    <!-- <select style="width:10%;background-color: #EEEEEE;" class="form-control" data-choices
-            (change)="filterTable($event,'year')">
-            <option *ngFor="let value of regionwiseDropdown" value="{{value.value}}">
-                {{value.label}}
-            </option>
-        </select> -->
-                    <!-- <div class="col-md-3">
-        </div> -->
-                    <!-- (change)="filterTable($event, 'region')" -->
                     <div class="col-md-2">
                         <span>Region</span>
                         <ng-select data-choices data-choices [items]="location" bindLabel="label" bindValue="value"
                             placeholder="Across TN" [clearable]="false" [searchable]="false"></ng-select>
-
-                        <!-- <select style="width: 30%;background-color: #EEEEEE;" class="form-control" data-choices
-                (change)="filterTable($event, 'region')">
-                <option value="">All</option>
-                <option *ngFor="let value of location" value="{{value.value}}">
-                    {{value.label}}
-                </option>
-            </select> -->
                     </div>
-
                 </div>
                 <p-table [value]="sampledata" [rows]="10" [showCurrentPageReport]="true" [paginator]="true"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                     [globalFilterFields]="globalSearch" responsiveLayout="stack" [breakpoint]="'960px'"
                     [tableStyle]="{'min-width': '50rem'}">
-                    <ng-template pTemplate="caption">
-                        <!-- <div class="flex">
-                <span class="p-input-icon-left ml-auto">
-                    <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="applyGlobalFilter($event)" placeholder="Search keyword" />
-                </span>
-            </div> -->
-                    </ng-template>
                     <ng-template pTemplate="header">
                         <tr>
                             <th pSortableColumn="serialNumber">
@@ -763,33 +654,16 @@
                             </th>
                         </tr>
                     </ng-template>
-
-
-                    <!-- <ng-template pTemplate="header">
-            <tr>
-                <th>S.No</th>
-                <th>District</th> -->
-                    <!-- <th>Total Previous 3Months Beer Sales</th>
-                <th>Total Previous 3Months IMFS Sales</th>
-                <th>Total Previous 3Months Sales</th>
-                <th>Total Previous Month Beer Sales</th>
-                <th>Total Previous Month IMFS Sales</th>
-                <th>Total Previous Month Sales</th> -->
-                    <!-- <th>Beer Sales Growth</th>
-                <th>Imfs Sales Growth</th>
-                <th>Overall Percentage</th>
-            </tr>
-        </ng-template> -->
                     <ng-template pTemplate="body" let-product let-ri="rowIndex">
                         <tr>
                             <td>{{ri+1}}</td>
                             <td>{{ product.region }}</td>
                             <!-- <td>{{ product.totalPrev3MonthBeerSales }}</td>
-                <td>{{ product.totalPrev3MonthIMFSales }}</td>
-                <td>{{ product.totalPrev3MonthSales}}</td>
-                <td>{{ product.totalPrevMonthBeerSales}}</td>
-                <td>{{ product.totalPrevMonthIMFSales }}</td>
-                <td>{{ product.totalPrevMonthSales}}</td> -->
+                            <td>{{ product.totalPrev3MonthIMFSales }}</td>
+                            <td>{{ product.totalPrev3MonthSales}}</td>
+                            <td>{{ product.totalPrevMonthBeerSales}}</td>
+                            <td>{{ product.totalPrevMonthIMFSales }}</td>
+                            <td>{{ product.totalPrevMonthSales}}</td> -->
                             <td>{{product.dis}}</td>
                             <td>{{product.rvshop}}</td>
                             <td [style.color]="getColor(product.beersalesgrowth)">{{ product.beersalesgrowth
@@ -815,5 +689,7 @@
                     </ng-template>
                 </p-table>
             </div>
-
             <app-loader></app-loader>
+        </div>
+    </div>
+</div>
