@@ -104,9 +104,9 @@
                                 <div>In Value</div>
                                 <div> In Volume</div>
                             </div>
-                            <div class="percentage" [style.color]="getColor(chartData?.previousDay?.growthPercentage)">
-                                <div>{{chartData?.previousDay?.growthPercentage}} %</div>
-                                <div>{{voloumeSecondChart}}%</div>
+                            <div class="percentage" >
+                                <div [style.color]="getColor(chartData?.previousDay?.growthPercentage)">{{chartData?.previousDay?.growthPercentage}} %</div>
+                                <div [style.color]="getColor(voloumeSecondChart)">{{voloumeSecondChart}}%</div>
                             </div>
                         </div>
                     </div>
@@ -159,8 +159,8 @@
                             </div>
 
                             <div class="percentage" [style.color]="getColor(chartData?.previousYear?.growthPercentage)">
-                                <div>{{chartData?.previousYear?.growthPercentage}}%</div>
-                                <div>{{voloumeThirdChart}}%</div>
+                                <div [style.color]="getColor(chartData?.previousYear?.growthPercentage)">{{chartData?.previousYear?.growthPercentage}}%</div>
+                                <div  [style.color]="getColor(voloumeThirdChart)">{{voloumeThirdChart}}%</div>
                             </div>
                         </div>
                     </div>
@@ -406,9 +406,9 @@
                                             Overall Growth (%)
                                         </div>
                                         <div class="card-body-child text-center">
-                                            <h2 [style.color]="getColor(comparisonGrowthPercentage.imfsGrowthPercentage)"
+                                            <h2 [style.color]="getColor(comparisonGrowthPercentage.growthPercentage)"
                                                 style="font-size: xx-large;" class="font-weight-bold mt-2">
-                                                {{comparisonGrowthPercentage.growthPercentage}}</h2>
+                                                {{comparisonGrowthPercentage.growthPercentage}}%</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -418,7 +418,7 @@
                                             Net Growth in Volume (%)
                                         </div>
                                         <div class="card-body-child text-center">
-                                            <h2 [style.color]="getColor(comparisonGrowthPercentage.imfsGrowthPercentage)"
+                                            <h2 [style.color]="getColor(finalCalculatedResult)"
                                                 style="font-size: xx-large;" class="font-weight-bold mt-2">
                                                 {{finalCalculatedResult}}%</h2>
                                         </div>
