@@ -193,15 +193,17 @@ export class HomeComponent {
       const date1IMFS = parseInt(this.comparisonGrowthPercentage.date1.imfsCases, 10) + parseInt(this.comparisonGrowthPercentage.date1.beerCases, 10);
       const date2IMFS = parseInt(this.comparisonGrowthPercentage.date2.imfsCases, 10) + parseInt(this.comparisonGrowthPercentage.date2.beerCases, 10);
       const nonNegativeResult = date2IMFS !== 0 ? parseFloat((((date2IMFS / date1IMFS) - 1) * 100).toFixed(2)) : 0;
-      this.finalCalculatedResult = isNaN(nonNegativeResult) ? '' : Math.abs(nonNegativeResult);
+      this.finalCalculatedResult = isNaN(nonNegativeResult) ? '' : nonNegativeResult;
       console.log(date1IMFS, date2IMFS, this.finalCalculatedResult)
       const chart1Volume = parseInt(this.chartData?.today?.imfsSoldVolumeCases) + parseInt(this.chartData?.today?.beerSoldVolumeCases)
       const chart2Volume = parseInt(this.chartData?.previousDay?.imfsSoldVolumeCases) + parseInt(this.chartData?.previousDay?.beerSoldVolumeCases)
       const chart3Volume = parseInt(this.chartData?.previousYear?.imfsSoldVolumeCases) + parseInt(this.chartData?.previousYear?.beerSoldVolumeCases)
-      const voloume1 = parseFloat((((chart1Volume / chart2Volume) - 1) * 100).toFixed(2))
-      this.voloumeSecondChart = Math.abs(voloume1);
+      const volume1 = parseFloat((((chart1Volume / chart2Volume) - 1) * 100).toFixed(2))
+      console.log('>>>>>>>>>>>>>>>', volume1)
+      this.voloumeSecondChart = volume1;
+      console.log('>>>>>>>>>>>>>>>', this.voloumeSecondChart)
       const voloume2 = parseFloat((((chart1Volume / chart3Volume) - 1) * 100).toFixed(2))
-      this.voloumeThirdChart = Math.abs(voloume2);
+      this.voloumeThirdChart = voloume2
       this.loadingService.hideLoader();
       const now = new Date()
       this.areaChart = {
@@ -523,11 +525,11 @@ export class HomeComponent {
       this.date2).subscribe((res: any) => {
         this.loadingService.hideLoader();
         this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties
-        const date1IMFS = parseInt(this.comparisonGrowthPercentage.date1.imfsCases, 10) + parseInt(this.comparisonGrowthPercentage.date1.beerCases, 10);
-        const date2IMFS = parseInt(this.comparisonGrowthPercentage.date2.imfsCases, 10) + parseInt(this.comparisonGrowthPercentage.date2.beerCases, 10);
-        const nonNegativeResult = date2IMFS !== 0 ? parseFloat((((date2IMFS / date1IMFS) - 1) * 100).toFixed(2)) : 0;
-        this.finalCalculatedResult = isNaN(nonNegativeResult) ? '' : Math.abs(nonNegativeResult);
-        console.log(nonNegativeResult)
+        const date1IMFS = parseInt(this.comparisonGrowthPercentage.date1.imfsCases) + parseInt(this.comparisonGrowthPercentage.date1.beerCases);
+        const date2IMFS = parseInt(this.comparisonGrowthPercentage.date2.imfsCases) + parseInt(this.comparisonGrowthPercentage.date2.beerCases);
+        const nonNegativeResult = parseFloat((((date2IMFS / date1IMFS) - 1) * 100).toFixed(2))
+        this.finalCalculatedResult = isNaN(nonNegativeResult) ? '' : nonNegativeResult;
+        console.log(nonNegativeResult, date1IMFS, date2IMFS)
         this.barChart = {
           series: res.data.charts.comparisonBetweenDate.series,
           chart: {
