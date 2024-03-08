@@ -34,7 +34,7 @@ export class SidebarComponent implements OnInit {
       },
       {
         id: 2,
-        label:'Cumulative Growth Performance',
+        label:'Cumulative Growth Performance (Previous Month Vs Current Month)',
         icon: 'mdi mdi-chart-line',
         href:"#cum2"
       },

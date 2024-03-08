@@ -167,7 +167,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Overall Cumulative Growth Performance - Current Month</h4>
+                        <h4 class="card-title">Overall Cumulative Growth Performance - Current Month as on date</h4>
                     </div>
                     <div class="card-body d-flex">
                         <div class="col-md-12">
@@ -188,7 +188,7 @@
                                     <span class="text-center">(In Crs)</span>
                                     <div class="small-card-child bg-info text-white text-center">
                                         Overall Sales Value in<br> {{valueData.previousYear.month}}
-                                        {{valueData.previousYear.year}}
+                                        {{valueData.previousYear.year}} <br>(as on date)
                                     </div>
                                     <div class="card-body-child text-center">
                                         <h4 class="font-weight-bold mt-2">{{valueData.previousYear.total}} Crs</h4>
@@ -200,15 +200,13 @@
                                 <div class="card-small-card d-flex flex-column justify-content-between">
                                     <span class="text-center">(In Cases)</span>
                                     <div class="small-card-child bg-info text-white text-center">
-                                        Total Volume Sold in <br> {{valueData.previousYear.month}}
-                                        {{valueData.previousYear.year}}
+                                        Total Volume Sold in<br> {{valueData.previousYear.month}}
+                                        {{valueData.previousYear.year}} (as on date)
                                     </div>
-                                    <div class="card-body-child text-center">
+                                    <div style="height: 70px;" class="card-body-child text-center">
                                         <h4 class="mt-3">
                                             IMFS : {{valueData.previousYear.imfsCases}} Cases
-                                        </h4>
-                                        <h4>
-                                            BEER : {{valueData.previousYear.beerCases}} Cases
+                                            <p>BEER : {{valueData.previousYear.beerCases}} Cases</p>
                                         </h4>
                                     </div>
                                 </div>
@@ -221,9 +219,9 @@
                                         Overall Growth % <br> {{valueData.previousYear.month}}
                                         {{valueData.previousYear.year}}
                                     </div>
-                                    <div class="card-body-child text-center">
-                                        <h4 [style.color]="getColor(valueData.percentage)" style="font-size: x-large;"
-                                            class="font-weight-bold mt-2">{{valueData.percentage}}%</h4>
+                                    <div style="height: 75px;" class="card-body-child text-center">
+                                        <h4 [style.color]="getColor(valueData.percentage)" style="font-size: x-large;margin-top: 1.3rem;"
+                                            class="font-weight-bold">{{valueData.percentage}}%</h4>
                                     </div>
                                 </div>
                             </div>
@@ -236,8 +234,8 @@
                                 <div class="card-small-card d-flex flex-column justify-content-between">
                                     <!-- <span class="text-center">(In Cases)</span> -->
                                     <div class="small-card-child bg-success text-white text-center">
-                                        Overall Sales value in <br> {{valueData.currentYear.month}}
-                                        {{valueData.currentYear.year}}
+                                        Overall Sales value in<br> {{valueData.currentYear.month}}
+                                        {{valueData.currentYear.year}} <br>(as on date)
                                     </div>
                                     <div class="card-body-child text-center">
                                         <h4 class="font-weight-bold mt-2">{{valueData.currentYear.total}} Crs</h4>
@@ -250,13 +248,13 @@
                                 <div class="card-small-card">
                                     <div class="small-card-child bg-success text-white text-center">
                                         Total Volume Sold in <br> {{valueData.currentYear.month}}
-                                        {{valueData.currentYear.year}}
+                                        {{valueData.currentYear.year}} (as on date)
                                     </div>
-                                    <div class="card-body-child text-center">
-                                        <h4 class="font-weight-bold">
-                                            IMFS : {{valueData.currentYear.imfsCases}} Cases</h4>
-                                        <h4 class="font-weight-bold">
-                                            BEER : {{valueData.currentYear.beerCases}} Cases</h4>
+                                    <div style="height: 70px;" class="card-body-child text-center">
+                                        <h4 class="font-weight-bold mt-3">
+                                            IMFS : {{valueData.currentYear.imfsCases}} Cases
+                                            <p> BEER : {{valueData.currentYear.beerCases}} Cases</p>
+                                        </h4>
                                     </div>
                                 </div>
                             </div>
@@ -269,9 +267,9 @@
                                         Net Growth in Volume % {{valueData.currentYear.month}}
                                         {{valueData.currentYear.year}}
                                     </div>
-                                    <div class="card-body-child text-center">
-                                        <h4 [style.color]="getColor(valueData.percentage)" style="font-size: x-large;"
-                                            class="font-weight-bold mt-2">{{valueData.percentage}}%</h4>
+                                    <div style="height: 75px;" class="card-body-child text-center">
+                                        <h4 [style.color]="getColor(valueData.percentage)" style="font-size: x-large;margin-top: 1.3rem;"
+                                            class="font-weight-bold">{{valueData.percentage}}%</h4>
                                     </div>
                                 </div>
                             </div>
@@ -365,7 +363,7 @@
                                     <div class="card-small-card">
                                         <div class="small-card-child bg-info text-white text-center">
                                             Total Volume Sold as on<br>
-                                            {{yesterdayDate}}
+                                            {{yesterDayDateofComparison}}
                                         </div>
                                         <div class="card-body-child text-center">
                                             <h4 style="font-size: small;" class="font-weight-bold mt-2">

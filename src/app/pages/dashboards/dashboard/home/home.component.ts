@@ -80,6 +80,7 @@ export class HomeComponent {
   location: any
   districts: any
   overAllChart: any
+  yesterDayDateofComparison: any
   previousCurrent: any
   valueData: any
   tabledata: any
@@ -136,6 +137,7 @@ export class HomeComponent {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
     this.yesterdayDate = yesterday.toISOString().split('T')[0];
+    this.yesterDayDateofComparison = yesterday.toISOString().split('T')[0];
     const today = new Date();
     this.currentDate = today.toISOString().split('T')[0];
     this.currentDateofComparison = today.toISOString().split('T')[0];
@@ -499,7 +501,8 @@ export class HomeComponent {
       }
     } else if (dropdownType === 'date2') {
       this.date2 = event.target.value;
-      this.currentDateofComparison = this.date2
+      this.currentDateofComparison = this.date2,
+        this.yesterDayDateofComparison = this.date1
       if (!this.date1) {
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
