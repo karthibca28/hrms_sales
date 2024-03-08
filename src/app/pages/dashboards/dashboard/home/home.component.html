@@ -14,20 +14,22 @@
                                 src="assets/icons/refresh.png" /> -->
                         </div>
                         <div class="card-body">
+                            <div class="card-mid-title">
+                                <p></p>
+                                <p>Cases</p>
+                                <p>Crs</p>
+                            </div>
                             <div class="item">
                                 <span class="item-title">IMFS
                                     <img src="assets/icons/Imfs.png">
                                 </span>
                                 <div class="item-head-child">
-                                    <p class="item-title">Cases</p>
-                                    <img class="item-img" src="assets/icons/home.png">&nbsp;
+                                    <img  class="item-img" src="assets/icons/home.png">&nbsp;
                                     <span style="margin-left: 2px;"
                                         class="item-title">{{chartData?.today?.imfsSoldVolumeCases |
                                         number:'1.0-2':'en-IN'}} <p style="font-size: x-small;"></span>
-
                                 </div>
                                 <div>
-                                    <p class="item-title">Crs</p>
                                     <span style="margin-bottom: 6px;"
                                         class="item-title">{{chartData?.today?.imfsSalesValue
                                         |
@@ -40,7 +42,7 @@
                                 </span>
                                 <div class="item-head-child">
                                     <!-- <p class="item-title">Cases</p> -->
-                                    <img class="item-img" src="assets/icons/home.png">&nbsp;
+                                    <img  class="item-img" src="assets/icons/home.png">&nbsp;
                                     <span class="item-title">{{chartData?.today?.beerSoldVolumeCases |
                                         number:'1.0-2':'en-IN'}}
                                         <p style="font-size: x-small;">
@@ -59,18 +61,21 @@
                             Overall Sales on {{chartData?.previousDay?.date}}
                         </div>
                         <div class="card-body">
+                            <div class="card-mid-title">
+                                <p></p>
+                                <p>Cases</p>
+                                <p>Crs</p>
+                            </div>
                             <div class="item">
                                 <span class="item-title">IMFS
                                     <img class="item-img" src="assets/icons/Imfs.png">
                                 </span>
                                 <div class="item-head-child">
-                                    <p class="item-title">Cases</p>
                                     <img class="item-img" src="assets/icons/home.png">&nbsp;
                                     <span class="item-title">{{chartData?.previousDay?.imfsSoldVolumeCases |
                                         number:'1.0-2':'en-IN' }} <p style="font-size: x-small;"></span>
                                 </div>
                                 <div>
-                                    <p class="item-title">Crs</p>
                                     <span style="margin-bottom: 10px;"
                                         class="item-title">{{chartData?.previousDay?.imfsSalesValue |
                                         currency:'INR':'symbol':'1.0-2'}} </span>
@@ -78,11 +83,11 @@
                             </div>
                             <div class="item">
                                 <span class="item-title">BEER
-                                    <img class="item-img" src="assets/icons/beeer.png">
+                                    <img  class="item-img" src="assets/icons/beeer.png">
                                 </span>
                                 <div class="item-head-child">
                                     <!-- <p class="item-title">Cases</p> -->
-                                    <img class="item-img" src="assets/icons/home.png">&nbsp;
+                                    <img  class="item-img" src="assets/icons/home.png">&nbsp;
                                     <span class="item-title">
                                         {{chartData?.previousDay?.beerSoldVolumeCases |
                                         number:'1.0-2':'en-IN'}} <p style="font-size: x-small;">
@@ -112,18 +117,21 @@
                             Previous Year on {{chartData?.previousYear?.date}}
                         </div>
                         <div class="card-body">
+                            <div class="card-mid-title">
+                                <p></p>
+                                <p>Cases</p>
+                                <p>Crs</p>
+                            </div>
                             <div class="item">
                                 <span class="item-title">IMFS
                                     <img class="item-img" src="assets/icons/Imfs.png">
                                 </span>
                                 <div class="item-head-child">
-                                    <p class="item-title">Cases</p>
                                     <img class="item-img" src="assets/icons/home.png">&nbsp;
                                     <span class="item-title">{{chartData?.previousYear?.imfsSoldVolumeCases |
                                         number:'1.0-2':'en-IN'}} <p style="font-size: x-small;"></p></span>
                                 </div>
                                 <div>
-                                    <p class="item-title">Crs</p>
                                     <span style="margin-bottom: 6px;"
                                         class="item-title">{{chartData?.previousYear?.imfsSalesValue |
                                         currency:'INR':'symbol':'1.0-2'}}</span>
@@ -188,10 +196,11 @@
                                     <span class="text-center">(In Crs)</span>
                                     <div class="small-card-child bg-info text-white text-center">
                                         Overall Sales Value in<br> {{valueData.previousYear.month}}
-                                        {{valueData.previousYear.year}} <br>(as on date)
+                                        {{valueData.previousYear.year}} (as on date)
                                     </div>
-                                    <div class="card-body-child text-center">
-                                        <h4 class="font-weight-bold mt-2">{{valueData.previousYear.total}} Crs</h4>
+                                    <div style="height: 70px;" class="card-body-child text-center">
+                                        <h4 style="margin-top: 1.5rem;" class="font-weight-bold">
+                                            {{valueData.previousYear.total}} Crs</h4>
                                     </div>
                                 </div>
                             </div>
@@ -220,8 +229,9 @@
                                         {{valueData.previousYear.year}}
                                     </div>
                                     <div style="height: 75px;" class="card-body-child text-center">
-                                        <h4 [style.color]="getColor(valueData.percentage)" style="font-size: x-large;margin-top: 1.3rem;"
-                                            class="font-weight-bold">{{valueData.percentage}}%</h4>
+                                        <h4 [style.color]="getColor(valueData.percentage)"
+                                            style="font-size: x-large;margin-top: 1.3rem;" class="font-weight-bold">
+                                            {{valueData.percentage}}%</h4>
                                     </div>
                                 </div>
                             </div>
@@ -235,10 +245,11 @@
                                     <!-- <span class="text-center">(In Cases)</span> -->
                                     <div class="small-card-child bg-success text-white text-center">
                                         Overall Sales value in<br> {{valueData.currentYear.month}}
-                                        {{valueData.currentYear.year}} <br>(as on date)
+                                        {{valueData.currentYear.year}} (as on date)
                                     </div>
-                                    <div class="card-body-child text-center">
-                                        <h4 class="font-weight-bold mt-2">{{valueData.currentYear.total}} Crs</h4>
+                                    <div style="height: 70px;" class="card-body-child text-center">
+                                        <h4 style="margin-top: 1.4rem;" class="font-weight-bold">
+                                            {{valueData.currentYear.total}} Crs</h4>
                                     </div>
                                 </div>
                             </div>
@@ -268,8 +279,9 @@
                                         {{valueData.currentYear.year}}
                                     </div>
                                     <div style="height: 75px;" class="card-body-child text-center">
-                                        <h4 [style.color]="getColor(valueData.percentage)" style="font-size: x-large;margin-top: 1.3rem;"
-                                            class="font-weight-bold">{{valueData.percentage}}%</h4>
+                                        <h4 [style.color]="getColor(valueData.percentage)"
+                                            style="font-size: x-large;margin-top: 1.3rem;" class="font-weight-bold">
+                                            {{valueData.percentage}}%</h4>
                                     </div>
                                 </div>
                             </div>
