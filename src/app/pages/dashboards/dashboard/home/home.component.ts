@@ -193,9 +193,8 @@ export class HomeComponent {
       const date1IMFS = parseInt(this.comparisonGrowthPercentage.date1.imfsCases, 10) + parseInt(this.comparisonGrowthPercentage.date1.beerCases, 10);
       const date2IMFS = parseInt(this.comparisonGrowthPercentage.date2.imfsCases, 10) + parseInt(this.comparisonGrowthPercentage.date2.beerCases, 10);
       const nonNegativeResult = date2IMFS !== 0 ? parseFloat((((date2IMFS / date1IMFS) - 1) * 100).toFixed(2)) : 0;
-      this.finalCalculatedResult = Math.abs(nonNegativeResult);
-      console.log(date1IMFS,
-        date2IMFS)
+      this.finalCalculatedResult = isNaN(nonNegativeResult) ? '' : Math.abs(nonNegativeResult);
+      console.log(date1IMFS, date2IMFS, this.finalCalculatedResult)
       const chart1Volume = parseInt(this.chartData?.today?.imfsSoldVolumeCases) + parseInt(this.chartData?.today?.beerSoldVolumeCases)
       const chart2Volume = parseInt(this.chartData?.previousDay?.imfsSoldVolumeCases) + parseInt(this.chartData?.previousDay?.beerSoldVolumeCases)
       const chart3Volume = parseInt(this.chartData?.previousYear?.imfsSoldVolumeCases) + parseInt(this.chartData?.previousYear?.beerSoldVolumeCases)
@@ -526,11 +525,9 @@ export class HomeComponent {
         this.comparisonGrowthPercentage = res.data.charts.comparisonBetweenDate.properties
         const date1IMFS = parseInt(this.comparisonGrowthPercentage.date1.imfsCases, 10) + parseInt(this.comparisonGrowthPercentage.date1.beerCases, 10);
         const date2IMFS = parseInt(this.comparisonGrowthPercentage.date2.imfsCases, 10) + parseInt(this.comparisonGrowthPercentage.date2.beerCases, 10);
-        // const date1IMFS = this.comparisonGrowthPercentage.date1.imfsCases + this.comparisonGrowthPercentage.date1.beerCases;
-        // const date2IMFS = this.comparisonGrowthPercentage.date2.imfsCases + this.comparisonGrowthPercentage.date2.beerCases;
         const nonNegativeResult = date2IMFS !== 0 ? parseFloat((((date2IMFS / date1IMFS) - 1) * 100).toFixed(2)) : 0;
-        this.finalCalculatedResult = Math.abs(nonNegativeResult);
-        console.log(this.finalCalculatedResult)
+        this.finalCalculatedResult = isNaN(nonNegativeResult) ? '' : Math.abs(nonNegativeResult);
+        console.log(nonNegativeResult)
         this.barChart = {
           series: res.data.charts.comparisonBetweenDate.series,
           chart: {
