@@ -174,7 +174,7 @@ export class HomeComponent {
 
   getTableData(){
     this.service.getTableForDashBoard().subscribe((res: any) => {
-      this.tableData = res.data.records
+      this.tableData = res.data
       console.log(res)
     }
     )

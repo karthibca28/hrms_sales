@@ -597,7 +597,7 @@
             <div class="card match-height" id="table6">
                 <div class="table-head">
                     <span style="font-weight: bold;font-size: medium;">
-                        Least Growth Performance Rate
+                        Growth Performance Rate ({{tableData.comparisonBetween}})
                     </span>
                     <!-- <div class="col-md-2">
                         <span>Month</span>
@@ -611,7 +611,7 @@
                             placeholder="Across TN" [clearable]="false" [searchable]="false"></ng-select>
                     </div> -->
                 </div>
-                <p-table [value]="tableData" [rows]="10" [showCurrentPageReport]="true" [paginator]="true"
+                <p-table [value]="tableData.records" [rows]="10" [showCurrentPageReport]="true" [paginator]="true"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                     [globalFilterFields]="globalSearch" responsiveLayout="stack" [breakpoint]="'960px'"
                     [tableStyle]="{'min-width': '50rem'}">
