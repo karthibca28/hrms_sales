@@ -109,6 +109,7 @@ export class HomeComponent {
   // {
   //   label: "Trichy", value: 5
   // }]
+  tableData:any
   monthFilter = [
     {
       label: "3 Months", value: '3'
@@ -127,6 +128,7 @@ export class HomeComponent {
   colorPalette: string[] = ['#E14D57', '#3D88B9', '#6DB28E', '#F5A623', '#5C5C5C'];
   ngOnInit(): void {
     this.getDashboardData()
+    this.getTableData()
     this.InterpageService.id$.subscribe((id) => {
       this.receivedId = id;
     });
@@ -168,6 +170,14 @@ export class HomeComponent {
     } else {
       return 'orange';
     }
+  }
+
+  getTableData(){
+    this.service.getTableForDashBoard().subscribe((res: any) => {
+      this.tableData = res.data.records
+      console.log(res)
+    }
+    )
   }
 
   getDashboardData() {

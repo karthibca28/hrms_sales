@@ -17,6 +17,9 @@ export class FormService {
   getDashBoard() {
     return this.http.get(`${this.baseUrl}dashboard/insights`);
   }
+  getTableForDashBoard() {
+    return this.http.get(`${this.baseUrl}dashboard/growthPerformanceRate`);
+  }
   getFilterDashBoard(chartName: any, year: any, regionId: any) {
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}${year ? '&year=' + year : ''}${regionId ? '&regionId=' + regionId : ''}`);
   }

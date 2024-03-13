@@ -104,8 +104,9 @@
                                 <div>In Value</div>
                                 <div> In Volume</div>
                             </div>
-                            <div class="percentage" >
-                                <div [style.color]="getColor(chartData?.previousDay?.growthPercentage)">{{chartData?.previousDay?.growthPercentage}} %</div>
+                            <div class="percentage">
+                                <div [style.color]="getColor(chartData?.previousDay?.growthPercentage)">
+                                    {{chartData?.previousDay?.growthPercentage}} %</div>
                                 <div [style.color]="getColor(voloumeSecondChart)">{{voloumeSecondChart}}%</div>
                             </div>
                         </div>
@@ -159,8 +160,9 @@
                             </div>
 
                             <div class="percentage" [style.color]="getColor(chartData?.previousYear?.growthPercentage)">
-                                <div [style.color]="getColor(chartData?.previousYear?.growthPercentage)">{{chartData?.previousYear?.growthPercentage}}%</div>
-                                <div  [style.color]="getColor(voloumeThirdChart)">{{voloumeThirdChart}}%</div>
+                                <div [style.color]="getColor(chartData?.previousYear?.growthPercentage)">
+                                    {{chartData?.previousYear?.growthPercentage}}%</div>
+                                <div [style.color]="getColor(voloumeThirdChart)">{{voloumeThirdChart}}%</div>
                             </div>
                         </div>
                     </div>
@@ -597,8 +599,7 @@
                     <span style="font-weight: bold;font-size: medium;">
                         Least Growth Performance Rate
                     </span>
-                    <div class="col-md-2">
-                        <!-- (change)="filterTable($event,'month')" -->
+                    <!-- <div class="col-md-2">
                         <span>Month</span>
                         <ng-select style="width: 50%;" data-choices data-choices [items]="monthFilter" bindLabel="label"
                             bindValue="value" placeholder="Select Month" [clearable]="false"
@@ -608,9 +609,9 @@
                         <span>Region</span>
                         <ng-select data-choices data-choices [items]="location" bindLabel="label" bindValue="value"
                             placeholder="Across TN" [clearable]="false" [searchable]="false"></ng-select>
-                    </div>
+                    </div> -->
                 </div>
-                <p-table [value]="sampledata" [rows]="10" [showCurrentPageReport]="true" [paginator]="true"
+                <p-table [value]="tableData" [rows]="10" [showCurrentPageReport]="true" [paginator]="true"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                     [globalFilterFields]="globalSearch" responsiveLayout="stack" [breakpoint]="'960px'"
                     [tableStyle]="{'min-width': '50rem'}">
@@ -618,73 +619,52 @@
                         <tr>
                             <th pSortableColumn="serialNumber">
                                 S.No
-                                <!-- <p-sortIcon [field]="'serialNumber'"></p-sortIcon> -->
                             </th>
-                            <th pSortableColumn="region">
+                            <th pSortableColumn="shopNumber">
+                                Shop Number
+                                <p-sortIcon [field]="'shopNumber'"></p-sortIcon>
+                            </th>
+                            <th pSortableColumn="regionName">
                                 Region
-                                <p-sortIcon [field]="'region'"></p-sortIcon>
+                                <p-sortIcon [field]="'regionName'"></p-sortIcon>
                             </th>
-                            <th pSortableColumn="dis">
-                                District
-                                <p-sortIcon [field]="'dis'"></p-sortIcon>
+                            <th pSortableColumn="dmOfficeName">
+                                Office Name
+                                <p-sortIcon [field]="'dmOfficeName'"></p-sortIcon>
                             </th>
-                            <th pSortableColumn="rvshop">
-                                Rv Shop
+                            <!-- <th pSortableColumn="rvshop">
+                                Imfs Growth %
                                 <p-sortIcon [field]="'rvshop'"></p-sortIcon>
                             </th>
                             <th pSortableColumn="beersalesgrowth">
-                                Beer Sales Growth
+                                Beer Growth %
                                 <p-sortIcon [field]="'beersalesgrowth'"></p-sortIcon>
+                            </th> -->
+                            <th pSortableColumn="imfs_volume_growth">
+                                Imfs Volume<br> Growth %
+                                <p-sortIcon [field]="'imfs_volume_growth'"></p-sortIcon>
                             </th>
-                            <th pSortableColumn="imfs">
-                                Imfs Sales Growth
-                                <p-sortIcon [field]="'imfs'"></p-sortIcon>
+                            <th pSortableColumn="beer_volume_growth">
+                                Beer Volume<br> Growth %
+                                <p-sortIcon [field]="'beer_volume_growth'"></p-sortIcon>
                             </th>
-                            <th pSortableColumn="overall">
+                            <th pSortableColumn="overallSalesValueGrowth">
                                 Overall Percentage
-                                <p-sortIcon [field]="'overall'"></p-sortIcon>
-                            </th>
-                            <th pSortableColumn="highestsold">
-                                Highest Sold Item
-                                <p-sortIcon [field]="'highestsold'"></p-sortIcon>
-                            </th>
-                            <th pSortableColumn="nosold">
-                                Not Sold Item
-                                <p-sortIcon [field]="'nosold'"></p-sortIcon>
+                                <p-sortIcon [field]="'overallSalesValueGrowth'"></p-sortIcon>
                             </th>
                         </tr>
                     </ng-template>
-                    <ng-template pTemplate="body" let-product let-ri="rowIndex">
+                    <ng-template pTemplate="body" let-product let-i="rowIndex">
                         <tr>
-                            <td>{{ri+1}}</td>
-                            <td>{{ product.region }}</td>
-                            <!-- <td>{{ product.totalPrev3MonthBeerSales }}</td>
-                            <td>{{ product.totalPrev3MonthIMFSales }}</td>
-                            <td>{{ product.totalPrev3MonthSales}}</td>
-                            <td>{{ product.totalPrevMonthBeerSales}}</td>
-                            <td>{{ product.totalPrevMonthIMFSales }}</td>
-                            <td>{{ product.totalPrevMonthSales}}</td> -->
-                            <td>{{product.dis}}</td>
-                            <td>{{product.rvshop}}</td>
-                            <td [style.color]="getColor(product.beersalesgrowth)">{{ product.beersalesgrowth
-                                }}%</td>
-                            <td [style.color]="getColor(product.imfs)">{{ product.imfs
-                                }}%</td>
-                            <td [style.color]="getColor(product.overall)">{{ product.overall}}%</td>
-                            <td ngbTooltip="{{ product.highsoldbrands }}">
-                                {{ product.highestsold }}
-                            </td>
-                            <td ngbTooltip="{{ product.nosoldbrands }}">
-                                {{ product.nosold }}
-                            </td>
-                            <!-- <td [pTooltip]="nosold">
-                                {{ product.nosold }}
-                                <ng-template #tooltipContent>
-                                    <div class="flex align-items-center">
-                                        <span> data </span>
-                                    </div>
-                                </ng-template>
-                            </td> -->
+                            <td>{{i+1}}</td>
+                            <td>{{ product.shopNumber }}</td>
+                            <td>{{product.regionName}}</td>
+                            <td>{{product.dmOfficeName}}</td>
+                            <!-- <td [style.color]="getColor(product.imfs_growth_percentage)">{{ product.imfs_growth_percentage}}%</td>
+                            <td [style.color]="getColor(product.beer_growth_percentage)">{{ product.beer_growth_percentage}}%</td> -->
+                            <td [style.color]="getColor(product.imfs_volume_growth)">{{ product.imfs_volume_growth}}%</td>
+                            <td [style.color]="getColor(product.beer_volume_growth)">{{ product.beer_volume_growth}}%</td>
+                            <td [style.color]="getColor(product.overallSalesValueGrowth)">{{ product.overallSalesValueGrowth}}%</td>
                         </tr>
                     </ng-template>
                 </p-table>
