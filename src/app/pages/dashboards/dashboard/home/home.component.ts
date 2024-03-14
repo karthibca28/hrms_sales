@@ -522,14 +522,14 @@ export class HomeComponent {
     }
     else if (dropdownType === 'date1') {
       this.date1 = event.target.value;
+      this.yesterDayDateofComparison = this.date1
       if (!this.date2) {
         this.date2 = new Date().toISOString().split('T')[0];
         this.yesterdayDate = this.date1
       }
     } else if (dropdownType === 'date2') {
       this.date2 = event.target.value;
-      this.currentDateofComparison = this.date2,
-        this.yesterDayDateofComparison = this.date1
+      this.currentDateofComparison = this.date2
       if (!this.date1) {
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
