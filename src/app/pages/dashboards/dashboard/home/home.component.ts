@@ -25,6 +25,7 @@ import { LoadingService } from 'src/app/shared/service/loading.service';
 import { ViewOverallSalesComponent } from '../view-overall-sales/view-overall-sales.component';
 import { Router } from '@angular/router';
 import { ChartOptions, ChartType, ChartData } from 'chart.js/auto';
+import { number } from 'echarts';
 
 interface sideBarOption {
   series: ApexNonAxisChartSeries;
@@ -109,7 +110,9 @@ export class HomeComponent {
   // {
   //   label: "Trichy", value: 5
   // }]
-  tableData:any
+  tableData: any
+  searchText: any;
+  filteredData: any[] = [];
   monthFilter = [
     {
       label: "3 Months", value: '3'
@@ -172,13 +175,26 @@ export class HomeComponent {
     }
   }
 
-  getTableData(){
+  getTableData() {
     this.service.getTableForDashBoard().subscribe((res: any) => {
       this.tableData = res.data
+      this.filteredData = this.tableData.records;
       console.log(res)
     }
     )
   }
+
+  filterData() {
+    this.filteredData = this.tableData.records.filter((record: any) => {
+      const shopNumberString = record.shopNumber.toString();
+      if (shopNumberString.includes(this.searchText.toString())) {
+        return true;
+      }
+      return false;
+    });
+  }
+  
+
 
   getDashboardData() {
     this.loadingService.showLoader();

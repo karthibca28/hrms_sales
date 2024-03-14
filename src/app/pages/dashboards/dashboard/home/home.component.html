@@ -599,6 +599,9 @@
                     <span style="font-weight: bold;font-size: medium;">
                         Growth Performance Rate ({{tableData.comparisonBetween}})
                     </span>
+                    <div>
+                        <input type="text" class="form-control" placeholder="Search Shop No" [(ngModel)]="searchText" (input)="filterData()">
+                    </div>
                     <!-- <div class="col-md-2">
                         <span>Month</span>
                         <ng-select style="width: 50%;" data-choices data-choices [items]="monthFilter" bindLabel="label"
@@ -611,7 +614,7 @@
                             placeholder="Across TN" [clearable]="false" [searchable]="false"></ng-select>
                     </div> -->
                 </div>
-                <p-table [value]="tableData.records" [rows]="10" [showCurrentPageReport]="true" [paginator]="true"
+                <p-table [value]="filteredData" [rows]="10" [showCurrentPageReport]="true" [paginator]="true"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                     [globalFilterFields]="globalSearch" responsiveLayout="stack" [breakpoint]="'960px'"
                     [tableStyle]="{'min-width': '50rem'}">
