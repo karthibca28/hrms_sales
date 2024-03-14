@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 // import { AuthService } from '../shared/service/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthenticationService } from '../../core/services/auth.service';
-import { ToastService } from '../icons/toast-service';
-import { AuthfakeauthenticationService } from '../../core/services/authfake.service';
 import { AuthService } from '../../shared/service/auth.service';
 import Swal from 'sweetalert2';
 import { LoadingService } from 'src/app/shared/service/loading.service';
@@ -25,8 +22,7 @@ export class LoginComponent {
   userRole: any
   year: number = new Date().getFullYear();
 
-  constructor(private authService: AuthService, private authenticationService: AuthenticationService, private router: Router,
-    private authFackservice: AuthfakeauthenticationService, private route: ActivatedRoute, public toastService: ToastService,
+  constructor(private authService: AuthService, private router: Router, private route: ActivatedRoute,
     private loadingService: LoadingService) {
 
   }

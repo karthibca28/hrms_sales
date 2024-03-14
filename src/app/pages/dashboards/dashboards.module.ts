@@ -24,12 +24,6 @@ import { SharedModule } from '../../shared/shared.module';
 import { WidgetModule } from '../../shared/widget/widget.module';
 
 // Component
-import { AnalyticsComponent } from './analytics/analytics.component';
-import { CrmComponent } from './crm/crm.component';
-import { CryptoComponent } from './crypto/crypto.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { NftComponent } from './nft/nft.component';
-import { JobComponent } from './job/job.component';
 import { DynamicViewTableComponent } from './dashboard/dynamic-view-table/dynamic-view-table.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { MatInputModule } from '@angular/material/input';
@@ -46,12 +40,6 @@ import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
-    AnalyticsComponent,
-    CrmComponent,
-    CryptoComponent,
-    ProjectsComponent,
-    NftComponent,
-    JobComponent,
     DynamicViewTableComponent,
     HomeComponent,
     IndianCurrencyPipe,

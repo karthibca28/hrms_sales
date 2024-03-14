@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EventService } from '../core/services/event.service';
 import { LAYOUT } from './layout.model';
 
 @Component({
@@ -16,16 +15,16 @@ export class LayoutComponent implements OnInit {
 
   layoutType!: string;
 
-  constructor(private eventService: EventService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.layoutType = LAYOUT;
     document.body.setAttribute('layout',this.layoutType)
 
      // listen to event and change the layout, theme, etc
-     this.eventService.subscribe('changeLayout', (layout) => {
-      this.layoutType = layout;
-    });
+    //  this.eventService.subscribe('changeLayout', (layout) => {
+    //   this.layoutType = layout;
+    // });
     
   }
 

@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter, TemplateRef } from '@angular/core';
-import { EventService } from '../../core/services/event.service';
 import { LAYOUT, LAYOUT_MODE, LAYOUT_WIDTH, LAYOUT_POSITION, TOPBAR, SIDEBAR_SIZE, SIDEBAR_VIEW, SIDEBAR_COLOR, SIDEBAR_IMAGE, DATA_PRELOADER, SIDEBAR_VISIBILITY } from '../layout.model';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 
@@ -30,7 +29,7 @@ export class RightsidebarComponent implements OnInit {
 
   @Output() settingsButtonClicked = new EventEmitter();
 
-  constructor(private eventService: EventService, private offcanvasService: NgbOffcanvas) { }
+  constructor( private offcanvasService: NgbOffcanvas) { }
 
   ngOnInit(): void {
     this.layout = LAYOUT;
@@ -55,11 +54,11 @@ export class RightsidebarComponent implements OnInit {
    */
   changeLayout(layout: string) {
     this.attribute = layout;
-    if (layout == 'semibox') {
-      this.eventService.broadcast('changeLayout', 'vertical');
-    } else {
-      this.eventService.broadcast('changeLayout', layout);
-    }
+    // if (layout == 'semibox') {
+    //   this.eventService.broadcast('changeLayout', 'vertical');
+    // } else {
+    //   this.eventService.broadcast('changeLayout', layout);
+    // }
     document.documentElement.setAttribute('data-layout', layout);
     document.body.setAttribute('layout', layout);
     setTimeout(() => {
