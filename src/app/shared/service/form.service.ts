@@ -20,6 +20,9 @@ export class FormService {
   getTableForDashBoard() {
     return this.http.get(`${this.baseUrl}dashboard/growthPerformanceRate`);
   }
+  getTableForDashBoardFilter(regionId: any, districtId: any) {
+    return this.http.get(`${this.baseUrl}dashboard/growthPerformanceRate?${regionId ? '&regionId=' + regionId : ''}${districtId ? '&districtId=' + districtId : ''}`);
+  }
   getFilterDashBoard(chartName: any, year: any, regionId: any) {
     return this.http.get(`${this.baseUrl}dashboard/updateChart?chartName=${chartName}${year ? '&year=' + year : ''}${regionId ? '&regionId=' + regionId : ''}`);
   }

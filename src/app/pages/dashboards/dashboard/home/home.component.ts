@@ -782,6 +782,7 @@ export class HomeComponent {
       };
     })
   }
+  
   selectedFilterSalesDistrict: any
   getDistrict(event: any) {
     this.districts = []
@@ -801,12 +802,13 @@ export class HomeComponent {
   tableregion: any
   filterTable(event: any, dropdownType: any) {
     this.loadingService.showLoader();
-    if (dropdownType === 'month') {
+    if (dropdownType === 'region') {
       this.tableYear = event?.value;
-    } else if (dropdownType === 'location') {
+    } else if (dropdownType === 'district') {
       this.tableregion = event?.value
     }
-    this.service.getFilterDashBoard('leastPerformanceGrowthRate', this.tableYear, this.tableregion).subscribe((res: any) => {
+    this.service.getTableForDashBoardFilter(this.tableYear, this.tableregion).subscribe((res: any) => {
+      this.filteredData = res.data.records
       this.loadingService.hideLoader();
     })
   }

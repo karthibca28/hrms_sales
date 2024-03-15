@@ -600,28 +600,33 @@
                         Growth Performance Rate ({{tableData.comparisonBetween}})
                     </span>
                     <div style="display: flex;">
-                        <div style="margin-right: 5px;">
-                            <input type="text" class="form-control" placeholder="Search Shop No"
-                                [(ngModel)]="searchText" (input)="filterData()">
+                        <button type="button" class="btn btn-soft-success" (click)="exportToExcel()"><i
+                                class="ri-file-download-line align-middle me-1"></i>
+                            Download Excel
+                        </button>
+                    </div>
+                </div>
+                <div class="row mt-2 mb-2 px-2" style="justify-content: space-between;align-items: end;">
+                    <div class="col-md-9" style="display: flex;">
+                        <div class="col-md-4 px-2">
+                            <span>Region</span>
+                            <ng-select (change)="filterTable($event, 'region')" (change)="getDistrict($event)"
+                                [items]="location" bindLabel="label" bindValue="value" placeholder="Across TN"
+                                [clearable]="false" [searchable]="false"></ng-select>
                         </div>
-                        <div>
-                            <button type="button" class="btn btn-soft-success" (click)="exportToExcel()"><i
-                                    class="ri-file-download-line align-middle me-1"></i>
-                                Download Excel
-                            </button>
+                        <div class="col-md-4">
+                            <span>District</span>
+                            <ng-select (change)="filterTable($event, 'district')" [items]="districts"
+                                [(ngModel)]="districtName" bindLabel="label" bindValue="value"
+                                placeholder="Select District" [clearable]="false" [searchable]="false"></ng-select>
                         </div>
                     </div>
-                    <!-- <div class="col-md-2">
-                        <span>Month</span>
-                        <ng-select style="width: 50%;" data-choices data-choices [items]="monthFilter" bindLabel="label"
-                            bindValue="value" placeholder="Select Month" [clearable]="false"
-                            [searchable]="false"></ng-select>
+
+                    <div class="col-md-3">
+                        <span>Search Shop No</span>
+                        <input type="text" class="form-control" placeholder="Search Shop No" [(ngModel)]="searchText"
+                            (input)="filterData()">
                     </div>
-                    <div class="col-md-2">
-                        <span>Region</span>
-                        <ng-select data-choices data-choices [items]="location" bindLabel="label" bindValue="value"
-                            placeholder="Across TN" [clearable]="false" [searchable]="false"></ng-select>
-                    </div> -->
                 </div>
                 <p-table [value]="filteredData" [rows]="10" [showCurrentPageReport]="true" [paginator]="true"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
