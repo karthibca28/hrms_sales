@@ -26,6 +26,7 @@ import { ViewOverallSalesComponent } from '../view-overall-sales/view-overall-sa
 import { Router } from '@angular/router';
 import { ChartOptions, ChartType, ChartData } from 'chart.js/auto';
 import { number } from 'echarts';
+import * as XLSX from 'xlsx';
 
 interface sideBarOption {
   series: ApexNonAxisChartSeries;
@@ -195,6 +196,20 @@ export class HomeComponent {
   }
   
 
+  exportToExcel(): void {
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.filteredData);
+    const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+    const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    this.saveAsExcelFile(excelBuffer, 'TasmacData');
+  }
+
+  private saveAsExcelFile(buffer: any, fileName: string): void {
+    const data: Blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const downloadLink: any = document.createElement('a');
+    downloadLink.href = window.URL.createObjectURL(data);
+    downloadLink.download = fileName + '.xlsx';
+    downloadLink.click();
+  }
 
   getDashboardData() {
     this.loadingService.showLoader();

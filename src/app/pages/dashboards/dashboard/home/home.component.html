@@ -599,8 +599,17 @@
                     <span style="font-weight: bold;font-size: medium;">
                         Growth Performance Rate ({{tableData.comparisonBetween}})
                     </span>
-                    <div>
-                        <input type="text" class="form-control" placeholder="Search Shop No" [(ngModel)]="searchText" (input)="filterData()">
+                    <div style="display: flex;">
+                        <div style="margin-right: 5px;">
+                            <input type="text" class="form-control" placeholder="Search Shop No"
+                                [(ngModel)]="searchText" (input)="filterData()">
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-soft-success" (click)="exportToExcel()"><i
+                                    class="ri-file-download-line align-middle me-1"></i>
+                                Export Excel
+                            </button>
+                        </div>
                     </div>
                     <!-- <div class="col-md-2">
                         <span>Month</span>
@@ -665,9 +674,12 @@
                             <td>{{product.dmOfficeName}}</td>
                             <!-- <td [style.color]="getColor(product.imfs_growth_percentage)">{{ product.imfs_growth_percentage}}%</td>
                             <td [style.color]="getColor(product.beer_growth_percentage)">{{ product.beer_growth_percentage}}%</td> -->
-                            <td [style.color]="getColor(product.imfs_volume_growth)">{{ product.imfs_volume_growth}}%</td>
-                            <td [style.color]="getColor(product.beer_volume_growth)">{{ product.beer_volume_growth}}%</td>
-                            <td [style.color]="getColor(product.overallSalesValueGrowth)">{{ product.overallSalesValueGrowth}}%</td>
+                            <td [style.color]="getColor(product.imfs_volume_growth)">{{ product.imfs_volume_growth}}%
+                            </td>
+                            <td [style.color]="getColor(product.beer_volume_growth)">{{ product.beer_volume_growth}}%
+                            </td>
+                            <td [style.color]="getColor(product.overallSalesValueGrowth)">{{
+                                product.overallSalesValueGrowth}}%</td>
                         </tr>
                     </ng-template>
                 </p-table>
