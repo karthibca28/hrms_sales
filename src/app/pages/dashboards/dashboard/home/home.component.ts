@@ -71,6 +71,7 @@ export class HomeComponent {
   public barChart: barChartOption
   public barChartTop: barChartOption
   public barChartLeast: barChartOption
+  barChartTopRegion:barChartOption
   public areaChartYearlySalesComparison: areaChart
   public areChartFestival: areaChart
   regionwiseDropdown: any
@@ -149,6 +150,7 @@ export class HomeComponent {
     this.currentDateofComparison = today.toISOString().split('T')[0];
     this.areaChart = {} as areaChart
     this.barChart = {} as barChartOption
+    this.barChartTopRegion = {} as barChartOption
     this.salesChart = {
       dataLabels: {
         enabled: false,
@@ -307,6 +309,49 @@ export class HomeComponent {
           }
         }
       };
+      this.barChartTopRegion = {
+        series: res.data.charts.top5DistrictBarChart.series,
+        chart: {
+          type: "bar",
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "30%",
+            // endingShape: "rounded"
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"]
+        },
+        xaxis: res.data.
+          charts.top5DistrictBarChart.xaxis,
+        yaxis: {
+          title: {
+            // text: "₹ (Cr)"
+          },
+          labels: {
+            formatter: (value) => { return `${value} Cr` },
+          }
+        },
+        fill: {
+          opacity: 1,
+          // colors: ['#00798C', '#EDAE49']
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "₹ " + val + " Cr";
+            }
+          }
+        }
+      } as barChartOption
       this.barChart = {
         series: res.data.charts.comparisonBetweenDate
           .series,
@@ -685,14 +730,16 @@ export class HomeComponent {
   }
   selectedyearForTopFive: any
   selectedDistrictTopFive: any
-  filterTopFive(event: any, dropdownType: any) {
+  selectedyearRegionWise:any
+  selectedDistrictRegionWise:any
+  filterRegionWise(event: any, dropdownType: any) {
     this.loadingService.showLoader();
     if (dropdownType === 'year') {
-      this.selectedyearForTopFive = event?.value;
+      this.selectedyearRegionWise = event?.value;
     } else if (dropdownType === 'location') {
-      this.selectedDistrictTopFive = event?.value
+      this.selectedDistrictRegionWise = event?.value
     }
-    this.service.getFilterDashBoard('regionWiseBarChart', this.selectedyearForTopFive, this.selectedDistrictTopFive).subscribe((res: any) => {
+    this.service.getFilterDashBoard('regionWiseBarChart', this.selectedyearRegionWise, this.selectedDistrictRegionWise).subscribe((res: any) => {
       this.loadingService.hideLoader();
       this.barChartTop = {
         series: res.data.charts.regionWiseBarChart.series,
@@ -718,6 +765,57 @@ export class HomeComponent {
         xaxis: res.data.
           charts.regionWiseBarChart
           .xaxis,
+        yaxis: {
+          title: {
+            // text: "₹ (Cr)"
+          }
+        },
+        fill: {
+          opacity: 1,
+          colors: ['#00E396']
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return "₹ " + val + " Cr";
+            }
+          }
+        }
+      } as barChartOption
+    })
+  }
+  filterTopfiveDistrict(event: any, dropdownType: any) {
+    this.loadingService.showLoader();
+    if (dropdownType === 'year') {
+      this.selectedyearForTopFive = event?.value;
+    } else if (dropdownType === 'location') {
+      this.selectedDistrictTopFive = event?.value
+    }
+    this.service.getFilterDashBoard('top5DistrictBarChart', this.selectedyearForTopFive, this.selectedDistrictTopFive).subscribe((res: any) => {
+      this.loadingService.hideLoader();
+      this.barChartTopRegion = {
+        series: res.data.charts.top5DistrictBarChart.series,
+        chart: {
+          type: "bar",
+          height: 350
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "30%",
+            // endingShape: "rounded"
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"]
+        },
+        xaxis: res.data.
+          charts.top5DistrictBarChart.xaxis,
         yaxis: {
           title: {
             // text: "₹ (Cr)"
