@@ -104,8 +104,9 @@
                                 <div>In Value</div>
                                 <div> In Volume</div>
                             </div>
-                            <div class="percentage" >
-                                <div [style.color]="getColor(chartData?.previousDay?.growthPercentage)">{{chartData?.previousDay?.growthPercentage}} %</div>
+                            <div class="percentage">
+                                <div [style.color]="getColor(chartData?.previousDay?.growthPercentage)">
+                                    {{chartData?.previousDay?.growthPercentage}} %</div>
                                 <div [style.color]="getColor(voloumeSecondChart)">{{voloumeSecondChart}}%</div>
                             </div>
                         </div>
@@ -159,8 +160,9 @@
                             </div>
 
                             <div class="percentage" [style.color]="getColor(chartData?.previousYear?.growthPercentage)">
-                                <div [style.color]="getColor(chartData?.previousYear?.growthPercentage)">{{chartData?.previousYear?.growthPercentage}}%</div>
-                                <div  [style.color]="getColor(voloumeThirdChart)">{{voloumeThirdChart}}%</div>
+                                <div [style.color]="getColor(chartData?.previousYear?.growthPercentage)">
+                                    {{chartData?.previousYear?.growthPercentage}}%</div>
+                                <div [style.color]="getColor(voloumeThirdChart)">{{voloumeThirdChart}}%</div>
                             </div>
                         </div>
                     </div>
@@ -528,11 +530,11 @@
                 <div class="col-6">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h4 class="card-title mb-0 flex-grow-1">Annual sales comparison</h4>
+                            <h4 class="card-title mb-0 flex-grow-1">Top Performed District</h4>
                             <!-- <img style="width: 20px;height: 20px;" src="assets/icons/sales-comp.png" /> -->
                         </div>
                         <div class="card-body">
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-2">
                                     <div class="form-check" (click)="filterSalesComparison()">
                                         <input class="form-check-input" type="checkbox" value="2023-2024"
@@ -570,22 +572,85 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <!-- <span>Region</span> -->
                                     <ng-select data-choices (change)="filterSalesComparison($event)" [items]="location"
                                         bindLabel="label" bindValue="value" placeholder="Across TN" [clearable]="false"
                                         [searchable]="false"></ng-select>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="row">
                                 <div id="chart">
-                                    <apx-chart [series]="areaChartYearlySalesComparison.series"
-                                        [chart]="areaChartYearlySalesComparison.chart"
-                                        [xaxis]="areaChartYearlySalesComparison.xaxis"
-                                        [yaxis]="areaChartYearlySalesComparison.yaxis"
-                                        [stroke]="areaChartYearlySalesComparison.stroke"
-                                        [tooltip]="areaChartYearlySalesComparison.tooltip"
-                                        [dataLabels]="areaChartYearlySalesComparison.dataLabels"></apx-chart>
+                                    <apx-chart [series]="barChartTop.series" [chart]="barChartTop.chart"
+                                        [dataLabels]="barChartTop.dataLabels" [plotOptions]="barChartTop.plotOptions"
+                                        [yaxis]="barChartTop.yaxis" [legend]="barChartTop.legend"
+                                        [fill]="barChartTop.fill" [stroke]="barChartTop.stroke"
+                                        [tooltip]="barChartTop.tooltip" [xaxis]="barChartTop.xaxis"></apx-chart>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="card-title mb-0 flex-grow-1">Annual sales comparison</h4>
+                        <!-- <img style="width: 20px;height: 20px;" src="assets/icons/sales-comp.png" /> -->
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="form-check" (click)="filterSalesComparison()">
+                                    <input class="form-check-input" type="checkbox" value="2023-2024" id="salesCheckbox"
+                                        checked>
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        FY 2023-2024
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-check" (click)="filterSalesComparison()">
+                                    <input class="form-check-input" type="checkbox" value="2022-2023" id="salesCheckbox"
+                                        checked>
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        FY 2022-2023
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-check" (click)="filterSalesComparison()">
+                                    <input class="form-check-input" type="checkbox" value="2021-2022"
+                                        id="salesCheckbox">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        FY 2021-2022
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-check" (click)="filterSalesComparison()">
+                                    <input class="form-check-input" type="checkbox" value="2020-2021"
+                                        id="salesCheckbox">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        FY 2020-2021
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <!-- <span>Region</span> -->
+                                <ng-select data-choices (change)="filterSalesComparison($event)" [items]="location"
+                                    bindLabel="label" bindValue="value" placeholder="Across TN" [clearable]="false"
+                                    [searchable]="false"></ng-select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="chart">
+                                <apx-chart [series]="areaChartYearlySalesComparison.series"
+                                    [chart]="areaChartYearlySalesComparison.chart"
+                                    [xaxis]="areaChartYearlySalesComparison.xaxis"
+                                    [yaxis]="areaChartYearlySalesComparison.yaxis"
+                                    [stroke]="areaChartYearlySalesComparison.stroke"
+                                    [tooltip]="areaChartYearlySalesComparison.tooltip"
+                                    [dataLabels]="areaChartYearlySalesComparison.dataLabels"></apx-chart>
                             </div>
                         </div>
                     </div>

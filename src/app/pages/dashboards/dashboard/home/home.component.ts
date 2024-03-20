@@ -518,6 +518,7 @@ export class HomeComponent {
     if (!this.date2) {
       this.date2 = new Date().toISOString().split('T')[0];
     }
+    
     this.service.getFilterDashBoardComparison('comparisonBetweenDate', this.locationType,
       this.districtforComparison,
       this.date1,
