@@ -1,17 +1,12 @@
 import { Component, OnInit, EventEmitter, Output, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { EventService } from '../../core/services/event.service';
 
 //Logout
 import { environment } from '../../../environments/environment';
-import { AuthenticationService } from '../../core/services/auth.service';
-import { AuthfakeauthenticationService } from '../../core/services/authfake.service';
-import { TokenStorageService } from '../../core/services/token-storage.service';
 import { Router } from '@angular/router';
 
 // Language
 import { CookieService } from 'ngx-cookie-service';
-import { LanguageService } from '../../core/services/language.service';
 import { TranslateService } from '@ngx-translate/core';
 import { CartModel } from './topbar.model';
 import { cartData } from './data';
@@ -39,15 +34,15 @@ export class TopbarComponent implements OnInit {
   cookieValue: any;
   user:any
 
-  constructor(@Inject(DOCUMENT) private document: any, private eventService: EventService, public languageService: LanguageService,
-    public _cookiesService: CookieService, public translate: TranslateService, private authService: AuthenticationService, private authFackservice: AuthfakeauthenticationService,
-    private router: Router, private TokenStorageService: TokenStorageService, private service: InterpageService) { }
+  constructor(@Inject(DOCUMENT) private document: any,
+    public _cookiesService: CookieService, public translate: TranslateService,
+    private router: Router, private service: InterpageService) { }
 
   ngOnInit(): void {
     this.user = sessionStorage.getItem('userName')
     this.user = JSON.parse(this.user)
     console.log(this.user)
-    this.userData = this.TokenStorageService.getUser();
+    // this.userData = this.TokenStorageService.getUser();
     this.element = document.documentElement;
     // document.querySelector('.hamburger-icon')?.classList.toggle('open');
     // this.mobileMenuButtonClicked.emit();
@@ -126,7 +121,7 @@ export class TopbarComponent implements OnInit {
   */
   changeMode(mode: string) {
     this.mode = mode;
-    this.eventService.broadcast('changeMode', mode);
+    // this.eventService.broadcast('changeMode', mode);
 
     switch (mode) {
       case 'light':
@@ -162,7 +157,7 @@ export class TopbarComponent implements OnInit {
     this.countryName = text;
     this.flagvalue = flag;
     this.cookieValue = lang;
-    this.languageService.setLanguage(lang);
+    // this.languageService.setLanguage(lang);
   }
 
   /**

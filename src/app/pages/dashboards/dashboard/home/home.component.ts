@@ -25,6 +25,8 @@ import { LoadingService } from 'src/app/shared/service/loading.service';
 import { ViewOverallSalesComponent } from '../view-overall-sales/view-overall-sales.component';
 import { Router } from '@angular/router';
 import { ChartOptions, ChartType, ChartData } from 'chart.js/auto';
+import { number } from 'echarts';
+import * as XLSX from 'xlsx';
 
 interface sideBarOption {
   series: ApexNonAxisChartSeries;
@@ -109,6 +111,9 @@ export class HomeComponent {
   // {
   //   label: "Trichy", value: 5
   // }]
+  tableData: any
+  searchText: any;
+  filteredData: any[] = [];
   monthFilter = [
     {
       label: "3 Months", value: '3'
@@ -127,6 +132,7 @@ export class HomeComponent {
   colorPalette: string[] = ['#E14D57', '#3D88B9', '#6DB28E', '#F5A623', '#5C5C5C'];
   ngOnInit(): void {
     this.getDashboardData()
+    this.getTableData()
     this.InterpageService.id$.subscribe((id) => {
       this.receivedId = id;
     });
@@ -168,6 +174,41 @@ export class HomeComponent {
     } else {
       return 'orange';
     }
+  }
+
+  getTableData() {
+    this.service.getTableForDashBoard().subscribe((res: any) => {
+      this.tableData = res.data
+      this.filteredData = this.tableData.records;
+      console.log(res)
+    }
+    )
+  }
+
+  filterData() {
+    this.filteredData = this.tableData.records.filter((record: any) => {
+      const shopNumberString = record.shopNumber.toString();
+      if (shopNumberString.includes(this.searchText.toString())) {
+        return true;
+      }
+      return false;
+    });
+  }
+  
+
+  exportToExcel(): void {
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.filteredData);
+    const workbook: XLSX.WorkBook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
+    const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    this.saveAsExcelFile(excelBuffer, 'TasmacData');
+  }
+
+  private saveAsExcelFile(buffer: any, fileName: string): void {
+    const data: Blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const downloadLink: any = document.createElement('a');
+    downloadLink.href = window.URL.createObjectURL(data);
+    downloadLink.download = fileName + '.xlsx';
+    downloadLink.click();
   }
 
   getDashboardData() {
@@ -496,14 +537,14 @@ export class HomeComponent {
     }
     else if (dropdownType === 'date1') {
       this.date1 = event.target.value;
+      this.yesterDayDateofComparison = this.date1
       if (!this.date2) {
         this.date2 = new Date().toISOString().split('T')[0];
         this.yesterdayDate = this.date1
       }
     } else if (dropdownType === 'date2') {
       this.date2 = event.target.value;
-      this.currentDateofComparison = this.date2,
-        this.yesterDayDateofComparison = this.date1
+      this.currentDateofComparison = this.date2
       if (!this.date1) {
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
@@ -742,6 +783,7 @@ export class HomeComponent {
       };
     })
   }
+  
   selectedFilterSalesDistrict: any
   getDistrict(event: any) {
     this.districts = []
@@ -761,12 +803,13 @@ export class HomeComponent {
   tableregion: any
   filterTable(event: any, dropdownType: any) {
     this.loadingService.showLoader();
-    if (dropdownType === 'month') {
+    if (dropdownType === 'region') {
       this.tableYear = event?.value;
-    } else if (dropdownType === 'location') {
+    } else if (dropdownType === 'district') {
       this.tableregion = event?.value
     }
-    this.service.getFilterDashBoard('leastPerformanceGrowthRate', this.tableYear, this.tableregion).subscribe((res: any) => {
+    this.service.getTableForDashBoardFilter(this.tableYear, this.tableregion).subscribe((res: any) => {
+      this.filteredData = res.data.records
       this.loadingService.hideLoader();
     })
   }

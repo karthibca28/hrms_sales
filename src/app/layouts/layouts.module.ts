@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 
 import { NgbDropdownModule, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimplebarAngularModule } from 'simplebar-angular';
-import { LanguageService } from '../core/services/language.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../shared/shared.module';
 
@@ -44,6 +43,6 @@ import { TwoColumnSidebarComponent } from './two-column-sidebar/two-column-sideb
     TranslateModule,
    
   ],
-  providers: [LanguageService]
+  // providers: [LanguageService]
 })
 export class LayoutsModule { }

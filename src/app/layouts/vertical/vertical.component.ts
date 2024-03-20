@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { EventService } from '../../core/services/event.service';
 import { DATA_PRELOADER, LAYOUT, LAYOUT_MODE, LAYOUT_POSITION, LAYOUT_WIDTH, SIDEBAR_COLOR, SIDEBAR_SIZE, SIDEBAR_VIEW, TOPBAR } from '../layout.model';
 
 @Component({
@@ -11,7 +10,7 @@ export class VerticalComponent implements OnInit {
 
   isCondensed = false;
 
-  constructor(private eventService: EventService) { }
+  constructor() { }
 
   ngOnInit(): void {
     if (document.documentElement.getAttribute('data-layout') == 'semibox') {
@@ -80,13 +79,13 @@ export class VerticalComponent implements OnInit {
 
   onResize(event: any) {
     if (document.body.getAttribute('layout') == "twocolumn") {
-      if (event.target.innerWidth <= 767) {
-        this.eventService.broadcast('changeLayout', 'vertical');
-      } else {
-        this.eventService.broadcast('changeLayout', 'twocolumn');
-        document.body.classList.remove('twocolumn-panel');
-        document.body.classList.remove('vertical-sidebar-enable');
-      }
+      // if (event.target.innerWidth <= 767) {
+      //   this.eventService.broadcast('changeLayout', 'vertical');
+      // } else {
+      //   this.eventService.broadcast('changeLayout', 'twocolumn');
+      //   document.body.classList.remove('twocolumn-panel');
+      //   document.body.classList.remove('vertical-sidebar-enable');
+      // }
     }
   }
 
